@@ -60,8 +60,7 @@ public class CameraController : MonoBehaviour
 
 		targetFocus.y = Mathf.Clamp(targetFocus.y, minOffset, maxOffset);
 
-		virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset =
-			Vector3.Lerp(targetFocus, cinemachineTransposer.m_FollowOffset, Time.deltaTime * focusSpeed);
+		cinemachineTransposer.m_FollowOffset = Vector3.Lerp(cinemachineTransposer.m_FollowOffset, targetFocus, Time.deltaTime * focusSpeed);
 	}
 
 }
