@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace TileSystem
 {
@@ -17,27 +18,23 @@ namespace TileSystem
 
 		private void Start()
 		{
-			for (int x = 0; x < maxGridSize.x; x++)
-			{
-				for (int y = 0; y < maxGridSize.y; y++)
-				{
-					var tile = Instantiate(tileToSpawn, transform);
-					tile.transform.position = new Vector3(x, 0, y);
-				}
-			}
+			GameInput.Instance.OnBuild += OnBuild;
+			//FullFill();
 		}
+
+
+		private void OnDestroy()
+		{
+			GameInput.Instance.OnBuild -= OnBuild;
+		}
+
 
 		private void Update()
 		{
-			if (Input.GetKeyDown(KeyCode.V))
-			{
-				StartPlacingTile(tileToSpawn);
-			}
-
 			if (activeTile != null)
 			{
 				var ground = new Plane(Vector3.up, Vector3.zero);
-				Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+				Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
 
 				if (ground.Raycast(ray, out float position))
 				{
@@ -50,7 +47,7 @@ namespace TileSystem
 					{
 						activeTile.ChangeState(TileState.Correct);
 
-						if (Input.GetMouseButtonDown(0))
+						if (Mouse.current.leftButton.wasPressedThisFrame)
 						{
 							StopPlacingTile();
 						}
@@ -127,5 +124,21 @@ namespace TileSystem
 
 		}
 
+		private void FullFill()
+		{
+			for (int x = 0; x < maxGridSize.x; x++)
+			{
+				for (int y = 0; y < maxGridSize.y; y++)
+				{
+					var tile = Instantiate(tileToSpawn, transform);
+					tile.transform.position = new Vector3(x, 0, y);
+				}
+			}
+		}
+
+		private void OnBuild()
+		{
+			StartPlacingTile(tileToSpawn);
+		}
 	}
 }
