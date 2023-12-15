@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6aece65d2408e44694dc9c0a1b4faa0, type: 3}
+  m_Name: AmbarRecipe
+  m_EditorClassIdentifier: 
+  <RequiredTiles>k__BackingField:
+  - {fileID: 5526412001231092171, guid: cd418a117c90a3645b52baff2c331aed, type: 3}
+  - {fileID: 5526412001231092171, guid: cd418a117c90a3645b52baff2c331aed, type: 3}
+  - {fileID: 5526412001231092171, guid: cd418a117c90a3645b52baff2c331aed, type: 3}
+  <Original>k__BackingField: {fileID: 5526412001231092171, guid: cd418a117c90a3645b52baff2c331aed,
+    type: 3}
+  <Result>k__BackingField: {fileID: -4983499764486913499, guid: 5252fbe9468493042a34467f8a02ff28,
+    type: 3}

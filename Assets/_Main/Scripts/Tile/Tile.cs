@@ -16,7 +16,7 @@ namespace TileSystem
 			ChangeState(TileState.Default);
 		}
 
-		private void OnDrawGizmosSelected()
+		/*private void OnDrawGizmosSelected()
 		{
 			for (int x = 0; x < Size.x; x++)
 			{
@@ -34,7 +34,7 @@ namespace TileSystem
 					Gizmos.DrawCube(transform.position + new Vector3(x, 0, y), new Vector3(1.1f, 0.2f, 1.1f));
 				}
 			}
-		}
+		}*/
 
 		public void ChangeState(TileState state)
 		{

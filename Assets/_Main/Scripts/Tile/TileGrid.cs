@@ -1,9 +1,12 @@
+using CraftingSystem;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace TileSystem
 {
-	public class TileGrid : MonoBehaviour
+	internal class TileGrid : MonoBehaviour
 	{
 		[SerializeField] private Vector2Int maxGridSize = new Vector2Int(10, 10);
 		[SerializeField] private Tile tileToSpawn;
@@ -22,12 +25,10 @@ namespace TileSystem
 			//FullFill();
 		}
 
-
 		private void OnDestroy()
 		{
 			GameInput.Instance.OnBuild -= OnBuild;
 		}
-
 
 		private void Update()
 		{
@@ -79,10 +80,99 @@ namespace TileSystem
 			{
 				for (int y = 0; y < activeTile.Size.y; y++)
 				{
-					tiles[(int)activeTile.transform.position.x + x, (int)activeTile.transform.position.z + y] = activeTile;
+					Vector2Int tileCoordinate = new Vector2Int((int)activeTile.transform.position.x + x, (int)activeTile.transform.position.z + y);
+					tiles[tileCoordinate.x, tileCoordinate.y] = activeTile;
+					UpdateConnectedTiles(tileCoordinate);
 				}
 			}
 			activeTile = null;
+		}
+
+		private List<Vector2Int> GetCoveringTiles(Vector2Int tile)
+		{
+			var neighbors = new List<Vector2Int>();
+			for (int x = tile.x - 1; x <= tile.x + 1; x++)
+			{
+				for (int y = tile.y - 1; y <= tile.y + 1; y++)
+				{
+					if (x != tile.x || y != tile.y)
+					{
+						if (x >= 0 && x < maxGridSize.x && y >= 0 && y < maxGridSize.y)
+						{
+							neighbors.Add(new Vector2Int(x, y));
+						}
+					}
+				}
+			}
+			return neighbors;
+		}
+
+		private void UpdateConnectedTiles(Vector2Int tilePosition)
+		{
+			var tilesPositions = GetCoveringTiles(tilePosition);
+			tilesPositions.Add(tilePosition);
+
+			List<KeyValuePair<Tile, Vector2Int>> tilesForUpdate = new();
+			foreach (var position in tilesPositions)
+			{
+				if (tiles[position.x, position.y] != null)
+				{
+					var result = UpdateTile(position);
+					if (result != null)
+					{
+						tilesForUpdate.Add(new KeyValuePair<Tile, Vector2Int>(result, position));
+					}
+				}
+			}
+
+			foreach (var tile in tilesForUpdate)
+			{
+				Replace(tile.Key, tile.Value);
+			}
+		}
+
+		private Tile UpdateTile(Vector2Int tilePosition)
+		{
+			var neighbors = GetCoveringTiles(tilePosition);
+
+			var allTiles = new List<Tile>();
+			foreach (var neighbor in neighbors)
+			{
+				var tile = tiles[neighbor.x, neighbor.y];
+				if (tile != null)
+					allTiles.Add(tile);
+			}
+
+			return FindRecipe(allTiles, tiles[tilePosition.x, tilePosition.y]);
+
+		}
+
+		private void Replace(Tile tile, Vector2Int position)
+		{
+			var oldTile = tiles[position.x, position.y];
+
+			var newTile = Instantiate(tile, transform);
+			tiles[position.x, position.y] = newTile;
+
+			newTile.transform.position = oldTile.transform.position;
+			Destroy(oldTile.gameObject);
+		}
+
+		private Tile FindRecipe(List<Tile> neighbors, Tile tile)
+		{
+			var recipes = Resources.LoadAll<RecipeSO>("Recipes");
+
+			var recipesForOrigin = recipes.Where(r => r.Original.GetType().Equals(tile.GetType())).ToList();
+			foreach (var recipe in recipesForOrigin)
+			{
+				var ingredientTypes = recipe.RequiredTiles.Select(t => t.GetType()).ToList();
+				var neighborsTypes = neighbors.Select(t => t.GetType()).ToList();
+				if (ingredientTypes.All(x => neighborsTypes.Count(y => y == x) >= ingredientTypes.Count(y => y == x)))
+				{
+					return recipe.Result;
+				}
+			}
+			return null;
 		}
 
 		private bool IsValid(Tile tile)
