@@ -209,8 +209,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.46149933, y: -0.33151883, z: 0.19115926, w: 0.8003573}
-  m_LocalPosition: {x: 9.535534, y: 8.63828, z: 0.4644661}
+  m_LocalRotation: {x: 0.34825355, y: -0.35445476, z: 0.14425133, w: 0.85572946}
+  m_LocalPosition: {x: 9.535534, y: 4.877488, z: 0.4644661}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -458,7 +458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxGridSize: {x: 10, y: 10}
-  tileToSpawn: {fileID: 5526412001231092171, guid: f74a2dbd2d5806a48891e38dbcddd9b1,
+  tileToSpawn: {fileID: -7638597455269192672, guid: bb6e8ac210d20a34387d08d3103d5a61,
     type: 3}
 --- !u!1 &569990284
 GameObject:
@@ -717,7 +717,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 8.63828, z: -5}
+  m_FollowOffset: {x: 0, y: 4.877488, z: -5}
   m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0
@@ -872,8 +872,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2128820150}
-  m_LocalRotation: {x: 0.46149933, y: -0.33151883, z: 0.19115926, w: 0.8003573}
-  m_LocalPosition: {x: 9.535534, y: 8.63828, z: 0.4644661}
+  m_LocalRotation: {x: 0.34825355, y: -0.35445476, z: 0.14425133, w: 0.85572946}
+  m_LocalPosition: {x: 9.535534, y: 4.877488, z: 0.4644661}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

@@ -9,9 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6232249713586248622}
-  - component: {fileID: 5526412001231092171}
   m_Layer: 0
-  m_Name: OverMeadow_Tile 1
+  m_Name: BaseTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,19 +32,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5526412001231092171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1736902640511202672}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a5400374fc7c4a4bb7b0f1d3e84021e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Size>k__BackingField: {x: 1, y: 1}
 --- !u!1001 &4910774714854836643
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -175,7 +161,7 @@ MonoBehaviour:
   wrongMaterial: {fileID: 2100000, guid: 343e1481252ec56418bb8e8b75a28a66, type: 2}
   correctMaterial: {fileID: 2100000, guid: 89c7d00926487f341a79f829a1fcd175, type: 2}
   meshRenderer: {fileID: 6045807846791451943}
-  tile: {fileID: 5526412001231092171}
+  tile: {fileID: 0}
 --- !u!23 &6045807846791451943 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: de89fe4dcf3c9ff44875adfe2b927f23,
