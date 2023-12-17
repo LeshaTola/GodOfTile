@@ -72,7 +72,7 @@ namespace TileSystem
 			}
 		}
 
-		private void StartPlacingTile(Tile tile)
+		public void StartPlacingTile(Tile tile)
 		{
 			if (activeTile != null)
 			{
