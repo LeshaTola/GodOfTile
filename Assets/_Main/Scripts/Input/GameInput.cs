@@ -5,6 +5,7 @@ public class GameInput : MonoBehaviour
 {
 
 	public event Action OnBuild;
+	public event Action OnRotate;
 
 	private Input input;
 
@@ -24,11 +25,13 @@ public class GameInput : MonoBehaviour
 		input.Game.Enable();
 
 		input.Game.Build.performed += OnBuildButtonPerformed;
+		input.Game.Rotate.performed += RotateButtonPerformed;
 	}
 
 	private void OnDestroy()
 	{
-		input.Game.Build.performed += OnBuildButtonPerformed;
+		input.Game.Build.performed -= OnBuildButtonPerformed;
+		input.Game.Rotate.performed -= RotateButtonPerformed;
 	}
 
 	public Vector2 GetMoveVectorNormalized()
@@ -41,5 +44,10 @@ public class GameInput : MonoBehaviour
 	private void OnBuildButtonPerformed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
 	{
 		OnBuild?.Invoke();
+	}
+
+	private void RotateButtonPerformed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+	{
+		OnRotate?.Invoke();
 	}
 }

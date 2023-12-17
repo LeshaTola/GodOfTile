@@ -22,12 +22,14 @@ namespace TileSystem
 		private void Start()
 		{
 			GameInput.Instance.OnBuild += OnBuild;
+			GameInput.Instance.OnRotate += OnRotate;
 			//FullFill();
 		}
 
 		private void OnDestroy()
 		{
 			GameInput.Instance.OnBuild -= OnBuild;
+			GameInput.Instance.OnRotate -= OnRotate;
 		}
 
 		private void Update()
@@ -58,6 +60,15 @@ namespace TileSystem
 						activeTile.ChangeState(TileState.Wrong);
 					}
 				}
+			}
+		}
+
+		private void RotateTile()
+		{
+			if (activeTile != null)
+			{
+				Vector3 rotateAngle = new(0, 90f, 0);
+				activeTile.transform.Rotate(rotateAngle);
 			}
 		}
 
@@ -229,6 +240,11 @@ namespace TileSystem
 		private void OnBuild()
 		{
 			StartPlacingTile(tileToSpawn);
+		}
+
+		private void OnRotate()
+		{
+			RotateTile();
 		}
 	}
 }
