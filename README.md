@@ -15,6 +15,8 @@ We were inspired by games like: [Loop hero](https://store.steampowered.com/app/1
 
 To run the project, you need unity version 2022.3.4f.
 
+Game Design [Document](https://docs.google.com/document/d/19mOdxP1YADLwy0nvOEdYgfF0hx17AGxHDM2kegQSAhw/edit?usp=sharing)
+
 WASD - move
 
 Mouse wheel - get closer/move away
