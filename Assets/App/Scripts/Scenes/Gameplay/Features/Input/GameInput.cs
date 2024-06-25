@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class GameInput : MonoBehaviour
 {
-
 	public event Action OnBuild;
 
 	private Input input;
