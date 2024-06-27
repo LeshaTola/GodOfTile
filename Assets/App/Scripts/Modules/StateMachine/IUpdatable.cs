@@ -1,4 +1,4 @@
-﻿namespace Features.StateMachine
+﻿namespace Features.StateMachineCore
 {
 	public interface IUpdatable
 	{

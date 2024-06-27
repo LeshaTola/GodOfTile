@@ -1,6 +1,6 @@
-﻿using Features.StateMachine.States.General;
+﻿using Features.StateMachineCore.States.General;
 
-namespace Features.StateMachine.Factories
+namespace Features.StateMachineCore.Factories
 {
 	public interface IStateStepsFactory
 	{

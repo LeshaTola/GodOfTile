@@ -1,43 +1,54 @@
-﻿using Features.StateMachine.States;
-using Features.StateMachine.States.General;
-using System;
+﻿using Features.StateMachineCore.Factories;
+using Features.StateMachineCore.States;
+using Features.StateMachineCore.States.General;
 using System.Collections.Generic;
 
-namespace Features.StateMachine
+namespace Modules.StateMachineCore
 {
 	public class StateMachine
 	{
 		private State currentState;
-		private Dictionary<Type, State> states = new();
+		private Dictionary<string, State> states = new();
+		private IStatesFactory statesFactory;
+
+		public StateMachine(IStatesFactory statesFactory)
+		{
+			this.statesFactory = statesFactory;
+		}
 
 		public State CurrentState { get => currentState; }
 
 		public void AddState(State state)
 		{
-			states.Add(state.GetType(), state);
+			states.Add(state.Id, state);
 		}
 
-		public void ChangeState(Type type)
+		public void ChangeState(State state)
 		{
-			if (currentState != null && currentState.GetType() == type)
+			ChangeState(state.Id);
+		}
+
+		public void ChangeState(string id)
+		{
+			if (currentState != null && currentState.Id.Equals(id))
 			{
 				return;
 			}
 
-			if (states.ContainsKey(type))
+			if (!states.ContainsKey(id))
 			{
-				currentState?.Exit();
+				var state = statesFactory.GetState(id);
+				if (state == null)
+				{
+					return;
+				}
 
-				currentState = states[type];
-
-				currentState.Enter();
+				states.Add(id, state);
 			}
-		}
 
-		public void ChangeState<T>() where T : State
-		{
-			var type = typeof(T);
-			ChangeState(type);
+			currentState?.Exit();
+			currentState = states[id];
+			currentState.Enter();
 		}
 
 		public void Update()
@@ -45,12 +56,11 @@ namespace Features.StateMachine
 			currentState?.Update();
 		}
 
-		public void AddStep<T>(IStateStep stateStep) where T : State
+		public void AddStep(string stateId, IStateStep stateStep)
 		{
-			var type = typeof(T);
-			if (states.ContainsKey(type))
+			if (states.ContainsKey(stateId))
 			{
-				states[type]?.AddStep(stateStep);
+				states[stateId]?.AddStep(stateStep);
 			}
 		}
 	}

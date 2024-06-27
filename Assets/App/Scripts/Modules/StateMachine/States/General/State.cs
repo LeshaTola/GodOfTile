@@ -1,18 +1,26 @@
-﻿using Features.StateMachine.States.General;
+﻿using Features.StateMachineCore.States.General;
+using Modules.StateMachineCore;
 using System.Collections.Generic;
 
-namespace Features.StateMachine.States
+namespace Features.StateMachineCore.States
 {
 	public abstract class State
 	{
 		protected StateMachine StateMachine;
 		protected List<IStateStep> StateSteps;
 
-		public virtual void Init(StateMachine stateMachine)
+		protected State(string id)
+		{
+			Id = id;
+		}
+
+		public void Initialize(StateMachine stateMachine)
 		{
 			StateMachine = stateMachine;
 			StateSteps = new();
 		}
+
+		public string Id { get; private set; }
 
 		public virtual void Enter()
 		{
@@ -40,11 +48,17 @@ namespace Features.StateMachine.States
 			}
 		}
 
-
 		public void AddStep(IStateStep step)
 		{
 			StateSteps.Add(step);
 			step.Init(this, StateMachine);
+		}
+		public void AddSteps(IEnumerable<IStateStep> steps)
+		{
+			foreach (var step in steps)
+			{
+				AddStep(step);
+			}
 		}
 
 		public void RemoveStep(IStateStep step)

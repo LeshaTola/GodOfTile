@@ -1,7 +1,7 @@
-﻿using Features.StateMachine.States.General;
+﻿using Features.StateMachineCore.States.General;
 using Zenject;
 
-namespace Features.StateMachine.Factories
+namespace Features.StateMachineCore.Factories
 {
 	public class StateStepsFactory : IStateStepsFactory
 	{

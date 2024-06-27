@@ -1,21 +1,25 @@
-﻿using Features.StateMachine.States;
+﻿using Features.StateMachineCore.States;
+using Modules.StateMachineCore;
+using System.Collections.Generic;
+using System.Linq;
 using Zenject;
 
-namespace Features.StateMachine.Factories
+namespace Features.StateMachineCore.Factories
 {
 	public class StatesFactory : IStatesFactory
 	{
-		DiContainer diContainer;
+		private DiContainer diContainer;
 
 		public StatesFactory(DiContainer diContainer)
 		{
 			this.diContainer = diContainer;
 		}
 
-		public T GetState<T>() where T : State
+		public State GetState(string id)
 		{
-			T state = diContainer.Resolve<T>();
-			state.Init(diContainer.Resolve<StateMachine>());
+			List<State> states = diContainer.ResolveAll<State>();
+			State state = states.FirstOrDefault(x => x.Id.Equals(id));
+			state.Initialize(diContainer.Resolve<StateMachine>());
 			return state;
 		}
 	}

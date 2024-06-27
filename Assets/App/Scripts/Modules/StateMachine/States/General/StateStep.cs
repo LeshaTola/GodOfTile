@@ -1,4 +1,6 @@
-﻿namespace Features.StateMachine.States.General
+﻿using Modules.StateMachineCore;
+
+namespace Features.StateMachineCore.States.General
 {
 	public abstract class StateStep : IStateStep
 	{

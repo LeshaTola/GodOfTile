@@ -1,9 +1,9 @@
-﻿using Features.StateMachine.States;
+﻿using Features.StateMachineCore.States;
 
-namespace Features.StateMachine.Factories
+namespace Features.StateMachineCore.Factories
 {
 	public interface IStatesFactory
 	{
-		T GetState<T>() where T : State;
+		State GetState(string id);
 	}
 }
