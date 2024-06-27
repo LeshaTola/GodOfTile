@@ -1,66 +1,73 @@
 using Cinemachine;
+using Features.StateMachineCore;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CameraController : MonoBehaviour
+
+namespace Assets.App.Scripts.Scenes.Gameplay.Features.Camera.Configs
 {
-	[SerializeField] private float moveSpeed;
-	[SerializeField] private float rotationSpeed;
-	[SerializeField] private float focusStep;
-	[SerializeField] private float focusSpeed;
-
-	[SerializeField] private CinemachineVirtualCamera virtualCamera;
-
-	[Header("Constraints")]
-	[SerializeField] private int maxXCoordinate = 10;
-	[SerializeField] private int minXCoordinate = -10;
-	[SerializeField] private int maxYCoordinate = 10;
-	[SerializeField] private int minYCoordinate = -10;
-
-	[SerializeField] private int maxOffset = 9;
-	[SerializeField] private int minOffset = 4;
-
-	private CinemachineTransposer cinemachineTransposer;
-
-	private void Awake()
+	public class CameraController : ICameraController, IUpdatable
 	{
-		cinemachineTransposer = virtualCamera.GetCinemachineComponent<CinemachineTransposer>();
-	}
+		private CinemachineVirtualCamera virtualCamera;
+		private CameraMovementConfig config;
+		private Transform cameraTarget;
+		private IGameInput gameInput;
 
-	private void Update()
-	{
-		Move(GameInput.Instance.GetMoveVectorNormalized());
-		Focus();
-	}
+		private CinemachineTransposer cinemachineTransposer;
 
-	private void Move(Vector2 dir)
-	{
-		var moveDir = transform.forward * dir.y + transform.right * dir.x;
-
-		transform.position += moveDir * Time.deltaTime * moveSpeed;
-
-		var x = Mathf.Clamp(transform.position.x, minXCoordinate, maxXCoordinate);
-		var y = Mathf.Clamp(transform.position.z, minYCoordinate, maxYCoordinate);
-
-		transform.position = new Vector3(x, transform.position.y, y);
-	}
-
-	private void Focus()
-	{
-		Vector3 targetFocus = cinemachineTransposer.m_FollowOffset;
-		if (Mouse.current.scroll.ReadValue().y < 0)
+		public CameraController(CinemachineVirtualCamera virtualCamera,
+						  CameraMovementConfig config,
+						  Transform cameraTarget,
+						  IGameInput gameInput)
 		{
-			targetFocus.y += focusStep;
+			this.virtualCamera = virtualCamera;
+			this.config = config;
+			this.cameraTarget = cameraTarget;
+			this.gameInput = gameInput;
+
+			cinemachineTransposer = virtualCamera.GetCinemachineComponent<CinemachineTransposer>();
+
 		}
 
-		if (Mouse.current.scroll.ReadValue().y > 0)
+		public void Update()
 		{
-			targetFocus.y -= focusStep;
+			Move(gameInput.GetMoveVectorNormalized());
+			Focus();
 		}
 
-		targetFocus.y = Mathf.Clamp(targetFocus.y, minOffset, maxOffset);
+		public void Move(Vector2 dir)
+		{
+			var moveDir = cameraTarget.transform.forward * dir.y + cameraTarget.transform.right * dir.x;
 
-		cinemachineTransposer.m_FollowOffset = Vector3.Lerp(cinemachineTransposer.m_FollowOffset, targetFocus, Time.deltaTime * focusSpeed);
+			cameraTarget.transform.position += moveDir * Time.deltaTime * config.MoveSpeed;
+
+			var x = Mathf.Clamp(cameraTarget.transform.position.x, config.XCoordinate.Min, config.XCoordinate.Max);
+			var y = Mathf.Clamp(cameraTarget.transform.position.z, config.YCoordinate.Min, config.YCoordinate.Max);
+
+			cameraTarget.transform.position = new Vector3(x, cameraTarget.transform.position.y, y);
+		}
+
+		public void Focus()
+		{
+			Vector3 targetFocus = cinemachineTransposer.m_FollowOffset;
+			if (Mouse.current.scroll.ReadValue().y < 0)
+			{
+				targetFocus.y += config.FocusStep;
+			}
+
+			if (Mouse.current.scroll.ReadValue().y > 0)
+			{
+				targetFocus.y -= config.FocusStep;
+			}
+
+			targetFocus.y = Mathf.Clamp(targetFocus.y, config.Offset.Min, config.Offset.Max);
+
+			cinemachineTransposer.m_FollowOffset
+				= Vector3.Lerp(cinemachineTransposer.m_FollowOffset,
+				   targetFocus,
+				   Time.deltaTime * config.FocusSpeed);
+		}
+
+
 	}
-
 }

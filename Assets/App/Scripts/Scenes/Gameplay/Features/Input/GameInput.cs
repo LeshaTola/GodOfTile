@@ -1,32 +1,18 @@
+using Features.StateMachineCore;
 using System;
 using UnityEngine;
 
-public class GameInput : MonoBehaviour
+public class GameInput : IGameInput, ICleanupable
 {
 	public event Action OnBuild;
 
 	private Input input;
 
-	public static GameInput Instance { get; private set; }
-
-	private void Awake()
-	{
-		if (Instance == null)
-		{
-			Instance = this;
-		}
-	}
-
-	private void Start()
+	public GameInput()
 	{
 		input = new Input();
 		input.Game.Enable();
 
-		input.Game.Build.performed += OnBuildButtonPerformed;
-	}
-
-	private void OnDestroy()
-	{
 		input.Game.Build.performed += OnBuildButtonPerformed;
 	}
 
@@ -40,5 +26,10 @@ public class GameInput : MonoBehaviour
 	private void OnBuildButtonPerformed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
 	{
 		OnBuild?.Invoke();
+	}
+
+	public void Cleanup()
+	{
+		input.Game.Build.performed -= OnBuildButtonPerformed;
 	}
 }
