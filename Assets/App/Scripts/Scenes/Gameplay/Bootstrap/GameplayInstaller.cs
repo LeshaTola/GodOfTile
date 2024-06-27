@@ -18,6 +18,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Bootstrap
 		{
 			Container.Bind<IGridProvider>()
 				.To<GridProvider>()
+				.AsSingle()
 				.WithArguments(gridConfig);
 		}
 	}
