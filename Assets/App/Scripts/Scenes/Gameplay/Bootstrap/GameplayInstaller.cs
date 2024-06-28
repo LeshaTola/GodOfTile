@@ -1,52 +1,83 @@
-﻿using Assets.App.Scripts.Scenes.Gameplay.Features.Camera.Configs;
+﻿using Assets.App.Scripts.Scenes.Gameplay.Features.CameraLogic.Configs;
+using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Factories;
+using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Grid;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Grid.Configs;
+using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles;
 using Cinemachine;
 using UnityEngine;
 using Zenject;
 
 namespace Assets.App.Scripts.Scenes.Gameplay.Bootstrap
 {
-	public class GameplayInstaller : MonoInstaller
-	{
-		[SerializeField] private GridConfig gridConfig;
+    public class GameplayInstaller : MonoInstaller
+    {
+        [SerializeField]
+        private GridConfig gridConfig;
 
-		[SerializeField] private CinemachineVirtualCamera virtualCamera;
-		[SerializeField] private CameraMovementConfig cameraMovementConfig;
-		[SerializeField] private Transform cameraTarget;
+        [SerializeField]
+        private Camera mainCamera;
 
-		public override void InstallBindings()
-		{
-			BindVirtualCamera();
-			BindGameInput();
-			BindCameraController();
+        [SerializeField]
+        private CinemachineVirtualCamera virtualCamera;
 
-			BindGridProvider();
-		}
+        [SerializeField]
+        private CameraMovementConfig cameraMovementConfig;
 
-		private void BindCameraController()
-		{
-			Container.BindInterfacesTo<CameraController>()
-				.AsSingle()
-				.WithArguments(cameraMovementConfig, cameraTarget);
-		}
+        [SerializeField]
+        private Tile tilePrefab;
 
-		private void BindVirtualCamera()
-		{
-			Container.Bind<CinemachineVirtualCamera>().FromInstance(virtualCamera);
-		}
+        [SerializeField]
+        private Transform tilesContainer;
 
-		private void BindGameInput()
-		{
-			Container.BindInterfacesTo<GameInput>().AsSingle();
-		}
+        [SerializeField]
+        private Transform cameraTarget;
 
-		private void BindGridProvider()
-		{
-			Container.Bind<IGridProvider>()
-				.To<GridProvider>()
-				.AsSingle()
-				.WithArguments(gridConfig);
-		}
-	}
+        public override void InstallBindings()
+        {
+            BindGameInput();
+
+            BindMainCamera();
+            BindVirtualCamera();
+            BindCameraController();
+
+            Container
+                .Bind<ITilesFactory>()
+                .To<TilesFactory>()
+                .AsSingle()
+                .WithArguments(tilePrefab, tilesContainer);
+
+            Container.BindInterfacesTo<CreationService>().AsSingle().WithArguments("BetaTile");
+
+            BindGridProvider();
+        }
+
+        private void BindCameraController()
+        {
+            Container
+                .BindInterfacesTo<CameraController>()
+                .AsSingle()
+                .WithArguments(cameraMovementConfig, cameraTarget);
+        }
+
+        private void BindVirtualCamera()
+        {
+            Container.Bind<CinemachineVirtualCamera>().FromInstance(virtualCamera).AsSingle();
+        }
+
+        private void BindMainCamera()
+        {
+            Container.Bind<Camera>().FromInstance(mainCamera).AsSingle();
+        }
+
+        private void BindGameInput()
+        {
+            Container.BindInterfacesTo<GameInput>().AsSingle();
+        }
+
+        private void BindGridProvider()
+        {
+            Container.Bind<IGridProvider>().To<GridProvider>().AsSingle().WithArguments(gridConfig);
+        }
+    }
 }

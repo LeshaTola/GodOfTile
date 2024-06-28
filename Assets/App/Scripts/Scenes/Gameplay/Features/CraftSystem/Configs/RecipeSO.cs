@@ -1,6 +1,7 @@
+using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles;
+using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using System;
 using System.Collections.Generic;
-using TileSystem;
 using UnityEngine;
 
 namespace CraftingSystem
@@ -8,10 +9,10 @@ namespace CraftingSystem
 	[CreateAssetMenu(fileName = "Recipe", menuName = "Configs/CraftingSystem/Recipe")]
 	internal class RecipeSO : ScriptableObject
 	{
-		[field: SerializeField] public List<Tile> RequiredTiles { get; private set; }
+		[field: SerializeField] public List<TileConfig> RequiredTiles { get; private set; }
 
-		[field: SerializeField] public Tile Original { get; private set; }
-		[field: SerializeField] public Tile Result { get; private set; }
+		[field: SerializeField] public TileConfig Original { get; private set; }
+		[field: SerializeField] public TileConfig Result { get; private set; }
 	}
 
 	[Serializable]

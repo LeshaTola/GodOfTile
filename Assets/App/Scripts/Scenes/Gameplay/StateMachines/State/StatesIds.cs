@@ -4,5 +4,6 @@ namespace Assets.App.Scripts.Scenes.Gameplay.StateMachines.States
 	{
 		public const string GAMEPLAY_INITIAL_STATE = "GameplayInitialState";
 		public const string GAMEPLAY_STATE = "GameplayState";
+		public const string BUILDING_STATE = "BuildingState";
 	}
 }

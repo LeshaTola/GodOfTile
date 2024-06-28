@@ -1,51 +1,97 @@
-﻿using Assets.App.Scripts.Scenes.Gameplay.Features.Grid.Configs;
-using TileSystem;
+﻿using System.Collections.Generic;
+using Assets.App.Scripts.Scenes.Gameplay.Features.Grid.Configs;
+using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles;
 using UnityEngine;
 
 namespace Assets.App.Scripts.Scenes.Gameplay.Features.Grid
 {
-	public class GridProvider : IGridProvider
-	{
-		public GridProvider(GridConfig config)
-		{
-			GridSize = config.GridSize;
-			Grid = new Tile[GridSize.x, GridSize.y];
-		}
+    public class GridProvider : IGridProvider
+    {
+        public GridProvider(GridConfig config)
+        {
+            GridSize = config.GridSize;
+            Grid = new Tile[GridSize.x, GridSize.y];
+        }
 
-		public Vector2Int GridSize { get; private set; }
-		public Tile[,] Grid { get; private set; }
+        public Vector2Int GridSize { get; private set; }
+        public Tile[,] Grid { get; private set; }
 
-		public bool IsValid(Vector2Int position)
-		{
-			if (Grid == null || !IsInsideGrid(position))
-			{
-				return false;
-			}
+        public List<Vector2Int> GetCoveringTiles(Vector2Int tile)
+        {
+            var neighbors = new List<Vector2Int>();
+            for (int x = tile.x - 1; x <= tile.x + 1; x++)
+            {
+                for (int y = tile.y - 1; y <= tile.y + 1; y++)
+                {
+                    if (!IsInsideGrid(x, y) && x == tile.x && y == tile.y)
+                    {
+                        continue;
+                    }
 
-			return Grid[position.x, position.y] == null;
-		}
+                    neighbors.Add(new Vector2Int(x, y));
+                }
+            }
+            return neighbors;
+        }
 
-		public bool IsValid(Vector2Int bottomLeft, Vector2Int topRight)
-		{
-			for (int x = bottomLeft.x; x < topRight.x; x++)
-			{
-				for (int y = bottomLeft.y; y < topRight.y; y++)
-				{
-					bool result = IsValid(new Vector2Int(x, y));
-					if (!result)
-					{
-						return false;
-					}
-				}
-			}
+        public bool IsValid(Vector2Int position)
+        {
+            if (Grid == null || !IsInsideGrid(position))
+            {
+                return false;
+            }
 
-			return true;
-		}
+            return Grid[position.x, position.y] != null;
+        }
 
-		private bool IsInsideGrid(Vector2Int position)
-		{
-			return GridSize.x >= position.x && GridSize.y >= position.y
-				&& position.x >= 0 && position.y >= 0;
-		}
-	}
+        public bool IsValid(Tile tile)
+        {
+            if (Grid == null || !IsInsideGrid(tile))
+            {
+                return false;
+            }
+
+            for (int x = tile.Position.x; x < tile.Position.x + tile.Config.Size.x - 1; x++)
+            {
+                for (int y = tile.Position.y; y < tile.Position.y + tile.Config.Size.y - 1; y++)
+                {
+                    if (Grid[x, y] != null)
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
+
+        public bool IsInsideGrid(Tile tile)
+        {
+            for (int x = tile.Position.x; x < tile.Position.x + tile.Config.Size.x - 1; x++)
+            {
+                for (int y = tile.Position.y; y < tile.Position.y + tile.Config.Size.y; y++)
+                {
+                    if (!IsInsideGrid(x, y))
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
+
+        private bool IsInsideGrid(int x, int y)
+        {
+            return IsInsideGrid(new Vector2Int(x, y));
+        }
+
+        private bool IsInsideGrid(Vector2Int position)
+        {
+            return GridSize.x >= position.x
+                && GridSize.y >= position.y
+                && position.x >= 0
+                && position.y >= 0;
+        }
+    }
 }

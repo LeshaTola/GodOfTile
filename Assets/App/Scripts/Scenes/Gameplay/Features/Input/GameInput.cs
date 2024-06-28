@@ -1,35 +1,55 @@
-using Features.StateMachineCore;
 using System;
+using Features.StateMachineCore;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameInput : IGameInput, ICleanupable
 {
-	public event Action OnBuild;
+    public event Action OnBuild;
 
-	private Input input;
+    private Input input;
+    private Camera mainCamera;
 
-	public GameInput()
-	{
-		input = new Input();
-		input.Game.Enable();
+    private Plane ground;
 
-		input.Game.Build.performed += OnBuildButtonPerformed;
-	}
+    public GameInput(Camera mainCamera)
+    {
+        this.mainCamera = mainCamera;
 
-	public Vector2 GetMoveVectorNormalized()
-	{
-		Vector2 moveVector;
-		moveVector = input.Game.Move.ReadValue<Vector2>();
-		return moveVector.normalized;
-	}
+        input = new Input();
+        input.Game.Enable();
 
-	private void OnBuildButtonPerformed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
-	{
-		OnBuild?.Invoke();
-	}
+        input.Game.Build.performed += OnBuildButtonPerformed;
 
-	public void Cleanup()
-	{
-		input.Game.Build.performed -= OnBuildButtonPerformed;
-	}
+        ground = new(Vector2.up, Vector3.zero);
+    }
+
+    public Vector2 GetMoveVectorNormalized()
+    {
+        Vector2 moveVector;
+        moveVector = input.Game.Move.ReadValue<Vector2>();
+        return moveVector.normalized;
+    }
+
+    private void OnBuildButtonPerformed(InputAction.CallbackContext obj)
+    {
+        OnBuild?.Invoke();
+    }
+
+    public void Cleanup()
+    {
+        input.Game.Build.performed -= OnBuildButtonPerformed;
+    }
+
+    public Vector3 GetGroundMousePosition()
+    {
+        Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
+        if (!ground.Raycast(ray, out float position))
+        {
+            return default;
+        }
+
+        var worldPosition = ray.GetPoint(position);
+        return worldPosition;
+    }
 }

@@ -9,19 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab64e7d08bdf015428de66f753bbb7f6, type: 3}
-  m_Name: CameraMovementConfig
+  m_Script: {fileID: 11500000, guid: 04d25870302da8c4ca6c98a99693c013, type: 3}
+  m_Name: TileVisualConfig
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  rotationSpeed: 0
-  focusStep: 1
-  focusSpeed: 20
-  xCoordinate:
-    Min: -2
-    Max: 7
-  yCoordinate:
-    Min: 3
-    Max: 12
-  offset:
-    Min: 2
-    Max: 9
+  wrongMaterial: {fileID: 2100000, guid: 343e1481252ec56418bb8e8b75a28a66, type: 2}
+  correctMaterial: {fileID: 2100000, guid: 89c7d00926487f341a79f829a1fcd175, type: 2}
