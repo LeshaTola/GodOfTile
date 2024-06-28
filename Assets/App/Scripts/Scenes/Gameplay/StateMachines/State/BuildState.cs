@@ -49,7 +49,8 @@ namespace Assets.App.Scripts.Scenes.Gameplay.StateMachines.States
 
             if (Mouse.current.leftButton.wasPressedThisFrame)
             {
-                creationService.PlaceTile();
+                creationService.PlaceActiveTile();
+                creationService.StartPlacingTile();
             }
         }
 

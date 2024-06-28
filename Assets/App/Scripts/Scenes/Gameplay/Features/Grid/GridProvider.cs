@@ -23,7 +23,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Grid
             {
                 for (int y = tile.y - 1; y <= tile.y + 1; y++)
                 {
-                    if (!IsInsideGrid(x, y) && x == tile.x && y == tile.y)
+                    if (!IsInsideGrid(x, y) || x == tile.x && y == tile.y)
                     {
                         continue;
                     }
@@ -51,9 +51,9 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Grid
                 return false;
             }
 
-            for (int x = tile.Position.x; x < tile.Position.x + tile.Config.Size.x - 1; x++)
+            for (int x = tile.Position.x; x < tile.Position.x + tile.Config.Size.x; x++)
             {
-                for (int y = tile.Position.y; y < tile.Position.y + tile.Config.Size.y - 1; y++)
+                for (int y = tile.Position.y; y < tile.Position.y + tile.Config.Size.y; y++)
                 {
                     if (Grid[x, y] != null)
                     {
@@ -67,7 +67,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Grid
 
         public bool IsInsideGrid(Tile tile)
         {
-            for (int x = tile.Position.x; x < tile.Position.x + tile.Config.Size.x - 1; x++)
+            for (int x = tile.Position.x; x < tile.Position.x + tile.Config.Size.x; x++)
             {
                 for (int y = tile.Position.y; y < tile.Position.y + tile.Config.Size.y; y++)
                 {
@@ -88,8 +88,8 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Grid
 
         private bool IsInsideGrid(Vector2Int position)
         {
-            return GridSize.x >= position.x
-                && GridSize.y >= position.y
+            return GridSize.x > position.x
+                && GridSize.y > position.y
                 && position.x >= 0
                 && position.y >= 0;
         }
