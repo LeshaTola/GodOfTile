@@ -92,6 +92,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d2055737e7c23840bfac8e5d99363de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectionModule:
+    particlesDatabase: {fileID: 11400000, guid: 13002dfbdf96f694d8fe598fefe4c7fd,
+      type: 2}
+    particleKey: Explosion
   config: {fileID: 11400000, guid: 7db4b160de9498c4faed6f71329e6003, type: 2}
   meshRenderer: {fileID: 6045807846791451943}
 --- !u!1001 &4910774714854836643

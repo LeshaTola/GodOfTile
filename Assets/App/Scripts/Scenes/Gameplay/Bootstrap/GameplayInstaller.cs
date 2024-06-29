@@ -2,6 +2,8 @@
 using Assets.App.Scripts.Scenes.Gameplay.Features.Grid;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Grid.Configs;
 using Cinemachine;
+using Module.ObjectPool;
+using Module.ObjectPool.KeyPools;
 using UnityEngine;
 using Zenject;
 
@@ -24,6 +26,12 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Bootstrap
         [SerializeField]
         private Transform cameraTarget;
 
+        [SerializeField]
+        private ParticlesDatabase particlesDatabase;
+
+        [SerializeField]
+        private Transform particlesContainer;
+
         public override void InstallBindings()
         {
             BindGameInput();
@@ -31,6 +39,11 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Bootstrap
             BindMainCamera();
             BindVirtualCamera();
             BindCameraController();
+
+            Container
+                .Bind<KeyPool<PooledParticle>>()
+                .AsSingle()
+                .WithArguments(particlesDatabase.Particles, particlesContainer);
 
             BindGridProvider();
         }

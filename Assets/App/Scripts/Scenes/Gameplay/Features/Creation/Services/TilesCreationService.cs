@@ -1,9 +1,13 @@
 ﻿using System.Collections.Generic;
 using Assets.App.Scripts.Scenes.Gameplay.Features.CraftSystem.Providers;
+using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Configs;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Factories;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Grid;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
+using Cysharp.Threading.Tasks;
+using Module.ObjectPool;
+using Module.ObjectPool.KeyPools;
 using TileSystem;
 using UnityEngine;
 
@@ -14,21 +18,28 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services
         private IGridProvider gridProvider;
         private ITilesFactory tileFactory;
         private IRecipeProvider recipeProvider;
+        private KeyPool<PooledParticle> keyPool;
+        private TilesCreationConfig config;
         private string tileId;
 
         private Tile activeTile;
+        private List<UniTask> uniTasks = new();
 
         public TilesCreationService(
             IGridProvider gridProvider,
             ITilesFactory tileFactory,
             string tileId,
-            IRecipeProvider recipeProvider
+            IRecipeProvider recipeProvider,
+            KeyPool<PooledParticle> keyPool,
+            TilesCreationConfig config
         )
         {
             this.gridProvider = gridProvider;
             this.tileFactory = tileFactory;
             this.tileId = tileId;
             this.recipeProvider = recipeProvider;
+            this.keyPool = keyPool;
+            this.config = config;
         }
 
         public void StartPlacingTile()
@@ -58,7 +69,8 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services
                 return;
             }
 
-            activeTile.Visual.SetState(TileState.Default);
+            PlayCreationVFX();
+
             for (int x = 0; x < activeTile.Config.Size.x; x++)
             {
                 for (int y = 0; y < activeTile.Config.Size.y; y++)
@@ -166,6 +178,17 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services
             {
                 activeTile.Visual.SetState(TileState.Wrong);
             }
+        }
+
+        private void PlayCreationVFX()
+        {
+            activeTile.Visual.SetState(TileState.Default);
+
+            var particle = keyPool.Get(config.CreationParticleKey);
+            particle.transform.position = activeTile.transform.position;
+            particle.Particle.Play();
+
+            uniTasks.Add(activeTile.Visual.PlayCreation());
         }
     }
 }
