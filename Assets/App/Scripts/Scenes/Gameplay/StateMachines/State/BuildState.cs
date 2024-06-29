@@ -11,14 +11,14 @@ namespace Assets.App.Scripts.Scenes.Gameplay.StateMachines.States
     {
         private List<IUpdatable> updatables;
         private IGameInput gameInput;
-        private ICreationService creationService;
+        private ITilesCreationService creationService;
 
         public BuildState(
             List<IUpdatable> updatables,
             string id,
             Camera mainCamera,
             IGameInput gameInput,
-            ICreationService creationService
+            ITilesCreationService creationService
         )
             : base(id)
         {

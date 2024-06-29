@@ -2,7 +2,7 @@
 
 namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services
 {
-    public interface ICreationService
+    public interface ITilesCreationService
     {
         void FullFill();
         void MoveActiveTile(Vector3 worldPosition);

@@ -1,10 +1,6 @@
 ﻿using Assets.App.Scripts.Scenes.Gameplay.Features.CameraLogic.Configs;
-using Assets.App.Scripts.Scenes.Gameplay.Features.CraftSystem.Providers;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Factories;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Grid;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Grid.Configs;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles;
 using Cinemachine;
 using UnityEngine;
 using Zenject;
@@ -26,12 +22,6 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Bootstrap
         private CameraMovementConfig cameraMovementConfig;
 
         [SerializeField]
-        private Tile tilePrefab;
-
-        [SerializeField]
-        private Transform tilesContainer;
-
-        [SerializeField]
         private Transform cameraTarget;
 
         public override void InstallBindings()
@@ -41,15 +31,6 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Bootstrap
             BindMainCamera();
             BindVirtualCamera();
             BindCameraController();
-
-            Container
-                .Bind<ITilesFactory>()
-                .To<TilesFactory>()
-                .AsSingle()
-                .WithArguments(tilePrefab, tilesContainer);
-
-            Container.BindInterfacesTo<CreationService>().AsSingle().WithArguments("BetaTile");
-            Container.Bind<IRecipeProvider>().To<RecipeProvider>().AsSingle();
 
             BindGridProvider();
         }

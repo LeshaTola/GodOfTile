@@ -156,6 +156,54 @@ Transform:
   m_Father: {fileID: 1542930604}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &293527053
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 293527054}
+  - component: {fileID: 293527055}
+  m_Layer: 0
+  m_Name: TilesInstaller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &293527054
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293527053}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 726502974}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &293527055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293527053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94fd48436f4610648a531e8384bca550, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileConfigId: BetaTile
+  tilePrefab: {fileID: -3185580731182527550, guid: f74a2dbd2d5806a48891e38dbcddd9b1,
+    type: 3}
+  tilesContainer: {fileID: 740691141}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,8 +290,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.46441776, y: -0.33081892, z: 0.19236821, w: 0.7986673}
-  m_LocalPosition: {x: 9.535534, y: 8.785597, z: 0.4644661}
+  m_LocalRotation: {x: 0.4114928, y: -0.34262922, z: 0.17044587, w: 0.8271802}
+  m_LocalPosition: {x: 9.535534, y: 6.61057, z: 0.4644661}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -508,6 +556,7 @@ Transform:
   m_Children:
   - {fileID: 2044062450}
   - {fileID: 758036553}
+  - {fileID: 293527054}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -525,8 +574,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scriptableObjectInstallers: []
   _monoInstallers:
-  - {fileID: 758036554}
+  - {fileID: 293527055}
   - {fileID: 2044062451}
+  - {fileID: 758036554}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -624,9 +674,6 @@ MonoBehaviour:
   virtualCamera: {fileID: 2128820151}
   cameraMovementConfig: {fileID: 11400000, guid: ad461738b599a49408f4728ed34c8ab9,
     type: 2}
-  tilePrefab: {fileID: -3185580731182527550, guid: f74a2dbd2d5806a48891e38dbcddd9b1,
-    type: 3}
-  tilesContainer: {fileID: 740691141}
   cameraTarget: {fileID: 569990285}
 --- !u!1 &797033557
 GameObject:
@@ -899,7 +946,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 8.785597, z: -5}
+  m_FollowOffset: {x: 0, y: 6.61057, z: -5}
   m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0
@@ -1067,8 +1114,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2128820150}
-  m_LocalRotation: {x: 0.46441776, y: -0.33081892, z: 0.19236821, w: 0.7986673}
-  m_LocalPosition: {x: 9.535534, y: 8.785597, z: 0.4644661}
+  m_LocalRotation: {x: 0.4114928, y: -0.34262922, z: 0.17044587, w: 0.8271802}
+  m_LocalPosition: {x: 9.535534, y: 6.61057, z: 0.4644661}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

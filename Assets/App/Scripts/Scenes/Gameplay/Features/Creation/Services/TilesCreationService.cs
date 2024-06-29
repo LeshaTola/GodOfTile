@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services
 {
-    public class CreationService : ICreationService
+    public class TilesCreationService : ITilesCreationService
     {
         private IGridProvider gridProvider;
         private ITilesFactory tileFactory;
@@ -18,7 +18,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services
 
         private Tile activeTile;
 
-        public CreationService(
+        public TilesCreationService(
             IGridProvider gridProvider,
             ITilesFactory tileFactory,
             string tileId,
