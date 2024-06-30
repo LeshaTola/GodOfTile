@@ -15,6 +15,9 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs
         private TileTypeDatabase tileTypeDatabase;
 
         [SerializeField]
+        private GameObject building;
+
+        [SerializeField]
         [ValueDropdown(nameof(GetTileTypes))]
         [ShowIf("@tileTypeDatabase !=null")]
         private Material type;
@@ -26,6 +29,10 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs
         public Material Type
         {
             get => type;
+        }
+        public GameObject Building
+        {
+            get => building;
         }
 
         private IEnumerable<ValueDropdownItem<Material>> GetTileTypes()

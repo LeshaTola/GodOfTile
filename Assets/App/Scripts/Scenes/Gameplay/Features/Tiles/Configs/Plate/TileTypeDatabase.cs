@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs.Plate
 {
-    [CreateAssetMenu(fileName = "TileTypeDatabase", menuName = "Databases/Tile/Types")]
+    [CreateAssetMenu(fileName = "TileTypeDatabase", menuName = "Databases/Tiles/Types")]
     public class TileTypeDatabase : SerializedScriptableObject
     {
         [SerializeField]

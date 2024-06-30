@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6232249713586248622}
-  - component: {fileID: -3185580731182527550}
+  - component: {fileID: 5682275830176649019}
   m_Layer: 0
   m_Name: Tile
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-3185580731182527550
+--- !u!114 &5682275830176649019
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,11 +42,42 @@ MonoBehaviour:
   m_GameObject: {fileID: 1736902640511202672}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a5400374fc7c4a4bb7b0f1d3e84021e, type: 3}
+  m_Script: {fileID: 11500000, guid: 2bf4afe3895beb94e9e7148a007de9eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   visual: {fileID: 4575502155085025746}
   config: {fileID: 11400000, guid: c6661d035ed419e48b3345d5cd83810b, type: 2}
+--- !u!1 &4666039548501776978
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3577409752162963699}
+  m_Layer: 0
+  m_Name: Building
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3577409752162963699
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4666039548501776978}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2505300014927677526}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8704863890156642060
 GameObject:
   m_ObjectHideFlags: 0
@@ -77,6 +108,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4876319675884629576}
+  - {fileID: 3577409752162963699}
   m_Father: {fileID: 6232249713586248622}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -89,14 +121,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8704863890156642060}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d2055737e7c23840bfac8e5d99363de, type: 3}
+  m_Script: {fileID: 11500000, guid: 09e74fc84a816824ba0a617423eee702, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectionModule:
-    particlesDatabase: {fileID: 11400000, guid: 13002dfbdf96f694d8fe598fefe4c7fd,
-      type: 2}
-    particleKey: Explosion
   config: {fileID: 11400000, guid: 7db4b160de9498c4faed6f71329e6003, type: 2}
+  buildingPosition: {fileID: 3577409752162963699}
   meshRenderer: {fileID: 6045807846791451943}
 --- !u!1001 &4910774714854836643
 PrefabInstance:

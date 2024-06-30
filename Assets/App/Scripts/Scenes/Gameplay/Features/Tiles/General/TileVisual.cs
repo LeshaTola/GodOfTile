@@ -12,6 +12,9 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Tiles
         [SerializeField]
         private TileVisualConfig config;
 
+        [SerializeField]
+        private Transform buildingPosition;
+
         [Header("Renderer")]
         [SerializeField]
         private MeshRenderer meshRenderer;
@@ -27,10 +30,14 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Tiles
             animator.Setup(this);
         }
 
-        public void Initialize(Vector2Int size, Material material)
+        public void Initialize(Vector2Int size, Material material, GameObject building)
         {
             Resize(size);
             defaultMaterial = material;
+            if (building != null)
+            {
+                Instantiate(building, buildingPosition);
+            }
         }
 
         public async UniTask PlayActive()

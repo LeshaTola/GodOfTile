@@ -200,14 +200,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94fd48436f4610648a531e8384bca550, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileConfigId: BetaTile
-  tilePrefab: {fileID: -3185580731182527550, guid: f74a2dbd2d5806a48891e38dbcddd9b1,
+  tilePrefab: {fileID: 5682275830176649019, guid: f74a2dbd2d5806a48891e38dbcddd9b1,
     type: 3}
   tilesContainer: {fileID: 740691141}
   tileAnimationConfig: {fileID: 11400000, guid: 391fc7b7317ff1e4da49d3fa3e450558,
     type: 2}
   tilesCreationConfig: {fileID: 11400000, guid: d124dc86d3c16ab42ac71fbd54480272,
     type: 2}
+  tilesDatabase: {fileID: 11400000, guid: 7c3c0a8e8578a184586ed869e564fa10, type: 2}
+  tileConfigId: Base
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,8 +295,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.17508386, y: -0.3757488, z: 0.072522104, w: 0.9071379}
-  m_LocalPosition: {x: 9.535534, y: 2.004749, z: 0.4644661}
+  m_LocalRotation: {x: 0.17657189, y: -0.3756293, z: 0.07313848, w: 0.9068494}
+  m_LocalPosition: {x: 9.535534, y: 2.023818, z: 0.4644661}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -984,7 +985,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 2.004749, z: -5}
+  m_FollowOffset: {x: 0, y: 2.023818, z: -5}
   m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0
@@ -1152,8 +1153,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2128820150}
-  m_LocalRotation: {x: 0.17508386, y: -0.3757488, z: 0.072522104, w: 0.9071379}
-  m_LocalPosition: {x: 9.535534, y: 2.004749, z: 0.4644661}
+  m_LocalRotation: {x: 0.17657189, y: -0.3756293, z: 0.07313848, w: 0.9068494}
+  m_LocalPosition: {x: 9.535534, y: 2.023818, z: 0.4644661}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

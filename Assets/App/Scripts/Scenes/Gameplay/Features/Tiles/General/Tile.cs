@@ -21,9 +21,10 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Tiles
         }
         public Vector2Int Position { get; set; }
 
-        public void Initialize()
+        public void Initialize(TileConfig config)
         {
-            Visual.Initialize(config.Size, config.Type);
+            this.config = config;
+            Visual.Initialize(config.Size, config.Type, config.Building);
         }
     }
 }
