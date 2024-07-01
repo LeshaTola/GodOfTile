@@ -16,6 +16,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Bootstrap
             BindInitialState();
             BindGameplayState();
             BindBuildState();
+            BindState<InformationState>(StatesIds.INFORMATION_STATE);
         }
 
         private void BindBuildState()

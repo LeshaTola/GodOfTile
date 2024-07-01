@@ -6,6 +6,7 @@ using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Animations;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
+using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Providers;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
@@ -44,6 +45,8 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Bootstrap
                 .To<TileAnimator>()
                 .AsSingle()
                 .WithArguments(tileAnimationConfig);
+
+            Container.Bind<ITileSelectionProvider>().To<TileSelectionProvider>().AsSingle();
         }
 
         private void BindCreationService()

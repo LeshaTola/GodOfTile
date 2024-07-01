@@ -34,6 +34,9 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Bootstrap
 
         public override void InstallBindings()
         {
+            CommandInstaller.Install(Container);
+            RouterInstaller.Install(Container);
+
             BindGameInput();
 
             BindMainCamera();

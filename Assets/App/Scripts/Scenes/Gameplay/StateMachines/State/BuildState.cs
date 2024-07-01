@@ -14,9 +14,8 @@ namespace Assets.App.Scripts.Scenes.Gameplay.StateMachines.States
         private ITilesCreationService creationService;
 
         public BuildState(
-            List<IUpdatable> updatables,
             string id,
-            Camera mainCamera,
+            List<IUpdatable> updatables,
             IGameInput gameInput,
             ITilesCreationService creationService
         )

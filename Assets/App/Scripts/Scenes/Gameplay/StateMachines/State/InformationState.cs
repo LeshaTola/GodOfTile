@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Assets.App.Scripts.Features.Popups.InformationPopup.Routers;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Providers;
 using Features.StateMachineCore;
 using Features.StateMachineCore.States;
@@ -7,31 +8,30 @@ using UnityEngine.InputSystem;
 
 namespace Assets.App.Scripts.Scenes.Gameplay.StateMachines.States
 {
-    public class GameplayState : State
+    public class InformationState : State
     {
         private List<IUpdatable> updatables;
-        private IGameInput gameInput;
+        private IInformationPopupRouter informationPopupRouter;
         private ITileSelectionProvider tileSelectionProvider;
 
-        public GameplayState(
+        public InformationState(
             string id,
             List<IUpdatable> updatables,
-            IGameInput gameInput,
+            IInformationPopupRouter informationPopupRouter,
             ITileSelectionProvider tileSelectionProvider
         )
             : base(id)
         {
             this.updatables = updatables;
-            this.gameInput = gameInput;
+            this.informationPopupRouter = informationPopupRouter;
             this.tileSelectionProvider = tileSelectionProvider;
         }
 
         public override void Enter()
         {
             base.Enter();
-            Debug.Log("gameplayState");
-
-            gameInput.OnBuild += OnBuild;
+            ShowTileInformation();
+            Debug.Log("InformationState");
         }
 
         public override void Update()
@@ -45,27 +45,26 @@ namespace Assets.App.Scripts.Scenes.Gameplay.StateMachines.States
 
             if (Mouse.current.leftButton.wasPressedThisFrame)
             {
-                var tile = tileSelectionProvider.GetTileAtMousePosition();
-
-                if (tile == null)
-                {
-                    return;
-                }
-
-                StateMachine.ChangeState(StatesIds.INFORMATION_STATE);
+                ShowTileInformation();
             }
         }
 
         public override void Exit()
         {
             base.Exit();
-
-            gameInput.OnBuild -= OnBuild;
+            informationPopupRouter.HideInformationPopup();
         }
 
-        private void OnBuild()
+        private void ShowTileInformation()
         {
-            StateMachine.ChangeState(StatesIds.BUILDING_STATE);
+            var tile = tileSelectionProvider.GetTileAtMousePosition();
+
+            if (tile == null)
+            {
+                return;
+            }
+
+            informationPopupRouter.ShowInformationPopup(tile.Config);
         }
     }
 }
