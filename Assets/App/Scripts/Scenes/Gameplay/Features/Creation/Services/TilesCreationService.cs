@@ -174,8 +174,8 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services
 		private void Replace(TileConfig newTileConfig, Vector2Int position)
 		{
 			var oldTile = gridProvider.Grid[position.x, position.y];
-			//oldTile.UpdateConfig(newTileConfig);
-			Debug.Log("UpdateReplace");
+			PlayParticle(config.UpdateParticleKey, oldTile.transform.position);
+			oldTile.Initialize(newTileConfig);
 		}
 
 		private void ChangeState()
@@ -194,12 +194,17 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services
 		{
 			activeTile.Visual.SetState(TileState.Default);
 
-			var particle = keyPool.Get(config.CreationParticleKey);
-			particle.transform.position = activeTile.transform.position;
-			particle.Particle.Play();
+			PlayParticle(config.CreationParticleKey, activeTile.transform.position);
 
 			activeTask = activeTile.Visual.PlayCreation();
 			await activeTask;
+		}
+
+		private void PlayParticle(string key, Vector3 position)
+		{
+			var particle = keyPool.Get(key);
+			particle.transform.position = position;
+			particle.Particle.Play();
 		}
 	}
 }

@@ -31,8 +31,12 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Tiles
 
 		public void Initialize(Vector2Int size, Material material, GameObject building)
 		{
-			Resize(size);
 			defaultMaterial = material;
+
+			DestroyBuilding();
+			Resize(size);
+			SetState(TileState.Default);
+
 			if (building != null)
 			{
 				Instantiate(building, buildingPosition);
@@ -88,6 +92,14 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Tiles
 		private void OnDestroy()
 		{
 			animator.Cleanup();
+		}
+
+		private void DestroyBuilding()
+		{
+			foreach (Transform child in buildingPosition)
+			{
+				Destroy(child.gameObject);
+			}
 		}
 	}
 }
