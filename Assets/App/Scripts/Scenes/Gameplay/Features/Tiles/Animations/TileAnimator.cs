@@ -16,6 +16,19 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Animations
 			this.config = config;
 		}
 
+		public async UniTask PlayRotationAnimation(TileVisual tile)
+		{
+			Cleanup();
+			var newRotation = new Vector3(0f, tile.transform.rotation.eulerAngles.y + 90f, 0f);
+			tween = tile.transform.DORotate(
+				newRotation,
+				config.RotationAnimationDuration,
+				RotateMode.FastBeyond360
+			);
+			tween.SetEase(Ease.InOutBack);
+			await tween.AsyncWaitForCompletion();
+		}
+
 		public async UniTask PlayActiveAnimation(TileVisual tile)
 		{
 			Cleanup();

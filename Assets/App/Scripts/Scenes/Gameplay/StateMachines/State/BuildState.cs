@@ -2,7 +2,6 @@
 using Features.StateMachineCore;
 using Features.StateMachineCore.States;
 using System.Collections.Generic;
-using UnityEngine.InputSystem;
 
 namespace Assets.App.Scripts.Scenes.Gameplay.StateMachines.States
 {
@@ -30,6 +29,8 @@ namespace Assets.App.Scripts.Scenes.Gameplay.StateMachines.States
 			base.Enter();
 
 			gameInput.OnBuild += OnBuild;
+			gameInput.OnRotate += OnRotate;
+
 			creationService.StartPlacingTile();
 		}
 
@@ -44,7 +45,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.StateMachines.States
 
 			creationService.MoveActiveTile(gameInput.GetGroundMousePosition());
 
-			if (Mouse.current.leftButton.wasPressedThisFrame)
+			if (gameInput.IsMouseClicked())
 			{
 				creationService.PlaceActiveTile();
 				creationService.StartPlacingTile();
@@ -56,12 +57,19 @@ namespace Assets.App.Scripts.Scenes.Gameplay.StateMachines.States
 			base.Exit();
 
 			creationService.StopPlacingTile();
+
 			gameInput.OnBuild -= OnBuild;
+			gameInput.OnRotate -= OnRotate;
 		}
 
 		private void OnBuild()
 		{
 			StateMachine.ChangeState(StatesIds.GAMEPLAY_STATE);
+		}
+
+		private void OnRotate()
+		{
+			creationService.RotateActiveTile();
 		}
 	}
 }

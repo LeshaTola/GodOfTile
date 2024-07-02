@@ -39,6 +39,11 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Tiles
 			}
 		}
 
+		public async UniTask PlayRotation()
+		{
+			await animator.PlayRotationAnimation(this);
+		}
+
 		public async UniTask PlayActive()
 		{
 			await animator.PlayActiveAnimation(this);

@@ -2,7 +2,6 @@
 using Features.StateMachineCore;
 using Features.StateMachineCore.States;
 using System.Collections.Generic;
-using UnityEngine.InputSystem;
 
 namespace Assets.App.Scripts.Scenes.Gameplay.StateMachines.States
 {
@@ -41,7 +40,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.StateMachines.States
 				updatable.Update();
 			}
 
-			if (Mouse.current.leftButton.wasPressedThisFrame)
+			if (gameInput.IsMouseClicked())
 			{
 				var tile = tileSelectionProvider.GetTileAtMousePosition();
 

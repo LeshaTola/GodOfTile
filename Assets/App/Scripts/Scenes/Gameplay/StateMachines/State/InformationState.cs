@@ -4,13 +4,13 @@ using Cysharp.Threading.Tasks;
 using Features.StateMachineCore;
 using Features.StateMachineCore.States;
 using System.Collections.Generic;
-using UnityEngine.InputSystem;
 
 namespace Assets.App.Scripts.Scenes.Gameplay.StateMachines.States
 {
 	public class InformationState : State
 	{
 		private List<IUpdatable> updatables;
+		private IGameInput gameInput;
 		private IInformationPopupRouter informationPopupRouter;
 		private ITileSelectionProvider tileSelectionProvider;
 
@@ -18,13 +18,15 @@ namespace Assets.App.Scripts.Scenes.Gameplay.StateMachines.States
 			string id,
 			List<IUpdatable> updatables,
 			IInformationPopupRouter informationPopupRouter,
-			ITileSelectionProvider tileSelectionProvider
+			ITileSelectionProvider tileSelectionProvider,
+			IGameInput gameInput
 		)
 			: base(id)
 		{
 			this.updatables = updatables;
 			this.informationPopupRouter = informationPopupRouter;
 			this.tileSelectionProvider = tileSelectionProvider;
+			this.gameInput = gameInput;
 		}
 
 		public override async void Enter()
@@ -42,7 +44,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.StateMachines.States
 				updatable.Update();
 			}
 
-			if (Mouse.current.leftButton.wasPressedThisFrame)
+			if (gameInput.IsMouseClicked())
 			{
 				await ShowTileInformation();
 			}
