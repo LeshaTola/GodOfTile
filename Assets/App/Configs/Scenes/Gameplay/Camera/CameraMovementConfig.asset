@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   rotationSpeed: 0
-  focusStep: 1
+  focusStep: 2
   focusSpeed: 20
   xCoordinate:
     Min: -2

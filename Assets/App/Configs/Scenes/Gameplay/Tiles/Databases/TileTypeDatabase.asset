@@ -23,7 +23,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: tileTypesDatabase
+    - Name: types
       Entry: 7
       Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[UnityEngine.Material,
         UnityEngine.CoreModule]], mscorlib
@@ -42,7 +42,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: Grass
+      Data: grass
     - Name: $v
       Entry: 10
       Data: 0
@@ -54,7 +54,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: Field
+      Data: field
     - Name: $v
       Entry: 10
       Data: 1
