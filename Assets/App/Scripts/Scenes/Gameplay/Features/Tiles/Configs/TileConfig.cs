@@ -1,56 +1,78 @@
-﻿using System.Collections.Generic;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs.Plate;
+﻿using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs.Plate;
 using Sirenix.OdinInspector;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs
 {
-    [CreateAssetMenu(fileName = "TileConfig", menuName = "Configs/Tiles/Tile")]
-    public class TileConfig : ScriptableObject
-    {
-        [SerializeField]
-        private Vector2Int size = Vector2Int.one;
+	[CreateAssetMenu(fileName = "TileConfig", menuName = "Configs/Tiles/Tile")]
+	public class TileConfig : ScriptableObject
+	{
+		[SerializeField]
+		private Vector2Int size = Vector2Int.one;
 
-        [SerializeField]
-        private TileTypeDatabase tileTypeDatabase;
+		[SerializeField]
+		private TileTypeDatabase tileTypeDatabase;
 
-        [SerializeField]
-        private GameObject building;
+		[SerializeField]
+		private GameObject building;
 
-        [SerializeField]
-        [ValueDropdown(nameof(GetTileTypes))]
-        [ShowIf("@tileTypeDatabase !=null")]
-        private Material type;
+		[SerializeField]
+		[ValueDropdown(nameof(GetTileTypes))]
+		[ShowIf("@tileTypeDatabase !=null")]
+		private string type;
 
-        public Vector2Int Size
-        {
-            get => size;
-        }
-        public Material Type
-        {
-            get => type;
-        }
-        public GameObject Building
-        {
-            get => building;
-        }
+		[PreviewField]
+		[SerializeField]
+		[FoldoutGroup("Extra Information")]
+		private Sprite tileImage;
 
-        private IEnumerable<ValueDropdownItem<Material>> GetTileTypes()
-        {
-            if (tileTypeDatabase == null)
-            {
-                return null;
-            }
+		[SerializeField]
+		[FoldoutGroup("Extra Information")]
+		private string tileName;
 
-            var materialList = new List<ValueDropdownItem<Material>>();
-            foreach (var key in tileTypeDatabase.TileTypesDatabase.Keys)
-            {
-                materialList.Add(
-                    new ValueDropdownItem<Material>(key, tileTypeDatabase.TileTypesDatabase[key])
-                );
-            }
+		[TextArea]
+		[SerializeField]
+		[FoldoutGroup("Extra Information")]
+		private string description;
 
-            return materialList;
-        }
-    }
+		public Vector2Int Size
+		{
+			get => size;
+		}
+		public string Type
+		{
+			get => type;
+		}
+		public Material TypeMaterial
+		{
+			get => tileTypeDatabase.Types[type];
+		}
+		public GameObject Building
+		{
+			get => building;
+		}
+		public Sprite TileSprite
+		{
+			get => tileImage;
+		}
+		public string Description
+		{
+			get => description;
+		}
+		public string Name
+		{
+			get => tileName;
+		}
+
+		private IEnumerable<string> GetTileTypes()
+		{
+			if (tileTypeDatabase == null)
+			{
+				return null;
+			}
+
+			return new List<string>(tileTypeDatabase.Types.Keys);
+		}
+	}
 }

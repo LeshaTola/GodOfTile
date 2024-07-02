@@ -6,6 +6,7 @@ namespace Assets.App.Scripts.Features.Popups.InformationPopup.Animator
 	public interface IPopupAnimator
 	{
 		void Cleanup();
+		void Setup(PopupAnimationConfig animationConfig);
 		void Init(Popup popup);
 		UniTask PlayHideAnimation();
 		UniTask PlayShowAnimation();

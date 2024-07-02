@@ -1,33 +1,100 @@
 ﻿using Assets.App.Scripts.Features.Popups.Buttons;
 using Assets.App.Scripts.Features.Popups.InformationPopup.ViewModels;
+using Assets.App.Scripts.Features.UI.PairedTexts;
+using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
+using Module.Localization.Localizers;
 using Module.PopupLogic.General.Popups;
+using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.App.Scripts.Features.Popups.InformationPopup
 {
-    public class InformationPopup : Popup
-    {
-        [SerializeField]
-        private PopupButton closeButton;
+	public class InformationPopup : Popup
+	{
+		[SerializeField]
+		private Image tileImage;
 
-        private IInformationViewModule viewModule;
+		[SerializeField]
+		private TMProLocalizer header;
 
-        public void Setup(IInformationViewModule viewModule)
-        {
-            this.viewModule = viewModule;
+		[SerializeField]
+		[FoldoutGroup("Stats")]
+		private TMProLocalizer statsHeader;
 
-            closeButton.Init(viewModule.LocalizationSystem);
-            closeButton.onButtonClicked += viewModule.CloseCommand.Execute;
-        }
+		[SerializeField]
+		[FoldoutGroup("Stats")]
+		private PairedText tileName;
 
-        public void Cleanup()
-        {
-            if (viewModule == null)
-            {
-                return;
-            }
+		[SerializeField]
+		[FoldoutGroup("Stats")]
+		private PairedText type;
 
-            closeButton.onButtonClicked -= viewModule.CloseCommand.Execute;
-        }
-    }
+		[SerializeField]
+		[FoldoutGroup("Description")]
+		private TMProLocalizer descriptionHeader;
+
+		[SerializeField]
+		[FoldoutGroup("Description")]
+		private TMProLocalizer description;
+
+		[SerializeField]
+		private PopupButton closeButton;
+
+		private IInformationViewModule viewModule;
+
+		public void Setup(IInformationViewModule viewModule)
+		{
+			Init(viewModule);
+			UpdateUI(viewModule.TileConfig);
+		}
+
+		public void UpdateUI(TileConfig tileConfig)
+		{
+			tileImage.sprite = tileConfig.TileSprite;
+			type.Value.Key = tileConfig.Type;
+			tileName.Value.Key = tileConfig.Name;
+			description.Key = tileConfig.Description;
+			Translate();
+		}
+
+		public void Cleanup()
+		{
+			if (viewModule == null)
+			{
+				return;
+			}
+
+			closeButton.onButtonClicked -= viewModule.CloseCommand.Execute;
+		}
+
+		private void Init(IInformationViewModule viewModule)
+		{
+			this.viewModule = viewModule;
+
+			header.Init(viewModule.LocalizationSystem);
+			statsHeader.Init(viewModule.LocalizationSystem);
+			descriptionHeader.Init(viewModule.LocalizationSystem);
+
+			type.Init(viewModule.LocalizationSystem);
+			tileName.Init(viewModule.LocalizationSystem);
+			description.Init(viewModule.LocalizationSystem);
+
+			closeButton.Init(viewModule.LocalizationSystem);
+			closeButton.onButtonClicked += viewModule.CloseCommand.Execute;
+		}
+
+		private void Translate()
+		{
+			header.Translate();
+			statsHeader.Translate();
+			descriptionHeader.Translate();
+
+			type.Translate();
+			tileName.Translate();
+			description.Translate();
+
+			closeButton.Translate();
+		}
+	}
 }

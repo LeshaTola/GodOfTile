@@ -1,6 +1,9 @@
-﻿namespace Assets.App.Scripts.Features.Popups.InformationPopup.Animator
-{
-    //public class InformationPopupAnimationConfig : PopupAnimationConfig { }
+﻿using System;
 
-    public class InformationPopupAnimator : PopupAnimator { }
+namespace Assets.App.Scripts.Features.Popups.InformationPopup.Animator
+{
+	[Serializable]
+	public class InformationPopupAnimationConfig : PopupAnimationConfig { }
+
+	public class InformationPopupAnimator : PopupAnimator { }
 }

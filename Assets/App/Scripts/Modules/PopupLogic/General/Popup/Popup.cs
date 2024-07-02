@@ -7,57 +7,62 @@ using UnityEngine.UI;
 
 namespace Module.PopupLogic.General.Popups
 {
-    [RequireComponent(typeof(Canvas), typeof(GraphicRaycaster))]
-    public abstract class Popup : MonoBehaviour, IPopup
-    {
-        [FoldoutGroup("General")]
-        [SerializeField]
-        protected GraphicRaycaster raycaster;
+	[RequireComponent(typeof(Canvas), typeof(GraphicRaycaster))]
+	public abstract class Popup : MonoBehaviour, IPopup
+	{
+		[FoldoutGroup("General")]
+		[SerializeReference]
+		PopupAnimationConfig animationConfig;
 
-        [FoldoutGroup("General")]
-        [SerializeField]
-        protected Canvas canvas;
+		[FoldoutGroup("General")]
+		[SerializeField]
+		protected GraphicRaycaster raycaster;
 
-        public IPopupController Controller { get; private set; }
-        public IPopupAnimator PopupAnimator { get; private set; }
-        public Canvas Canvas
-        {
-            get => canvas;
-        }
+		[FoldoutGroup("General")]
+		[SerializeField]
+		protected Canvas canvas;
 
-        public void Init(IPopupController controller, IPopupAnimator popupAnimator)
-        {
-            Controller = controller;
-            PopupAnimator = popupAnimator;
-            PopupAnimator.Init(this);
-        }
+		public IPopupController Controller { get; private set; }
+		public IPopupAnimator PopupAnimator { get; private set; }
+		public Canvas Canvas
+		{
+			get => canvas;
+		}
 
-        public virtual async UniTask Hide()
-        {
-            Deactivate();
+		public void Init(IPopupController controller, IPopupAnimator popupAnimator)
+		{
+			Controller = controller;
+			PopupAnimator = popupAnimator;
+			PopupAnimator.Init(this);
+			popupAnimator.Setup(animationConfig);
+		}
 
-            await PopupAnimator.PlayHideAnimation();
-            Controller.RemoveActivePopup(this);
-            gameObject.SetActive(false);
-        }
+		public virtual async UniTask Hide()
+		{
+			Deactivate();
 
-        public virtual async UniTask Show()
-        {
-            gameObject.SetActive(true);
-            Controller.AddActivePopup(this);
+			await PopupAnimator.PlayHideAnimation();
+			Controller.RemoveActivePopup(this);
+			gameObject.SetActive(false);
+		}
 
-            await PopupAnimator.PlayShowAnimation();
-            Activate();
-        }
+		public virtual async UniTask Show()
+		{
+			gameObject.SetActive(true);
+			Controller.AddActivePopup(this);
 
-        public void Activate()
-        {
-            raycaster.enabled = true;
-        }
+			await PopupAnimator.PlayShowAnimation();
+			Activate();
+		}
 
-        public void Deactivate()
-        {
-            raycaster.enabled = false;
-        }
-    }
+		public void Activate()
+		{
+			raycaster.enabled = true;
+		}
+
+		public void Deactivate()
+		{
+			raycaster.enabled = false;
+		}
+	}
 }

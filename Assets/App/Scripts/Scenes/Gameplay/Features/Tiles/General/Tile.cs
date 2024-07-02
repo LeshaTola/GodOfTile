@@ -24,7 +24,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Tiles
         public void Initialize(TileConfig config)
         {
             this.config = config;
-            Visual.Initialize(config.Size, config.Type, config.Building);
+            Visual.Initialize(config.Size, config.TypeMaterial, config.Building);
         }
     }
 }

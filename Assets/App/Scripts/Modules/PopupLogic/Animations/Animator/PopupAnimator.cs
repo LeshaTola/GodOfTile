@@ -1,50 +1,61 @@
 ﻿using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Module.PopupLogic.General.Popups;
+using System;
 using UnityEngine;
 
 namespace Assets.App.Scripts.Features.Popups.InformationPopup.Animator
 {
-    public class PopupAnimationConfig
-    {
-        public float ShowAnimationTime;
-        public float HideAnimationTime;
-    }
+	[Serializable]
+	public class PopupAnimationConfig
+	{
+		public float ShowAnimationTime;
+		public float HideAnimationTime;
+	}
 
-    public class PopupAnimator : IPopupAnimator
-    {
-        private Popup popup;
-        private PopupAnimationConfig config;
-        private Tween tween;
+	public class PopupAnimator : IPopupAnimator
+	{
+		private PopupAnimationConfig config;
 
-        public void Init(Popup popup)
-        {
-            this.popup = popup;
-        }
+		private Popup popup;
+		private Tween tween;
 
-        public async UniTask PlayHideAnimation()
-        {
-            Cleanup();
-            tween = popup.transform.DOScale(Vector3.zero, config.HideAnimationTime);
-            tween.SetEase(Ease.OutBack);
-            await tween.AsyncWaitForCompletion();
-        }
+		public void Init(Popup popup)
+		{
+			this.popup = popup;
+		}
 
-        public async UniTask PlayShowAnimation()
-        {
-            Cleanup();
-            popup.transform.DOScale(Vector3.one, config.ShowAnimationTime);
-            tween.SetEase(Ease.OutBack);
-            await tween.AsyncWaitForCompletion();
-        }
+		public void Setup(PopupAnimationConfig animationConfig)
+		{
+			config = animationConfig;
+		}
 
-        public void Cleanup()
-        {
-            if (tween != null && tween.IsActive())
-            {
-                tween.Complete();
-                tween.Kill();
-            }
-        }
-    }
+		public async UniTask PlayHideAnimation()
+		{
+			Cleanup();
+
+			popup.transform.localScale = Vector3.one;
+			tween = popup.transform.DOScale(Vector3.zero, config.HideAnimationTime);
+			tween.SetEase(Ease.InBack);
+			await tween.AsyncWaitForCompletion();
+		}
+
+		public async UniTask PlayShowAnimation()
+		{
+			Cleanup();
+			popup.transform.localScale = Vector3.zero;
+			tween = popup.transform.DOScale(Vector3.one, config.ShowAnimationTime);
+			tween.SetEase(Ease.OutBack);
+			await tween.AsyncWaitForCompletion();
+		}
+
+		public void Cleanup()
+		{
+			if (tween != null && tween.IsActive())
+			{
+				tween.Complete();
+				tween.Kill();
+			}
+		}
+	}
 }
