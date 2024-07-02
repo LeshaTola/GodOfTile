@@ -2,13 +2,11 @@
 
 namespace Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Animations
 {
-    public interface ITileAnimator
-    {
-        public void Setup(TileVisual tile);
-
-        public UniTask PlayCreationAnimation();
-        public UniTask PlayDestroyAnimation();
-        public UniTask PlayActiveAnimation();
-        void Cleanup();
-    }
+	public interface ITileAnimator
+	{
+		public UniTask PlayCreationAnimation(TileVisual tile);
+		public UniTask PlayDestroyAnimation(TileVisual tile);
+		public UniTask PlayActiveAnimation(TileVisual tile);
+		void Cleanup();
+	}
 }

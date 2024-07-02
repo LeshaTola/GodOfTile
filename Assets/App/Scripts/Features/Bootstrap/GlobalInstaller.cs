@@ -10,41 +10,65 @@ using Zenject;
 
 namespace Assets.App.Scripts.Bootstrap
 {
-    public class GlobalInstaller : MonoInstaller
-    {
-        [SerializeField]
-        private LocalizationDatabase localizationDatabase;
+	public class GlobalInstaller : MonoInstaller
+	{
+		[SerializeField]
+		private LocalizationDatabase localizationDatabase;
 
-        [SerializeField]
-        private string language;
+		[SerializeField]
+		private string language;
 
-        public override void InstallBindings()
-        {
-            BindGlobalInitialState();
+		public override void InstallBindings()
+		{
+			BindGlobalInitialState();
+			BindStorage();
+			BindFileProvider();
 
-            Container.Bind<IStorage>().To<PlayerPrefsStorage>().AsSingle();
-            Container.Bind<IFileProvider>().To<ResourcesFileProvider>().AsSingle();
+			BindParser();
+			BindLocalizationDataProvider();
+			BindLocalizationSystem();
+		}
 
-            Container.Bind<IParser>().To<CSVParser>().AsSingle();
-            Container
-                .Bind<IDataProvider<LocalizationData>>()
-                .To<DataProvider<LocalizationData>>()
-                .AsSingle()
-                .WithArguments(LocalizationDataKey.KEY);
-            Container
-                .Bind<ILocalizationSystem>()
-                .To<LocalizationSystem>()
-                .AsSingle()
-                .WithArguments(localizationDatabase, language);
-        }
+		private void BindLocalizationSystem()
+		{
+			Container
+				.Bind<ILocalizationSystem>()
+				.To<LocalizationSystem>()
+				.AsSingle()
+				.WithArguments(localizationDatabase, language);
+		}
 
-        private void BindGlobalInitialState()
-        {
-            Container
-                .Bind<State>()
-                .To<GlobalInitialState>()
-                .AsSingle()
-                .WithArguments(GlobalStatesIds.GLOBAL_INITIAL_STATE);
-        }
-    }
+		private void BindLocalizationDataProvider()
+		{
+			Container
+				.Bind<IDataProvider<LocalizationData>>()
+				.To<DataProvider<LocalizationData>>()
+				.AsSingle()
+				.WithArguments(LocalizationDataKey.KEY);
+		}
+
+		private void BindParser()
+		{
+			Container.Bind<IParser>().To<CSVParser>().AsSingle();
+		}
+
+		private void BindFileProvider()
+		{
+			Container.Bind<IFileProvider>().To<ResourcesFileProvider>().AsSingle();
+		}
+
+		private void BindStorage()
+		{
+			Container.Bind<IStorage>().To<PlayerPrefsStorage>().AsSingle();
+		}
+
+		private void BindGlobalInitialState()
+		{
+			Container
+				.Bind<State>()
+				.To<GlobalInitialState>()
+				.AsSingle()
+				.WithArguments(GlobalStatesIds.GLOBAL_INITIAL_STATE);
+		}
+	}
 }

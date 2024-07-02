@@ -4,7 +4,6 @@ using Cysharp.Threading.Tasks;
 using Features.StateMachineCore;
 using Features.StateMachineCore.States;
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Assets.App.Scripts.Scenes.Gameplay.StateMachines.States
@@ -32,7 +31,6 @@ namespace Assets.App.Scripts.Scenes.Gameplay.StateMachines.States
 		{
 			base.Enter();
 			await ShowTileInformation();
-			Debug.Log("InformationState");
 		}
 
 		public override async void Update()
