@@ -7,83 +7,87 @@ using Zenject;
 
 namespace Assets.App.Scripts.Scenes.Gameplay.Features.Tiles
 {
-    public class TileVisual : MonoBehaviour
-    {
-        [SerializeField]
-        private TileVisualConfig config;
+	public class TileVisual : MonoBehaviour
+	{
+		[SerializeField]
+		private TileVisualConfig config;
 
-        [SerializeField]
-        private Transform buildingPosition;
+		[SerializeField]
+		private Transform buildingPosition;
 
-        [Header("Renderer")]
-        [SerializeField]
-        private MeshRenderer meshRenderer;
+		[Header("Renderer")]
+		[SerializeField]
+		private MeshRenderer meshRenderer;
 
-        private ITileAnimator animator;
+		private ITileAnimator animator;
 
-        private Material defaultMaterial;
+		private Material defaultMaterial;
 
-        [Inject]
-        public void Construct(ITileAnimator animator)
-        {
-            this.animator = animator;
-            animator.Setup(this);
-        }
+		[Inject]
+		public void Construct(ITileAnimator animator)
+		{
+			this.animator = animator;
+		}
 
-        public void Initialize(Vector2Int size, Material material, GameObject building)
-        {
-            Resize(size);
-            defaultMaterial = material;
-            if (building != null)
-            {
-                Instantiate(building, buildingPosition);
-            }
-        }
+		public void Initialize(Vector2Int size, Material material, GameObject building)
+		{
+			Resize(size);
+			defaultMaterial = material;
+			if (building != null)
+			{
+				Instantiate(building, buildingPosition);
+			}
+		}
 
-        public async UniTask PlayActive()
-        {
-            await animator.PlayActiveAnimation();
-        }
+		public async UniTask PlayRotation()
+		{
+			await animator.PlayRotationAnimation(this);
+		}
 
-        public async UniTask PlayCreation()
-        {
-            await animator.PlayCreationAnimation();
-        }
+		public async UniTask PlayActive()
+		{
+			await animator.PlayActiveAnimation(this);
+		}
 
-        public async UniTask PlayDestroying()
-        {
-            await animator.PlayActiveAnimation();
-        }
+		public async UniTask PlayCreation()
+		{
+			await animator.PlayCreationAnimation(this);
+		}
 
-        public void SetState(TileState state)
-        {
-            switch (state)
-            {
-                case TileState.Default:
-                    meshRenderer.material = defaultMaterial;
-                    break;
-                case TileState.Wrong:
-                    meshRenderer.material = config.WrongMaterial;
-                    break;
-                case TileState.Correct:
-                    meshRenderer.material = config.CorrectMaterial;
-                    break;
-            }
-        }
+		public async UniTask PlayDestroying()
+		{
+			await animator.PlayActiveAnimation(this);
+		}
 
-        private void Resize(Vector2Int size)
-        {
-            transform.localScale = new Vector3(size.x, transform.localScale.y, size.y);
-            transform.localPosition = new Vector3(
-                (size.x - 1) / 2f,
-                transform.position.y,
-                (size.y - 1) / 2f
-            );
-        }
+		public void SetState(TileState state)
+		{
+			switch (state)
+			{
+				case TileState.Default:
+					meshRenderer.material = defaultMaterial;
+					break;
+				case TileState.Wrong:
+					meshRenderer.material = config.WrongMaterial;
+					break;
+				case TileState.Correct:
+					meshRenderer.material = config.CorrectMaterial;
+					break;
+			}
+		}
 
-        private void OnDestroy()
-        {
-            animator.Cleanup();
-        }
-    }
+		private void Resize(Vector2Int size)
+		{
+			transform.localScale = new Vector3(size.x, transform.localScale.y, size.y);
+			transform.localPosition = new Vector3(
+				(size.x - 1) / 2f,
+				transform.position.y,
+				(size.y - 1) / 2f
+			);
+		}
+
+		private void OnDestroy()
+		{
+			animator.Cleanup();
+		}
+	}
 }

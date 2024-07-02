@@ -9,74 +9,79 @@ using Zenject;
 
 namespace Assets.App.Scripts.Scenes.Gameplay.Bootstrap
 {
-    public class GameplayInstaller : MonoInstaller
-    {
-        [SerializeField]
-        private GridConfig gridConfig;
+	public class GameplayInstaller : MonoInstaller
+	{
+		[SerializeField]
+		private GridConfig gridConfig;
 
-        [SerializeField]
-        private Camera mainCamera;
+		[SerializeField]
+		private Camera mainCamera;
 
-        [SerializeField]
-        private CinemachineVirtualCamera virtualCamera;
+		[SerializeField]
+		private CinemachineVirtualCamera virtualCamera;
 
-        [SerializeField]
-        private CameraMovementConfig cameraMovementConfig;
+		[SerializeField]
+		private CameraMovementConfig cameraMovementConfig;
 
-        [SerializeField]
-        private Transform cameraTarget;
+		[SerializeField]
+		private Transform cameraTarget;
 
-        [SerializeField]
-        private ParticlesDatabase particlesDatabase;
+		[SerializeField]
+		private ParticlesDatabase particlesDatabase;
 
-        [SerializeField]
-        private Transform particlesContainer;
+		[SerializeField]
+		private Transform particlesContainer;
 
-        public override void InstallBindings()
-        {
-            CommandInstaller.Install(Container);
-            RouterInstaller.Install(Container);
+		public override void InstallBindings()
+		{
+			CommandInstaller.Install(Container);
+			RouterInstaller.Install(Container);
 
-            BindGameInput();
+			BindGameInput();
 
-            BindMainCamera();
-            BindVirtualCamera();
-            BindCameraController();
+			BindMainCamera();
+			BindVirtualCamera();
+			BindCameraController();
 
-            Container
-                .Bind<KeyPool<PooledParticle>>()
-                .AsSingle()
-                .WithArguments(particlesDatabase.Particles, particlesContainer);
+			BindParticlesKeyPool();
 
-            BindGridProvider();
-        }
+			BindGridProvider();
+		}
 
-        private void BindCameraController()
-        {
-            Container
-                .BindInterfacesTo<CameraController>()
-                .AsSingle()
-                .WithArguments(cameraMovementConfig, cameraTarget);
-        }
+		private void BindParticlesKeyPool()
+		{
+			Container
+				.Bind<KeyPool<PooledParticle>>()
+				.AsSingle()
+				.WithArguments(particlesDatabase.Particles, particlesContainer);
+		}
 
-        private void BindVirtualCamera()
-        {
-            Container.Bind<CinemachineVirtualCamera>().FromInstance(virtualCamera).AsSingle();
-        }
+		private void BindCameraController()
+		{
+			Container
+				.BindInterfacesTo<CameraController>()
+				.AsSingle()
+				.WithArguments(cameraMovementConfig, cameraTarget);
+		}
 
-        private void BindMainCamera()
-        {
-            Container.Bind<Camera>().FromInstance(mainCamera).AsSingle();
-        }
+		private void BindVirtualCamera()
+		{
+			Container.Bind<CinemachineVirtualCamera>().FromInstance(virtualCamera).AsSingle();
+		}
 
-        private void BindGameInput()
-        {
-            Container.BindInterfacesTo<GameInput>().AsSingle();
-        }
+		private void BindMainCamera()
+		{
+			Container.Bind<Camera>().FromInstance(mainCamera).AsSingle();
+		}
 
-        private void BindGridProvider()
-        {
-            Container.Bind<IGridProvider>().To<GridProvider>().AsSingle().WithArguments(gridConfig);
-        }
-    }
+		private void BindGameInput()
+		{
+			Container.BindInterfacesTo<GameInput>().AsSingle();
+		}
+
+		private void BindGridProvider()
+		{
+			Container.Bind<IGridProvider>().To<GridProvider>().AsSingle().WithArguments(gridConfig);
+		}
+	}
 }

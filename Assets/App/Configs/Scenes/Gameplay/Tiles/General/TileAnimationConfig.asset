@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: TileAnimationConfig
   m_EditorClassIdentifier: 
   activeAnimationDuration: 0.5
+  rotationAnimationDuration: 0.1
   createAnimationDuration: 0.5
   destroyAnimationDuration: 0.5
