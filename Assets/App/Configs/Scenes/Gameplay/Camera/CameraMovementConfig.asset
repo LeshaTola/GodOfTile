@@ -17,11 +17,11 @@ MonoBehaviour:
   focusStep: 2
   focusSpeed: 20
   xCoordinate:
-    Min: -2
-    Max: 7
+    Min: 0
+    Max: 99
   yCoordinate:
-    Min: 3
-    Max: 12
+    Min: 0
+    Max: 99
   offset:
     Min: 2
     Max: 9

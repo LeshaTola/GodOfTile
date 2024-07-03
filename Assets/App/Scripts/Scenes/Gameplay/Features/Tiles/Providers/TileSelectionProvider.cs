@@ -16,9 +16,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Providers
 
         public Tile GetTileAtMousePosition()
         {
-            Vector3 mousePosition = gameInput.GetGroundMousePosition();
-            Vector2Int gridPosition =
-                new(Mathf.RoundToInt(mousePosition.x), Mathf.RoundToInt(mousePosition.z));
+            Vector2Int gridPosition = gameInput.GetGridMousePosition();
 
             if (!gridProvider.IsValid(gridPosition))
             {

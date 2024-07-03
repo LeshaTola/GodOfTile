@@ -3,10 +3,10 @@ using UnityEngine;
 
 public interface IGameInput
 {
-	event Action OnBuild;
-	event Action OnRotate;
+    event Action OnBuild;
+    event Action OnRotate;
 
-	Vector3 GetGroundMousePosition();
-	Vector2 GetMoveVectorNormalized();
-	bool IsMouseClicked();
+    Vector2Int GetGridMousePosition();
+    Vector2 GetMoveVectorNormalized();
+    bool IsMouseClicked();
 }
