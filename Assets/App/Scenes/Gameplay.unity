@@ -309,7 +309,7 @@ MonoBehaviour:
   tilesCreationConfig: {fileID: 11400000, guid: d124dc86d3c16ab42ac71fbd54480272,
     type: 2}
   tilesDatabase: {fileID: 11400000, guid: 7c3c0a8e8578a184586ed869e564fa10, type: 2}
-  tileConfigId: Base
+  tileConfigId: Forest
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,8 +396,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.43482628, y: -0.33764872, z: 0.18011095, w: 0.81515616}
-  m_LocalPosition: {x: 53.535534, y: 7.455767, z: 46.464466}
+  m_LocalRotation: {x: 0.46852496, y: -0.32982367, z: 0.19406936, w: 0.79626495}
+  m_LocalPosition: {x: 53.535534, y: 9, z: 46.464466}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1189,7 +1189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 7.455767, z: -5}
+  m_FollowOffset: {x: 0, y: 9, z: -5}
   m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0
@@ -1402,8 +1402,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2128820150}
-  m_LocalRotation: {x: 0.43482628, y: -0.33764872, z: 0.18011095, w: 0.81515616}
-  m_LocalPosition: {x: 53.535534, y: 7.455767, z: 46.464466}
+  m_LocalRotation: {x: 0.46852496, y: -0.32982367, z: 0.19406936, w: 0.79626495}
+  m_LocalPosition: {x: 53.535534, y: 9, z: 46.464466}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

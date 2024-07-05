@@ -36,6 +36,11 @@ public class GameInput : IGameInput, ICleanupable
         return moveVector.normalized;
     }
 
+    public float GetRotationValueNormalized()
+    {
+        return input.Game.Rotation.ReadValue<float>();
+    }
+
     public void Cleanup()
     {
         input.Game.Build.performed -= BuildButtonPerformed;
