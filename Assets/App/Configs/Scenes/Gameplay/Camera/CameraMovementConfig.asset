@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: CameraMovementConfig
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  rotationSpeed: 0
+  rotationSpeed: 2
   focusStep: 2
   focusSpeed: 20
   xCoordinate:
-    Min: -2
-    Max: 7
+    Min: 0
+    Max: 99
   yCoordinate:
-    Min: 3
-    Max: 12
+    Min: 0
+    Max: 99
   offset:
     Min: 2
     Max: 9

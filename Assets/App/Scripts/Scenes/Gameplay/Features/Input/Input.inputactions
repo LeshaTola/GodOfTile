@@ -6,6 +6,15 @@
             "id": "3f50ca05-3bd3-4001-a4c4-782b6d422a5b",
             "actions": [
                 {
+                    "name": "Rotation",
+                    "type": "Value",
+                    "id": "e5b9f19f-a603-490e-b21c-520701296431",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "Move",
                     "type": "Value",
                     "id": "4a7ce327-8ef5-4a2d-b0df-6cb93a46c90c",
@@ -110,6 +119,39 @@
                     "action": "Rotate",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "0190c4b8-fa33-4dbc-b684-4ffa677ffeb6",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotation",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "2bc8c680-32e1-4d47-b5ea-f5994cb7a1a2",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotation",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "eb1e9c0e-3b37-4ba1-9059-f77a190d65b8",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotation",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }

@@ -1,75 +1,81 @@
-﻿using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services;
+﻿using System.Collections.Generic;
+using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services;
+using Assets.App.Scripts.Scenes.Gameplay.Features.Grid.Visualizators;
 using Features.StateMachineCore;
 using Features.StateMachineCore.States;
-using System.Collections.Generic;
 
 namespace Assets.App.Scripts.Scenes.Gameplay.StateMachines.States
 {
-	public class BuildState : State
-	{
-		private List<IUpdatable> updatables;
-		private IGameInput gameInput;
-		private ITilesCreationService creationService;
+    public class BuildState : State
+    {
+        private List<IUpdatable> updatables;
+        private IGameInput gameInput;
+        private ITilesCreationService creationService;
+        private IGridVisualizator gridVisualizator;
 
-		public BuildState(
-			string id,
-			List<IUpdatable> updatables,
-			IGameInput gameInput,
-			ITilesCreationService creationService
-		)
-			: base(id)
-		{
-			this.updatables = updatables;
-			this.gameInput = gameInput;
-			this.creationService = creationService;
-		}
+        public BuildState(
+            string id,
+            List<IUpdatable> updatables,
+            IGameInput gameInput,
+            ITilesCreationService creationService,
+            IGridVisualizator gridVisualizator
+        )
+            : base(id)
+        {
+            this.updatables = updatables;
+            this.gameInput = gameInput;
+            this.creationService = creationService;
+            this.gridVisualizator = gridVisualizator;
+        }
 
-		public override void Enter()
-		{
-			base.Enter();
+        public override void Enter()
+        {
+            base.Enter();
 
-			gameInput.OnBuild += OnBuild;
-			gameInput.OnRotate += OnRotate;
+            gameInput.OnBuild += OnBuild;
+            gameInput.OnRotate += OnRotate;
 
-			creationService.StartPlacingTile();
-		}
+            creationService.StartPlacingTile();
+            gridVisualizator.ShowGrid();
+        }
 
-		public override void Update()
-		{
-			base.Update();
+        public override void Update()
+        {
+            base.Update();
 
-			foreach (var updatable in updatables)
-			{
-				updatable.Update();
-			}
+            foreach (var updatable in updatables)
+            {
+                updatable.Update();
+            }
 
-			creationService.MoveActiveTile(gameInput.GetGroundMousePosition());
+            creationService.MoveActiveTile(gameInput.GetGridMousePosition());
 
-			if (gameInput.IsMouseClicked())
-			{
-				creationService.PlaceActiveTile();
-				creationService.StartPlacingTile();
-			}
-		}
+            if (gameInput.IsMouseClicked())
+            {
+                creationService.PlaceActiveTile();
+                creationService.StartPlacingTile();
+            }
+        }
 
-		public override void Exit()
-		{
-			base.Exit();
+        public override void Exit()
+        {
+            base.Exit();
 
-			creationService.StopPlacingTile();
+            creationService.StopPlacingTile();
+            gridVisualizator.HideGrid();
 
-			gameInput.OnBuild -= OnBuild;
-			gameInput.OnRotate -= OnRotate;
-		}
+            gameInput.OnBuild -= OnBuild;
+            gameInput.OnRotate -= OnRotate;
+        }
 
-		private void OnBuild()
-		{
-			StateMachine.ChangeState(StatesIds.GAMEPLAY_STATE);
-		}
+        private void OnBuild()
+        {
+            StateMachine.ChangeState(StatesIds.GAMEPLAY_STATE);
+        }
 
-		private void OnRotate()
-		{
-			creationService.RotateActiveTile();
-		}
-	}
+        private void OnRotate()
+        {
+            creationService.RotateActiveTile();
+        }
+    }
 }

@@ -9,6 +9,9 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs
 	public class TileConfig : ScriptableObject
 	{
 		[SerializeField]
+		private string id;
+
+		[SerializeField]
 		private Vector2Int size = Vector2Int.one;
 
 		[SerializeField]
@@ -63,6 +66,15 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs
 		public string Name
 		{
 			get => tileName;
+		}
+		public string Id
+		{
+			get => id;
+		}
+
+		private void OnValidate()
+		{
+			id = name;
 		}
 
 		private IEnumerable<string> GetTileTypes()

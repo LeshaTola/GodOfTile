@@ -12,12 +12,17 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.CraftSystem.Providers
 		{
 			var recipes = Resources.LoadAll<RecipeSO>("Recipes");
 
-			var recipesForOrigin = recipes.Where(r => r.Original.GetType().Equals(tile.GetType())).ToList();
+			var recipesForOrigin = recipes.Where(r => r.Original.Id.Equals(tile.Id)).ToList();
+			recipesForOrigin.Sort((x, y) => y.RequiredTiles.Count.CompareTo(x.RequiredTiles.Count));
 			foreach (var recipe in recipesForOrigin)
 			{
-				var ingredientTypes = recipe.RequiredTiles.Select(t => t.GetType()).ToList();
-				var neighborsTypes = neighbors.Select(t => t.GetType()).ToList();
-				if (ingredientTypes.All(x => neighborsTypes.Count(y => y == x) >= ingredientTypes.Count(y => y == x)))
+				var ingredientIds = recipe.RequiredTiles.Select(t => t.Id).ToList();
+				var neighborsId = neighbors.Select(t => t.Id).ToList();
+				if (
+					ingredientIds.All(x =>
+						neighborsId.Count(y => y.Equals(x)) >= ingredientIds.Count(y => y == x)
+					)
+				)
 				{
 					return recipe.Result;
 				}
