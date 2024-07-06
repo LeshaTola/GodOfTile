@@ -10,6 +10,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Systems
         event Action<string, int> OnRecourseAmountChanged;
 
         void ChangeRecourseAmount(string resourceName, int amount);
+        void InitializeResources();
         bool IsEnough(string resourceName, int amount);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Configs;
+using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Controllers;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Factories;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Systems;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.UI;
@@ -24,9 +25,16 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Bootstrap
 
         public override void InstallBindings()
         {
-            BindInventoryUI();
             BindResourceUIFactory();
+
+            BindInventoryUI();
             BindInventorySystem();
+            BindInventoryController();
+        }
+
+        private void BindInventoryController()
+        {
+            Container.Bind<IInventoryController>().To<InventoryController>().AsSingle().NonLazy();
         }
 
         private void BindInventorySystem()

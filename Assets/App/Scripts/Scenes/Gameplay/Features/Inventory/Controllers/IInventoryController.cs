@@ -24,6 +24,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Controllers
             this.resourceUIFactory = resourceUIFactory;
 
             inventorySystem.OnRecourseAmountChanged += OnRecourseAmountChanged;
+            inventorySystem.InitializeResources();
         }
 
         private void OnRecourseAmountChanged(string resourceName, int amount)

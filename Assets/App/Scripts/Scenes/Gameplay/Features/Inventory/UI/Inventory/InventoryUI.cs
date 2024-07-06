@@ -5,7 +5,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.UI
 {
     public class InventoryUI : MonoBehaviour, IInventoryUI
     {
-        private Dictionary<string, IResourceUI> resourcesUI;
+        private Dictionary<string, IResourceUI> resourcesUI = new();
 
         public void AddRecourse(string recourseName, IResourceUI UI)
         {

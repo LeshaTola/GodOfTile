@@ -11,7 +11,6 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Systems
         public InventorySystem(ResourcesDatabase resourcesDatabase)
         {
             this.resourcesDatabase = resourcesDatabase;
-            InitializeResources();
         }
 
         public Dictionary<string, int> Resources { get; private set; }
@@ -40,7 +39,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Systems
             return Resources[resourceName] >= amount;
         }
 
-        private void InitializeResources()
+        public void InitializeResources()
         {
             Resources = new(resourcesDatabase.Resources.Count);
 
