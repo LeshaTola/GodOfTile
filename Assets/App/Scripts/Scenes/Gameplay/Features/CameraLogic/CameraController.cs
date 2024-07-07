@@ -36,7 +36,6 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.CameraLogic.Configs
 
         public void Rotate(float value)
         {
-            Debug.Log(value);
             cameraTarget.transform.Rotate(Vector3.up, value * config.RotationSpeed);
         }
 
