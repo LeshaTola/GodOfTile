@@ -1,11 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Assets.App.Scripts.Scenes.Gameplay.Features.CraftSystem.Providers;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Configs;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Factories;
+using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Providers;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Grid;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using Cysharp.Threading.Tasks;
+using Features.StateMachineCore;
 using Module.ObjectPool;
 using Module.ObjectPool.KeyPools;
 using TileSystem;
@@ -13,14 +16,16 @@ using UnityEngine;
 
 namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services
 {
-    public class TilesCreationService : ITilesCreationService
+    public class TilesCreationService : ITilesCreationService, ICleanupable
     {
+        public event Action OnTilePlaced;
+
         private IGridProvider gridProvider;
         private ITilesFactory tileFactory;
         private IRecipeProvider recipeProvider;
+        private IActiveTileProvider activeTileProvider;
         private KeyPool<PooledParticle> keyPool;
         private TilesCreationConfig config;
-        private string tileId;
 
         private Tile activeTile;
         private UniTask activeTask;
@@ -28,7 +33,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services
         public TilesCreationService(
             IGridProvider gridProvider,
             ITilesFactory tileFactory,
-            string tileId,
+            IActiveTileProvider activeTileProvider,
             IRecipeProvider recipeProvider,
             KeyPool<PooledParticle> keyPool,
             TilesCreationConfig config
@@ -36,20 +41,22 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services
         {
             this.gridProvider = gridProvider;
             this.tileFactory = tileFactory;
-            this.tileId = tileId;
+            this.activeTileProvider = activeTileProvider;
             this.recipeProvider = recipeProvider;
             this.keyPool = keyPool;
             this.config = config;
+
+            activeTileProvider.OnActiveTileChanged += OnActiveTileChanged;
         }
 
         public void StartPlacingTile()
         {
-            if (activeTile != null)
+            if (activeTile != null || activeTileProvider.ActiveTileConfig == null)
             {
                 return;
             }
 
-            activeTile = tileFactory.GetTile(tileId);
+            activeTile = tileFactory.GetTile(activeTileProvider.ActiveTileConfig);
         }
 
         public void StopPlacingTile()
@@ -60,6 +67,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services
             }
 
             GameObject.Destroy(activeTile.gameObject);
+            activeTile = null;
         }
 
         public void PlaceActiveTile()
@@ -86,14 +94,14 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services
 
         public void FullFill()
         {
-            for (int x = 0; x < gridProvider.GridSize.x; x++)
+            /*for (int x = 0; x < gridProvider.GridSize.x; x++)
             {
                 for (int y = 0; y < gridProvider.GridSize.y; y++)
                 {
-                    var tile = tileFactory.GetTile(tileId);
+                    var tile = tileFactory.GetTile(activeTileProvider.ActiveTileConfig);
                     tile.transform.position = new Vector3(x, 0, y);
                 }
-            }
+            }*/
         }
 
         public void MoveActiveTile(Vector2Int gridPosition)
@@ -121,6 +129,11 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services
             }
 
             await activeTile.Visual.PlayRotation();
+        }
+
+        public void Cleanup()
+        {
+            activeTileProvider.OnActiveTileChanged -= OnActiveTileChanged;
         }
 
         private void UpdateConnectedTiles(Vector2Int tilePosition)
@@ -203,6 +216,12 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services
             var particle = keyPool.Get(key);
             particle.transform.position = position;
             particle.Particle.Play();
+        }
+
+        private void OnActiveTileChanged()
+        {
+            StopPlacingTile();
+            StartPlacingTile();
         }
     }
 }

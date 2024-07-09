@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Grid.Visualizators;
+using Assets.App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.Routers;
+using Cysharp.Threading.Tasks;
 using Features.StateMachineCore;
 using Features.StateMachineCore.States;
 
@@ -12,13 +14,15 @@ namespace Assets.App.Scripts.Scenes.Gameplay.StateMachines.States
         private IGameInput gameInput;
         private ITilesCreationService creationService;
         private IGridVisualizator gridVisualizator;
+        private IShopPopupRouter shopPopupRouter;
 
         public BuildState(
             string id,
             List<IUpdatable> updatables,
             IGameInput gameInput,
             ITilesCreationService creationService,
-            IGridVisualizator gridVisualizator
+            IGridVisualizator gridVisualizator,
+            IShopPopupRouter shopPopupRouter
         )
             : base(id)
         {
@@ -26,6 +30,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.StateMachines.States
             this.gameInput = gameInput;
             this.creationService = creationService;
             this.gridVisualizator = gridVisualizator;
+            this.shopPopupRouter = shopPopupRouter;
         }
 
         public override void Enter()
@@ -37,6 +42,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.StateMachines.States
 
             creationService.StartPlacingTile();
             gridVisualizator.ShowGrid();
+            shopPopupRouter.ShowShopPopup().Forget();
         }
 
         public override void Update()
@@ -63,6 +69,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.StateMachines.States
 
             creationService.StopPlacingTile();
             gridVisualizator.HideGrid();
+            shopPopupRouter.HideShopPopup().Forget();
 
             gameInput.OnBuild -= OnBuild;
             gameInput.OnRotate -= OnRotate;

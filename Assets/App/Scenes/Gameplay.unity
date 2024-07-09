@@ -336,7 +336,6 @@ MonoBehaviour:
   tilesCreationConfig: {fileID: 11400000, guid: d124dc86d3c16ab42ac71fbd54480272,
     type: 2}
   tilesDatabase: {fileID: 11400000, guid: 7c3c0a8e8578a184586ed869e564fa10, type: 2}
-  tileConfigId: Forest
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,8 +422,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.46722656, y: -0.33013955, z: 0.19353157, w: 0.79702747}
-  m_LocalPosition: {x: 53.535534, y: 8.9313, z: 46.464466}
+  m_LocalRotation: {x: 0.4641281, y: -0.33088857, z: 0.19224815, w: 0.79883575}
+  m_LocalPosition: {x: 53.535534, y: 8.770792, z: 46.464466}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -722,6 +721,7 @@ Transform:
   - {fileID: 758036553}
   - {fileID: 293527054}
   - {fileID: 2121318287}
+  - {fileID: 1624424151}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -743,6 +743,7 @@ MonoBehaviour:
   - {fileID: 2044062451}
   - {fileID: 758036554}
   - {fileID: 2121318286}
+  - {fileID: 1624424152}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -939,7 +940,7 @@ GameObject:
   - component: {fileID: 844652228}
   - component: {fileID: 844652227}
   - component: {fileID: 844652226}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1122,9 +1123,9 @@ Canvas:
   m_GameObject: {fileID: 974188329}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 330585545}
-  m_PlaneDistance: 100
+  m_PlaneDistance: 10
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -1237,7 +1238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 8.9313, z: -5}
+  m_FollowOffset: {x: 0, y: 8.770792, z: -5}
   m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0
@@ -1285,6 +1286,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1624424150
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1624424151}
+  - component: {fileID: 1624424152}
+  m_Layer: 0
+  m_Name: ShopInstaller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1624424151
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624424150}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 726502974}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1624424152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624424150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebc5d1933021ab745878399b7fafb4c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shopConfig: {fileID: 11400000, guid: e45c51dee4f6bf04fa04681a5a6bb83f, type: 2}
+  shopItemUITemplate: {fileID: 672125819125563506, guid: 162df3c1097d08a4cbf86f16dfbba060,
+    type: 3}
+  costUITemplate: {fileID: 7286489232702602004, guid: 2ae645fab5d09a642b964755358ee33c,
+    type: 3}
 --- !u!1 &1969270499 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8584344561151807834, guid: 726717fae9b28bb409d6e9ceae9d962b,
@@ -1499,8 +1549,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2128820150}
-  m_LocalRotation: {x: 0.46722656, y: -0.33013955, z: 0.19353157, w: 0.79702747}
-  m_LocalPosition: {x: 53.535534, y: 8.9313, z: 46.464466}
+  m_LocalRotation: {x: 0.4641281, y: -0.33088857, z: 0.19224815, w: 0.79883575}
+  m_LocalPosition: {x: 53.535534, y: 8.770792, z: 46.464466}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1708,6 +1758,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5542901869927979103, guid: bda99c813a55ed442bb2d3eeb1d9e129,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6877702844542052810, guid: bda99c813a55ed442bb2d3eeb1d9e129,
         type: 3}
