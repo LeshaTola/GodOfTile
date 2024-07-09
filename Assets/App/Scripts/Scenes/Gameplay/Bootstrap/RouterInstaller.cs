@@ -10,7 +10,6 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Bootstrap
         {
             BindInformationPopupRouter();
             Container.Bind<IShopPopupRouter>().To<ShopPopupRouter>().AsSingle();
-            Container.Bind<IInformationWidgetRouter>().To<InformationWidgetRouter>().AsSingle();
         }
 
         private void BindInformationPopupRouter()

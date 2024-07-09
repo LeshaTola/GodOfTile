@@ -1,6 +1,6 @@
-﻿using Assets.App.Scripts.Features.Popups.InformationPopup.Routers;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.Factories.Item;
+﻿using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.Factories.Item;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.Systems;
+using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI.Information;
 using Module.Localization;
 
 namespace Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI
@@ -10,6 +10,6 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI
         IItemFactory ItemFactory { get; }
         ILocalizationSystem LocalizationSystem { get; }
         IShopSystem ShopSystem { get; }
-        IInformationWidgetRouter InformationWidgetRouter { get; }
+        IInformationWidgetViewModule ItemInformationWidget { get; }
     }
 }

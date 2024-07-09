@@ -1,5 +1,5 @@
 ﻿using System;
-using Assets.App.Scripts.Features.Popups.InformationPopup.Routers;
+using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI.Information;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -21,12 +21,12 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI.Item
         [SerializeField]
         private Button button;
 
-        private IInformationWidgetRouter informationWidgetRouter;
+        private ItemInformationWidget informationWidget;
         private TileConfig tileConfig;
 
-        public void Setup(TileConfig tileConfig, IInformationWidgetRouter informationWidgetRouter)
+        public void Setup(TileConfig tileConfig, ItemInformationWidget informationWidget)
         {
-            this.informationWidgetRouter = informationWidgetRouter;
+            this.informationWidget = informationWidget;
             this.tileConfig = tileConfig;
 
             image.sprite = tileConfig.TileSprite;
@@ -37,20 +37,18 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI.Item
 
         public void OnPointerMove(PointerEventData eventData)
         {
-            informationWidgetRouter.MoveInformationWidgetPopup(transform.position);
+            informationWidget.transform.position = transform.position;
         }
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            Debug.Log("Enter");
-
-            //informationWidgetRouter.ShowInformationWidgetPopup(tileConfig);
+            informationWidget.UpdateInformation(tileConfig);
+            informationWidget.Show();
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            Debug.Log("Exit");
-            informationWidgetRouter.HideInformationWidgetPopup();
+            informationWidget.Hide();
         }
 
         public void Hide()

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI;
+using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI.Information;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI.Item;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using Module.Localization.Localizers;
@@ -16,6 +17,9 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup
         [SerializeField]
         private RectTransform container;
 
+        [SerializeField]
+        private ItemInformationWidget informationWidget;
+
         private List<ShopItemUI> shopItems = new();
         private IShopViewModule viewModule;
 
@@ -24,6 +28,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup
             Cleanup();
 
             this.viewModule = viewModule;
+            informationWidget.Setup(viewModule.ItemInformationWidget);
             var tilesToBuy = viewModule.ShopSystem.TilesToBuy;
             AddItems(tilesToBuy.Count);
 
@@ -73,7 +78,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup
 
         private void SetupItem(ShopItemUI item, TileConfig tileConfig)
         {
-            item.Setup(tileConfig, viewModule.InformationWidgetRouter);
+            item.Setup(tileConfig, informationWidget);
             item.onBuyButtonClicked += () =>
             {
                 if (!viewModule.ShopSystem.IsEnough(tileConfig.Cost))

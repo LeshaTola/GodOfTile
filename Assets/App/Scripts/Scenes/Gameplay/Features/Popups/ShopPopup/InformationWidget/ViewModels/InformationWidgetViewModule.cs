@@ -1,5 +1,4 @@
 ﻿using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.Factories.Cost;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using Module.Localization;
 
 namespace Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI.Information
@@ -8,17 +7,14 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI.Information
     {
         public InformationWidgetViewModule(
             ILocalizationSystem localizationSystem,
-            ICostUIFactory costUIFactory,
-            TileConfig tileConfig
+            ICostUIFactory costUIFactory
         )
         {
             LocalizationSystem = localizationSystem;
             CostUIFactory = costUIFactory;
-            TileConfig = tileConfig;
         }
 
         public ILocalizationSystem LocalizationSystem { get; }
         public ICostUIFactory CostUIFactory { get; }
-        public TileConfig TileConfig { get; }
     }
 }
