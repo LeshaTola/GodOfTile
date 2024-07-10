@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.DTO;
+using Assets.App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.Configs;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI.Cost;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using Module.Localization.Localizers;
@@ -16,10 +17,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI.Information
         private RectTransform container;
 
         [SerializeField]
-        private string defaultText = "resources";
-
-        [SerializeField]
-        private string noCostText = "is free!";
+        private InformationWidgetConfig config;
 
         private List<CostUI> costUIs = new();
         private IInformationWidgetViewModule viewModule;
@@ -36,11 +34,11 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI.Information
             Cleanup();
             if (tileConfig.Cost == null || tileConfig.Cost.Count <= 0)
             {
-                header.Key = noCostText;
+                header.Key = config.NoCostText;
                 header.Translate();
                 return;
             }
-            header.Key = defaultText;
+            header.Key = config.DefaultText;
             header.Translate();
 
             AddCosts(tileConfig.Cost.Count);
@@ -62,7 +60,14 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI.Information
             for (int i = 0; i < resourcesCounts.Count; i++)
             {
                 ResourceCount resourceCount = resourcesCounts[i];
-                costUIs[i].UpdateUI(resourceCount.Resource.Sprite, resourceCount.Count);
+
+                Color textColor = config.TextColorConfig.DefaultColor;
+                if (!viewModule.InventorySystem.IsEnough(resourceCount))
+                {
+                    textColor = config.TextColorConfig.WrongColor;
+                }
+
+                costUIs[i].UpdateUI(resourceCount.Resource.Sprite, resourceCount.Count, textColor);
                 costUIs[i].Show();
             }
         }

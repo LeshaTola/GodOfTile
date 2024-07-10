@@ -12,10 +12,11 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI.Cost
         [SerializeField]
         private TextMeshProUGUI costText;
 
-        public void UpdateUI(Sprite sprite, int cost)
+        public void UpdateUI(Sprite sprite, int cost, Color color)
         {
             resourceImage.sprite = sprite;
             costText.text = cost.ToString();
+            costText.color = color;
         }
 
         public void Hide()

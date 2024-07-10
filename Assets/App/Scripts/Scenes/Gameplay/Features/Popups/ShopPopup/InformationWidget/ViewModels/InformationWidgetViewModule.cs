@@ -1,4 +1,5 @@
-﻿using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.Factories.Cost;
+﻿using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Systems;
+using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.Factories.Cost;
 using Module.Localization;
 
 namespace Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI.Information
@@ -7,14 +8,17 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI.Information
     {
         public InformationWidgetViewModule(
             ILocalizationSystem localizationSystem,
-            ICostUIFactory costUIFactory
+            ICostUIFactory costUIFactory,
+            IInventorySystem inventorySystem
         )
         {
             LocalizationSystem = localizationSystem;
             CostUIFactory = costUIFactory;
+            InventorySystem = inventorySystem;
         }
 
         public ILocalizationSystem LocalizationSystem { get; }
         public ICostUIFactory CostUIFactory { get; }
+        public IInventorySystem InventorySystem { get; }
     }
 }

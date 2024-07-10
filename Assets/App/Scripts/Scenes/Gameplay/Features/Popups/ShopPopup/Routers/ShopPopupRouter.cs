@@ -1,4 +1,5 @@
-﻿using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.Factories.Cost;
+﻿using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Systems;
+using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.Factories.Cost;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.Factories.Item;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.Systems;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI;
@@ -16,6 +17,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.Routers
         private ICostUIFactory costUIFactory;
         private IItemFactory itemFactory;
         private IShopSystem shopSystem;
+        private IInventorySystem inventorySystem;
 
         private ShopPopup popup;
 
@@ -24,7 +26,8 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.Routers
             ILocalizationSystem localizationSystem,
             IItemFactory itemFactory,
             IShopSystem shopSystem,
-            ICostUIFactory costUIFactory
+            ICostUIFactory costUIFactory,
+            IInventorySystem inventorySystem
         )
         {
             this.popupController = popupController;
@@ -32,6 +35,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.Routers
             this.itemFactory = itemFactory;
             this.shopSystem = shopSystem;
             this.costUIFactory = costUIFactory;
+            this.inventorySystem = inventorySystem;
         }
 
         public async UniTask ShowShopPopup()
@@ -40,7 +44,8 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.Routers
 
             var informationWidgetViewModule = new InformationWidgetViewModule(
                 localizationSystem,
-                costUIFactory
+                costUIFactory,
+                inventorySystem
             );
 
             var viewModule = new ShopViewModule(

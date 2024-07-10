@@ -1,4 +1,5 @@
-﻿using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.Factories.Cost;
+﻿using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Systems;
+using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.Factories.Cost;
 using Module.Localization;
 
 namespace Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI.Information
@@ -7,5 +8,6 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI.Information
     {
         ICostUIFactory CostUIFactory { get; }
         ILocalizationSystem LocalizationSystem { get; }
+        IInventorySystem InventorySystem { get; }
     }
 }
