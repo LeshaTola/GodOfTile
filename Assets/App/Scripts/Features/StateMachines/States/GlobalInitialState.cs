@@ -1,27 +1,29 @@
-﻿using Features.StateMachineCore.States;
+﻿using Cysharp.Threading.Tasks;
+using Features.StateMachineCore.States;
 using Modules.StateMachineCore;
 
 namespace Assets.App.Scripts.StateMachines.States
 {
-	public class GlobalInitialState : State
-	{
-		public string NextStateId { get; set; }
+    public class GlobalInitialState : State
+    {
+        public string NextStateId { get; set; }
 
-		private static bool isValid = true;
+        private static bool isValid = true;
 
-		public GlobalInitialState(string id) : base(id) { }
+        public GlobalInitialState(string id)
+            : base(id) { }
 
-		public override void Enter()
-		{
-			if (!isValid)
-			{
-				return;
-			}
+        public override async UniTask Enter()
+        {
+            if (!isValid)
+            {
+                return;
+            }
 
-			base.Enter();
-			StateMachine.ChangeState(NextStateId);
+            await base.Enter();
+            await StateMachine.ChangeState(NextStateId);
 
-			isValid = false;
-		}
-	}
+            isValid = false;
+        }
+    }
 }

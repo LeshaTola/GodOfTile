@@ -33,21 +33,21 @@ namespace Assets.App.Scripts.Scenes.Gameplay.StateMachines.States
             this.shopPopupRouter = shopPopupRouter;
         }
 
-        public override void Enter()
+        public override async UniTask Enter()
         {
-            base.Enter();
+            await base.Enter();
 
             gameInput.OnBuild += OnBuild;
             gameInput.OnRotate += OnRotate;
 
             creationService.StartPlacingTile();
             gridVisualizator.ShowGrid();
-            shopPopupRouter.ShowShopPopup().Forget();
+            await shopPopupRouter.ShowShopPopup();
         }
 
-        public override void Update()
+        public override async UniTask Update()
         {
-            base.Update();
+            await base.Update();
 
             foreach (var updatable in updatables)
             {
@@ -63,21 +63,21 @@ namespace Assets.App.Scripts.Scenes.Gameplay.StateMachines.States
             }
         }
 
-        public override void Exit()
+        public override async UniTask Exit()
         {
-            base.Exit();
+            await base.Exit();
 
             creationService.StopPlacingTile();
             gridVisualizator.HideGrid();
-            shopPopupRouter.HideShopPopup().Forget();
+            await shopPopupRouter.HideShopPopup();
 
             gameInput.OnBuild -= OnBuild;
             gameInput.OnRotate -= OnRotate;
         }
 
-        private void OnBuild()
+        private async void OnBuild()
         {
-            StateMachine.ChangeState(StatesIds.GAMEPLAY_STATE);
+            await StateMachine.ChangeState(StatesIds.GAMEPLAY_STATE);
         }
 
         private void OnRotate()
