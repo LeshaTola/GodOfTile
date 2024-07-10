@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Providers;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.DTO;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Systems;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.Configs;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
@@ -50,36 +49,25 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Shop.Systems
             OnNewTileAdd?.Invoke(tileConfig);
         }
 
-        public bool IsEnough(List<ResourceCount> resourcesCounts)
+        public bool IsEnough(TileConfig tileConfig)
         {
-            foreach (ResourceCount resourceCount in resourcesCounts)
-            {
-                if (
-                    inventorySystem.IsEnough(
-                        resourceCount.Resource.ResourceName,
-                        resourceCount.Count
-                    )
-                )
-                {
-                    continue;
-                }
+            return inventorySystem.IsEnough(tileConfig.Cost);
+        }
 
+        public bool TryBuyTile(TileConfig tileConfig)
+        {
+            if (!inventorySystem.IsEnough(tileConfig.Cost))
+            {
                 return false;
             }
+
+            BuyTile(tileConfig);
             return true;
         }
 
         public void BuyTile(TileConfig tileConfig)
         {
             activeTileProvider.ActiveTileConfig = tileConfig;
-
-            foreach (ResourceCount resourceCount in tileConfig.Cost)
-            {
-                inventorySystem.ChangeRecourseAmount(
-                    resourceCount.Resource.ResourceName,
-                    resourceCount.Count
-                );
-            }
         }
     }
 }

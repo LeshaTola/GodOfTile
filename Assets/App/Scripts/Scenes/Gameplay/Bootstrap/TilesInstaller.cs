@@ -3,6 +3,9 @@ using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Configs;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Factories;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Providers;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services;
+using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services.Effects;
+using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services.Update;
+using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Services.PlacementCostServices;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Animations;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
@@ -35,6 +38,17 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Bootstrap
 
             BindCreationService();
             BindRecipeProvider();
+            Container.Bind<IPlacementCostService>().To<PlacementCostService>().AsSingle();
+            Container
+                .Bind<ITileCreationEffectsService>()
+                .To<TileCreationEffectsService>()
+                .AsSingle();
+
+            Container
+                .Bind<ITilesUpdateService>()
+                .To<TilesUpdateService>()
+                .AsSingle()
+                .WithArguments(tilesCreationConfig);
 
             BindTileAnimator();
 

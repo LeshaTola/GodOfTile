@@ -48,6 +48,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup
             foreach (ShopItemUI item in shopItems)
             {
                 item.Hide();
+                item.onBuyButtonClicked -= BindBuyAction;
             }
 
             if (viewModule == null)
@@ -79,14 +80,16 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup
         private void SetupItem(ShopItemUI item, TileConfig tileConfig)
         {
             item.Setup(tileConfig, informationWidget);
-            item.onBuyButtonClicked += () =>
+            item.onBuyButtonClicked += BindBuyAction;
+        }
+
+        private void BindBuyAction(TileConfig tileConfig)
+        {
+            if (!viewModule.ShopSystem.IsEnough(tileConfig))
             {
-                if (!viewModule.ShopSystem.IsEnough(tileConfig.Cost))
-                {
-                    return;
-                }
-                viewModule.ShopSystem.BuyTile(tileConfig);
-            };
+                return;
+            }
+            viewModule.ShopSystem.BuyTile(tileConfig);
         }
     }
 }

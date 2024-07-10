@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Configs;
+using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.DTO;
 
 namespace Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Systems
 {
@@ -27,6 +28,25 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Systems
             Resources[resourceName] += amount;
 
             OnRecourseAmountChanged?.Invoke(resourceName, Resources[resourceName]);
+        }
+
+        public bool IsEnough(List<ResourceCount> resourcesCounts)
+        {
+            foreach (ResourceCount resourceCount in resourcesCounts)
+            {
+                if (IsEnough(resourceCount))
+                {
+                    continue;
+                }
+
+                return false;
+            }
+            return true;
+        }
+
+        public bool IsEnough(ResourceCount resourceCount)
+        {
+            return IsEnough(resourceCount.Resource.ResourceName, resourceCount.Count);
         }
 
         public bool IsEnough(string resourceName, int amount)

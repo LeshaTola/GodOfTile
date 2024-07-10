@@ -13,7 +13,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI.Item
             IPointerExitHandler,
             IPointerMoveHandler
     {
-        public event Action onBuyButtonClicked;
+        public event Action<TileConfig> onBuyButtonClicked;
 
         [SerializeField]
         private Image image;
@@ -32,7 +32,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI.Item
             image.sprite = tileConfig.TileSprite;
 
             button.onClick.RemoveAllListeners();
-            button.onClick.AddListener(() => onBuyButtonClicked?.Invoke());
+            button.onClick.AddListener(() => onBuyButtonClicked?.Invoke(tileConfig));
         }
 
         public void OnPointerMove(PointerEventData eventData)

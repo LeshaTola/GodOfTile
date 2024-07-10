@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using Assets.App.Scripts.Scenes.Gameplay.Features.CraftSystem.Providers;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Configs;
+﻿using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Configs;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Factories;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Providers;
+using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services.Effects;
+using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services.Update;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Grid;
+using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Services.PlacementCostServices;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using Cysharp.Threading.Tasks;
 using Features.StateMachineCore;
-using Module.ObjectPool;
-using Module.ObjectPool.KeyPools;
 using TileSystem;
 using UnityEngine;
 
@@ -18,32 +15,32 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services
 {
     public class TilesCreationService : ITilesCreationService, ICleanupable
     {
-        public event Action OnTilePlaced;
-
         private IGridProvider gridProvider;
         private ITilesFactory tileFactory;
-        private IRecipeProvider recipeProvider;
         private IActiveTileProvider activeTileProvider;
-        private KeyPool<PooledParticle> keyPool;
+        private IPlacementCostService placementCostService;
+        private ITileCreationEffectsService effectsService;
+        private ITilesUpdateService updateService;
         private TilesCreationConfig config;
 
         private Tile activeTile;
-        private UniTask activeTask;
 
         public TilesCreationService(
             IGridProvider gridProvider,
             ITilesFactory tileFactory,
             IActiveTileProvider activeTileProvider,
-            IRecipeProvider recipeProvider,
-            KeyPool<PooledParticle> keyPool,
+            IPlacementCostService placementCostService,
+            ITileCreationEffectsService effectsService,
+            ITilesUpdateService updateService,
             TilesCreationConfig config
         )
         {
             this.gridProvider = gridProvider;
             this.tileFactory = tileFactory;
             this.activeTileProvider = activeTileProvider;
-            this.recipeProvider = recipeProvider;
-            this.keyPool = keyPool;
+            this.placementCostService = placementCostService;
+            this.effectsService = effectsService;
+            this.updateService = updateService;
             this.config = config;
 
             activeTileProvider.OnActiveTileChanged += OnActiveTileChanged;
@@ -77,7 +74,6 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services
                 return;
             }
 
-            PlayCreationVFX().Forget();
             for (int x = 0; x < activeTile.Config.Size.x; x++)
             {
                 for (int y = 0; y < activeTile.Config.Size.y; y++)
@@ -85,11 +81,15 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services
                     Vector2Int tileCoordinate =
                         new(activeTile.Position.x + x, activeTile.Position.y + y);
                     gridProvider.Grid[tileCoordinate.x, tileCoordinate.y] = activeTile;
-                    UpdateConnectedTiles(tileCoordinate);
+                    updateService.UpdateConnectedTiles(tileCoordinate);
                 }
             }
 
+            var tileBuffer = activeTile;
             activeTile = null;
+
+            PlayCreationVFX(tileBuffer).Forget();
+            placementCostService.ProcessPlacementCost(tileBuffer.Config);
         }
 
         public void FullFill()
@@ -136,57 +136,11 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services
             activeTileProvider.OnActiveTileChanged -= OnActiveTileChanged;
         }
 
-        private void UpdateConnectedTiles(Vector2Int tilePosition)
+        private async UniTask PlayCreationVFX(Tile tile)
         {
-            var neighbors = gridProvider.GetCoveringTiles(tilePosition);
-            neighbors.Add(tilePosition);
-
-            List<TileToUpdate> tilesForUpdate = new();
-            foreach (var position in neighbors)
-            {
-                if (!gridProvider.IsValid(position))
-                {
-                    continue;
-                }
-
-                var result = UpdateTile(position);
-                if (result != null)
-                {
-                    tilesForUpdate.Add(
-                        new TileToUpdate() { Position = position, NewConfig = result }
-                    );
-                }
-            }
-
-            foreach (var tile in tilesForUpdate)
-            {
-                Replace(tile.NewConfig, tile.Position);
-            }
-        }
-
-        private TileConfig UpdateTile(Vector2Int tilePosition)
-        {
-            var neighbors = gridProvider.GetCoveringTiles(tilePosition);
-
-            var allConfigs = new List<TileConfig>();
-            foreach (var neighbor in neighbors)
-            {
-                var tile = gridProvider.Grid[neighbor.x, neighbor.y];
-                if (tile != null)
-                    allConfigs.Add(tile.Config);
-            }
-
-            return recipeProvider.GetRecipe(
-                allConfigs,
-                gridProvider.Grid[tilePosition.x, tilePosition.y].Config
-            );
-        }
-
-        private void Replace(TileConfig newTileConfig, Vector2Int position)
-        {
-            var oldTile = gridProvider.Grid[position.x, position.y];
-            PlayParticle(config.UpdateParticleKey, oldTile.transform.position);
-            oldTile.Initialize(newTileConfig);
+            tile.Visual.SetState(TileState.Default);
+            effectsService.PlayParticle(config.CreationParticleKey, tile.transform.position);
+            await tile.Visual.PlayCreation();
         }
 
         private void ChangeState()
@@ -199,23 +153,6 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services
             {
                 activeTile.Visual.SetState(TileState.Wrong);
             }
-        }
-
-        private async UniTask PlayCreationVFX()
-        {
-            activeTile.Visual.SetState(TileState.Default);
-
-            PlayParticle(config.CreationParticleKey, activeTile.transform.position);
-
-            activeTask = activeTile.Visual.PlayCreation();
-            await activeTask;
-        }
-
-        private void PlayParticle(string key, Vector3 position)
-        {
-            var particle = keyPool.Get(key);
-            particle.transform.position = position;
-            particle.Particle.Play();
         }
 
         private void OnActiveTileChanged()

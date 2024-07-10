@@ -14,9 +14,9 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Commands.GoToGamePlayState
             this.stateMachine = stateMachine;
         }
 
-        public override void Execute()
+        public override async void Execute()
         {
-            stateMachine.ChangeState(StatesIds.GAMEPLAY_STATE);
+            await stateMachine.ChangeState(StatesIds.GAMEPLAY_STATE);
         }
     }
 }

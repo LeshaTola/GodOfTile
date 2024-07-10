@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.DTO;
 
 namespace Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Systems
 {
@@ -12,5 +13,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Systems
         void ChangeRecourseAmount(string resourceName, int amount);
         void InitializeResources();
         bool IsEnough(string resourceName, int amount);
+        bool IsEnough(List<ResourceCount> resourcesCounts);
+        bool IsEnough(ResourceCount resourceCount);
     }
 }
