@@ -1,5 +1,4 @@
-﻿using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.Configs;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.Factories.Cost;
+﻿using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.Factories.Cost;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.Factories.Item;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.Systems;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI.Cost;
@@ -11,9 +10,6 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Bootstrap.Shop
 {
     public class ShopInstaller : MonoInstaller
     {
-        [SerializeField]
-        private ShopConfig shopConfig;
-
         [SerializeField]
         private ShopItemUI shopItemUITemplate;
 
@@ -33,7 +29,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Bootstrap.Shop
                 .AsSingle()
                 .WithArguments(costUITemplate);
 
-            Container.Bind<IShopSystem>().To<ShopSystem>().AsSingle().WithArguments(shopConfig);
+            Container.Bind<IShopSystem>().To<ShopSystem>().AsSingle();
         }
     }
 }

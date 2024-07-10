@@ -6,10 +6,12 @@ using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services.Effects;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services.Update;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Services.PlacementCostServices;
+using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.Configs;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Animations;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Providers;
+using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Collection;
 using UnityEngine;
 using Zenject;
 
@@ -32,28 +34,55 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Bootstrap
         [SerializeField]
         private TilesDatabase tilesDatabase;
 
+        [SerializeField]
+        private CollectionConfig collectionConfig;
+
         public override void InstallBindings()
         {
             BindTilesFactory();
 
             BindCreationService();
+            BindPlacementCostService();
+            BindTileCreationEffectsProviders();
             BindRecipeProvider();
-            Container.Bind<IPlacementCostService>().To<PlacementCostService>().AsSingle();
-            Container
-                .Bind<ITileCreationEffectsService>()
-                .To<TileCreationEffectsService>()
-                .AsSingle();
+            BindTileUpdateService();
 
+            BindTileAnimator();
+
+            BindTileSelectionProvider();
+            BindTileCollectionProvider();
+            BindActiveTileProvider();
+        }
+
+        private void BindPlacementCostService()
+        {
+            Container.Bind<IPlacementCostService>().To<PlacementCostService>().AsSingle();
+        }
+
+        private void BindTileCreationEffectsProviders()
+        {
+            Container
+                .Bind<ITileCreationEffectsProvider>()
+                .To<TileCreationEffectsProvider>()
+                .AsSingle();
+        }
+
+        private void BindTileUpdateService()
+        {
             Container
                 .Bind<ITilesUpdateService>()
                 .To<TilesUpdateService>()
                 .AsSingle()
                 .WithArguments(tilesCreationConfig);
+        }
 
-            BindTileAnimator();
-
-            BindTileSelectionProvider();
-            BindActiveTileProvider();
+        private void BindTileCollectionProvider()
+        {
+            Container
+                .Bind<ITileCollectionProvider>()
+                .To<TileCollectionProvider>()
+                .AsSingle()
+                .WithArguments(collectionConfig);
         }
 
         private void BindActiveTileProvider()

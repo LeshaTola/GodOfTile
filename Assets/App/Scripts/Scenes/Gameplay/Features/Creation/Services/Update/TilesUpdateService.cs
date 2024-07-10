@@ -12,13 +12,13 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services.Update
     {
         private IGridProvider gridProvider;
         private IRecipeProvider recipeProvider;
-        private ITileCreationEffectsService effectsService;
+        private ITileCreationEffectsProvider effectsService;
         private TilesCreationConfig config;
 
         public TilesUpdateService(
             IGridProvider gridProvider,
             IRecipeProvider recipeProvider,
-            ITileCreationEffectsService effectsService,
+            ITileCreationEffectsProvider effectsService,
             TilesCreationConfig config
         )
         {

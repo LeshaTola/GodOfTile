@@ -19,7 +19,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services
         private ITilesFactory tileFactory;
         private IActiveTileProvider activeTileProvider;
         private IPlacementCostService placementCostService;
-        private ITileCreationEffectsService effectsService;
+        private ITileCreationEffectsProvider effectsService;
         private ITilesUpdateService updateService;
         private TilesCreationConfig config;
 
@@ -30,7 +30,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services
             ITilesFactory tileFactory,
             IActiveTileProvider activeTileProvider,
             IPlacementCostService placementCostService,
-            ITileCreationEffectsService effectsService,
+            ITileCreationEffectsProvider effectsService,
             ITilesUpdateService updateService,
             TilesCreationConfig config
         )

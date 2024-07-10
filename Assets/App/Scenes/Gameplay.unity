@@ -336,6 +336,7 @@ MonoBehaviour:
   tilesCreationConfig: {fileID: 11400000, guid: d124dc86d3c16ab42ac71fbd54480272,
     type: 2}
   tilesDatabase: {fileID: 11400000, guid: 7c3c0a8e8578a184586ed869e564fa10, type: 2}
+  collectionConfig: {fileID: 11400000, guid: e45c51dee4f6bf04fa04681a5a6bb83f, type: 2}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,8 +423,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.40439045, y: -0.34407705, z: 0.16750401, w: 0.83067554}
-  m_LocalPosition: {x: 53.535534, y: 6.380314, z: 46.464466}
+  m_LocalRotation: {x: 0.45341015, y: -0.33342844, z: 0.18780862, w: 0.80496746}
+  m_LocalPosition: {x: 53.535534, y: 8.25016, z: 46.464466}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1238,7 +1239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 6.380314, z: -5}
+  m_FollowOffset: {x: 0, y: 8.25016, z: -5}
   m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0
@@ -1330,7 +1331,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebc5d1933021ab745878399b7fafb4c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shopConfig: {fileID: 11400000, guid: e45c51dee4f6bf04fa04681a5a6bb83f, type: 2}
   shopItemUITemplate: {fileID: 672125819125563506, guid: 162df3c1097d08a4cbf86f16dfbba060,
     type: 3}
   costUITemplate: {fileID: 7286489232702602004, guid: 2ae645fab5d09a642b964755358ee33c,
@@ -1549,8 +1549,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2128820150}
-  m_LocalRotation: {x: 0.40439045, y: -0.34407705, z: 0.16750401, w: 0.83067554}
-  m_LocalPosition: {x: 53.535534, y: 6.380314, z: 46.464466}
+  m_LocalRotation: {x: 0.45341015, y: -0.33342844, z: 0.18780862, w: 0.80496746}
+  m_LocalPosition: {x: 53.535534, y: 8.25016, z: 46.464466}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

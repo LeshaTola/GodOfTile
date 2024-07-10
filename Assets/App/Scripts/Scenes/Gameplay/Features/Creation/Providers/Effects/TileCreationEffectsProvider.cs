@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services.Effects
 {
-    public class TileCreationEffectsService : ITileCreationEffectsService
+    public class TileCreationEffectsProvider : ITileCreationEffectsProvider
     {
         private KeyPool<PooledParticle> keyPool;
 
-        public TileCreationEffectsService(KeyPool<PooledParticle> keyPool)
+        public TileCreationEffectsProvider(KeyPool<PooledParticle> keyPool)
         {
             this.keyPool = keyPool;
         }

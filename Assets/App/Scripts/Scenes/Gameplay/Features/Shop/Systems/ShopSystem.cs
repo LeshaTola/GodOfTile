@@ -1,52 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Providers;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Systems;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.Configs;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
+using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Collection;
 
 namespace Assets.App.Scripts.Scenes.Gameplay.Features.Shop.Systems
 {
     public class ShopSystem : IShopSystem
     {
-        public event Action<TileConfig> OnNewTileAdd;
-
         private IInventorySystem inventorySystem;
         private IActiveTileProvider activeTileProvider;
-        private ShopConfig config;
+        private ITileCollectionProvider tileCollectionProvider;
 
-        private List<TileConfig> tilesToBuy = new();
-
-        public List<TileConfig> TilesToBuy
+        public List<TileConfig> AvailableTiles
         {
-            get => tilesToBuy;
+            get => tileCollectionProvider.Collection;
         }
 
         public ShopSystem(
             IInventorySystem inventorySystem,
             IActiveTileProvider activeTileProvider,
-            ShopConfig config
+            ITileCollectionProvider tileCollectionProvider
         )
         {
             this.inventorySystem = inventorySystem;
             this.activeTileProvider = activeTileProvider;
-            this.config = config;
 
-            Setup();
-        }
-
-        public void Setup()
-        {
-            foreach (var tile in config.StartTiles)
-            {
-                tilesToBuy.Add(tile);
-            }
-        }
-
-        public void AddTile(TileConfig tileConfig)
-        {
-            tilesToBuy.Add(tileConfig);
-            OnNewTileAdd?.Invoke(tileConfig);
+            this.tileCollectionProvider = tileCollectionProvider;
         }
 
         public bool IsEnough(TileConfig tileConfig)

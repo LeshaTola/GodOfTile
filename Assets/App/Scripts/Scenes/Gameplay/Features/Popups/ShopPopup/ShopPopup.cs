@@ -29,7 +29,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup
 
             this.viewModule = viewModule;
             informationWidget.Setup(viewModule.ItemInformationWidget);
-            var tilesToBuy = viewModule.ShopSystem.TilesToBuy;
+            var tilesToBuy = viewModule.ShopSystem.AvailableTiles;
             AddItems(tilesToBuy.Count);
 
             header.Init(viewModule.LocalizationSystem);
