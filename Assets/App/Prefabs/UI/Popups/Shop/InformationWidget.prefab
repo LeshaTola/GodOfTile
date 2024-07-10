@@ -160,7 +160,7 @@ GameObject:
   - component: {fileID: 4238636205191058381}
   - component: {fileID: 5891663070275076299}
   m_Layer: 6
-  m_Name: ItemInformation
+  m_Name: InformationWidget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -201,8 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   header: {fileID: 1060538898877187387}
   container: {fileID: 4648595217342466277}
-  defaultText: resources
-  noCostText: is free!
+  config: {fileID: 11400000, guid: 327d817602c48544689bebf2da280a34, type: 2}
 --- !u!1 &7578851270317833210
 GameObject:
   m_ObjectHideFlags: 0
