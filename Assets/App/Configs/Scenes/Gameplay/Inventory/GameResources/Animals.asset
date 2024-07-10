@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5219b72d92f61b4c9cafba506be44cf, type: 3}
   m_Name: Animals
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: f9cec30bab7a78f46a2fb48b15d5b70a, type: 3}
   resourceName: animal
-  startAmount: 0
+  startAmount: 15

@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Grid.Visualizators;
+using Assets.App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.Routers;
+using Cysharp.Threading.Tasks;
 using Features.StateMachineCore;
 using Features.StateMachineCore.States;
 
@@ -12,13 +14,15 @@ namespace Assets.App.Scripts.Scenes.Gameplay.StateMachines.States
         private IGameInput gameInput;
         private ITilesCreationService creationService;
         private IGridVisualizator gridVisualizator;
+        private IShopPopupRouter shopPopupRouter;
 
         public BuildState(
             string id,
             List<IUpdatable> updatables,
             IGameInput gameInput,
             ITilesCreationService creationService,
-            IGridVisualizator gridVisualizator
+            IGridVisualizator gridVisualizator,
+            IShopPopupRouter shopPopupRouter
         )
             : base(id)
         {
@@ -26,22 +30,24 @@ namespace Assets.App.Scripts.Scenes.Gameplay.StateMachines.States
             this.gameInput = gameInput;
             this.creationService = creationService;
             this.gridVisualizator = gridVisualizator;
+            this.shopPopupRouter = shopPopupRouter;
         }
 
-        public override void Enter()
+        public override async UniTask Enter()
         {
-            base.Enter();
+            await base.Enter();
 
             gameInput.OnBuild += OnBuild;
             gameInput.OnRotate += OnRotate;
 
             creationService.StartPlacingTile();
             gridVisualizator.ShowGrid();
+            await shopPopupRouter.ShowShopPopup();
         }
 
-        public override void Update()
+        public override async UniTask Update()
         {
-            base.Update();
+            await base.Update();
 
             foreach (var updatable in updatables)
             {
@@ -57,20 +63,21 @@ namespace Assets.App.Scripts.Scenes.Gameplay.StateMachines.States
             }
         }
 
-        public override void Exit()
+        public override async UniTask Exit()
         {
-            base.Exit();
+            await base.Exit();
 
             creationService.StopPlacingTile();
             gridVisualizator.HideGrid();
+            await shopPopupRouter.HideShopPopup();
 
             gameInput.OnBuild -= OnBuild;
             gameInput.OnRotate -= OnRotate;
         }
 
-        private void OnBuild()
+        private async void OnBuild()
         {
-            StateMachine.ChangeState(StatesIds.GAMEPLAY_STATE);
+            await StateMachine.ChangeState(StatesIds.GAMEPLAY_STATE);
         }
 
         private void OnRotate()

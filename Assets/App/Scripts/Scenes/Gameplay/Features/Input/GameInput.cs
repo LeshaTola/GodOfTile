@@ -2,6 +2,7 @@ using System;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Grid;
 using Features.StateMachineCore;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class GameInput : IGameInput, ICleanupable
@@ -9,11 +10,12 @@ public class GameInput : IGameInput, ICleanupable
     public event Action OnBuild;
     public event Action OnRotate;
 
-    private Input input;
     private Camera mainCamera;
     private IGridProvider gridProvider;
 
+    private Input input;
     private Plane ground;
+    private Vector2Int lastPosition;
 
     public GameInput(Camera mainCamera, IGridProvider gridProvider)
     {
@@ -48,24 +50,32 @@ public class GameInput : IGameInput, ICleanupable
 
     public bool IsMouseClicked()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return false;
+        }
+
         return Mouse.current.leftButton.wasPressedThisFrame;
     }
 
     public Vector2Int GetGridMousePosition()
     {
         Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
-        if (!ground.Raycast(ray, out float position))
+        if (
+            !ground.Raycast(ray, out float position)
+            || EventSystem.current.IsPointerOverGameObject()
+        )
         {
-            return default;
+            return lastPosition;
         }
 
         var worldPosition = ray.GetPoint(position);
-        Vector2Int gridPosition = new Vector2Int(
+        lastPosition = new Vector2Int(
             Mathf.RoundToInt(worldPosition.x),
             Mathf.RoundToInt(worldPosition.z)
         );
 
-        return gridPosition;
+        return lastPosition;
     }
 
     private void BuildButtonPerformed(InputAction.CallbackContext obj)

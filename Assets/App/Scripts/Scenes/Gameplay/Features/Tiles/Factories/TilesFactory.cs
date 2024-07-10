@@ -27,8 +27,13 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Factories
 
         public Tile GetTile(string id)
         {
+            return GetTile(database.Configs[id]);
+        }
+
+        public Tile GetTile(TileConfig tileConfig)
+        {
             Tile tile = diContainer.InstantiatePrefabForComponent<Tile>(tilePrefab, container);
-            TileConfig config = GameObject.Instantiate(database.Configs[id]);
+            TileConfig config = GameObject.Instantiate(tileConfig);
             tile.Initialize(config);
             return tile;
         }

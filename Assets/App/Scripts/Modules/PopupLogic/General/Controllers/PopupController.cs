@@ -79,7 +79,7 @@ namespace Module.PopupLogic.General.Controller
                 currentPopups.Last().Deactivate();
                 return;
             }
-            screenBlocker.gameObject.SetActive(true);
+            //screenBlocker.gameObject.SetActive(true);
         }
 
         private void ActivatePrevPopup()
