@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7948439979984447259}
   - component: {fileID: 1085044788096397971}
   - component: {fileID: 3641552866017051689}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Image Mask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 4645845729050534590}
   - component: {fileID: 4355175446222043835}
   - component: {fileID: 1837915338787598581}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 3795772654174623986}
   - component: {fileID: 7713519706597347886}
   - component: {fileID: 672125819125563506}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: ShopItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,7 +277,7 @@ GameObject:
   - component: {fileID: 7035470343680246930}
   - component: {fileID: 2368280595569509586}
   - component: {fileID: 9168276697967627080}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Backround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
