@@ -1,12 +1,12 @@
-﻿using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.Factories.Cost;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.Factories.Item;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.Systems;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI.Cost;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI.Item;
+﻿using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.InformationWidget.Cost;
+using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.Item;
+using App.Scripts.Scenes.Gameplay.Features.Shop.Factories.Cost;
+using App.Scripts.Scenes.Gameplay.Features.Shop.Factories.Item;
+using App.Scripts.Scenes.Gameplay.Features.Shop.Systems;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Bootstrap.Shop
+namespace App.Scripts.Scenes.Gameplay.Bootstrap.Shop
 {
     public class ShopInstaller : MonoInstaller
     {

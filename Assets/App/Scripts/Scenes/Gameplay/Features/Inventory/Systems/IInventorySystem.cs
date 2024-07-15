@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.DTO;
+using App.Scripts.Scenes.Gameplay.Features.Inventory.DTO;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Systems
+namespace App.Scripts.Scenes.Gameplay.Features.Inventory.Systems
 {
     public interface IInventorySystem
     {

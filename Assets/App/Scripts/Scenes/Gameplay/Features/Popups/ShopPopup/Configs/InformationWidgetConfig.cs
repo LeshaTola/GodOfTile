@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using App.Scripts.Scenes.Gameplay.Features.Popups.Configs;
+using UnityEngine;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.Configs
+namespace App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.Configs
 {
     [CreateAssetMenu(
         fileName = "InformationWidgetConfig",
@@ -17,17 +18,10 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.Configs
         [SerializeField]
         private string noCostText = "is free!";
 
-        public TextColorConfig TextColorConfig
-        {
-            get => textColorConfig;
-        }
-        public string DefaultText
-        {
-            get => defaultText;
-        }
-        public string NoCostText
-        {
-            get => noCostText;
-        }
+        public TextColorConfig TextColorConfig => textColorConfig;
+
+        public string DefaultText => defaultText;
+
+        public string NoCostText => noCostText;
     }
 }

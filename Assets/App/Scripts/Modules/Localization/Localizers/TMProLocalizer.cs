@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace Module.Localization.Localizers
+namespace App.Scripts.Modules.Localization.Localizers
 {
     public class TMProLocalizer : MonoBehaviour, ITextLocalizer
     {
@@ -18,6 +18,7 @@ namespace Module.Localization.Localizers
             get => key;
             set => key = value;
         }
+
         public TextMeshProUGUI Text
         {
             get => text;
@@ -43,7 +44,7 @@ namespace Module.Localization.Localizers
 
         public void Translate()
         {
-            string newText = localizationSystem.Translate(key);
+            var newText = localizationSystem.Translate(key);
             text.text = newText;
         }
 

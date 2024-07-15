@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Features.StateMachineCore.States;
-using Modules.StateMachineCore;
+﻿using System.Linq;
+using App.Scripts.Modules.StateMachine.States.General;
 using UnityEngine;
 using Zenject;
 
-namespace Features.StateMachineCore.Factories
+namespace App.Scripts.Modules.StateMachine.Factories.States
 {
     public class StatesFactory : IStatesFactory
     {
@@ -18,8 +16,8 @@ namespace Features.StateMachineCore.Factories
 
         public State GetState(string id)
         {
-            List<State> states = diContainer.ResolveAll<State>();
-            State state = states.FirstOrDefault(x => x.Id.Equals(id));
+            var states = diContainer.ResolveAll<State>();
+            var state = states.FirstOrDefault(x => x.Id.Equals(id));
             if (state != null)
             {
                 state.Initialize(diContainer.Resolve<StateMachine>());

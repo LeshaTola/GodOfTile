@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Configs;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.DTO;
+using App.Scripts.Scenes.Gameplay.Features.Inventory.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Inventory.DTO;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Systems
+namespace App.Scripts.Scenes.Gameplay.Features.Inventory.Systems
 {
     public class InventorySystem : IInventorySystem
     {
@@ -32,7 +32,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Systems
 
         public bool IsEnough(List<ResourceCount> resourcesCounts)
         {
-            foreach (ResourceCount resourceCount in resourcesCounts)
+            foreach (var resourceCount in resourcesCounts)
             {
                 if (IsEnough(resourceCount))
                 {
@@ -41,6 +41,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Systems
 
                 return false;
             }
+
             return true;
         }
 
@@ -61,7 +62,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Systems
 
         public void InitializeResources()
         {
-            Resources = new(resourcesDatabase.Resources.Count);
+            Resources = new Dictionary<string, int>(resourcesDatabase.Resources.Count);
 
             foreach (var resource in resourcesDatabase.Resources)
             {

@@ -1,34 +1,33 @@
-﻿using Module.ObjectPool;
-using Module.PopupLogic.Configs;
-using Module.PopupLogic.General.Popups;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using App.Scripts.Modules.ObjectPool.Pools;
+using App.Scripts.Modules.PopupLogic.Configs;
 using UnityEngine;
 
-namespace Module.PopupLogic.General.Providers
+namespace App.Scripts.Modules.PopupLogic.General.Providers
 {
-	public class PopupProvider : IPopupProvider
-	{
-		public Dictionary<Type, IPool<Popups.Popup>> PopupPoolsDictionary { get; private set; }
+    public class PopupProvider : IPopupProvider
+    {
+        public Dictionary<Type, IPool<Popup.Popup>> PopupPoolsDictionary { get; private set; }
 
-		private PopupDatabase popupDatabase;
-		private Transform container;
+        private PopupDatabase popupDatabase;
+        private Transform container;
 
-		public PopupProvider(PopupDatabase popupDatabase, Transform container)
-		{
-			this.popupDatabase = popupDatabase;
-			this.container = container;
-			Setup(popupDatabase);
-		}
+        public PopupProvider(PopupDatabase popupDatabase, Transform container)
+        {
+            this.popupDatabase = popupDatabase;
+            this.container = container;
+            Setup(popupDatabase);
+        }
 
-		private void Setup(PopupDatabase popupDatabase)
-		{
-			PopupPoolsDictionary = new();
-			foreach (var popup in popupDatabase.Popups)
-			{
-				var pool = new ObjectPool<Popup>(() => GameObject.Instantiate(popup, container), null, null, 0);
-				PopupPoolsDictionary.Add(popup.GetType(), pool);
-			}
-		}
-	}
+        private void Setup(PopupDatabase popupDatabase)
+        {
+            PopupPoolsDictionary = new Dictionary<Type, IPool<Popup.Popup>>();
+            foreach (var popup in popupDatabase.Popups)
+            {
+                var pool = new ObjectPool<Popup.Popup>(() => GameObject.Instantiate(popup, container), null, null, 0);
+                PopupPoolsDictionary.Add(popup.GetType(), pool);
+            }
+        }
+    }
 }

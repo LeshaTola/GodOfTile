@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
+using App.Scripts.Modules.StateMachine.Factories.States;
+using App.Scripts.Modules.StateMachine.States.General;
 using Cysharp.Threading.Tasks;
-using Features.StateMachineCore.Factories;
-using Features.StateMachineCore.States;
-using Features.StateMachineCore.States.General;
 
-namespace Modules.StateMachineCore
+namespace App.Scripts.Modules.StateMachine
 {
     public class StateMachine
     {
@@ -17,10 +16,7 @@ namespace Modules.StateMachineCore
             this.statesFactory = statesFactory;
         }
 
-        public State CurrentState
-        {
-            get => currentState;
-        }
+        public State CurrentState => currentState;
 
         public void AddState(State state)
         {

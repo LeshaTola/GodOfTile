@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles;
-using Features.StateMachineCore;
+using App.Scripts.Modules.StateMachine.Services.UpdateService;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.General;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Services
 {

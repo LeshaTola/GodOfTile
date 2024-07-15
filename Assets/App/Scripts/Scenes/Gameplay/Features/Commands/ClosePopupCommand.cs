@@ -1,7 +1,7 @@
-﻿using Assets.App.Scripts.Scenes.Gameplay.Features.Commands.General;
-using Module.PopupLogic.General.Controller;
+﻿using App.Scripts.Modules.PopupLogic.General.Controllers;
+using App.Scripts.Scenes.Gameplay.Features.Commands.General;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Commands
+namespace App.Scripts.Scenes.Gameplay.Features.Commands
 {
     public class ClosePopupCommand : LabeledCommand
     {

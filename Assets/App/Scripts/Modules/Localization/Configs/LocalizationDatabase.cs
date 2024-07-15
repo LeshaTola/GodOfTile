@@ -2,7 +2,7 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Module.Localization.Configs
+namespace App.Scripts.Modules.Localization.Configs
 {
     [CreateAssetMenu(fileName = "LocalizationDatabase", menuName = "Databases/Localization")]
     public class LocalizationDatabase : SerializedScriptableObject
@@ -11,9 +11,6 @@ namespace Module.Localization.Configs
         [SerializeField]
         private Dictionary<string, string> languages;
 
-        public Dictionary<string, string> Languages
-        {
-            get => languages;
-        }
+        public Dictionary<string, string> Languages => languages;
     }
 }

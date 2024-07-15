@@ -1,8 +1,7 @@
-﻿using Cysharp.Threading.Tasks;
-using Features.StateMachineCore.States;
-using Modules.StateMachineCore;
+﻿using App.Scripts.Modules.StateMachine.States.General;
+using Cysharp.Threading.Tasks;
 
-namespace Assets.App.Scripts.StateMachines.States
+namespace App.Scripts.Features.StateMachines.States
 {
     public class GlobalInitialState : State
     {
@@ -11,7 +10,9 @@ namespace Assets.App.Scripts.StateMachines.States
         private static bool isValid = true;
 
         public GlobalInitialState(string id)
-            : base(id) { }
+            : base(id)
+        {
+        }
 
         public override async UniTask Enter()
         {

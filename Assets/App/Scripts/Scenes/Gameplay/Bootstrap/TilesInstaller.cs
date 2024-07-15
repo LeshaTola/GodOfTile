@@ -1,23 +1,23 @@
-﻿using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Factories;
+﻿using App.Scripts.Scenes.Gameplay.Features.CraftSystem.Providers;
+using App.Scripts.Scenes.Gameplay.Features.Shop.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Animations;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Providers;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Providers.Effects;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.PlacementCost;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCreation;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.Update;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.Tiles;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.General;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Collection;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Selection;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Factories;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Services;
-using Assets.App.Scripts.Scenes.Gameplay.Features.CraftSystem.Providers;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Configs;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Factories;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Providers;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services.Effects;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services.Update;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Services.PlacementCostServices;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.Configs;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Animations;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Providers;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Collection;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Bootstrap
+namespace App.Scripts.Scenes.Gameplay.Bootstrap
 {
     public class TilesInstaller : MonoInstaller
     {

@@ -1,7 +1,6 @@
-﻿using Assets.App.Scripts.Features.Popups.Buttons;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Features.Popups.Languages
+namespace App.Scripts.Features.Popups.Buttons.Factories
 {
     public class ButtonsFactory : IButtonsFactory
     {

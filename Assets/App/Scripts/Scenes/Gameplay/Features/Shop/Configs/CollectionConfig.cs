@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using UnityEngine;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Shop.Configs
+namespace App.Scripts.Scenes.Gameplay.Features.Shop.Configs
 {
     [CreateAssetMenu(fileName = "CollectionConfig", menuName = "Configs/Collection")]
     public class CollectionConfig : ScriptableObject

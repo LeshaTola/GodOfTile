@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.Configs
+namespace App.Scripts.Scenes.Gameplay.Features.Popups.Configs
 {
     [CreateAssetMenu(fileName = "TextColorConfig", menuName = "Configs/Text/Color")]
     public class TextColorConfig : ScriptableObject
@@ -14,17 +14,9 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.Configs
         [SerializeField]
         private Color defaultColor = Color.white;
 
-        public Color CorrectColor
-        {
-            get => correctColor;
-        }
-        public Color WrongColor
-        {
-            get => wrongColor;
-        }
-        public Color DefaultColor
-        {
-            get => defaultColor;
-        }
+        public Color CorrectColor => correctColor;
+        public Color WrongColor => wrongColor;
+
+        public Color DefaultColor => defaultColor;
     }
 }

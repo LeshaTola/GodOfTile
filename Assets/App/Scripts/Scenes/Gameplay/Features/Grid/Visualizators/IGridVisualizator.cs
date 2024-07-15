@@ -1,4 +1,4 @@
-﻿namespace Assets.App.Scripts.Scenes.Gameplay.Features.Grid.Visualizators
+﻿namespace App.Scripts.Scenes.Gameplay.Features.Grid.Visualizators
 {
     public interface IGridVisualizator
     {

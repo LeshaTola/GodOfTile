@@ -1,4 +1,4 @@
-﻿namespace Features.StateMachineCore
+﻿namespace App.Scripts.Modules.StateMachine.Services.CleanupService
 {
     public interface ICleanupable
     {

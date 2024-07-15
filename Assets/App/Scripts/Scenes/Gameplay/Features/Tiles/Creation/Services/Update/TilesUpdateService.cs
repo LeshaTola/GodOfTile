@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
+using App.Scripts.Scenes.Gameplay.Features.CraftSystem.Providers;
+using App.Scripts.Scenes.Gameplay.Features.Grid;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Providers.Effects;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Factories;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Services;
-using Assets.App.Scripts.Scenes.Gameplay.Features.CraftSystem.Providers;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Configs;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services.Effects;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Grid;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using UnityEngine;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services.Update
+namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.Update
 {
     public class TilesUpdateService : ITilesUpdateService
     {

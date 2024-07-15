@@ -1,10 +1,10 @@
-﻿using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Factories;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
+﻿using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.General;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Factories;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Factories
+namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.Tiles
 {
     public class TilesFactory : ITilesFactory
     {
@@ -39,7 +39,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Factories
             var tile = diContainer.InstantiatePrefabForComponent<Tile>(tilePrefab, container);
             var config = Object.Instantiate(tileConfig);
             var systems = systemsFactory.GetSystems(config.Systems);
-            tile.Initialize(config,systems);
+            tile.Initialize(config, systems);
             return tile;
         }
     }

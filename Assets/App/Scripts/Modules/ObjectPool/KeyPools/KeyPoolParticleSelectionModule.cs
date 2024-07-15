@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using App.Scripts.Modules.ObjectPool.KeyPools.Configs;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Module.ObjectPool.KeyPools
+namespace App.Scripts.Modules.ObjectPool.KeyPools
 {
     [Serializable]
     public class KeyPoolParticleSelectionModule
@@ -16,10 +17,7 @@ namespace Module.ObjectPool.KeyPools
         [ValueDropdown(nameof(GetParticleKeys))]
         private List<string> particleKeys;
 
-        public List<string> ParticleKeys
-        {
-            get => particleKeys;
-        }
+        public List<string> ParticleKeys => particleKeys;
 
         public IEnumerable<string> GetParticleKeys()
         {

@@ -1,8 +1,8 @@
-﻿namespace Module.Localization.Localizers
+﻿namespace App.Scripts.Modules.Localization.Localizers
 {
-	public interface ITextLocalizer
-	{
-		public void Init(ILocalizationSystem localizationSystem);
-		public void Translate();
-	}
+    public interface ITextLocalizer
+    {
+        public void Init(ILocalizationSystem localizationSystem);
+        public void Translate();
+    }
 }

@@ -1,8 +1,8 @@
-﻿using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Providers;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Systems;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
+﻿using App.Scripts.Scenes.Gameplay.Features.Inventory.Systems;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Providers;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Services.PlacementCostServices
+namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.PlacementCost
 {
     public class PlacementCostService : IPlacementCostService
     {

@@ -1,8 +1,8 @@
-﻿using Assets.App.Scripts.Scenes.Gameplay.Features.Commands.General;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Commands.GoToGamePlayStateCommands;
+﻿using App.Scripts.Scenes.Gameplay.Features.Commands.General;
+using App.Scripts.Scenes.Gameplay.Features.Commands.GoToGamePlayStateCommands;
 using Zenject;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Bootstrap
+namespace App.Scripts.Scenes.Gameplay.Bootstrap
 {
     public class CommandInstaller : Installer<CommandInstaller>
     {

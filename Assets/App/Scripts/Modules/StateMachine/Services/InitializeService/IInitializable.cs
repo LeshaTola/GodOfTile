@@ -1,4 +1,4 @@
-﻿namespace Modules.StateMachine.Services.InitializeService
+﻿namespace App.Scripts.Modules.StateMachine.Services.InitializeService
 {
     public interface IInitializable
     {

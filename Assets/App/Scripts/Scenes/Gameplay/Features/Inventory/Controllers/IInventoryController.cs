@@ -1,4 +1,6 @@
-﻿namespace Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Controllers
+﻿namespace App.Scripts.Scenes.Gameplay.Features.Inventory.Controllers
 {
-    public interface IInventoryController { }
+    public interface IInventoryController
+    {
+    }
 }

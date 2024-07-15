@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using App.Scripts.Scenes.Gameplay.Features.Inventory.UI.Resource;
 using UnityEngine;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.UI
+namespace App.Scripts.Scenes.Gameplay.Features.Inventory.UI.Inventory
 {
     public class InventoryUI : MonoBehaviour, IInventoryUI
     {

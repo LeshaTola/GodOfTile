@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Grid.Configs;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles;
+using App.Scripts.Scenes.Gameplay.Features.Grid.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.General;
 using UnityEngine;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Grid
+namespace App.Scripts.Scenes.Gameplay.Features.Grid
 {
     public class GridProvider : IGridProvider
     {
@@ -13,15 +13,15 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Grid
             Grid = new Tile[GridSize.x, GridSize.y];
         }
 
-        public Vector2Int GridSize { get; private set; }
-        public Tile[,] Grid { get; private set; }
+        public Vector2Int GridSize { get; }
+        public Tile[,] Grid { get; }
 
         public List<Vector2Int> GetCoveringTiles(Vector2Int tile)
         {
             var neighbors = new List<Vector2Int>();
-            for (int x = tile.x - 1; x <= tile.x + 1; x++)
+            for (var x = tile.x - 1; x <= tile.x + 1; x++)
             {
-                for (int y = tile.y - 1; y <= tile.y + 1; y++)
+                for (var y = tile.y - 1; y <= tile.y + 1; y++)
                 {
                     if (!IsInsideGrid(x, y) || x == tile.x && y == tile.y)
                     {
@@ -31,6 +31,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Grid
                     neighbors.Add(new Vector2Int(x, y));
                 }
             }
+
             return neighbors;
         }
 
@@ -51,9 +52,9 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Grid
                 return false;
             }
 
-            for (int x = tile.Position.x; x < tile.Position.x + tile.Config.Size.x; x++)
+            for (var x = tile.Position.x; x < tile.Position.x + tile.Config.Size.x; x++)
             {
-                for (int y = tile.Position.y; y < tile.Position.y + tile.Config.Size.y; y++)
+                for (var y = tile.Position.y; y < tile.Position.y + tile.Config.Size.y; y++)
                 {
                     if (Grid[x, y] != null)
                     {
@@ -67,9 +68,9 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Grid
 
         public bool IsInsideGrid(Tile tile)
         {
-            for (int x = tile.Position.x; x < tile.Position.x + tile.Config.Size.x; x++)
+            for (var x = tile.Position.x; x < tile.Position.x + tile.Config.Size.x; x++)
             {
-                for (int y = tile.Position.y; y < tile.Position.y + tile.Config.Size.y; y++)
+                for (var y = tile.Position.y; y < tile.Position.y + tile.Config.Size.y; y++)
                 {
                     if (!IsInsideGrid(x, y))
                     {
@@ -89,9 +90,9 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Grid
         private bool IsInsideGrid(Vector2Int position)
         {
             return GridSize.x > position.x
-                && GridSize.y > position.y
-                && position.x >= 0
-                && position.y >= 0;
+                   && GridSize.y > position.y
+                   && position.x >= 0
+                   && position.y >= 0;
         }
     }
 }

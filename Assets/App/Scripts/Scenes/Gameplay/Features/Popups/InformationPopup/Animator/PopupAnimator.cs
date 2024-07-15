@@ -1,9 +1,14 @@
 ﻿using System;
+using App.Scripts.Modules.PopupLogic.Animations.Animator;
 
-namespace Assets.App.Scripts.Features.Popups.InformationPopup.Animator
+namespace App.Scripts.Scenes.Gameplay.Features.Popups.InformationPopup.Animator
 {
-	[Serializable]
-	public class InformationPopupAnimationConfig : PopupAnimationConfig { }
+    [Serializable]
+    public class InformationPopupAnimationConfig : PopupAnimationConfig
+    {
+    }
 
-	public class InformationPopupAnimator : PopupAnimator { }
+    public class InformationPopupAnimator : PopupAnimator
+    {
+    }
 }

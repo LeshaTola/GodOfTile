@@ -1,7 +1,7 @@
 ﻿using System;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Inventory.Configs;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.DTO
+namespace App.Scripts.Scenes.Gameplay.Features.Inventory.DTO
 {
     [Serializable]
     public class ResourceCount

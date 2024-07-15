@@ -1,53 +1,54 @@
-﻿using UnityEngine;
+﻿using App.Scripts.Modules.ObjectPool.Pools;
+using UnityEngine;
 
-namespace Module.ObjectPool
+namespace App.Scripts.Modules.ObjectPool.PooledObjects
 {
-	public class PooledParticle : MonoBehaviour, IPooledObject<PooledParticle>
-	{
-		[SerializeField] private ParticleSystem particle;
+    public class PooledParticle : MonoBehaviour, IPooledObject<PooledParticle>
+    {
+        [SerializeField] private ParticleSystem particle;
 
-		private IPool<PooledParticle> pool;
+        private IPool<PooledParticle> pool;
 
-		public ParticleSystem Particle { get => particle; }
-		public float SizeMultiplier { get; private set; } = 1;
-		private ParticleSystem.MainModule ParticleMain => particle.main;
+        public ParticleSystem Particle => particle;
+        public float SizeMultiplier { get; private set; } = 1;
+        private ParticleSystem.MainModule ParticleMain => particle.main;
 
-		private void OnParticleSystemStopped()
-		{
-			Release();
-		}
+        private void OnParticleSystemStopped()
+        {
+            Release();
+        }
 
-		public void ChangeColor(Color color)
-		{
-			var reserveMain = ParticleMain;
-			reserveMain.startColor = color;
-		}
+        public void ChangeColor(Color color)
+        {
+            var reserveMain = ParticleMain;
+            reserveMain.startColor = color;
+        }
 
-		public void Resize(float multiplier)
-		{
-			SizeMultiplier = multiplier;
-			transform.localScale *= SizeMultiplier;
-		}
+        public void Resize(float multiplier)
+        {
+            SizeMultiplier = multiplier;
+            transform.localScale *= SizeMultiplier;
+        }
 
-		public void OnGet(IPool<PooledParticle> pool)
-		{
-			this.pool = pool;
-		}
+        public void OnGet(IPool<PooledParticle> pool)
+        {
+            this.pool = pool;
+        }
 
-		public void OnRelease()
-		{
-		}
+        public void OnRelease()
+        {
+        }
 
-		public void Release()
-		{
-			if (pool != null)
-			{
-				Resize(1 / SizeMultiplier);
-				pool.Release(this);
-				return;
-			}
+        public void Release()
+        {
+            if (pool != null)
+            {
+                Resize(1 / SizeMultiplier);
+                pool.Release(this);
+                return;
+            }
 
-			Destroy(gameObject);
-		}
-	}
+            Destroy(gameObject);
+        }
+    }
 }

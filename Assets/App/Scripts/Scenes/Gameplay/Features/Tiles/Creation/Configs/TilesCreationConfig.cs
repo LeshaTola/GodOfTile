@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Module.ObjectPool.KeyPools;
+using App.Scripts.Modules.ObjectPool.KeyPools.Configs;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Configs
+namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Configs
 {
     [CreateAssetMenu(fileName = "TileCreationConfig", menuName = "Configs/Tiles/Creation")]
     public class TilesCreationConfig : ScriptableObject
@@ -26,18 +26,10 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Configs
         [ValueDropdown(nameof(GetParticleKeys))]
         private string updateParticleKey;
 
-        public string DestroyParticleKey
-        {
-            get => destroyParticleKey;
-        }
-        public string UpdateParticleKey
-        {
-            get => updateParticleKey;
-        }
-        public string CreationParticleKey
-        {
-            get => creationParticleKey;
-        }
+        public string DestroyParticleKey => destroyParticleKey;
+        public string UpdateParticleKey => updateParticleKey;
+
+        public string CreationParticleKey => creationParticleKey;
 
         public IEnumerable<string> GetParticleKeys()
         {

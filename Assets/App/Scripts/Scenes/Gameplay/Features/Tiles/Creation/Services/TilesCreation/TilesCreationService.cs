@@ -1,18 +1,17 @@
-﻿using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Services;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Configs;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Factories;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Providers;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services.Effects;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services.Update;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Grid;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Services.PlacementCostServices;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles;
+﻿using App.Scripts.Modules.StateMachine.Services.CleanupService;
+using App.Scripts.Scenes.Gameplay.Features.Grid;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Providers;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Providers.Effects;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.PlacementCost;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.Update;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.Tiles;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.General;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Services;
 using Cysharp.Threading.Tasks;
-using Features.StateMachineCore;
-using TileSystem;
 using UnityEngine;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services
+namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCreation
 {
     public class TilesCreationService : ITilesCreationService, ICleanupable
     {

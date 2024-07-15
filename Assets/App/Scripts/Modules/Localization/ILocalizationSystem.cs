@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Module.Localization
+namespace App.Scripts.Modules.Localization
 {
-	public interface ILocalizationSystem
-	{
-		event Action OnLanguageChanged;
+    public interface ILocalizationSystem
+    {
+        event Action OnLanguageChanged;
 
-		string Language { get; }
+        string Language { get; }
 
-		void ChangeLanguage(string languageKey);
-		IEnumerable<string> GetLanguages();
-		string Translate(string key);
-	}
+        void ChangeLanguage(string languageKey);
+        IEnumerable<string> GetLanguages();
+        string Translate(string key);
+    }
 }

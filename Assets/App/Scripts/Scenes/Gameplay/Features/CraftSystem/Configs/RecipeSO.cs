@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.General;
 using UnityEngine;
 
-namespace CraftingSystem
+namespace App.Scripts.Scenes.Gameplay.Features.CraftSystem.Configs
 {
     [CreateAssetMenu(fileName = "Recipe", menuName = "Configs/CraftingSystem/Recipe")]
     internal class RecipeSO : ScriptableObject

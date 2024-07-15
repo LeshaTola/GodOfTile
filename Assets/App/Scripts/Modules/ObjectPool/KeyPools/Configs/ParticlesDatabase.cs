@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using App.Scripts.Modules.ObjectPool.PooledObjects;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Module.ObjectPool.KeyPools
+namespace App.Scripts.Modules.ObjectPool.KeyPools.Configs
 {
     [CreateAssetMenu(fileName = "ParticlesDatabase", menuName = "Databases/Particles")]
     public class ParticlesDatabase : SerializedScriptableObject
@@ -10,10 +11,7 @@ namespace Module.ObjectPool.KeyPools
         [SerializeField]
         Dictionary<string, PoolObject<PooledParticle>> particles;
 
-        public Dictionary<string, PoolObject<PooledParticle>> Particles
-        {
-            get => particles;
-        }
+        public Dictionary<string, PoolObject<PooledParticle>> Particles => particles;
 
         public IEnumerable<string> GetKeys()
         {
@@ -21,6 +19,7 @@ namespace Module.ObjectPool.KeyPools
             {
                 return null;
             }
+
             return new List<string>(particles.Keys);
         }
     }

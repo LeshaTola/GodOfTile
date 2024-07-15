@@ -1,11 +1,11 @@
-﻿using Assets.App.Scripts.Features.Popups.InformationPopup.ViewModels;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Commands.General;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
+﻿using App.Scripts.Modules.Localization;
+using App.Scripts.Modules.PopupLogic.General.Controllers;
+using App.Scripts.Scenes.Gameplay.Features.Commands.General;
+using App.Scripts.Scenes.Gameplay.Features.Popups.InformationPopup.ViewModels;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using Cysharp.Threading.Tasks;
-using Module.Localization;
-using Module.PopupLogic.General.Controller;
 
-namespace Assets.App.Scripts.Features.Popups.InformationPopup.Routers
+namespace App.Scripts.Scenes.Gameplay.Features.Popups.InformationPopup.Routers
 {
     public class InformationPopupRouter : IInformationPopupRouter
     {

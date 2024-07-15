@@ -1,8 +1,8 @@
-﻿using Assets.App.Scripts.Scenes.Gameplay.Features.Commands.General;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
-using Module.Localization;
+﻿using App.Scripts.Modules.Localization;
+using App.Scripts.Scenes.Gameplay.Features.Commands.General;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 
-namespace Assets.App.Scripts.Features.Popups.InformationPopup.ViewModels
+namespace App.Scripts.Scenes.Gameplay.Features.Popups.InformationPopup.ViewModels
 {
     public interface IInformationViewModule
     {

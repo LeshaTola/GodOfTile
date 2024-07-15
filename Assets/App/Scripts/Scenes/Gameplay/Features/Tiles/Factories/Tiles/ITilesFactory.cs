@@ -1,7 +1,7 @@
-﻿using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
+﻿using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.General;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Factories
+namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.Tiles
 {
     public interface ITilesFactory
     {

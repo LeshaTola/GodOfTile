@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services.Effects
+namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Providers.Effects
 {
     public interface ITileCreationEffectsProvider
     {

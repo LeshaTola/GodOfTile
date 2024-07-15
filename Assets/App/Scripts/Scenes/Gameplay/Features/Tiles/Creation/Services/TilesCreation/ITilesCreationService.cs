@@ -1,7 +1,7 @@
 ﻿using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services
+namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCreation
 {
     public interface ITilesCreationService
     {

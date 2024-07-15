@@ -1,13 +1,16 @@
 ﻿using System;
 using UnityEngine;
 
-public interface IGameInput
+namespace App.Scripts.Scenes.Gameplay.Features.Input
 {
-    event Action OnBuild;
-    event Action OnRotate;
+    public interface IGameInput
+    {
+        event Action OnBuild;
+        event Action OnRotate;
 
-    Vector2Int GetGridMousePosition();
-    float GetRotationValueNormalized();
-    Vector2 GetMoveVectorNormalized();
-    bool IsMouseClicked();
+        Vector2Int GetGridMousePosition();
+        float GetRotationValueNormalized();
+        Vector2 GetMoveVectorNormalized();
+        bool IsMouseClicked();
+    }
 }

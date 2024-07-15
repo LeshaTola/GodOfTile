@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Grid.Visualizators;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.Routers;
+using App.Scripts.Modules.StateMachine.Services.UpdateService;
+using App.Scripts.Scenes.Gameplay.Features.Grid.Visualizators;
+using App.Scripts.Scenes.Gameplay.Features.Input;
+using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.Routers;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCreation;
 using Cysharp.Threading.Tasks;
-using Features.StateMachineCore;
-using Features.StateMachineCore.States;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.StateMachines.States
+namespace App.Scripts.Scenes.Gameplay.StateMachines.State
 {
-    public class BuildState : State
+    public class BuildState : Modules.StateMachine.States.General.State
     {
         private List<IUpdatable> updatables;
         private IGameInput gameInput;

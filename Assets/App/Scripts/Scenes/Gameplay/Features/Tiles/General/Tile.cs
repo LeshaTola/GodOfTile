@@ -1,9 +1,9 @@
 using System.Collections.Generic;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using UnityEngine;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Tiles
+namespace App.Scripts.Scenes.Gameplay.Features.Tiles.General
 {
     public class Tile : MonoBehaviour
     {

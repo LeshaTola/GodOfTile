@@ -1,4 +1,6 @@
-﻿namespace Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.UI
+﻿using App.Scripts.Scenes.Gameplay.Features.Inventory.UI.Resource;
+
+namespace App.Scripts.Scenes.Gameplay.Features.Inventory.UI.Inventory
 {
     public interface IInventoryUI
     {

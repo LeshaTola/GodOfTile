@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
-using CraftingSystem;
+using App.Scripts.Scenes.Gameplay.Features.CraftSystem.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using UnityEngine;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.CraftSystem.Providers
+namespace App.Scripts.Scenes.Gameplay.Features.CraftSystem.Providers
 {
     public class RecipeProvider : IRecipeProvider
     {

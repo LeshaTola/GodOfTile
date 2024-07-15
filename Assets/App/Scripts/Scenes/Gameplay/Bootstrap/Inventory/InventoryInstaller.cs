@@ -1,12 +1,13 @@
-﻿using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Configs;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Controllers;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Factories;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Systems;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.UI;
+﻿using App.Scripts.Scenes.Gameplay.Features.Inventory.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Inventory.Controllers;
+using App.Scripts.Scenes.Gameplay.Features.Inventory.Factories;
+using App.Scripts.Scenes.Gameplay.Features.Inventory.Systems;
+using App.Scripts.Scenes.Gameplay.Features.Inventory.UI.Inventory;
+using App.Scripts.Scenes.Gameplay.Features.Inventory.UI.Resource;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Bootstrap
+namespace App.Scripts.Scenes.Gameplay.Bootstrap.Inventory
 {
     public class InventoryInstaller : MonoInstaller
     {

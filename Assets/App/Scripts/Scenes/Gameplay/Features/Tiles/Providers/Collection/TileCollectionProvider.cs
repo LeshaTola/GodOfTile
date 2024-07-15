@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.Configs;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Shop.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Collection
+namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Collection
 {
     public class TileCollectionProvider : ITileCollectionProvider
     {

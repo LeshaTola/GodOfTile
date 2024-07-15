@@ -1,6 +1,4 @@
-﻿using Assets.App.Scripts.Features.Popups.Buttons;
-
-namespace Features.Popups.Languages
+﻿namespace App.Scripts.Features.Popups.Buttons.Factories
 {
     public interface IButtonsFactory
     {

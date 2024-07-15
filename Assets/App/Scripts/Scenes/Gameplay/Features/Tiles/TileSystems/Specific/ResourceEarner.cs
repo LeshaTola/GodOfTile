@@ -1,21 +1,22 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Configs;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Systems;
+using App.Scripts.Scenes.Gameplay.Features.Inventory.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Inventory.Systems;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific
 {
     [Serializable]
-    public class ResourceEarnerSystemData:TileSystemData
+    public class ResourceEarnerSystemData : TileSystemData
     {
-
         [SerializeField] private ResourcesDatabase resourcesDatabase;
+
         [SerializeField]
         [ValueDropdown(nameof(GetResources))]
         private string resource;
+
         [SerializeField] private int amount;
         [SerializeField] private int cooldown;
 
@@ -33,7 +34,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific
             return resourcesDatabase.Resources.Select(x => x.ResourceName);
         }
     }
-    
+
     public class ResourceEarner : TileSystem
     {
         [SerializeField] private ResourceEarnerSystemData data;
@@ -42,7 +43,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific
 
         private IInventorySystem inventorySystem;
 
-        public ResourceEarner(IInventorySystem inventorySystem,ResourceEarnerSystemData data)
+        public ResourceEarner(IInventorySystem inventorySystem, ResourceEarnerSystemData data)
         {
             this.inventorySystem = inventorySystem;
             this.data = data;

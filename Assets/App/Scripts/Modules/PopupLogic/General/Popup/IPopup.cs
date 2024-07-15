@@ -1,8 +1,8 @@
-using Assets.App.Scripts.Features.Popups.InformationPopup.Animator;
+using App.Scripts.Modules.PopupLogic.Animations.Animator;
+using App.Scripts.Modules.PopupLogic.General.Controllers;
 using Cysharp.Threading.Tasks;
-using Module.PopupLogic.General.Controller;
 
-namespace Module.PopupLogic.General.Popups
+namespace App.Scripts.Modules.PopupLogic.General.Popup
 {
     public interface IPopup
     {

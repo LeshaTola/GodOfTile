@@ -1,6 +1,6 @@
-﻿using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.UI;
+﻿using App.Scripts.Scenes.Gameplay.Features.Inventory.UI.Resource;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Factories
+namespace App.Scripts.Scenes.Gameplay.Features.Inventory.Factories
 {
     public interface IResourceUIFactory
     {

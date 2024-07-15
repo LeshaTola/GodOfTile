@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI.Cost
+namespace App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.InformationWidget.Cost
 {
     public class CostUI : MonoBehaviour
     {

@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.DTO;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs.Plate;
+using App.Scripts.Scenes.Gameplay.Features.Inventory.DTO;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs.Plate;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs
+namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Configs
 {
     [CreateAssetMenu(fileName = "TileConfig", menuName = "Configs/Tiles/Tile")]
     public class TileConfig : SerializedScriptableObject

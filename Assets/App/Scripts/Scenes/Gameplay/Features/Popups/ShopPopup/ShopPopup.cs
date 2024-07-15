@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI.Information;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI.Item;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
-using Module.Localization.Localizers;
-using Module.PopupLogic.General.Popups;
+using App.Scripts.Modules.Localization.Localizers;
+using App.Scripts.Modules.PopupLogic.General.Popup;
+using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.InformationWidget;
+using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.Item;
+using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.ViewModels;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using UnityEngine;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup
+namespace App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup
 {
     public class ShopPopup : Popup
     {

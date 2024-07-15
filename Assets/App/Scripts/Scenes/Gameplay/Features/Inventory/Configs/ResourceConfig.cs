@@ -1,7 +1,7 @@
 ﻿using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Configs
+namespace App.Scripts.Scenes.Gameplay.Features.Inventory.Configs
 {
     [CreateAssetMenu(fileName = "ResourceConfig", menuName = "Configs/Resource")]
     public class ResourceConfig : ScriptableObject
@@ -17,17 +17,9 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Configs
         [SerializeField]
         private int startAmount;
 
-        public Sprite Sprite
-        {
-            get => sprite;
-        }
-        public string ResourceName
-        {
-            get => resourceName;
-        }
-        public int StartAmount
-        {
-            get => startAmount;
-        }
+        public Sprite Sprite => sprite;
+        public string ResourceName => resourceName;
+
+        public int StartAmount => startAmount;
     }
 }

@@ -1,8 +1,8 @@
-﻿namespace Assets.App.Scripts.Scenes.Gameplay.Features.Commands.General
+﻿namespace App.Scripts.Scenes.Gameplay.Features.Commands.General
 {
     public abstract class LabeledCommand : ILabeledCommand
     {
-        public string Label { get; private set; }
+        public string Label { get; }
 
         public LabeledCommand(string label)
         {

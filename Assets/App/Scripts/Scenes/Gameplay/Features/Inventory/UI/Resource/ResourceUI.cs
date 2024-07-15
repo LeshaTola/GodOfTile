@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.UI
+namespace App.Scripts.Scenes.Gameplay.Features.Inventory.UI.Resource
 {
     public class ResourceUI : MonoBehaviour, IResourceUI
     {

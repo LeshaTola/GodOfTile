@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Providers;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Systems;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Collection;
+using App.Scripts.Scenes.Gameplay.Features.Inventory.Systems;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Providers;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Collection;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Shop.Systems
+namespace App.Scripts.Scenes.Gameplay.Features.Shop.Systems
 {
     public class ShopSystem : IShopSystem
     {

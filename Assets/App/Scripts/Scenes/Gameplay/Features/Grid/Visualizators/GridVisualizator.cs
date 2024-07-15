@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Grid.Visualizators
+namespace App.Scripts.Scenes.Gameplay.Features.Grid.Visualizators
 {
-	public class GridVisualizator : IGridVisualizator
+    public class GridVisualizator : IGridVisualizator
     {
         private GameObject grid;
 

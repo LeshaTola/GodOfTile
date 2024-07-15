@@ -1,6 +1,6 @@
-﻿using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI.Item;
+﻿using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.Item;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Shop.Factories.Item
+namespace App.Scripts.Scenes.Gameplay.Features.Shop.Factories.Item
 {
     public interface IItemFactory
     {

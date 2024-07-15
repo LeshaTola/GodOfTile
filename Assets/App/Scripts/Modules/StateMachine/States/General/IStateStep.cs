@@ -1,7 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
-using Modules.StateMachineCore;
 
-namespace Features.StateMachineCore.States.General
+namespace App.Scripts.Modules.StateMachine.States.General
 {
     public interface IStateStep
     {

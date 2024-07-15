@@ -1,7 +1,7 @@
 ﻿using System;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Providers
+namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Providers
 {
     public class ActiveTileProvider : IActiveTileProvider
     {

@@ -1,12 +1,12 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Module.ObjectPool.KeyPools
+namespace App.Scripts.Modules.ObjectPool.PooledObjects
 {
-	[Serializable]
-	public struct PoolObject<T> where T : MonoBehaviour
-	{
-		public int PreloadCount;
-		[SerializeField] public T Template;
-	}
+    [Serializable]
+    public struct PoolObject<T> where T : MonoBehaviour
+    {
+        public int PreloadCount;
+        [SerializeField] public T Template;
+    }
 }

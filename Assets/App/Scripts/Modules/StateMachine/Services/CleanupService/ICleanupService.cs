@@ -1,12 +1,11 @@
-﻿using Features.StateMachineCore;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace Modules.StateMachine.Services.CleanupService
+namespace App.Scripts.Modules.StateMachine.Services.CleanupService
 {
-	public interface ICleanupService
-	{
-		List<ICleanupable> Cleanupables { get; }
+    public interface ICleanupService
+    {
+        List<ICleanupable> Cleanupables { get; }
 
-		void Cleanup();
-	}
+        void Cleanup();
+    }
 }

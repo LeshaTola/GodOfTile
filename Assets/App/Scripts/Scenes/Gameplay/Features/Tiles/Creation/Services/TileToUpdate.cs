@@ -1,7 +1,7 @@
-﻿using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
+﻿using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using UnityEngine;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services
+namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services
 {
     public struct TileToUpdate
     {

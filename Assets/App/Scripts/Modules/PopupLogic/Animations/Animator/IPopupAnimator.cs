@@ -1,14 +1,14 @@
-﻿using Cysharp.Threading.Tasks;
-using Module.PopupLogic.General.Popups;
+﻿using App.Scripts.Modules.PopupLogic.General.Popup;
+using Cysharp.Threading.Tasks;
 
-namespace Assets.App.Scripts.Features.Popups.InformationPopup.Animator
+namespace App.Scripts.Modules.PopupLogic.Animations.Animator
 {
-	public interface IPopupAnimator
-	{
-		void Cleanup();
-		void Setup(PopupAnimationConfig animationConfig);
-		void Init(Popup popup);
-		UniTask PlayHideAnimation();
-		UniTask PlayShowAnimation();
-	}
+    public interface IPopupAnimator
+    {
+        void Cleanup();
+        void Setup(PopupAnimationConfig animationConfig);
+        void Init(Popup popup);
+        UniTask PlayHideAnimation();
+        UniTask PlayShowAnimation();
+    }
 }
