@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using App.Scripts.Modules.StateMachine.Services.UpdateService;
+﻿using App.Scripts.Modules.StateMachine.Services.UpdateService;
 using App.Scripts.Scenes.Gameplay.Features.Grid.Visualizators;
 using App.Scripts.Scenes.Gameplay.Features.Input;
 using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.Routers;
@@ -10,7 +9,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
 {
     public class BuildState : Modules.StateMachine.States.General.State
     {
-        private List<IUpdatable> updatables;
+        private IUpdateService updateService;
         private IGameInput gameInput;
         private ITilesCreationService creationService;
         private IGridVisualizator gridVisualizator;
@@ -18,7 +17,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
 
         public BuildState(
             string id,
-            List<IUpdatable> updatables,
+            IUpdateService updateService,
             IGameInput gameInput,
             ITilesCreationService creationService,
             IGridVisualizator gridVisualizator,
@@ -26,7 +25,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
         )
             : base(id)
         {
-            this.updatables = updatables;
+            this.updateService = updateService;
             this.gameInput = gameInput;
             this.creationService = creationService;
             this.gridVisualizator = gridVisualizator;
@@ -49,10 +48,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
         {
             await base.Update();
 
-            foreach (var updatable in updatables)
-            {
-                updatable.Update();
-            }
+            updateService.Update();
 
             creationService.MoveActiveTile(gameInput.GetGridMousePosition());
 
