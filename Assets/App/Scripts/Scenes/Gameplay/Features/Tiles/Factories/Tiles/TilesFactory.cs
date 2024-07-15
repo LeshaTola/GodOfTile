@@ -1,4 +1,5 @@
-﻿using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles;
+﻿using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Factories;
+using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using UnityEngine;
 using Zenject;
@@ -9,6 +10,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Factories
     {
         private Tile tilePrefab;
         private Transform container;
+        private ISystemsFactory systemsFactory;
         private DiContainer diContainer;
         private TilesDatabase database;
 
@@ -16,13 +18,15 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Factories
             DiContainer diContainer,
             Tile tilePrefab,
             Transform container,
-            TilesDatabase database
+            TilesDatabase database,
+            ISystemsFactory systemsFactory
         )
         {
             this.diContainer = diContainer;
             this.tilePrefab = tilePrefab;
             this.container = container;
             this.database = database;
+            this.systemsFactory = systemsFactory;
         }
 
         public Tile GetTile(string id)
@@ -32,9 +36,10 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Factories
 
         public Tile GetTile(TileConfig tileConfig)
         {
-            Tile tile = diContainer.InstantiatePrefabForComponent<Tile>(tilePrefab, container);
-            TileConfig config = GameObject.Instantiate(tileConfig);
-            tile.Initialize(config);
+            var tile = diContainer.InstantiatePrefabForComponent<Tile>(tilePrefab, container);
+            var config = Object.Instantiate(tileConfig);
+            var systems = systemsFactory.GetSystems(config.Systems);
+            tile.Initialize(config,systems);
             return tile;
         }
     }

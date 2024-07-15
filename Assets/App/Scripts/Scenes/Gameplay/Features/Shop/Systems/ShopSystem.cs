@@ -12,10 +12,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Shop.Systems
         private IActiveTileProvider activeTileProvider;
         private ITileCollectionProvider tileCollectionProvider;
 
-        public List<TileConfig> AvailableTiles
-        {
-            get => tileCollectionProvider.Collection;
-        }
+        public List<TileConfig> AvailableTiles => tileCollectionProvider.Collection;
 
         public ShopSystem(
             IInventorySystem inventorySystem,

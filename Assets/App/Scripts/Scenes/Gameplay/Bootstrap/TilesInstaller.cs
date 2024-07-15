@@ -1,4 +1,6 @@
-﻿using Assets.App.Scripts.Scenes.Gameplay.Features.CraftSystem.Providers;
+﻿using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Factories;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Services;
+using Assets.App.Scripts.Scenes.Gameplay.Features.CraftSystem.Providers;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Configs;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Factories;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Providers;
@@ -19,27 +21,23 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Bootstrap
 {
     public class TilesInstaller : MonoInstaller
     {
-        [SerializeField]
-        private Tile tilePrefab;
-
-        [SerializeField]
-        private Transform tilesContainer;
-
-        [SerializeField]
-        private TileAnimationConfig tileAnimationConfig;
-
-        [SerializeField]
-        private TilesCreationConfig tilesCreationConfig;
-
-        [SerializeField]
-        private TilesDatabase tilesDatabase;
-
-        [SerializeField]
-        private CollectionConfig collectionConfig;
+        [SerializeField] private Tile tilePrefab;
+        [SerializeField] private Transform tilesContainer;
+        [SerializeField] private TileAnimationConfig tileAnimationConfig;
+        [SerializeField] private TilesCreationConfig tilesCreationConfig;
+        [SerializeField] private TilesDatabase tilesDatabase;
+        [SerializeField] private CollectionConfig collectionConfig;
 
         public override void InstallBindings()
         {
             BindTilesFactory();
+            Container
+                .Bind<ISystemsFactory>()
+                .To<SystemsFactory>()
+                .AsSingle();
+            Container
+                .BindInterfacesTo<SystemsService>()
+                .AsSingle();
 
             BindCreationService();
             BindPlacementCostService();

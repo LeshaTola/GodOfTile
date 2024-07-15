@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Factories;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Services;
 using Assets.App.Scripts.Scenes.Gameplay.Features.CraftSystem.Providers;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Configs;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services.Effects;
@@ -14,18 +16,24 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services.Update
         private IRecipeProvider recipeProvider;
         private ITileCreationEffectsProvider effectsService;
         private TilesCreationConfig config;
+        private ISystemsService systemsService;
+        private ISystemsFactory systemsFactory;
 
         public TilesUpdateService(
             IGridProvider gridProvider,
             IRecipeProvider recipeProvider,
             ITileCreationEffectsProvider effectsService,
-            TilesCreationConfig config
+            TilesCreationConfig config,
+            ISystemsService systemsService,
+            ISystemsFactory systemsFactory
         )
         {
             this.gridProvider = gridProvider;
             this.recipeProvider = recipeProvider;
             this.effectsService = effectsService;
             this.config = config;
+            this.systemsService = systemsService;
+            this.systemsFactory = systemsFactory;
         }
 
         public void UpdateConnectedTiles(Vector2Int tilePosition)
@@ -45,7 +53,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services.Update
                 if (result != null)
                 {
                     tilesForUpdate.Add(
-                        new TileToUpdate() { Position = position, NewConfig = result }
+                        new TileToUpdate() {Position = position, NewConfig = result}
                     );
                 }
             }
@@ -58,9 +66,13 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services.Update
 
         private void Replace(TileConfig newTileConfig, Vector2Int position)
         {
-            var oldTile = gridProvider.Grid[position.x, position.y];
-            effectsService.PlayParticle(config.UpdateParticleKey, oldTile.transform.position);
-            oldTile.Initialize(newTileConfig);
+            var tile = gridProvider.Grid[position.x, position.y];
+            effectsService.PlayParticle(config.UpdateParticleKey, tile.transform.position);
+
+            systemsService.StopSystems(tile);
+            var newSystems = systemsFactory.GetSystems(newTileConfig.Systems);
+            tile.Initialize(newTileConfig, newSystems);
+            systemsService.StopSystems(tile);
         }
 
         private TileConfig UpdateTile(Vector2Int tilePosition)

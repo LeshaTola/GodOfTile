@@ -19,7 +19,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Collection
             }
         }
 
-        public List<TileConfig> Collection { get; private set; } = new();
+        public List<TileConfig> Collection { get; } = new();
 
         public event Action<TileConfig> OnNewTileAdd;
 

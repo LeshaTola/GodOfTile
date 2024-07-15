@@ -10,9 +10,6 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Shop.Configs
         [SerializeField]
         private List<TileConfig> startTiles;
 
-        public List<TileConfig> StartTiles
-        {
-            get => startTiles;
-        }
+        public List<TileConfig> StartTiles => startTiles;
     }
 }

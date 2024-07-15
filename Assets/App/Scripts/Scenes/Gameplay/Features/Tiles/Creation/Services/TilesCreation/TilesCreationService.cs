@@ -1,4 +1,5 @@
-﻿using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Configs;
+﻿using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Services;
+using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Configs;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Factories;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Providers;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services.Effects;
@@ -21,7 +22,9 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services
         private IPlacementCostService placementCostService;
         private ITileCreationEffectsProvider effectsService;
         private ITilesUpdateService updateService;
+        private ISystemsService systemsService;
         private TilesCreationConfig config;
+
 
         private Tile activeTile;
 
@@ -32,6 +35,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services
             IPlacementCostService placementCostService,
             ITileCreationEffectsProvider effectsService,
             ITilesUpdateService updateService,
+            ISystemsService systemsService,
             TilesCreationConfig config
         )
         {
@@ -41,6 +45,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services
             this.placementCostService = placementCostService;
             this.effectsService = effectsService;
             this.updateService = updateService;
+            this.systemsService = systemsService;
             this.config = config;
 
             activeTileProvider.OnActiveTileChanged += OnActiveTileChanged;
@@ -74,9 +79,9 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services
                 return;
             }
 
-            for (int x = 0; x < activeTile.Config.Size.x; x++)
+            for (var x = 0; x < activeTile.Config.Size.x; x++)
             {
-                for (int y = 0; y < activeTile.Config.Size.y; y++)
+                for (var y = 0; y < activeTile.Config.Size.y; y++)
                 {
                     Vector2Int tileCoordinate =
                         new(activeTile.Position.x + x, activeTile.Position.y + y);
@@ -90,6 +95,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services
 
             PlayCreationVFX(tileBuffer).Forget();
             placementCostService.ProcessPlacementCost(tileBuffer.Config);
+            systemsService.StartSystems(tileBuffer);
         }
 
         public void FullFill()
@@ -111,7 +117,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Services
                 return;
             }
 
-            activeTile.transform.position = new(
+            activeTile.transform.position = new Vector3(
                 gridPosition.x,
                 activeTile.transform.position.y,
                 gridPosition.y
