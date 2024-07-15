@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: CollectionConfig
   m_EditorClassIdentifier: 
   startTiles:
-  - {fileID: 11400000, guid: c6661d035ed419e48b3345d5cd83810b, type: 2}
-  - {fileID: 11400000, guid: be046f4a10b783f46b16aa57dfb8d6af, type: 2}
   - {fileID: 11400000, guid: fb29e5d365a8393459263e8f32fbb418, type: 2}
+  - {fileID: 11400000, guid: ac82250e2214fbd4aadda68f233e7c4c, type: 2}
+  - {fileID: 11400000, guid: eb41d95455783a946881fa95f0ed5b36, type: 2}
+  - {fileID: 11400000, guid: 7365389e2ccd70a4f8c4c66c5d7738b6, type: 2}
+  - {fileID: 11400000, guid: b9d3057a355968740a72a7ef1fd8d269, type: 2}

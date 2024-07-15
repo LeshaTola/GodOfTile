@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc5af3fe342dd924e9f809bc8e9408aa, type: 3}
-  m_Name: ForestTileConfig
+  m_Name: FieldTileConfig
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 566e68ac22f22f5479bdce591760f218, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -27,23 +28,45 @@ MonoBehaviour:
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 1|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarner,
+        Assembly-CSharp
+    - Name: data
+      Entry: 7
+      Data: 2|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarnerSystemData,
+        Assembly-CSharp
+    - Name: resourcesDatabase
+      Entry: 10
       Data: 0
+    - Name: resource
+      Entry: 1
+      Data: food
+    - Name: amount
+      Entry: 3
+      Data: 1
+    - Name: cooldown
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 13
       Data: 
     - Name: 
       Entry: 8
       Data: 
-  id: ForestTileConfig
+  id: FieldTileConfig
   size: {x: 1, y: 1}
   tileTypeDatabase: {fileID: 11400000, guid: 6e8687d462988db44889225b2fec324e, type: 2}
-  building: {fileID: 1244113167826116937, guid: 035b6050f1b6c434fabc1a191f43e8a7,
-    type: 3}
-  type: grass
-  tileImage: {fileID: 21300000, guid: f9acaa0006412d2478a6a83e476e7531, type: 3}
-  tileName: Forest
-  description: "Give only food and wood. \u0427\u0435\u043C \u0434\u0430\u043B\u044C\u0448\u0435
-    \u0432 \u043B\u0435\u0441 \u0442\u0435\u043C \u0431\u043E\u043B\u044C\u0448\u0435
-    \u0441\u043A\u0438\u0431\u0438\u0434\u0438 \u0434\u043E\u0431 \u0434\u043E\u0431
-    \u0435\u0441 \u0435\u0441."
+  building: {fileID: 0}
+  type: field
+  tileImage: {fileID: 21300000, guid: d2d635c0131858747b906796f21c9399, type: 3}
+  tileName: Field
+  description: Field
   cost: []

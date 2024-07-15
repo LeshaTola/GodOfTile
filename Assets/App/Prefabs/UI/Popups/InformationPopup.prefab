@@ -564,7 +564,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationConfig:
-    rid: 2174726299099594752
+    rid: 2174726602755145728
   raycaster: {fileID: 7677129623625394571}
   canvas: {fileID: 3297265027991315483}
   tileImage: {fileID: 703108598661550689}
@@ -578,8 +578,8 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 2174726299099594752
-      type: {class: PopupAnimationConfig, ns: Assets.App.Scripts.Features.Popups.InformationPopup.Animator,
+    - rid: 2174726602755145728
+      type: {class: PopupAnimationConfig, ns: App.Scripts.Modules.PopupLogic.Animations.Animator,
         asm: Assembly-CSharp}
       data:
         ShowAnimationTime: 0.3

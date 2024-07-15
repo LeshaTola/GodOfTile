@@ -526,7 +526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationConfig:
-    rid: 2174726459190935552
+    rid: 2174726602755145729
   raycaster: {fileID: 7217355885098715311}
   canvas: {fileID: 756468613956022958}
   header: {fileID: 5529495055484705698}
@@ -535,8 +535,8 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 2174726459190935552
-      type: {class: PopupAnimationConfig, ns: Assets.App.Scripts.Features.Popups.InformationPopup.Animator,
+    - rid: 2174726602755145729
+      type: {class: PopupAnimationConfig, ns: App.Scripts.Modules.PopupLogic.Animations.Animator,
         asm: Assembly-CSharp}
       data:
         ShowAnimationTime: 0.3
