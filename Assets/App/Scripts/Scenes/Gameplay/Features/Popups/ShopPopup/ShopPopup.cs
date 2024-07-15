@@ -34,7 +34,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup
 
             header.Init(viewModule.LocalizationSystem);
 
-            for (int i = 0; i < tilesToBuy.Count; i++)
+            for (var i = 0; i < tilesToBuy.Count; i++)
             {
                 SetupItem(shopItems[i], tilesToBuy[i]);
                 shopItems[i].Show();
@@ -45,7 +45,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup
 
         public void Cleanup()
         {
-            foreach (ShopItemUI item in shopItems)
+            foreach (var item in shopItems)
             {
                 item.Hide();
                 item.onBuyButtonClicked -= BindBuyAction;
@@ -67,7 +67,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup
 
         private ShopItemUI AddItem()
         {
-            ShopItemUI item = viewModule.ItemFactory.GetItem();
+            var item = viewModule.ItemFactory.GetItem();
             item.transform.SetParent(container);
             item.transform.localPosition = Vector3.zero;
             item.transform.localScale = Vector3.one;
@@ -89,6 +89,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup
             {
                 return;
             }
+
             viewModule.ShopSystem.BuyTile(tileConfig);
         }
     }

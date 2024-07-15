@@ -7,19 +7,12 @@ using UnityEngine;
 namespace Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs
 {
     [CreateAssetMenu(fileName = "TileConfig", menuName = "Configs/Tiles/Tile")]
-    public class TileConfig : ScriptableObject
+    public class TileConfig : SerializedScriptableObject
     {
-        [SerializeField]
-        private string id;
-
-        [SerializeField]
-        private Vector2Int size = Vector2Int.one;
-
-        [SerializeField]
-        private TileTypeDatabase tileTypeDatabase;
-
-        [SerializeField]
-        private GameObject building;
+        [SerializeField] private string id;
+        [SerializeField] private Vector2Int size = Vector2Int.one;
+        [SerializeField] private TileTypeDatabase tileTypeDatabase;
+        [SerializeField] private GameObject building;
 
         [SerializeField]
         [ValueDropdown(nameof(GetTileTypes))]
@@ -40,45 +33,21 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs
         [FoldoutGroup("Extra Information")]
         private string description;
 
-        [SerializeField]
-        private List<ResourceCount> cost;
+        [SerializeField] private List<ResourceCount> cost;
 
-        public Vector2Int Size
-        {
-            get => size;
-        }
-        public string Type
-        {
-            get => type;
-        }
-        public Material TypeMaterial
-        {
-            get => tileTypeDatabase.Types[type];
-        }
-        public GameObject Building
-        {
-            get => building;
-        }
-        public Sprite TileSprite
-        {
-            get => tileImage;
-        }
-        public string Description
-        {
-            get => description;
-        }
-        public string Name
-        {
-            get => tileName;
-        }
-        public string Id
-        {
-            get => id;
-        }
-        public List<ResourceCount> Cost
-        {
-            get => cost;
-        }
+        [SerializeField]
+        private List<global::App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.TileSystem> systems;
+
+        public Vector2Int Size => size;
+        public string Type => type;
+        public Material TypeMaterial => tileTypeDatabase.Types[type];
+        public GameObject Building => building;
+        public Sprite TileSprite => tileImage;
+        public string Description => description;
+        public string Name => tileName;
+        public string Id => id;
+        public List<ResourceCount> Cost => cost;
+        public List<global::App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.TileSystem> Systems => systems;
 
         private void OnValidate()
         {

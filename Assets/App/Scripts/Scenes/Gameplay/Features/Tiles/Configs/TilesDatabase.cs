@@ -10,9 +10,6 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs
         [SerializeField]
         private Dictionary<string, TileConfig> configs;
 
-        public Dictionary<string, TileConfig> Configs
-        {
-            get => configs;
-        }
+        public Dictionary<string, TileConfig> Configs => configs;
     }
 }

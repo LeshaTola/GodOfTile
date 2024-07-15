@@ -1,5 +1,4 @@
 ﻿using Assets.App.Scripts.Scenes.Gameplay.Features.Creation.Providers;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.DTO;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Systems;
 using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 
@@ -30,7 +29,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Services.Placeme
 
         private void ReduceResources(TileConfig tileConfig)
         {
-            foreach (ResourceCount resourceCount in tileConfig.Cost)
+            foreach (var resourceCount in tileConfig.Cost)
             {
                 inventorySystem.ChangeRecourseAmount(
                     resourceCount.Resource.ResourceName,
