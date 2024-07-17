@@ -45,6 +45,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.InformationPopup
 
         public void Setup(IInformationViewModule viewModule)
         {
+            Cleanup();
             Init(viewModule);
             UpdateUI(viewModule.TileConfig);
         }
