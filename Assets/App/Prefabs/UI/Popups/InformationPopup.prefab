@@ -662,6 +662,7 @@ MonoBehaviour:
   descriptionHeader: {fileID: 8490312397748192269}
   description: {fileID: 981966971950215457}
   closeButton: {fileID: 7830726933600505624}
+  tileSystemsContainer: {fileID: 5953265989821314575}
   references:
     version: 2
     RefIds:
@@ -807,7 +808,7 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
+  m_ChildControlWidth: 1
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0

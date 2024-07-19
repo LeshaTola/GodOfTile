@@ -1,9 +1,11 @@
-﻿using App.Scripts.Features.Popups.Buttons;
+﻿using System.Collections.Generic;
+using App.Scripts.Features.Popups.Buttons;
 using App.Scripts.Features.UI.PairedTexts;
 using App.Scripts.Modules.Localization.Localizers;
 using App.Scripts.Modules.PopupLogic.General.Popup;
 using App.Scripts.Scenes.Gameplay.Features.Popups.InformationPopup.ViewModels;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
@@ -38,8 +40,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.InformationPopup
         [FoldoutGroup("Description")]
         private TMProLocalizer description;
 
-        [SerializeField]
-        private PopupButton closeButton;
+        [SerializeField] private PopupButton closeButton;
+        [SerializeField] private RectTransform tileSystemsContainer;
 
         private IInformationViewModule viewModule;
 
@@ -56,6 +58,9 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.InformationPopup
             type.Value.Key = tileConfig.Type;
             tileName.Value.Key = tileConfig.Name;
             description.Key = tileConfig.Description;
+
+            UpdateSystems(tileConfig.ActiveSystems);
+
             Translate();
         }
 
@@ -67,6 +72,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.InformationPopup
             }
 
             closeButton.onButtonClicked -= viewModule.CloseCommand.Execute;
+            CleanUpSystems();
         }
 
         private void Init(IInformationViewModule viewModule)
@@ -96,6 +102,26 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.InformationPopup
             description.Translate();
 
             closeButton.Translate();
+        }
+
+        private void UpdateSystems(List<TileSystem> tileSystems)
+        {
+            foreach (var system in tileSystems)
+            {
+                var systemUI = system.GetSystemUI();
+                systemUI.transform.SetParent(tileSystemsContainer);
+                systemUI.transform.localPosition = Vector3.zero;
+                systemUI.transform.localScale = Vector3.one;
+                systemUI.Show();
+            }
+        }
+
+        private void CleanUpSystems()
+        {
+            foreach (RectTransform child in tileSystemsContainer)
+            {
+                Destroy(child.gameObject);
+            }
         }
     }
 }

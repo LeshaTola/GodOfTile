@@ -1,7 +1,11 @@
+using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.UI;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.UI.Specific.ResourceEarner;
+
 namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems
 {
-    public class TileSystemData
+    public abstract class TileSystemData
     {
+        public abstract ResourceEarnerSystemUI TileSystemUI { get; }
     }
 
     public abstract class TileSystem : ITileSystem
@@ -19,5 +23,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems
         public virtual void Stop()
         {
         }
+
+        public abstract SystemUI GetSystemUI();
     }
 }

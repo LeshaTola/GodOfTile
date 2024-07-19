@@ -69,10 +69,13 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.Update
             var tile = gridProvider.Grid[position.x, position.y];
             effectsService.PlayParticle(config.UpdateParticleKey, tile.transform.position);
 
-            systemsService.StopSystems(tile);
+            systemsService.StopSystems(tile.Config);
+
             var newSystems = systemsFactory.GetSystems(newTileConfig.Systems);
-            tile.Initialize(newTileConfig, newSystems);
-            systemsService.StopSystems(tile);
+            newTileConfig.ActiveSystems = newSystems;
+            tile.Initialize(newTileConfig);
+
+            systemsService.StopSystems(tile.Config);
         }
 
         private TileConfig UpdateTile(Vector2Int tilePosition)

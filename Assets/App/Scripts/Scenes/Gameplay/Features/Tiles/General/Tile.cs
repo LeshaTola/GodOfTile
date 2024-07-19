@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
-using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems;
 using UnityEngine;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Tiles.General
@@ -13,12 +11,10 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.General
         public TileVisual Visual => visual;
         public TileConfig Config => config;
         public Vector2Int Position { get; set; }
-        public IEnumerable<ITileSystem> Systems { get; private set; }
 
-        public void Initialize(TileConfig config, IEnumerable<ITileSystem> tileSystems)
+        public void Initialize(TileConfig config)
         {
             this.config = config;
-            Systems = tileSystems;
             Visual.Initialize(config.Size, config.TypeMaterial, config.Building);
         }
     }

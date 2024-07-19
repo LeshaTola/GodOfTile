@@ -94,7 +94,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
 
             PlayCreationVFX(tileBuffer).Forget();
             placementCostService.ProcessPlacementCost(tileBuffer.Config);
-            systemsService.StartSystems(tileBuffer);
+            systemsService.StartSystems(tileBuffer.Config);
         }
 
         public void FullFill()
