@@ -75,7 +75,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.Update
             newTileConfig.ActiveSystems = newSystems;
             tile.Initialize(newTileConfig);
 
-            systemsService.StopSystems(tile.Config);
+            systemsService.StartSystems(tile.Config);
         }
 
         private TileConfig UpdateTile(Vector2Int tilePosition)

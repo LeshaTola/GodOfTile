@@ -26,7 +26,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.UI.Specific.Res
 
         public override void Cleanup()
         {
-            // ReSharper disable once RedundantCheckBeforeAssignment
             if (viewModule == null)
             {
                 return;
