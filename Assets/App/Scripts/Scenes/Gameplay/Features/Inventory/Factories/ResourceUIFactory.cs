@@ -1,9 +1,9 @@
 ﻿using System.Linq;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Configs;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.UI;
+using App.Scripts.Scenes.Gameplay.Features.Inventory.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Inventory.UI.Resource;
 using UnityEngine;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Factories
+namespace App.Scripts.Scenes.Gameplay.Features.Inventory.Factories
 {
     public class ResourceUIFactory : IResourceUIFactory
     {
@@ -32,6 +32,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Factories
             {
                 UI.Initialize(config.Sprite, config.StartAmount);
             }
+
             return UI;
         }
     }

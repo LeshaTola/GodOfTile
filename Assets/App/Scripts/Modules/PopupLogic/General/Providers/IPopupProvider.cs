@@ -1,11 +1,11 @@
-﻿using Module.ObjectPool;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using App.Scripts.Modules.ObjectPool.Pools;
 
-namespace Module.PopupLogic.General.Providers
+namespace App.Scripts.Modules.PopupLogic.General.Providers
 {
-	public interface IPopupProvider
-	{
-		Dictionary<Type, IPool<Popups.Popup>> PopupPoolsDictionary { get; }
-	}
+    public interface IPopupProvider
+    {
+        Dictionary<Type, IPool<Popup.Popup>> PopupPoolsDictionary { get; }
+    }
 }

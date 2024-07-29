@@ -1,14 +1,14 @@
-﻿using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Systems;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.Factories.Cost;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.Factories.Item;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.Systems;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI.Information;
+﻿using App.Scripts.Modules.Localization;
+using App.Scripts.Modules.PopupLogic.General.Controllers;
+using App.Scripts.Scenes.Gameplay.Features.Inventory.Systems;
+using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.InformationWidget.ViewModels;
+using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.ViewModels;
+using App.Scripts.Scenes.Gameplay.Features.Shop.Factories.Cost;
+using App.Scripts.Scenes.Gameplay.Features.Shop.Factories.Item;
+using App.Scripts.Scenes.Gameplay.Features.Shop.Systems;
 using Cysharp.Threading.Tasks;
-using Module.Localization;
-using Module.PopupLogic.General.Controller;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.Routers
+namespace App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.Routers
 {
     public class ShopPopupRouter : IShopPopupRouter
     {

@@ -1,10 +1,10 @@
 ﻿using Cysharp.Threading.Tasks;
 
-namespace Features.UI.SceneTransitions
+namespace App.Scripts.Features.SceneTransitions
 {
-	public interface ISceneTransition
-	{
-		public UniTask PlayOnAsync();
-		public UniTask PlayOffAsync();
-	}
+    public interface ISceneTransition
+    {
+        public UniTask PlayOnAsync();
+        public UniTask PlayOffAsync();
+    }
 }

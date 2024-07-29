@@ -1,12 +1,13 @@
 ﻿using Cysharp.Threading.Tasks;
-using Features.StateMachineCore.States;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.StateMachines.States
+namespace App.Scripts.Scenes.Gameplay.StateMachines.State
 {
-    public class GameplayInitialState : State
+    public class GameplayInitialState : Modules.StateMachine.States.General.State
     {
         public GameplayInitialState(string id)
-            : base(id) { }
+            : base(id)
+        {
+        }
 
         public override async UniTask Enter()
         {

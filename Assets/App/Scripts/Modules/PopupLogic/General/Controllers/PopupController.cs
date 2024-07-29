@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using Assets.App.Scripts.Features.Popups.InformationPopup.Animator;
+using App.Scripts.Modules.PopupLogic.Animations.Animator;
+using App.Scripts.Modules.PopupLogic.General.Providers;
 using Cysharp.Threading.Tasks;
-using Module.PopupLogic.General.Popups;
-using Module.PopupLogic.General.Providers;
 using UnityEngine.UI;
 
-namespace Module.PopupLogic.General.Controller
+namespace App.Scripts.Modules.PopupLogic.General.Controllers
 {
     public class PopupController : IPopupController
     {
         private IPopupProvider popupProvider;
         private Image screenBlocker;
-        private List<Popup> currentPopups;
+        private List<Popup.Popup> currentPopups;
         private IPopupAnimator popupAnimator;
 
         public PopupController(
@@ -24,11 +22,11 @@ namespace Module.PopupLogic.General.Controller
         {
             this.popupProvider = popupProvider;
             this.screenBlocker = screenBlocker;
-            currentPopups = new();
+            currentPopups = new List<Popup.Popup>();
             this.popupAnimator = popupAnimator;
         }
 
-        public void AddActivePopup(Popup popup)
+        public void AddActivePopup(Popup.Popup popup)
         {
             DeactivatePrevPopup();
             popup.Canvas.sortingLayerName = "Popup";
@@ -36,7 +34,7 @@ namespace Module.PopupLogic.General.Controller
             currentPopups.Add(popup);
         }
 
-        public void RemoveActivePopup(Popup popup)
+        public void RemoveActivePopup(Popup.Popup popup)
         {
             if (currentPopups.Count <= 0)
             {
@@ -53,12 +51,12 @@ namespace Module.PopupLogic.General.Controller
         }
 
         public T GetPopup<T>()
-            where T : Popup
+            where T : Popup.Popup
         {
-            Type type = typeof(T);
+            var type = typeof(T);
             var popup = popupProvider.PopupPoolsDictionary[type].Get();
             popup.Init(this, popupAnimator);
-            return (T)popup;
+            return (T) popup;
         }
 
         public async UniTask HideLastPopup()
@@ -89,6 +87,7 @@ namespace Module.PopupLogic.General.Controller
                 currentPopups[currentPopups.Count - 2].Activate();
                 return;
             }
+
             screenBlocker.gameObject.SetActive(false);
         }
     }

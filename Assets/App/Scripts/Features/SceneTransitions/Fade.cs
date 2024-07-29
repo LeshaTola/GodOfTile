@@ -2,49 +2,46 @@ using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 
-namespace Features.UI.SceneTransitions
+namespace App.Scripts.Features.SceneTransitions
 {
-	public class Fade : MonoBehaviour, ISceneTransition
-	{
-		[SerializeField] private float fadeTime;
+    public class Fade : MonoBehaviour, ISceneTransition
+    {
+        [SerializeField] private float fadeTime;
 
-		private Tween tween;
+        private Tween tween;
 
-		public async UniTask PlayOnAsync()
-		{
-			CleanUp();
+        public async UniTask PlayOnAsync()
+        {
+            CleanUp();
 
-			gameObject.SetActive(true);
-			transform.localScale = Vector3.zero;
-			tween = transform.DOScale(1f, fadeTime).SetUpdate(true);
+            gameObject.SetActive(true);
+            transform.localScale = Vector3.zero;
+            tween = transform.DOScale(1f, fadeTime).SetUpdate(true);
 
-			await tween.AsyncWaitForCompletion();
-		}
+            await tween.AsyncWaitForCompletion();
+        }
 
-		public async UniTask PlayOffAsync()
-		{
-			CleanUp();
+        public async UniTask PlayOffAsync()
+        {
+            CleanUp();
 
-			gameObject.SetActive(true);
-			transform.localScale = Vector3.one;
+            gameObject.SetActive(true);
+            transform.localScale = Vector3.one;
 
-			tween = transform.DOScale(0f, fadeTime).SetUpdate(true);
-			tween.onComplete += () =>
-			{
-				gameObject.SetActive(false);
-			};
+            tween = transform.DOScale(0f, fadeTime).SetUpdate(true);
+            tween.onComplete += () => { gameObject.SetActive(false); };
 
-			await tween.AsyncWaitForCompletion();
-		}
+            await tween.AsyncWaitForCompletion();
+        }
 
-		private void CleanUp()
-		{
-			tween.Kill();
-		}
+        private void CleanUp()
+        {
+            tween.Kill();
+        }
 
-		private void OnDestroy()
-		{
-			CleanUp();
-		}
-	}
+        private void OnDestroy()
+        {
+            CleanUp();
+        }
+    }
 }

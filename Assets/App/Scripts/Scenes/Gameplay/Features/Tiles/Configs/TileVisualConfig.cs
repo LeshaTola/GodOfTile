@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs
+namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Configs
 {
     [CreateAssetMenu(fileName = "TileVisualConfig", menuName = "Configs/Tiles/Visual")]
     public class TileVisualConfig : ScriptableObject
@@ -12,13 +12,8 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs
         [SerializeField]
         private Material correctMaterial;
 
-        public Material WrongMaterial
-        {
-            get => wrongMaterial;
-        }
-        public Material CorrectMaterial
-        {
-            get => correctMaterial;
-        }
+        public Material WrongMaterial => wrongMaterial;
+
+        public Material CorrectMaterial => correctMaterial;
     }
 }

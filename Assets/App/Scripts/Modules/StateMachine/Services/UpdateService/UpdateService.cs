@@ -1,15 +1,19 @@
 ﻿using System.Collections.Generic;
-using Features.StateMachineCore;
 
-namespace Modules.StateMachine.Services.UpdateService
+namespace App.Scripts.Modules.StateMachine.Services.UpdateService
 {
     public class UpdateService : IUpdateService
     {
-        public List<IUpdatable> Updatables { get; private set; }
+        public List<IUpdatable> Updatables { get; }
+
+        public UpdateService(List<IUpdatable> updatables)
+        {
+            Updatables = updatables;
+        }
 
         public void Update()
         {
-            foreach (IUpdatable updatable in Updatables)
+            foreach (var updatable in Updatables)
             {
                 updatable.Update();
             }

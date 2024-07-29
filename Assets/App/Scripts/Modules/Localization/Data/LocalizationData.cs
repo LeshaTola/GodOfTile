@@ -1,4 +1,4 @@
-﻿namespace Module.Localization
+﻿namespace App.Scripts.Modules.Localization.Data
 {
     public class LocalizationData
     {

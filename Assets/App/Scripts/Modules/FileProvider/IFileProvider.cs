@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
-namespace Features.FileProvider
+namespace App.Scripts.Modules.FileProvider
 {
-	public interface IFileProvider
-	{
-		TextAsset GetTextAsset(string path);
-	}
+    public interface IFileProvider
+    {
+        TextAsset GetTextAsset(string path);
+    }
 }

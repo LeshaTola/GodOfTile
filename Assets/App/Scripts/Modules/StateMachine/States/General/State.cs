@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
-using Features.StateMachineCore.States.General;
-using Modules.StateMachineCore;
 
-namespace Features.StateMachineCore.States
+namespace App.Scripts.Modules.StateMachine.States.General
 {
     public abstract class State
     {
@@ -18,10 +16,10 @@ namespace Features.StateMachineCore.States
         public void Initialize(StateMachine stateMachine)
         {
             StateMachine = stateMachine;
-            StateSteps = new();
+            StateSteps = new List<IStateStep>();
         }
 
-        public string Id { get; private set; }
+        public string Id { get; }
 
         public virtual async UniTask Enter()
         {

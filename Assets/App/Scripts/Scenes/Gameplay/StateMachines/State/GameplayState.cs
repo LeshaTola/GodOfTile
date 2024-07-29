@@ -1,26 +1,25 @@
-﻿using System.Collections.Generic;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Providers;
+﻿using App.Scripts.Modules.StateMachine.Services.UpdateService;
+using App.Scripts.Scenes.Gameplay.Features.Input;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Selection;
 using Cysharp.Threading.Tasks;
-using Features.StateMachineCore;
-using Features.StateMachineCore.States;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.StateMachines.States
+namespace App.Scripts.Scenes.Gameplay.StateMachines.State
 {
-    public class GameplayState : State
+    public class GameplayState : Modules.StateMachine.States.General.State
     {
-        private List<IUpdatable> updatables;
+        private IUpdateService updateService;
         private IGameInput gameInput;
         private ITileSelectionProvider tileSelectionProvider;
 
         public GameplayState(
             string id,
-            List<IUpdatable> updatables,
+            IUpdateService updateService,
             IGameInput gameInput,
             ITileSelectionProvider tileSelectionProvider
         )
             : base(id)
         {
-            this.updatables = updatables;
+            this.updateService = updateService;
             this.gameInput = gameInput;
             this.tileSelectionProvider = tileSelectionProvider;
         }
@@ -35,11 +34,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.StateMachines.States
         public override async UniTask Update()
         {
             await base.Update();
-
-            foreach (var updatable in updatables)
-            {
-                updatable.Update();
-            }
+            updateService.Update();
 
             if (gameInput.IsMouseClicked())
             {

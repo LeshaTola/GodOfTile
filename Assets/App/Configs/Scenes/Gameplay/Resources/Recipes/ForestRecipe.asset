@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: ForestRecipe
   m_EditorClassIdentifier: 
   <RequiredTiles>k__BackingField:
-  - {fileID: 11400000, guid: c6661d035ed419e48b3345d5cd83810b, type: 2}
-  - {fileID: 11400000, guid: c6661d035ed419e48b3345d5cd83810b, type: 2}
-  <Original>k__BackingField: {fileID: 11400000, guid: c6661d035ed419e48b3345d5cd83810b,
+  - {fileID: 11400000, guid: ac82250e2214fbd4aadda68f233e7c4c, type: 2}
+  - {fileID: 11400000, guid: ac82250e2214fbd4aadda68f233e7c4c, type: 2}
+  <Original>k__BackingField: {fileID: 11400000, guid: ac82250e2214fbd4aadda68f233e7c4c,
     type: 2}
   <Result>k__BackingField: {fileID: 11400000, guid: be046f4a10b783f46b16aa57dfb8d6af,
     type: 2}

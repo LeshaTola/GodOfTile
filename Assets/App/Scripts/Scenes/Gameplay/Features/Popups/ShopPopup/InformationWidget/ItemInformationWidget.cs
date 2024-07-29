@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.DTO;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.Configs;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI.Cost;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
-using Module.Localization.Localizers;
+using App.Scripts.Modules.Localization.Localizers;
+using App.Scripts.Scenes.Gameplay.Features.Inventory.DTO;
+using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.InformationWidget.Cost;
+using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.InformationWidget.ViewModels;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using UnityEngine;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI.Information
+namespace App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.InformationWidget
 {
     public class ItemInformationWidget : MonoBehaviour
     {
@@ -38,6 +39,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI.Information
                 header.Translate();
                 return;
             }
+
             header.Key = config.DefaultText;
             header.Translate();
 
@@ -57,11 +59,11 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI.Information
 
         private void SetInformation(List<ResourceCount> resourcesCounts)
         {
-            for (int i = 0; i < resourcesCounts.Count; i++)
+            for (var i = 0; i < resourcesCounts.Count; i++)
             {
-                ResourceCount resourceCount = resourcesCounts[i];
+                var resourceCount = resourcesCounts[i];
 
-                Color textColor = config.TextColorConfig.DefaultColor;
+                var textColor = config.TextColorConfig.DefaultColor;
                 if (!viewModule.InventorySystem.IsEnough(resourceCount))
                 {
                     textColor = config.TextColorConfig.WrongColor;

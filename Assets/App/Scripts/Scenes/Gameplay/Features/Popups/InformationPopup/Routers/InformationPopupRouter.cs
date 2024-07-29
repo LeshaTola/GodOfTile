@@ -1,57 +1,57 @@
-﻿using Assets.App.Scripts.Features.Popups.InformationPopup.ViewModels;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Commands.General;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
+﻿using App.Scripts.Modules.Localization;
+using App.Scripts.Modules.PopupLogic.General.Controllers;
+using App.Scripts.Scenes.Gameplay.Features.Commands.General;
+using App.Scripts.Scenes.Gameplay.Features.Popups.InformationPopup.ViewModels;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using Cysharp.Threading.Tasks;
-using Module.Localization;
-using Module.PopupLogic.General.Controller;
 
-namespace Assets.App.Scripts.Features.Popups.InformationPopup.Routers
+namespace App.Scripts.Scenes.Gameplay.Features.Popups.InformationPopup.Routers
 {
-	public class InformationPopupRouter : IInformationPopupRouter
-	{
-		private ILabeledCommand goToGameplayStateCommand;
-		private ILocalizationSystem localizationSystem;
-		private IPopupController popupController;
+    public class InformationPopupRouter : IInformationPopupRouter
+    {
+        private ILabeledCommand goToGameplayStateCommand;
+        private ILocalizationSystem localizationSystem;
+        private IPopupController popupController;
 
-		private InformationPopup popup;
+        private InformationPopup popup;
 
-		public InformationPopupRouter(
-			ILabeledCommand goToGameplayStateCommand,
-			ILocalizationSystem localizationSystem,
-			IPopupController popupController
-		)
-		{
-			this.goToGameplayStateCommand = goToGameplayStateCommand;
-			this.localizationSystem = localizationSystem;
-			this.popupController = popupController;
-		}
+        public InformationPopupRouter(
+            ILabeledCommand goToGameplayStateCommand,
+            ILocalizationSystem localizationSystem,
+            IPopupController popupController
+        )
+        {
+            this.goToGameplayStateCommand = goToGameplayStateCommand;
+            this.localizationSystem = localizationSystem;
+            this.popupController = popupController;
+        }
 
-		public async UniTask HideInformationPopup()
-		{
-			if (popup == null)
-			{
-				return;
-			}
+        public async UniTask HideInformationPopup()
+        {
+            if (popup == null)
+            {
+                return;
+            }
 
-			await popup.Hide();
-			popup = null;
-		}
+            await popup.Hide();
+            popup = null;
+        }
 
-		public async UniTask ShowInformationPopup(TileConfig tileConfig)
-		{
-			if (popup == null)
-			{
-				popup = popupController.GetPopup<InformationPopup>();
-			}
+        public async UniTask ShowInformationPopup(TileConfig tileConfig)
+        {
+            if (popup == null)
+            {
+                popup = popupController.GetPopup<InformationPopup>();
+            }
 
-			var viewModule = new InformationViewModule(
-				localizationSystem,
-				goToGameplayStateCommand,
-				tileConfig
-			);
-			popup.Setup(viewModule);
+            var viewModule = new InformationViewModule(
+                localizationSystem,
+                goToGameplayStateCommand,
+                tileConfig
+            );
+            popup.Setup(viewModule);
 
-			await popup.Show();
-		}
-	}
+            await popup.Show();
+        }
+    }
 }

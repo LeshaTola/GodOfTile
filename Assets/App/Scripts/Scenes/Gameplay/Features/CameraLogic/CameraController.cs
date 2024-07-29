@@ -1,9 +1,11 @@
+using App.Scripts.Modules.StateMachine.Services.UpdateService;
+using App.Scripts.Scenes.Gameplay.Features.CameraLogic.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Input;
 using Cinemachine;
-using Features.StateMachineCore;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.CameraLogic.Configs
+namespace App.Scripts.Scenes.Gameplay.Features.CameraLogic
 {
     public class CameraController : ICameraController, IUpdatable
     {
@@ -62,7 +64,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.CameraLogic.Configs
 
         public void Focus()
         {
-            Vector3 targetFocus = cinemachineTransposer.m_FollowOffset;
+            var targetFocus = cinemachineTransposer.m_FollowOffset;
             if (Mouse.current.scroll.ReadValue().y < 0)
             {
                 targetFocus.y += config.FocusStep;

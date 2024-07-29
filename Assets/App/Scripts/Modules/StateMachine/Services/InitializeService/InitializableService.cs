@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Modules.StateMachine.Services.InitializeService
+namespace App.Scripts.Modules.StateMachine.Services.InitializeService
 {
     public class InitializeService : IInitializeService
     {
@@ -8,7 +8,7 @@ namespace Modules.StateMachine.Services.InitializeService
 
         public void Initialize()
         {
-            foreach (IInitializable Initializable in Initializables)
+            foreach (var Initializable in Initializables)
             {
                 Initializable.Initialize();
             }

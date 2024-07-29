@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI.Information;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI.Item;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
-using Module.Localization.Localizers;
-using Module.PopupLogic.General.Popups;
+using App.Scripts.Modules.Localization.Localizers;
+using App.Scripts.Modules.PopupLogic.General.Popup;
+using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.InformationWidget;
+using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.Item;
+using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.ViewModels;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using UnityEngine;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup
+namespace App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup
 {
     public class ShopPopup : Popup
     {
@@ -29,12 +29,12 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup
 
             this.viewModule = viewModule;
             informationWidget.Setup(viewModule.ItemInformationWidget);
-            var tilesToBuy = viewModule.ShopSystem.TilesToBuy;
+            var tilesToBuy = viewModule.ShopSystem.AvailableTiles;
             AddItems(tilesToBuy.Count);
 
             header.Init(viewModule.LocalizationSystem);
 
-            for (int i = 0; i < tilesToBuy.Count; i++)
+            for (var i = 0; i < tilesToBuy.Count; i++)
             {
                 SetupItem(shopItems[i], tilesToBuy[i]);
                 shopItems[i].Show();
@@ -45,7 +45,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup
 
         public void Cleanup()
         {
-            foreach (ShopItemUI item in shopItems)
+            foreach (var item in shopItems)
             {
                 item.Hide();
                 item.onBuyButtonClicked -= BindBuyAction;
@@ -67,7 +67,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup
 
         private ShopItemUI AddItem()
         {
-            ShopItemUI item = viewModule.ItemFactory.GetItem();
+            var item = viewModule.ItemFactory.GetItem();
             item.transform.SetParent(container);
             item.transform.localPosition = Vector3.zero;
             item.transform.localScale = Vector3.one;
@@ -89,6 +89,7 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup
             {
                 return;
             }
+
             viewModule.ShopSystem.BuyTile(tileConfig);
         }
     }

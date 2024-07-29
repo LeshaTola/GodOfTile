@@ -1,4 +1,4 @@
-namespace Assets.App.Scripts.Scenes.Gameplay.StateMachines.States
+namespace App.Scripts.Scenes.Gameplay.StateMachines.State
 {
     public class StatesIds
     {

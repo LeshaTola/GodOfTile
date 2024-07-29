@@ -1,11 +1,10 @@
-using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Animations;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Animations;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using Cysharp.Threading.Tasks;
-using TileSystem;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Tiles
+namespace App.Scripts.Scenes.Gameplay.Features.Tiles.General
 {
     public class TileVisual : MonoBehaviour
     {

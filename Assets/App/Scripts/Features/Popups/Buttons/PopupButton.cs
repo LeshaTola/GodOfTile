@@ -1,10 +1,9 @@
 ﻿using System;
-using Features.Popups.Languages;
-using Module.Localization;
-using Module.Localization.Localizers;
+using App.Scripts.Modules.Localization;
+using App.Scripts.Modules.Localization.Localizers;
 using UnityEngine;
 
-namespace Assets.App.Scripts.Features.Popups.Buttons
+namespace App.Scripts.Features.Popups.Buttons
 {
     public class PopupButton : MonoBehaviour, IPopupButton
     {

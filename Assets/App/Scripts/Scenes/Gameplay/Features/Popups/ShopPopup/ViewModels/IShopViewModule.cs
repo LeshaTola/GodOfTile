@@ -1,9 +1,9 @@
-﻿using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.Factories.Item;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.Systems;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI.Information;
-using Module.Localization;
+﻿using App.Scripts.Modules.Localization;
+using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.InformationWidget.ViewModels;
+using App.Scripts.Scenes.Gameplay.Features.Shop.Factories.Item;
+using App.Scripts.Scenes.Gameplay.Features.Shop.Systems;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI
+namespace App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.ViewModels
 {
     public interface IShopViewModule
     {

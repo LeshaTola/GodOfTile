@@ -1,8 +1,8 @@
-﻿using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Systems;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.Factories.Cost;
-using Module.Localization;
+﻿using App.Scripts.Modules.Localization;
+using App.Scripts.Scenes.Gameplay.Features.Inventory.Systems;
+using App.Scripts.Scenes.Gameplay.Features.Shop.Factories.Cost;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI.Information
+namespace App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.InformationWidget.ViewModels
 {
     public interface IInformationWidgetViewModule
     {

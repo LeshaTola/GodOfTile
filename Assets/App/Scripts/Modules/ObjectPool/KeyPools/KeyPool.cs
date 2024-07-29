@@ -1,7 +1,10 @@
 ﻿using System.Collections.Generic;
+using App.Scripts.Modules.ObjectPool.MonoObjectPools;
+using App.Scripts.Modules.ObjectPool.PooledObjects;
+using App.Scripts.Modules.ObjectPool.Pools;
 using UnityEngine;
 
-namespace Module.ObjectPool.KeyPools
+namespace App.Scripts.Modules.ObjectPool.KeyPools
 {
     public class KeyPool<T>
         where T : MonoBehaviour
@@ -28,12 +31,13 @@ namespace Module.ObjectPool.KeyPools
                 Debug.LogError("Pool with such key is already exist");
                 return;
             }
+
             poolsDictionary.Add(key, pool);
         }
 
         public T Get(string key)
         {
-            if (poolsDictionary.TryGetValue(key, out IPool<T> correctPool))
+            if (poolsDictionary.TryGetValue(key, out var correctPool))
             {
                 return correctPool.Get();
             }
@@ -44,10 +48,11 @@ namespace Module.ObjectPool.KeyPools
 
         public void Release(string key, T pooledObject)
         {
-            if (poolsDictionary.TryGetValue(key, out IPool<T> correctPool))
+            if (poolsDictionary.TryGetValue(key, out var correctPool))
             {
                 correctPool.Release(pooledObject);
             }
+
             Debug.LogError($"There is no such pool key: {key}");
         }
     }

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using Features.StateMachineCore;
 
-namespace Modules.StateMachine.Services.CleanupService
+namespace App.Scripts.Modules.StateMachine.Services.CleanupService
 {
     public class CleanupService : ICleanupService
     {
@@ -9,7 +8,7 @@ namespace Modules.StateMachine.Services.CleanupService
 
         public void Cleanup()
         {
-            foreach (ICleanupable cleanupable in Cleanupables)
+            foreach (var cleanupable in Cleanupables)
             {
                 cleanupable.Cleanup();
             }

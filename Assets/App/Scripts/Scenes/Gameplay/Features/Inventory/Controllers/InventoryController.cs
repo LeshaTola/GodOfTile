@@ -1,11 +1,11 @@
-﻿using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Factories;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Systems;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.UI;
-using Features.StateMachineCore;
+﻿using App.Scripts.Modules.StateMachine.Services.CleanupService;
+using App.Scripts.Scenes.Gameplay.Features.Inventory.Factories;
+using App.Scripts.Scenes.Gameplay.Features.Inventory.Systems;
+using App.Scripts.Scenes.Gameplay.Features.Inventory.UI.Inventory;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Controllers
+namespace App.Scripts.Scenes.Gameplay.Features.Inventory.Controllers
 {
-	public class InventoryController : IInventoryController, ICleanupable
+    public class InventoryController : IInventoryController, ICleanupable
     {
         private IInventorySystem inventorySystem;
         private IInventoryUI inventoryUI;
@@ -25,14 +25,15 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.Controllers
             inventorySystem.InitializeResources();
         }
 
-        private void OnRecourseAmountChanged(string resourceName, int amount)
+        private void OnRecourseAmountChanged(string resourceName, float amount)
         {
             if (!inventoryUI.HasRecourseUI(resourceName))
             {
-                AddResourceUI(resourceName, amount);
+                AddResourceUI(resourceName, (int) amount);
                 return;
             }
-            inventoryUI.UpdateResource(resourceName, amount);
+
+            inventoryUI.UpdateResource(resourceName, (int) amount);
         }
 
         public void Cleanup()

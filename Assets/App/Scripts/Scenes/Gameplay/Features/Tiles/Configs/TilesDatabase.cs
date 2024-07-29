@@ -2,7 +2,7 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs
+namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Configs
 {
     [CreateAssetMenu(fileName = "TilesDatabase", menuName = "Databases/Tiles/Configs")]
     public class TilesDatabase : SerializedScriptableObject
@@ -10,9 +10,6 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs
         [SerializeField]
         private Dictionary<string, TileConfig> configs;
 
-        public Dictionary<string, TileConfig> Configs
-        {
-            get => configs;
-        }
+        public Dictionary<string, TileConfig> Configs => configs;
     }
 }

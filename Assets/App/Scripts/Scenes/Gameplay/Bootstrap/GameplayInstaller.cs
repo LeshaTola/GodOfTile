@@ -1,14 +1,18 @@
-﻿using Assets.App.Scripts.Scenes.Gameplay.Features.CameraLogic.Configs;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Grid;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Grid.Configs;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Grid.Visualizators;
+﻿using App.Scripts.Modules.ObjectPool.KeyPools;
+using App.Scripts.Modules.ObjectPool.KeyPools.Configs;
+using App.Scripts.Modules.ObjectPool.PooledObjects;
+using App.Scripts.Modules.StateMachine.Services.UpdateService;
+using App.Scripts.Scenes.Gameplay.Features.CameraLogic;
+using App.Scripts.Scenes.Gameplay.Features.CameraLogic.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Grid;
+using App.Scripts.Scenes.Gameplay.Features.Grid.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Grid.Visualizators;
+using App.Scripts.Scenes.Gameplay.Features.Input;
 using Cinemachine;
-using Module.ObjectPool;
-using Module.ObjectPool.KeyPools;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Bootstrap
+namespace App.Scripts.Scenes.Gameplay.Bootstrap
 {
     public class GameplayInstaller : MonoInstaller
     {
@@ -44,6 +48,8 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Bootstrap
             CommandInstaller.Install(Container);
             RouterInstaller.Install(Container);
 
+
+            Container.Bind<IUpdateService>().To<UpdateService>().AsSingle();
             BindGameInput();
 
             BindMainCamera();

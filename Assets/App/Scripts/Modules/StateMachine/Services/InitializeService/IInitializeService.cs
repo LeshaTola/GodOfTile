@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 
-namespace Modules.StateMachine.Services.InitializeService
+namespace App.Scripts.Modules.StateMachine.Services.InitializeService
 {
-	public interface IInitializeService
-	{
-		List<IInitializable> Initializables { get; }
+    public interface IInitializeService
+    {
+        List<IInitializable> Initializables { get; }
 
-		void Initialize();
-	}
+        void Initialize();
+    }
 }

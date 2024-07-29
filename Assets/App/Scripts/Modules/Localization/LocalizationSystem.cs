@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using Features.FileProvider;
-using Module.Localization.Configs;
-using Module.Localization.Parsers;
-using Module.Saves;
-using UnityEngine;
+using App.Scripts.Modules.FileProvider;
+using App.Scripts.Modules.Localization.Configs;
+using App.Scripts.Modules.Localization.Data;
+using App.Scripts.Modules.Localization.Parsers;
+using App.Scripts.Modules.Saves;
 
-namespace Module.Localization
+namespace App.Scripts.Modules.Localization
 {
     public class LocalizationSystem : ILocalizationSystem
     {
@@ -34,16 +34,13 @@ namespace Module.Localization
             this.fileProvider = fileProvider;
             this.dataProvider = dataProvider;
 
-            languageDictionary = new();
+            languageDictionary = new Dictionary<string, string>();
 
             LoadLocalization();
             ChangeLanguage(this.language);
         }
 
-        public string Language
-        {
-            get => language;
-        }
+        public string Language => language;
 
         public void ChangeLanguage(string languageKey)
         {
@@ -53,7 +50,7 @@ namespace Module.Localization
             }
 
             language = languageKey;
-            TextAsset localizationFile = fileProvider.GetTextAsset(
+            var localizationFile = fileProvider.GetTextAsset(
                 localizationDictionary.Languages[language]
             );
             languageDictionary = parser.Parse(localizationFile.text);
@@ -73,7 +70,7 @@ namespace Module.Localization
 
         private void LoadLocalization()
         {
-            LocalizationData loadedLanguage = dataProvider.GetData();
+            var loadedLanguage = dataProvider.GetData();
             if (loadedLanguage != null)
             {
                 language = loadedLanguage.LanguageKey;
@@ -82,7 +79,7 @@ namespace Module.Localization
 
         private void SaveLocalization(string languageKey)
         {
-            dataProvider.SaveData(new LocalizationData() { LanguageKey = languageKey, });
+            dataProvider.SaveData(new LocalizationData() {LanguageKey = languageKey,});
         }
 
         public string Translate(string key)
@@ -91,6 +88,7 @@ namespace Module.Localization
             {
                 return key;
             }
+
             return languageDictionary[key];
         }
     }

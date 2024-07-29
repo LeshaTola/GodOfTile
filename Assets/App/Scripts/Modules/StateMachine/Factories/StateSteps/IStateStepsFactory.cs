@@ -1,9 +1,9 @@
-﻿using Features.StateMachineCore.States.General;
+﻿using App.Scripts.Modules.StateMachine.States.General;
 
-namespace Features.StateMachineCore.Factories
+namespace App.Scripts.Modules.StateMachine.Factories.StateSteps
 {
-	public interface IStateStepsFactory
-	{
-		T GetStateStep<T>() where T : StateStep;
-	}
+    public interface IStateStepsFactory
+    {
+        T GetStateStep<T>() where T : StateStep;
+    }
 }

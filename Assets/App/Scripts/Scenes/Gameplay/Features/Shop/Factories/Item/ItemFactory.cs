@@ -1,7 +1,7 @@
-﻿using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI.Item;
+﻿using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.Item;
 using UnityEngine;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Shop.Factories.Item
+namespace App.Scripts.Scenes.Gameplay.Features.Shop.Factories.Item
 {
     public class ItemFactory : IItemFactory
     {

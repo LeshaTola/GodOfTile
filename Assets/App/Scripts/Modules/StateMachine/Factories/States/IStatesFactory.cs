@@ -1,9 +1,9 @@
-﻿using Features.StateMachineCore.States;
+﻿using App.Scripts.Modules.StateMachine.States.General;
 
-namespace Features.StateMachineCore.Factories
+namespace App.Scripts.Modules.StateMachine.Factories.States
 {
-	public interface IStatesFactory
-	{
-		State GetState(string id);
-	}
+    public interface IStatesFactory
+    {
+        State GetState(string id);
+    }
 }

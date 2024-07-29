@@ -1,7 +1,8 @@
-﻿using Assets.App.Scripts.Scenes.Gameplay.Features.Grid;
-using UnityEngine;
+﻿using App.Scripts.Scenes.Gameplay.Features.Grid;
+using App.Scripts.Scenes.Gameplay.Features.Input;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.General;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Providers
+namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Selection
 {
     public class TileSelectionProvider : ITileSelectionProvider
     {
@@ -16,14 +17,14 @@ namespace Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Providers
 
         public Tile GetTileAtMousePosition()
         {
-            Vector2Int gridPosition = gameInput.GetGridMousePosition();
+            var gridPosition = gameInput.GetGridMousePosition();
 
             if (!gridProvider.IsValid(gridPosition))
             {
                 return null;
             }
 
-            Tile tile = gridProvider.Grid[gridPosition.x, gridPosition.y];
+            var tile = gridProvider.Grid[gridPosition.x, gridPosition.y];
             return tile;
         }
     }

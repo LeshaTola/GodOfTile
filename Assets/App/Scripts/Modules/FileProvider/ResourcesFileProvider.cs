@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 
-namespace Features.FileProvider
+namespace App.Scripts.Modules.FileProvider
 {
-	public class ResourcesFileProvider : IFileProvider
-	{
-		public TextAsset GetTextAsset(string path)
-		{
-			return Resources.Load<TextAsset>(path);
-		}
-	}
+    public class ResourcesFileProvider : IFileProvider
+    {
+        public TextAsset GetTextAsset(string path)
+        {
+            return Resources.Load<TextAsset>(path);
+        }
+    }
 }

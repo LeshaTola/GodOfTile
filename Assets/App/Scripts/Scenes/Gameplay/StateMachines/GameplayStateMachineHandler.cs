@@ -1,11 +1,11 @@
-﻿using Assets.App.Scripts.Scenes.Gameplay.StateMachines.States;
-using Assets.App.Scripts.StateMachines.States;
-using Features.StateMachineCore.Factories;
-using Modules.StateMachineCore;
+﻿using App.Scripts.Features.StateMachines.States;
+using App.Scripts.Modules.StateMachine;
+using App.Scripts.Modules.StateMachine.Factories.States;
+using App.Scripts.Scenes.Gameplay.StateMachines.State;
 using UnityEngine;
 using Zenject;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.StateMachines
+namespace App.Scripts.Scenes.Gameplay.StateMachines
 {
     public class GameplayStateMachineHandler : MonoBehaviour
     {

@@ -1,11 +1,11 @@
 ﻿using System;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI.Information;
-using Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.InformationWidget;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Shop.UI.Item
+namespace App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.Item
 {
     public class ShopItemUI
         : MonoBehaviour,

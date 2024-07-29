@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.App.Scripts.Scenes.Gameplay.Features.Inventory.UI
+namespace App.Scripts.Scenes.Gameplay.Features.Inventory.UI.Resource
 {
     public interface IResourceUI
     {
