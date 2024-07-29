@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using App.Scripts.Modules.StateMachine.Services.UpdateService;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Services
+namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Services
 {
     public class SystemsService : ISystemsService, IUpdatable
     {

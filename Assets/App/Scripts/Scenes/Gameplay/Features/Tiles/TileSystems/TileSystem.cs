@@ -1,11 +1,10 @@
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.UI;
-using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.UI.Specific.ResourceEarner;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems
 {
     public abstract class TileSystemData
     {
-        public abstract ResourceEarnerSystemUI TileSystemUI { get; }
+        public abstract SystemUI TileUI { get; }
     }
 
     public abstract class TileSystem : ITileSystem

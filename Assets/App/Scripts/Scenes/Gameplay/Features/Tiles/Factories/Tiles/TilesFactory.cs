@@ -1,6 +1,6 @@
 ﻿using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.TileSystem;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.General;
-using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Factories;
 using UnityEngine;
 using Zenject;
 

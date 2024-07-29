@@ -16,7 +16,8 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 11400000, guid: 566e68ac22f22f5479bdce591760f218, type: 2}
+    - {fileID: 4270591148473921660, guid: 3b43aa0a445d55c448dcb581f2292ed2, type: 3}
+    - {fileID: 11400000, guid: d1457a3ec05187d4e828a5f43be2b55a, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -31,24 +32,21 @@ MonoBehaviour:
       Data: 1
     - Name: 
       Entry: 7
-      Data: 1|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarner,
+      Data: 1|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners.ResourceEarner,
         Assembly-CSharp
     - Name: data
       Entry: 7
-      Data: 2|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarnerSystemData,
+      Data: 2|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners.ResourceEarnerSystemData,
         Assembly-CSharp
-    - Name: resourcesDatabase
+    - Name: tileUI
       Entry: 10
       Data: 0
     - Name: resource
-      Entry: 1
-      Data: food
-    - Name: amount
-      Entry: 3
+      Entry: 10
       Data: 1
-    - Name: cooldown
-      Entry: 3
-      Data: 1
+    - Name: amountPerSecond
+      Entry: 4
+      Data: 0.2
     - Name: 
       Entry: 8
       Data: 

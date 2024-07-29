@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Factories
+namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.TileSystem
 {
 	public interface ISystemsFactory
 	{
-		TileSystem GetSystem(TileSystem original);
-		List<TileSystem> GetSystems(List<TileSystem> originals);
+		TileSystems.TileSystem GetSystem(TileSystems.TileSystem original);
+		List<TileSystems.TileSystem> GetSystems(List<TileSystems.TileSystem> originals);
 	}
 }

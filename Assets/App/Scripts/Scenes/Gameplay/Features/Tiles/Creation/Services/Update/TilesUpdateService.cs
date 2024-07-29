@@ -4,8 +4,8 @@ using App.Scripts.Scenes.Gameplay.Features.Grid;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Providers.Effects;
-using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Factories;
-using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Services;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.TileSystem;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Services;
 using UnityEngine;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.Update

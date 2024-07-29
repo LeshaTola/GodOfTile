@@ -49,17 +49,17 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.InformationPopup
         {
             Cleanup();
             Init(viewModule);
-            UpdateUI(viewModule.TileConfig);
+            SetupUI(viewModule.TileConfig);
         }
 
-        public void UpdateUI(TileConfig tileConfig)
+        public void SetupUI(TileConfig tileConfig)
         {
             tileImage.sprite = tileConfig.TileSprite;
             type.Value.Key = tileConfig.Type;
             tileName.Value.Key = tileConfig.Name;
             description.Key = tileConfig.Description;
 
-            UpdateSystems(tileConfig.ActiveSystems);
+            SetupSystems(tileConfig.ActiveSystems);
 
             Translate();
         }
@@ -104,15 +104,17 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.InformationPopup
             closeButton.Translate();
         }
 
-        private void UpdateSystems(List<TileSystem> tileSystems)
+        private void SetupSystems(List<TileSystem> tileSystems)
         {
             foreach (var system in tileSystems)
             {
                 var systemUI = system.GetSystemUI();
-                systemUI.transform.SetParent(tileSystemsContainer);
-                systemUI.transform.localPosition = Vector3.zero;
-                systemUI.transform.localScale = Vector3.one;
-                systemUI.Show();
+                Transform transform1;
+                (transform1 = systemUI.transform).SetParent(tileSystemsContainer);
+                transform1.localPosition = Vector3.zero;
+                transform1.localScale = Vector3.one;
+
+                systemUI.Setup();
             }
         }
 

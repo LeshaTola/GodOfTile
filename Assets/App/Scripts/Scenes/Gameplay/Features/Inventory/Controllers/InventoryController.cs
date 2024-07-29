@@ -25,15 +25,15 @@ namespace App.Scripts.Scenes.Gameplay.Features.Inventory.Controllers
             inventorySystem.InitializeResources();
         }
 
-        private void OnRecourseAmountChanged(string resourceName, int amount)
+        private void OnRecourseAmountChanged(string resourceName, float amount)
         {
             if (!inventoryUI.HasRecourseUI(resourceName))
             {
-                AddResourceUI(resourceName, amount);
+                AddResourceUI(resourceName, (int) amount);
                 return;
             }
 
-            inventoryUI.UpdateResource(resourceName, amount);
+            inventoryUI.UpdateResource(resourceName, (int) amount);
         }
 
         public void Cleanup()

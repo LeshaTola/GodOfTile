@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Zenject;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Factories
+namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.TileSystem
 {
     public class SystemsFactory : ISystemsFactory
     {
@@ -12,16 +12,16 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Factories
             this.diContainer = diContainer;
         }
 
-        public TileSystem GetSystem(TileSystem original)
+        public TileSystems.TileSystem GetSystem(TileSystems.TileSystem original)
         {
             var type = original.GetType();
             var newSystem = diContainer.Instantiate(type, new object[] {original.Data});
             return (TileSystems.TileSystem) newSystem;
         }
 
-        public List<TileSystem> GetSystems(List<TileSystem> originals)
+        public List<TileSystems.TileSystem> GetSystems(List<TileSystems.TileSystem> originals)
         {
-            List<TileSystem> tileSystems = new();
+            List<TileSystems.TileSystem> tileSystems = new();
             foreach (var system in originals)
             {
                 tileSystems.Add(GetSystem(system));
