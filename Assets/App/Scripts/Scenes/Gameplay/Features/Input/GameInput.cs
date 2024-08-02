@@ -11,15 +11,19 @@ namespace App.Scripts.Scenes.Gameplay.Features.Input
     {
         public event Action OnBuild;
         public event Action OnRotate;
+        public event Action OnPause;
+        public event Action OnSpeed1;
+        public event Action OnSpeed2;
+        public event Action OnSpeed3;
+        
 
         private Camera mainCamera;
-        private IGridProvider gridProvider;
 
         private global::Input input;
         private Plane ground;
         private Vector2Int lastPosition;
 
-        public GameInput(Camera mainCamera, IGridProvider gridProvider)
+        public GameInput(Camera mainCamera)
         {
             this.mainCamera = mainCamera;
 
@@ -28,9 +32,13 @@ namespace App.Scripts.Scenes.Gameplay.Features.Input
 
             input.Game.Build.performed += BuildButtonPerformed;
             input.Game.Rotate.performed += RotationButtonPerformed;
+            
+            input.Game.Pause.performed += PauseButtonPerformed;
+            input.Game.Speed1.performed += Speed1ButtonPerformed;
+            input.Game.Speed2.performed += Speed2ButtonPerformed;
+            input.Game.Speed3.performed += Speed3ButtonPerformed;
 
             ground = new Plane(Vector2.up, Vector3.zero);
-            this.gridProvider = gridProvider;
         }
 
         public Vector2 GetMoveVectorNormalized()
@@ -48,6 +56,12 @@ namespace App.Scripts.Scenes.Gameplay.Features.Input
         public void Cleanup()
         {
             input.Game.Build.performed -= BuildButtonPerformed;
+            input.Game.Rotate.performed -= RotationButtonPerformed;
+            
+            input.Game.Pause.performed -= PauseButtonPerformed;
+            input.Game.Speed1.performed -= Speed1ButtonPerformed;
+            input.Game.Speed2.performed -= Speed2ButtonPerformed;
+            input.Game.Speed3.performed -= Speed3ButtonPerformed;
         }
 
         public bool IsMouseClicked()
@@ -88,6 +102,29 @@ namespace App.Scripts.Scenes.Gameplay.Features.Input
         private void RotationButtonPerformed(InputAction.CallbackContext obj)
         {
             OnRotate?.Invoke();
+        }
+
+        private void Speed1ButtonPerformed(InputAction.CallbackContext obj)
+        {
+            OnSpeed1?.Invoke();
+        }
+        
+        private void Speed2ButtonPerformed(InputAction.CallbackContext obj)
+        {
+            OnSpeed2?.Invoke();
+
+        }
+        
+        private void Speed3ButtonPerformed(InputAction.CallbackContext obj)
+        {
+            OnSpeed3?.Invoke();
+
+        }
+
+        private void PauseButtonPerformed(InputAction.CallbackContext obj)
+        {
+            OnPause?.Invoke();
+
         }
     }
 }
