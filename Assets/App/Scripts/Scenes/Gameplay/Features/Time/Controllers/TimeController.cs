@@ -3,6 +3,7 @@ using App.Scripts.Modules.StateMachine.Services.InitializeService;
 using App.Scripts.Scenes.Gameplay.Features.Input;
 using App.Scripts.Scenes.Gameplay.Features.Time.Services.TimeServices;
 using App.Scripts.Scenes.Gameplay.Features.Time.UI;
+using UnityEngine.UI;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Time.Controllers
 {
@@ -53,21 +54,26 @@ namespace App.Scripts.Scenes.Gameplay.Features.Time.Controllers
         private void SetPause()
         {
             timeService.SetPause();
+            timeControllerUI.SetSelector(timeControllerUI.PauseButton);
         }
 
         private void SetSpeed1()
         {
             timeService.SetSpeed(config.Speed1);
+            timeControllerUI.SetSelector(timeControllerUI.Speed1Button);
+
         }
 
         private void SetSpeed2()
         {
             timeService.SetSpeed(config.Speed2);
+            timeControllerUI.SetSelector(timeControllerUI.Speed2Button);
         }
 
         private void SetSpeed3()
         {
             timeService.SetSpeed(config.Speed3);
+            timeControllerUI.SetSelector(timeControllerUI.Speed3Button);
         }
     }
 }
