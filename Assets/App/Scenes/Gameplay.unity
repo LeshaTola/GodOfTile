@@ -591,8 +591,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.46166384, y: -0.33147955, z: 0.19122742, w: 0.80026245}
-  m_LocalPosition: {x: 53.535534, y: 8.646477, z: 46.464466}
+  m_LocalRotation: {x: 0.17471255, y: -0.3757784, z: 0.0723683, w: 0.90720946}
+  m_LocalPosition: {x: 53.535534, y: 2, z: 46.464466}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2100,7 +2100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 8.646477, z: -5}
+  m_FollowOffset: {x: 0, y: 2, z: -5}
   m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0
@@ -2641,8 +2641,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2128820150}
-  m_LocalRotation: {x: 0.46166384, y: -0.33147955, z: 0.19122742, w: 0.80026245}
-  m_LocalPosition: {x: 53.535534, y: 8.646477, z: 46.464466}
+  m_LocalRotation: {x: 0.17471255, y: -0.3757784, z: 0.0723683, w: 0.90720946}
+  m_LocalPosition: {x: 53.535534, y: 2, z: 46.464466}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2736,46 +2736,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 974188330}
     m_Modifications:
-    - target: {fileID: 4337906512809291326, guid: bda99c813a55ed442bb2d3eeb1d9e129,
-        type: 3}
-      propertyPath: m_Spacing
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 4337906512809291326, guid: bda99c813a55ed442bb2d3eeb1d9e129,
-        type: 3}
-      propertyPath: m_Padding.m_Top
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 4337906512809291326, guid: bda99c813a55ed442bb2d3eeb1d9e129,
-        type: 3}
-      propertyPath: m_ChildAlignment
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4337906512809291326, guid: bda99c813a55ed442bb2d3eeb1d9e129,
-        type: 3}
-      propertyPath: m_Padding.m_Left
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 4337906512809291326, guid: bda99c813a55ed442bb2d3eeb1d9e129,
-        type: 3}
-      propertyPath: m_Padding.m_Right
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 4337906512809291326, guid: bda99c813a55ed442bb2d3eeb1d9e129,
-        type: 3}
-      propertyPath: m_Padding.m_Bottom
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 4337906512809291326, guid: bda99c813a55ed442bb2d3eeb1d9e129,
-        type: 3}
-      propertyPath: m_ChildForceExpandWidth
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4337906512809291326, guid: bda99c813a55ed442bb2d3eeb1d9e129,
-        type: 3}
-      propertyPath: m_ChildForceExpandHeight
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5497889879654679386, guid: bda99c813a55ed442bb2d3eeb1d9e129,
         type: 3}
       propertyPath: m_Pivot.x
