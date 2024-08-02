@@ -2,6 +2,7 @@
 using App.Scripts.Modules.ObjectPool.KeyPools.Configs;
 using App.Scripts.Modules.ObjectPool.PooledObjects;
 using App.Scripts.Modules.StateMachine.Services.UpdateService;
+using App.Scripts.Modules.TimeProvider;
 using App.Scripts.Scenes.Gameplay.Features.CameraLogic;
 using App.Scripts.Scenes.Gameplay.Features.CameraLogic.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Grid;
@@ -48,7 +49,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
             CommandInstaller.Install(Container);
             RouterInstaller.Install(Container);
 
-
+            BindTimeProviders();
             Container.Bind<IUpdateService>().To<UpdateService>().AsSingle();
             BindGameInput();
 
@@ -60,6 +61,12 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
 
             BindGridProvider();
             BindGridVisualizator();
+        }
+
+        private void BindTimeProviders()
+        {
+            Container.Bind<ITimeProvider>().To<GameplayTimeProvider>().AsSingle();
+            Container.Bind<ITimeProvider>().To<ProjectTimeProvider>().AsSingle().WhenInjectedInto<CameraController>();
         }
 
         private void BindGridVisualizator()

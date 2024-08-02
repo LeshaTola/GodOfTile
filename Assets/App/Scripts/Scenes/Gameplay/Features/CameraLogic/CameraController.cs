@@ -1,4 +1,5 @@
 using App.Scripts.Modules.StateMachine.Services.UpdateService;
+using App.Scripts.Modules.TimeProvider;
 using App.Scripts.Scenes.Gameplay.Features.CameraLogic.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Input;
 using Cinemachine;
@@ -12,6 +13,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.CameraLogic
         private CameraMovementConfig config;
         private Transform cameraTarget;
         private IGameInput gameInput;
+        private readonly ITimeProvider timeProvider;
 
         private CinemachineTransposer cinemachineTransposer;
 
@@ -19,12 +21,14 @@ namespace App.Scripts.Scenes.Gameplay.Features.CameraLogic
             CinemachineVirtualCamera virtualCamera,
             CameraMovementConfig config,
             Transform cameraTarget,
-            IGameInput gameInput
+            IGameInput gameInput,
+            ITimeProvider timeProvider
         )
         {
             this.config = config;
             this.cameraTarget = cameraTarget;
             this.gameInput = gameInput;
+            this.timeProvider = timeProvider;
 
             cinemachineTransposer = virtualCamera.GetCinemachineComponent<CinemachineTransposer>();
         }
@@ -43,13 +47,14 @@ namespace App.Scripts.Scenes.Gameplay.Features.CameraLogic
 
         public void Move(Vector2 dir)
         {
+            var targetTransform = cameraTarget.transform;
             var moveDir =
-                cameraTarget.transform.forward * dir.y + cameraTarget.transform.right * dir.x;
+                targetTransform.forward * dir.y + targetTransform.right * dir.x;
 
-            cameraTarget.transform.position += moveDir * Time.deltaTime * config.MoveSpeed;
+            targetTransform.position += moveDir * timeProvider.DeltaTime * config.MoveSpeed;
 
             var x = Mathf.Clamp(
-                cameraTarget.transform.position.x,
+                targetTransform.position.x,
                 config.XCoordinate.Min,
                 config.XCoordinate.Max
             );
@@ -58,8 +63,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.CameraLogic
                 config.YCoordinate.Min,
                 config.YCoordinate.Max
             );
-
-            cameraTarget.transform.position = new Vector3(x, cameraTarget.transform.position.y, y);
+            
+            targetTransform.position = new Vector3(x, targetTransform.position.y, y);
         }
 
         public void Focus()
@@ -80,7 +85,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.CameraLogic
             cinemachineTransposer.m_FollowOffset = Vector3.Lerp(
                 cinemachineTransposer.m_FollowOffset,
                 targetFocus,
-                Time.deltaTime * config.FocusSpeed
+                timeProvider.DeltaTime * config.FocusSpeed
             );
         }
     }

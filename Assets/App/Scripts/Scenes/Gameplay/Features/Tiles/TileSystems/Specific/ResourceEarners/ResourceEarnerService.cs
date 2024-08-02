@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using App.Scripts.Modules.StateMachine.Services.UpdateService;
+using App.Scripts.Modules.TimeProvider;
 using App.Scripts.Scenes.Gameplay.Features.Inventory.Systems;
 using UnityEngine;
 
@@ -8,13 +9,15 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Resour
     public class ResourceEarnerService : IUpdatable, IResourceEarnerService
     {
         private IInventorySystem inventorySystem;
+        private  ITimeProvider timeProvider;
 
         private Dictionary<string, float> resourceExtraction = new();
         private float timer = 1f;
 
-        public ResourceEarnerService(IInventorySystem inventorySystem)
+        public ResourceEarnerService(IInventorySystem inventorySystem, ITimeProvider timeProvider)
         {
             this.inventorySystem = inventorySystem;
+            this.timeProvider = timeProvider;
         }
 
         public void AddResourceEarnerSystem(string resourceName, float amountPerSecond)
@@ -40,7 +43,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Resour
 
         public void Update()
         {
-            timer -= Time.deltaTime;
+            timer -= timeProvider.DeltaTime;
             if (timer <= 0)
             {
                 timer = 1f;
