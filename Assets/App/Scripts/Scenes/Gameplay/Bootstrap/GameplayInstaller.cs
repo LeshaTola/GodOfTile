@@ -6,10 +6,11 @@ using App.Scripts.Modules.StateMachine.Services.InitializeService;
 using App.Scripts.Modules.StateMachine.Services.UpdateService;
 using App.Scripts.Scenes.Gameplay.Features.CameraLogic;
 using App.Scripts.Scenes.Gameplay.Features.CameraLogic.Configs;
-using App.Scripts.Scenes.Gameplay.Features.Grid;
-using App.Scripts.Scenes.Gameplay.Features.Grid.Configs;
-using App.Scripts.Scenes.Gameplay.Features.Grid.Visualizators;
 using App.Scripts.Scenes.Gameplay.Features.Input;
+using App.Scripts.Scenes.Gameplay.Features.Map.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Map.Providers;
+using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Grid;
+using App.Scripts.Scenes.Gameplay.Features.Map.Visualizators;
 using App.Scripts.Scenes.Gameplay.Features.Materials.WaterMaterial;
 using App.Scripts.Scenes.Gameplay.Features.Materials.WaterMaterial.Configs;
 using Cinemachine;
@@ -21,29 +22,19 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
     public class GameplayInstaller : MonoInstaller
     {
         [Header("Grid")]
-        [SerializeField]
-        private GridConfig gridConfig;
-
-        [SerializeField]
-        private GameObject grid;
+        [SerializeField] private GridConfig gridConfig;
+        [SerializeField] private GameObject grid;
+        [SerializeField] private Transform chunksContainer;
+        [SerializeField] private WorldChunk chunkTemplate;
 
         [Header("Camera")]
-        [SerializeField]
-        private Camera mainCamera;
-
-        [SerializeField]
-        private CinemachineVirtualCamera virtualCamera;
-
-        [SerializeField]
-        private CameraMovementConfig cameraMovementConfig;
-
-        [SerializeField]
-        private Transform cameraTarget;
+        [SerializeField] private Camera mainCamera;
+        [SerializeField] private CinemachineVirtualCamera virtualCamera;
+        [SerializeField] private CameraMovementConfig cameraMovementConfig;
+        [SerializeField] private Transform cameraTarget;
 
         [Header("Particles")]
-        [SerializeField]
-        private ParticlesDatabase particlesDatabase;
-
+        [SerializeField] private ParticlesDatabase particlesDatabase;
         [SerializeField] private Transform particlesContainer;
         [SerializeField] private WaterMaterialConfig waterMaterialConfig;
 
@@ -67,17 +58,17 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
 
             BindParticlesKeyPool();
 
-            BindGridProvider();
-            BindGridVisualizator();
+            BindMapProviders();
+            BindMapVisualizator();
         }
 
-        private void BindGridVisualizator()
+        private void BindMapVisualizator()
         {
             Container
-                .Bind<IGridVisualizator>()
-                .To<GridVisualizator>()
+                .Bind<IMapVisualizator>()
+                .To<MapVisualizator>()
                 .AsSingle()
-                .WithArguments(grid);
+                .WithArguments(grid,chunksContainer,chunkTemplate);
         }
 
         private void BindParticlesKeyPool()
@@ -111,9 +102,10 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
             Container.BindInterfacesTo<GameInput>().AsSingle();
         }
 
-        private void BindGridProvider()
+        private void BindMapProviders()
         {
             Container.Bind<IGridProvider>().To<GridProvider>().AsSingle().WithArguments(gridConfig);
+            Container.Bind<IChunksProvider>().To<ChunksProvider>().AsSingle().WithArguments(gridConfig);
         }
     }
 }

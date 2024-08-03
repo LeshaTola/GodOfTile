@@ -1,6 +1,5 @@
 using System;
 using App.Scripts.Modules.StateMachine.Services.CleanupService;
-using App.Scripts.Scenes.Gameplay.Features.Grid;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;

@@ -1,5 +1,5 @@
-﻿using App.Scripts.Scenes.Gameplay.Features.Grid;
-using App.Scripts.Scenes.Gameplay.Features.Input;
+﻿using App.Scripts.Scenes.Gameplay.Features.Input;
+using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Grid;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.General;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Selection

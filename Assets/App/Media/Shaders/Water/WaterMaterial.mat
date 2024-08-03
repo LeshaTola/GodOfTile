@@ -43,5 +43,5 @@ Material:
     - _DepthGradientShallow: {r: 0.32499996, g: 0.807, b: 0.971, a: 0.725}
     - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
     - _StartSurfaceNoiseScroll: {r: 0.03, g: 0.03, b: 0, a: 0}
-    - _SurfaceNoiseScroll: {r: 0, g: 0, b: 0, a: 0}
+    - _SurfaceNoiseScroll: {r: 0.03, g: 0.03, b: 0, a: 0}
   m_BuildTextureStacks: []

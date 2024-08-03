@@ -1,5 +1,5 @@
 ﻿using App.Scripts.Modules.StateMachine.Services.CleanupService;
-using App.Scripts.Scenes.Gameplay.Features.Grid;
+using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Grid;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Providers;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Providers.Effects;

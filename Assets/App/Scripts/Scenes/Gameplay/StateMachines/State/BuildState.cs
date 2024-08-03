@@ -1,6 +1,6 @@
 ﻿using App.Scripts.Modules.StateMachine.Services.UpdateService;
-using App.Scripts.Scenes.Gameplay.Features.Grid.Visualizators;
 using App.Scripts.Scenes.Gameplay.Features.Input;
+using App.Scripts.Scenes.Gameplay.Features.Map.Visualizators;
 using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.Routers;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCreation;
 using Cysharp.Threading.Tasks;
@@ -12,7 +12,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
         private IUpdateService updateService;
         private IGameInput gameInput;
         private ITilesCreationService creationService;
-        private IGridVisualizator gridVisualizator;
+        private IMapVisualizator mapVisualizator;
         private IShopPopupRouter shopPopupRouter;
 
         public BuildState(
@@ -20,7 +20,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             IUpdateService updateService,
             IGameInput gameInput,
             ITilesCreationService creationService,
-            IGridVisualizator gridVisualizator,
+            IMapVisualizator mapVisualizator,
             IShopPopupRouter shopPopupRouter
         )
             : base(id)
@@ -28,7 +28,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             this.updateService = updateService;
             this.gameInput = gameInput;
             this.creationService = creationService;
-            this.gridVisualizator = gridVisualizator;
+            this.mapVisualizator = mapVisualizator;
             this.shopPopupRouter = shopPopupRouter;
         }
 
@@ -40,7 +40,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             gameInput.OnRotate += OnRotate;
 
             creationService.StartPlacingTile();
-            gridVisualizator.ShowGrid();
+            mapVisualizator.Show();
             await shopPopupRouter.ShowShopPopup();
         }
 
@@ -64,7 +64,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             await base.Exit();
 
             creationService.StopPlacingTile();
-            gridVisualizator.HideGrid();
+            mapVisualizator.Hide();
             await shopPopupRouter.HideShopPopup();
 
             gameInput.OnBuild -= OnBuild;

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using App.Scripts.Scenes.Gameplay.Features.CraftSystem.Providers;
-using App.Scripts.Scenes.Gameplay.Features.Grid;
+using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Grid;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Providers.Effects;

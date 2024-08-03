@@ -2,7 +2,7 @@
 using App.Scripts.Scenes.Gameplay.Features.Tiles.General;
 using UnityEngine;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Grid
+namespace App.Scripts.Scenes.Gameplay.Features.Map.Providers.Grid
 {
     public interface IGridProvider
     {

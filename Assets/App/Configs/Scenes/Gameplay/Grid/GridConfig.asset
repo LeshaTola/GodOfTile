@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc882d2650c97ab4989bd6e6ef1c59ee, type: 3}
   m_Name: GridConfig
   m_EditorClassIdentifier: 
-  gridSize: {x: 100, y: 100}
+  <ChunkSize>k__BackingField: {x: 10, y: 10}
+  <StartChunk>k__BackingField: {x: 5, y: 5}
+  <ChunksCount>k__BackingField: {x: 10, y: 10}

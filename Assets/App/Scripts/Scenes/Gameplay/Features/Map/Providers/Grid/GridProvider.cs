@@ -1,16 +1,22 @@
 ﻿using System.Collections.Generic;
-using App.Scripts.Scenes.Gameplay.Features.Grid.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Map.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.General;
 using UnityEngine;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Grid
+namespace App.Scripts.Scenes.Gameplay.Features.Map.Providers.Grid
 {
     public class GridProvider : IGridProvider
     {
-        public GridProvider(GridConfig config)
+        private GridConfig config;
+        private IChunksProvider chunksProvider;
+
+        public GridProvider(GridConfig config, IChunksProvider chunksProvider)
         {
-            GridSize = config.GridSize;
+            this.config = config;
+            this.chunksProvider = chunksProvider;
+            GridSize = config.ChunkSize * config.ChunksCount;
             Grid = new Tile[GridSize.x, GridSize.y];
+
         }
 
         public Vector2Int GridSize { get; }
@@ -37,7 +43,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Grid
 
         public bool IsValid(Vector2Int position)
         {
-            if (Grid == null || !IsInsideGrid(position))
+            if (Grid == null || !IsInsideGrid(position) || !chunksProvider.IsInOpenedChunk(position))
             {
                 return false;
             }
@@ -47,7 +53,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Grid
 
         public bool IsValid(Tile tile)
         {
-            if (Grid == null || !IsInsideGrid(tile))
+            if (Grid == null || !IsInsideGrid(tile) || !chunksProvider.IsInOpenedChunk(tile))
             {
                 return false;
             }
