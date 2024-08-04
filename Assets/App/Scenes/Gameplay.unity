@@ -470,8 +470,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.46286312, y: -0.33119246, z: 0.1917242, w: 0.79956937}
-  m_LocalPosition: {x: 53.535534, y: 8.706616, z: 46.464466}
+  m_LocalRotation: {x: 0.468027, y: -0.329945, z: 0.19386314, w: 0.79655766}
+  m_LocalPosition: {x: 53.535534, y: 8.973549, z: 46.464466}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1242,9 +1242,9 @@ Canvas:
   m_GameObject: {fileID: 974188329}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 330585545}
-  m_PlaneDistance: 10
+  m_PlaneDistance: 1
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -1357,7 +1357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 8.706616, z: -5}
+  m_FollowOffset: {x: 0, y: 8.973549, z: -5}
   m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0
@@ -1702,7 +1702,7 @@ MonoBehaviour:
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
   m_Priority: 10
-  m_StandbyUpdate: 2
+  m_StandbyUpdate: 1
   m_LookAt: {fileID: 569990285}
   m_Follow: {fileID: 569990285}
   m_Lens:
@@ -1731,8 +1731,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2128820150}
-  m_LocalRotation: {x: 0.46286312, y: -0.33119246, z: 0.1917242, w: 0.79956937}
-  m_LocalPosition: {x: 53.535534, y: 8.706616, z: 46.464466}
+  m_LocalRotation: {x: 0.468027, y: -0.329945, z: 0.19386314, w: 0.79655766}
+  m_LocalPosition: {x: 53.535534, y: 8.973549, z: 46.464466}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

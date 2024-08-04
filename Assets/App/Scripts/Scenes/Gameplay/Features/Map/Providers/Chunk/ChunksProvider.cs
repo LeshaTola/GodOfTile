@@ -10,6 +10,14 @@ namespace App.Scripts.Scenes.Gameplay.Features.Map.Providers
     {
         private GridConfig config;
 
+        private List<Vector2Int> neigboursDirection = new()
+        {
+            new Vector2Int(1, 0),
+            new Vector2Int(-1, 0),
+            new Vector2Int(0, 1),
+            new Vector2Int(0, -1)
+        };
+
         public ChunksProvider(GridConfig config)
         {
             this.config = config;
@@ -17,11 +25,11 @@ namespace App.Scripts.Scenes.Gameplay.Features.Map.Providers
         }
 
         public HashSet<Chunk> OpenedChunks { get; private set; }
-        public HashSet<Chunk> ClosedChunks { get; private set;}
+        public HashSet<Chunk> ClosedChunks { get; private set; }
 
         public void OpenChunk(Vector2Int chunkId)
         {
-            var chunk =  ClosedChunks.FirstOrDefault(x => x.Id.Equals(chunkId));
+            var chunk = GetChunkById(chunkId);
             if (chunk == null)
             {
                 return;
@@ -29,17 +37,35 @@ namespace App.Scripts.Scenes.Gameplay.Features.Map.Providers
 
             OpenChunk(chunk);
         }
-        
+
         public void OpenChunk(Chunk chunk)
         {
             if (!ClosedChunks.Contains(chunk))
             {
                 return;
             }
+
             OpenedChunks.Add(chunk);
             ClosedChunks.Remove(chunk);
         }
-        
+
+        public bool IsOpenedNeighbour(Vector2Int id)
+        {
+            foreach (var openedChunk in OpenedChunks)
+            {
+                foreach (var direction in neigboursDirection)
+                {
+                    var neighbourId = openedChunk.Id + direction;
+                    if (neighbourId.Equals(id))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
         public bool IsInOpenedChunk(Tile tile)
         {
             for (var x = tile.Position.x; x < tile.Position.x + tile.Config.Size.x; x++)
@@ -55,7 +81,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Map.Providers
 
             return true;
         }
-        
+
         public bool IsInOpenedChunk(Vector2Int position)
         {
             foreach (var chunk in OpenedChunks)
@@ -80,21 +106,27 @@ namespace App.Scripts.Scenes.Gameplay.Features.Map.Providers
             OpenedChunks = new HashSet<Chunk>();
             ClosedChunks = new HashSet<Chunk>();
 
-            for (int i = 0; i < config.ChunkSize.x; i++)
+            for (var i = 0; i < config.ChunkSize.x; i++)
             {
-                for (int j = 0; j < config.ChunkSize.y; j++)
+                for (var j = 0; j < config.ChunkSize.y; j++)
                 {
                     var id = new Vector2Int(i, j);
                     ClosedChunks.Add(new Chunk(id, config.ChunkSize));
                 }
             }
-            
+
             OpenChunk(config.StartChunk);
-        } 
-        
+        }
+
         private bool IsInOpenedChunk(int x, int y)
         {
             return IsInOpenedChunk(new Vector2Int(x, y));
+        }
+
+        private Chunk GetChunkById(Vector2Int chunkId)
+        {
+            var chunk = ClosedChunks.FirstOrDefault(x => x.Id.Equals(chunkId));
+            return chunk;
         }
     }
 }

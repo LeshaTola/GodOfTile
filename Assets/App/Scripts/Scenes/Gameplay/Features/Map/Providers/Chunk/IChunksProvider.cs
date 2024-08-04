@@ -12,5 +12,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Map.Providers
         bool IsInOpenedChunk(Tile tile);
         bool IsInOpenedChunk(Vector2Int position);
         void OpenChunk(Vector2Int chunkId);
+        bool IsOpenedNeighbour(Vector2Int id);
     }
 }

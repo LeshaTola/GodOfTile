@@ -1,6 +1,8 @@
 ﻿using App.Scripts.Modules.ObjectPool.KeyPools;
 using App.Scripts.Modules.ObjectPool.KeyPools.Configs;
+using App.Scripts.Modules.ObjectPool.MonoObjectPools;
 using App.Scripts.Modules.ObjectPool.PooledObjects;
+using App.Scripts.Modules.ObjectPool.Pools;
 using App.Scripts.Modules.StateMachine.Services.CleanupService;
 using App.Scripts.Modules.StateMachine.Services.InitializeService;
 using App.Scripts.Modules.StateMachine.Services.UpdateService;
@@ -23,18 +25,21 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
     {
         [Header("Grid")]
         [SerializeField] private GridConfig gridConfig;
+
         [SerializeField] private GameObject grid;
         [SerializeField] private Transform chunksContainer;
         [SerializeField] private WorldChunk chunkTemplate;
 
         [Header("Camera")]
         [SerializeField] private Camera mainCamera;
+
         [SerializeField] private CinemachineVirtualCamera virtualCamera;
         [SerializeField] private CameraMovementConfig cameraMovementConfig;
         [SerializeField] private Transform cameraTarget;
 
         [Header("Particles")]
         [SerializeField] private ParticlesDatabase particlesDatabase;
+
         [SerializeField] private Transform particlesContainer;
         [SerializeField] private WaterMaterialConfig waterMaterialConfig;
 
@@ -64,11 +69,14 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
 
         private void BindMapVisualizator()
         {
+            Container.Bind<IPool<WorldChunk>>().To<MonoBehObjectPool<WorldChunk>>().AsSingle()
+                .WithArguments(chunkTemplate, chunksContainer, 10);
+            
             Container
                 .Bind<IMapVisualizator>()
                 .To<MapVisualizator>()
                 .AsSingle()
-                .WithArguments(grid,chunksContainer,chunkTemplate);
+                .WithArguments(grid);
         }
 
         private void BindParticlesKeyPool()
