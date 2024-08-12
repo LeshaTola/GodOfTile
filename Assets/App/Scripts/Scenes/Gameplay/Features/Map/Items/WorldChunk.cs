@@ -1,26 +1,62 @@
+using System;
+using App.Scripts.Modules.ObjectPool.PooledObjects;
+using App.Scripts.Modules.ObjectPool.Pools;
 using UnityEngine;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Map.Visualizators
 {
-    public class WorldChunk : MonoBehaviour
+    public class WorldChunk : MonoBehaviour, IPoolableObject<WorldChunk>
     {
-        [SerializeField] private Canvas UI;
+        [SerializeField] private WorldChunkUI UI;
 
-        private Vector2Int id;
+        private Action buyAction;
+        private IPool<WorldChunk> pool;
 
-        public void Initialize(Vector2Int id)
+        public void Initialize(Action action)
         {
-            this.id = id;
+            if (buyAction != null)
+            {
+                UI.OnBuyButtonClicked -= buyAction;
+            }
+            else
+            {
+                UI.Initialize();
+            }
+
+            buyAction = action;
+
+            UI.OnBuyButtonClicked += buyAction;
         }
 
         public void ShowUI()
         {
-            UI.gameObject.SetActive(true);
+            UI.Show();
         }
 
         public void HideUI()
         {
-            UI.gameObject.SetActive(true);
+            UI.Hide();
+        }
+
+        public void OnGet(IPool<WorldChunk> pool)
+        {
+            this.pool = pool;
+        }
+
+        public void Release()
+        {
+            if (pool != null)
+            {
+                pool.Release(this);
+                return;
+            }
+
+            Destroy(gameObject);
+        }
+
+        public void OnRelease()
+        {
+            HideUI();
         }
     }
 }

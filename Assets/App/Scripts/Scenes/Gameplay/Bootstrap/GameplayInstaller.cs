@@ -10,7 +10,9 @@ using App.Scripts.Scenes.Gameplay.Features.CameraLogic;
 using App.Scripts.Scenes.Gameplay.Features.CameraLogic.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Input;
 using App.Scripts.Scenes.Gameplay.Features.Map.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Map.Factories;
 using App.Scripts.Scenes.Gameplay.Features.Map.Providers;
+using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Cost;
 using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Grid;
 using App.Scripts.Scenes.Gameplay.Features.Map.Visualizators;
 using App.Scripts.Scenes.Gameplay.Features.Materials.WaterMaterial;
@@ -63,6 +65,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
 
             BindParticlesKeyPool();
 
+            Container.Bind<IChunksFactory>().To<ChunksFactory>().AsSingle();
             BindMapProviders();
             BindMapVisualizator();
         }
@@ -82,7 +85,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
         private void BindParticlesKeyPool()
         {
             Container
-                .Bind<KeyPool<PooledParticle>>()
+                .Bind<KeyPool<PoolableParticle>>()
                 .AsSingle()
                 .WithArguments(particlesDatabase.Particles, particlesContainer);
         }
@@ -114,6 +117,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
         {
             Container.Bind<IGridProvider>().To<GridProvider>().AsSingle().WithArguments(gridConfig);
             Container.Bind<IChunksProvider>().To<ChunksProvider>().AsSingle().WithArguments(gridConfig);
+            Container.Bind<IChunkCostProvider>().To<ChunkCostProvider>().AsSingle();
         }
     }
 }

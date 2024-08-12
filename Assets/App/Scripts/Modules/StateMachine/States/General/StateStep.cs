@@ -7,7 +7,7 @@ namespace App.Scripts.Modules.StateMachine.States.General
         protected State ParentState;
         protected StateMachine StateMachine;
 
-        public void Init(State parentState, StateMachine stateMachine)
+        public void Initialize(State parentState, StateMachine stateMachine)
         {
             ParentState = parentState;
             StateMachine = stateMachine;

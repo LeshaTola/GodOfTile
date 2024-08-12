@@ -7,7 +7,7 @@ namespace App.Scripts.Modules.PopupLogic.Animations.Animator
     {
         void Cleanup();
         void Setup(PopupAnimationConfig animationConfig);
-        void Init(Popup popup);
+        void Initialize(Popup popup);
         UniTask PlayHideAnimation();
         UniTask PlayShowAnimation();
     }

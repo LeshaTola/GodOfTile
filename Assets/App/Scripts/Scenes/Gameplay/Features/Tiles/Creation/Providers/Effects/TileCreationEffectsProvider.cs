@@ -6,9 +6,9 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Providers.Effects
 {
     public class TileCreationEffectsProvider : ITileCreationEffectsProvider
     {
-        private KeyPool<PooledParticle> keyPool;
+        private KeyPool<PoolableParticle> keyPool;
 
-        public TileCreationEffectsProvider(KeyPool<PooledParticle> keyPool)
+        public TileCreationEffectsProvider(KeyPool<PoolableParticle> keyPool)
         {
             this.keyPool = keyPool;
         }

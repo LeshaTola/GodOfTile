@@ -17,10 +17,10 @@ namespace App.Scripts.Features.UI.PairedTexts
         public TMProLocalizer Header => header;
         public TMProLocalizer Value => value;
 
-        public void Init(ILocalizationSystem localizationSystem)
+        public void Initialize(ILocalizationSystem localizationSystem)
         {
-            header.Init(localizationSystem);
-            value.Init(localizationSystem);
+            header.Initialize(localizationSystem);
+            value.Initialize(localizationSystem);
         }
 
         public void Translate()

@@ -2,7 +2,7 @@
 
 namespace App.Scripts.Modules.ObjectPool.PooledObjects
 {
-    public interface IPooledObject<T>
+    public interface IPoolableObject<T>
     {
         public void OnGet(IPool<T> pool);
         public void Release();

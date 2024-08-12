@@ -7,7 +7,7 @@ namespace App.Scripts.Features.Popups.Buttons
     {
         event Action onButtonClicked;
 
-        void Init(ILocalizationSystem localizationSystem);
+        void Initialize(ILocalizationSystem localizationSystem);
         void Translate();
         void UpdateText(string text);
     }

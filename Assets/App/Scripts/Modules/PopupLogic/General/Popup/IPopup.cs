@@ -12,6 +12,6 @@ namespace App.Scripts.Modules.PopupLogic.General.Popup
         public UniTask Hide();
         public void Activate();
         public void Deactivate();
-        void Init(IPopupController controller, IPopupAnimator popupAnimator);
+        void Initialize(IPopupController controller, IPopupAnimator popupAnimator);
     }
 }

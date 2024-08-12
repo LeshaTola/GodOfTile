@@ -1,6 +1,7 @@
 ﻿using App.Scripts.Modules.Localization;
 using App.Scripts.Modules.PopupLogic.General.Controllers;
 using App.Scripts.Scenes.Gameplay.Features.Commands.General;
+using App.Scripts.Scenes.Gameplay.Features.Commands.GoToGamePlayStateCommands;
 using App.Scripts.Scenes.Gameplay.Features.Popups.InformationPopup.ViewModels;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using Cysharp.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.InformationPopup.Routers
         private InformationPopup popup;
 
         public InformationPopupRouter(
-            ILabeledCommand goToGameplayStateCommand,
+            GoToGamePlayStateCommand goToGameplayStateCommand,
             ILocalizationSystem localizationSystem,
             IPopupController popupController
         )

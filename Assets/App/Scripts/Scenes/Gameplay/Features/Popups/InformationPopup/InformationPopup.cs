@@ -48,7 +48,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.InformationPopup
         public void Setup(IInformationViewModule viewModule)
         {
             Cleanup();
-            Init(viewModule);
+            Initialize(viewModule);
             SetupUI(viewModule.TileConfig);
         }
 
@@ -75,19 +75,19 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.InformationPopup
             CleanUpSystems();
         }
 
-        private void Init(IInformationViewModule viewModule)
+        private void Initialize(IInformationViewModule viewModule)
         {
             this.viewModule = viewModule;
 
-            header.Init(viewModule.LocalizationSystem);
-            statsHeader.Init(viewModule.LocalizationSystem);
-            descriptionHeader.Init(viewModule.LocalizationSystem);
+            header.Initialize(viewModule.LocalizationSystem);
+            statsHeader.Initialize(viewModule.LocalizationSystem);
+            descriptionHeader.Initialize(viewModule.LocalizationSystem);
 
-            type.Init(viewModule.LocalizationSystem);
-            tileName.Init(viewModule.LocalizationSystem);
-            description.Init(viewModule.LocalizationSystem);
+            type.Initialize(viewModule.LocalizationSystem);
+            tileName.Initialize(viewModule.LocalizationSystem);
+            description.Initialize(viewModule.LocalizationSystem);
 
-            closeButton.Init(viewModule.LocalizationSystem);
+            closeButton.Initialize(viewModule.LocalizationSystem);
             closeButton.onButtonClicked += viewModule.CloseCommand.Execute;
         }
 

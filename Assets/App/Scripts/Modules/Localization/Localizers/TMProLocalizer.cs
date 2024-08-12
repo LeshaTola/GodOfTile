@@ -25,7 +25,7 @@ namespace App.Scripts.Modules.Localization.Localizers
             set => text = value;
         }
 
-        public void Init(ILocalizationSystem localizationSystem)
+        public void Initialize(ILocalizationSystem localizationSystem)
         {
             if (this.localizationSystem != null)
             {

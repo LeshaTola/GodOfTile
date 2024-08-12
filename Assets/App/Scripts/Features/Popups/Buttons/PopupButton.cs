@@ -20,12 +20,12 @@ namespace App.Scripts.Features.Popups.Buttons
             buttonText.Key = text;
         }
 
-        public void Init(ILocalizationSystem localizationSystem)
+        public void Initialize(ILocalizationSystem localizationSystem)
         {
             Cleanup();
 
             button.onClick.AddListener(() => onButtonClicked?.Invoke());
-            buttonText.Init(localizationSystem);
+            buttonText.Initialize(localizationSystem);
         }
 
         public void Translate()

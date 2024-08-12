@@ -20,7 +20,7 @@ namespace App.Scripts.Modules.PopupLogic.Animations.Animator
         private Popup popup;
         private Tween tween;
 
-        public void Init(Popup popup)
+        public void Initialize(Popup popup)
         {
             this.popup = popup;
         }

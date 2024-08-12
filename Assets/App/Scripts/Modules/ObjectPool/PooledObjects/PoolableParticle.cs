@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace App.Scripts.Modules.ObjectPool.PooledObjects
 {
-    public class PooledParticle : MonoBehaviour, IPooledObject<PooledParticle>
+    public class PoolableParticle : MonoBehaviour, IPoolableObject<PoolableParticle>
     {
         [SerializeField] private ParticleSystem particle;
 
-        private IPool<PooledParticle> pool;
+        private IPool<PoolableParticle> pool;
 
         public ParticleSystem Particle => particle;
         public float SizeMultiplier { get; private set; } = 1;
@@ -30,7 +30,7 @@ namespace App.Scripts.Modules.ObjectPool.PooledObjects
             transform.localScale *= SizeMultiplier;
         }
 
-        public void OnGet(IPool<PooledParticle> pool)
+        public void OnGet(IPool<PoolableParticle> pool)
         {
             this.pool = pool;
         }

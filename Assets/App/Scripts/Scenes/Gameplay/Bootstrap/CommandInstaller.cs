@@ -1,4 +1,4 @@
-﻿using App.Scripts.Scenes.Gameplay.Features.Commands.General;
+﻿using App.Scripts.Scenes.Gameplay.Features.Commands.BuyAreaCommand;
 using App.Scripts.Scenes.Gameplay.Features.Commands.GoToGamePlayStateCommands;
 using Zenject;
 
@@ -8,11 +8,24 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
     {
         public override void InstallBindings()
         {
+            BindGoToGameplayStateCommand();
+            BindBuyAreaCommand();
+        }
+
+        private void BindGoToGameplayStateCommand()
+        {
             Container
-                .Bind<ILabeledCommand>()
-                .To<GoToGamePlayStateCommand>()
+                .Bind<GoToGamePlayStateCommand>()
                 .AsSingle()
                 .WithArguments("close");
+        }
+        
+        private void BindBuyAreaCommand()
+        {
+            Container
+                .Bind<BuyAreaCommand>()
+                .AsSingle()
+                .WithArguments("buy");
         }
     }
 }

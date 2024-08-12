@@ -4,15 +4,13 @@ using App.Scripts.Scenes.Gameplay.Features.Inventory.DTO;
 using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.InformationWidget.Cost;
 using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.InformationWidget.ViewModels;
-using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using UnityEngine;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.InformationWidget
+namespace App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget
 {
     public class ItemInformationWidget : MonoBehaviour
     {
-        [SerializeField]
-        private TMProLocalizer header;
+        [SerializeField] private TMProLocalizer header;
 
         [SerializeField]
         private RectTransform container;
@@ -23,28 +21,30 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.InformationWidge
         private List<CostUI> costUIs = new();
         private IInformationWidgetViewModule viewModule;
 
-        public void Setup(IInformationWidgetViewModule viewModule)
+        public void Initialize(IInformationWidgetViewModule viewModule)
         {
             this.viewModule = viewModule;
-            header.Init(viewModule.LocalizationSystem);
-            header.Translate();
+            header.Initialize(viewModule.LocalizationSystem);
         }
 
-        public void UpdateInformation(TileConfig tileConfig)
+        public void UpdateInformation(List<ResourceCount> resources)
         {
             Cleanup();
-            if (tileConfig.Cost == null || tileConfig.Cost.Count <= 0)
+            if (resources == null || resources.Count <= 0)
             {
                 header.Key = config.NoCostText;
-                header.Translate();
                 return;
             }
 
             header.Key = config.DefaultText;
-            header.Translate();
 
-            AddCosts(tileConfig.Cost.Count);
-            SetInformation(tileConfig.Cost);
+            AddCosts(resources.Count);
+            SetInformation(resources);
+        }
+
+        public void Translate()
+        {
+            header.Translate();
         }
 
         public void Hide()
@@ -99,11 +99,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.InformationWidge
             foreach (var cost in costUIs)
             {
                 cost.Hide();
-            }
-
-            if (viewModule == null)
-            {
-                return;
             }
         }
     }

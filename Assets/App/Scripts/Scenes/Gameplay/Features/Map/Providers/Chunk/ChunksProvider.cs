@@ -92,13 +92,13 @@ namespace App.Scripts.Scenes.Gameplay.Features.Map.Providers
                 var endX = (chunk.Id.x + 1) * config.ChunkSize.x;
                 var endY = (chunk.Id.y + 1) * config.ChunkSize.y;
 
-                if (endX <= position.x || endY <= position.y || position.x < startX || position.y < startY)
+                if (position.x >= startX && position.y >= startY && position.x < endX && position.y < endY)
                 {
-                    return false;
+                    return true;
                 }
             }
-
-            return true;
+            
+            return false;
         }
 
         private void InitializeChunks()

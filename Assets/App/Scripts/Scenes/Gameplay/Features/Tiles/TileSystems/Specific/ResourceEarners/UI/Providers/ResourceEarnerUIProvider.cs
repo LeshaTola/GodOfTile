@@ -22,7 +22,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Resour
             var systemData = (ResourceEarnerSystemData) tileSystem.Data;
             ResourceEarnerViewModule viewModule = new(localizationSystem, systemData);
 
-            systemUI.Init(viewModule);
+            systemUI.Initialize(viewModule);
             return systemUI;
         }
     }

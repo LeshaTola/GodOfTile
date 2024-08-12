@@ -4,5 +4,6 @@
     {
         void Hide();
         void Show();
+        void UpdateChunks();
     }
 }

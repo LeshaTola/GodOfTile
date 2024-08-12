@@ -35,10 +35,10 @@ RectTransform:
   m_Father: {fileID: 4379323109260610448}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0.9, y: 0.39999998}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4964915695882115454
 CanvasRenderer:
@@ -216,13 +216,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.35
+  m_fontSize: 0.2
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 0
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 17
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -271,6 +271,7 @@ GameObject:
   - component: {fileID: 877054899825302005}
   - component: {fileID: 8426328284928952950}
   - component: {fileID: 6305554030675440552}
+  - component: {fileID: 5062737009228155121}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -297,7 +298,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 1}
-  m_SizeDelta: {x: 1, y: 1}
+  m_SizeDelta: {x: 0.5, y: 0.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &4673300463371764272
 Canvas:
@@ -375,6 +376,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 2
+--- !u!114 &5062737009228155121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3592372137084346974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ec44695d9e40da8d81a75a2f465838, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buyButton: {fileID: 4596297842422591847}
 --- !u!1 &4454512410295577122
 GameObject:
   m_ObjectHideFlags: 0
@@ -504,7 +518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b19428a14c4545cf83ac40708866b6b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI: {fileID: 4673300463371764272}
+  UI: {fileID: 5062737009228155121}
 --- !u!1 &7682153189571162817
 GameObject:
   m_ObjectHideFlags: 0

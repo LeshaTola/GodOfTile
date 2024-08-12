@@ -55,7 +55,7 @@ namespace App.Scripts.Modules.PopupLogic.General.Controllers
         {
             var type = typeof(T);
             var popup = popupProvider.PopupPoolsDictionary[type].Get();
-            popup.Init(this, popupAnimator);
+            popup.Initialize(this, popupAnimator);
             return (T) popup;
         }
 
