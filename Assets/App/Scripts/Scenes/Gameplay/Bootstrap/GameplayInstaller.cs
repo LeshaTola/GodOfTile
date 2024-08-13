@@ -1,4 +1,5 @@
-﻿using App.Scripts.Modules.ObjectPool.KeyPools;
+﻿using System.Collections.Generic;
+using App.Scripts.Modules.ObjectPool.KeyPools;
 using App.Scripts.Modules.ObjectPool.KeyPools.Configs;
 using App.Scripts.Modules.ObjectPool.MonoObjectPools;
 using App.Scripts.Modules.ObjectPool.PooledObjects;
@@ -7,6 +8,7 @@ using App.Scripts.Modules.StateMachine.Services.CleanupService;
 using App.Scripts.Modules.StateMachine.Services.InitializeService;
 using App.Scripts.Modules.StateMachine.Services.UpdateService;
 using App.Scripts.Scenes.Gameplay.Features.CameraLogic;
+using App.Scripts.Scenes.Gameplay.Features.CameraLogic.CameraSwitchers;
 using App.Scripts.Scenes.Gameplay.Features.CameraLogic.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Input;
 using App.Scripts.Scenes.Gameplay.Features.Map.Configs;
@@ -19,6 +21,7 @@ using App.Scripts.Scenes.Gameplay.Features.Map.Visualizers;
 using App.Scripts.Scenes.Gameplay.Features.Materials.WaterMaterial;
 using App.Scripts.Scenes.Gameplay.Features.Materials.WaterMaterial.Configs;
 using Cinemachine;
+using Sirenix.Serialization;
 using UnityEngine;
 using Zenject;
 
@@ -35,6 +38,8 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
 
         [Header("Camera")]
         [SerializeField] private Camera mainCamera;
+
+        [SerializeField] private List<CameraWithId> database;
 
         [SerializeField] private CinemachineVirtualCamera virtualCamera;
         [SerializeField] private CameraMovementConfig cameraMovementConfig;
@@ -67,6 +72,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
             BindParticlesKeyPool();
 
             Container.Bind<IChunksFactory>().To<ChunksFactory>().AsSingle();
+            Container.Bind<ICameraSwitcher>().To<CameraSwitcher>().AsSingle().WithArguments(database);
             BindMapProviders();
             BindMapVisualizers();
         }
@@ -77,7 +83,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
                 .WithArguments(chunkTemplate, chunksContainer, 10);
             Container.Bind<IPool<WorldGrid>>().To<MonoBehObjectPool<WorldGrid>>().AsSingle()
                 .WithArguments(grid, chunksContainer, 10);
-            
+
             Container
                 .Bind<IChunkVisualizer>()
                 .To<ChunkVisualizer>()

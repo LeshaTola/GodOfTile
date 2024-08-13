@@ -1,7 +1,7 @@
+using App.Scripts.Scenes.Gameplay.Features.CameraLogic.CameraSwitchers;
 using App.Scripts.Scenes.Gameplay.Features.Input;
 using App.Scripts.Scenes.Gameplay.Features.Map.Visualizers;
 using Cysharp.Threading.Tasks;
-using UnityEditor.VersionControl;
 
 namespace App.Scripts.Scenes.Gameplay.StateMachines.State
 {
@@ -9,11 +9,14 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
     {
         private IGameInput gameInput;
         private IChunkVisualizer chunkVisualizer;
+        private ICameraSwitcher cameraSwitcher;
 
-        public BuyAreaState(string id, IChunkVisualizer chunkVisualizer, IGameInput gameInput) : base(id)
+        public BuyAreaState(string id, IChunkVisualizer chunkVisualizer, IGameInput gameInput,
+            ICameraSwitcher cameraSwitcher) : base(id)
         {
             this.chunkVisualizer = chunkVisualizer;
             this.gameInput = gameInput;
+            this.cameraSwitcher = cameraSwitcher;
         }
 
         public override async UniTask Enter()
@@ -21,7 +24,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             await base.Enter();
 
             gameInput.OnEscape += Back;
-
+            cameraSwitcher.SwitchCamera("buyArea");
             chunkVisualizer.Show();
         }
 
@@ -30,6 +33,8 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             await base.Exit();
 
             gameInput.OnEscape -= Back;
+
+            cameraSwitcher.SwitchCamera("main");
             
             chunkVisualizer.Hide();
         }
