@@ -1,41 +1,36 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using App.Scripts.Scenes.Gameplay.Features.Map.Factories;
 using App.Scripts.Scenes.Gameplay.Features.Map.Providers;
-using UnityEngine;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Map.Visualizators
+namespace App.Scripts.Scenes.Gameplay.Features.Map.Visualizers
 {
-    public class MapVisualizator : IMapVisualizator
+    public class ChunkVisualizer: IChunkVisualizer
     {
-        private GameObject grid;
         private IChunksProvider chunksProvider;
         private IChunksFactory chunksFactory;
-        
+
         private List<WorldChunk> chunks = new();
 
-        public MapVisualizator(GameObject grid, IChunksProvider chunksProvider,IChunksFactory chunksFactory)
+        public ChunkVisualizer(IChunksProvider chunksProvider, IChunksFactory chunksFactory)
         {
-            this.grid = grid;
             this.chunksProvider = chunksProvider;
             this.chunksFactory = chunksFactory;
+        }
+        
+        public void Hide()
+        {
+            CleanupChunks();
+        }
+
+        public void Show()
+        {
+            SetupChunks();
         }
 
         public void UpdateChunks()
         {
             CleanupChunks();
             SetupChunks();
-        }
-
-        public void Show()
-        {
-            grid.SetActive(true);
-            SetupChunks();
-        }
-
-        public void Hide()
-        {
-            grid.SetActive(false);
-            CleanupChunks();
         }
 
         private void SetupChunks()

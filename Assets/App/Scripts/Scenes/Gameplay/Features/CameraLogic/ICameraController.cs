@@ -6,5 +6,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.CameraLogic
     {
         void Focus();
         void Move(Vector2 dir);
+        void Rotate(float value);
+        void Activate();
+        void Deactivate();
     }
 }

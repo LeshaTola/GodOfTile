@@ -1,8 +1,8 @@
+using App.Scripts.Modules.PopupLogic.General.Controllers;
 using App.Scripts.Scenes.Gameplay.Features.Commands.General;
 using App.Scripts.Scenes.Gameplay.Features.Inventory.Systems;
 using App.Scripts.Scenes.Gameplay.Features.Map.Providers;
 using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Cost;
-using App.Scripts.Scenes.Gameplay.Features.Map.Visualizators;
 using UnityEngine;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Commands.BuyAreaCommand
@@ -14,15 +14,15 @@ namespace App.Scripts.Scenes.Gameplay.Features.Commands.BuyAreaCommand
         private IChunksProvider chunksProvider;
         private IInventorySystem inventorySystem;
         private IChunkCostProvider chunkCostProvider;
-       // private IMapVisualizator mapVisualizator;
+        private IPopupController popupController;
 
         public BuyAreaCommand(string label, IChunksProvider chunksProvider, IInventorySystem inventorySystem,
-            IChunkCostProvider chunkCostProvider/*,IMapVisualizator mapVisualizator*/) : base(label)
+            IChunkCostProvider chunkCostProvider, IPopupController popupController) : base(label)
         {
             this.chunksProvider = chunksProvider;
             this.inventorySystem = inventorySystem;
             this.chunkCostProvider = chunkCostProvider;
-           // this.mapVisualizator = mapVisualizator;
+            this.popupController = popupController;
         }
 
         public override void Execute()
@@ -34,11 +34,12 @@ namespace App.Scripts.Scenes.Gameplay.Features.Commands.BuyAreaCommand
             }
 
             chunksProvider.OpenChunk(ChunkId);
-           // mapVisualizator.UpdateChunks();
             foreach (var resourceCount in cost)
             {
                 inventorySystem.ChangeRecourseAmount(resourceCount.Resource.ResourceName, -resourceCount.Count);
             }
+
+            popupController.HideLastPopup();
         }
     }
 }

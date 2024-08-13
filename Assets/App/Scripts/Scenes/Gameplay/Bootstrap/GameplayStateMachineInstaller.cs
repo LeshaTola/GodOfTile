@@ -17,6 +17,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
             BindGameplayState();
             BindBuildState();
             BindInformationState();
+            BindState<BuyAreaState>(StatesIds.BUY_AREA_STATE);
         }
 
         private void BindInformationState()

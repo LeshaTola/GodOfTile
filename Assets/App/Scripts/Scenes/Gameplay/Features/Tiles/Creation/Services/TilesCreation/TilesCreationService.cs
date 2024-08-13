@@ -24,7 +24,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
         private ISystemsService systemsService;
         private TilesCreationConfig config;
 
-
         private Tile activeTile;
 
         public TilesCreationService(
@@ -67,7 +66,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
                 return;
             }
 
-            GameObject.Destroy(activeTile.gameObject);
+            Object.Destroy(activeTile.gameObject);
             activeTile = null;
         }
 
@@ -95,18 +94,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
             PlayCreationVFX(tileBuffer).Forget();
             placementCostService.ProcessPlacementCost(tileBuffer.Config);
             systemsService.StartSystems(tileBuffer.Config);
-        }
-
-        public void FullFill()
-        {
-            /*for (int x = 0; x < gridProvider.GridSize.x; x++)
-            {
-                for (int y = 0; y < gridProvider.GridSize.y; y++)
-                {
-                    var tile = tileFactory.GetTile(activeTileProvider.ActiveTileConfig);
-                    tile.transform.position = new Vector3(x, 0, y);
-                }
-            }*/
         }
 
         public void MoveActiveTile(Vector2Int gridPosition)

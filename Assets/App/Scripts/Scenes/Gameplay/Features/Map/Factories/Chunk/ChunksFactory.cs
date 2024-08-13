@@ -1,6 +1,6 @@
 using App.Scripts.Modules.ObjectPool.Pools;
 using App.Scripts.Scenes.Gameplay.Features.Map.Providers;
-using App.Scripts.Scenes.Gameplay.Features.Map.Visualizators;
+using App.Scripts.Scenes.Gameplay.Features.Map.Visualizers;
 using App.Scripts.Scenes.Gameplay.Features.Popups.BuyAreaPopup.Routers;
 using UnityEngine;
 
@@ -26,12 +26,15 @@ namespace App.Scripts.Scenes.Gameplay.Features.Map.Factories
 
         private void SetupWorldChunk(WorldChunk newChunk, Chunk chunk)
         {
-            newChunk.Initialize(() => buyAreaPopupRouter.Show(chunk.Id));
+            newChunk.Initialize(() =>
+            {
+                buyAreaPopupRouter.Show(chunk.Id);
+            });
             var newChunkTransform = newChunk.transform;
             newChunkTransform.localScale
                 = new Vector3(chunk.Size.x, newChunkTransform.localScale.y, chunk.Size.y);
             newChunkTransform.localPosition
-                = new Vector3(chunk.ChunkCenter.x, 0, chunk.ChunkCenter.y);
+                = new Vector3(chunk.Center.x, 0, chunk.Center.y);
         }
     }
 }

@@ -13,6 +13,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Map.Providers
         public Vector2Int Id;
         public Vector2Int Size;
         
-        public Vector2 ChunkCenter => new((Id.x +0.5f) * Size.x, (Id.y+0.5f) * Size.y);
+        public Vector2 Center => new((Id.x +0.5f) * Size.x, (Id.y+0.5f) * Size.y);
     }
 }

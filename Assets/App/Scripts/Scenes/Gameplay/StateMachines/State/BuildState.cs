@@ -1,6 +1,6 @@
 ﻿using App.Scripts.Modules.StateMachine.Services.UpdateService;
 using App.Scripts.Scenes.Gameplay.Features.Input;
-using App.Scripts.Scenes.Gameplay.Features.Map.Visualizators;
+using App.Scripts.Scenes.Gameplay.Features.Map.Visualizers;
 using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.Routers;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCreation;
 using Cysharp.Threading.Tasks;
@@ -12,7 +12,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
         private IUpdateService updateService;
         private IGameInput gameInput;
         private ITilesCreationService creationService;
-        private IMapVisualizator mapVisualizator;
+        private IVisualizer gridVisualizer;
         private IShopPopupRouter shopPopupRouter;
 
         public BuildState(
@@ -20,7 +20,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             IUpdateService updateService,
             IGameInput gameInput,
             ITilesCreationService creationService,
-            IMapVisualizator mapVisualizator,
+            IVisualizer gridVisualizer,
             IShopPopupRouter shopPopupRouter
         )
             : base(id)
@@ -28,7 +28,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             this.updateService = updateService;
             this.gameInput = gameInput;
             this.creationService = creationService;
-            this.mapVisualizator = mapVisualizator;
+            this.gridVisualizer = gridVisualizer;
             this.shopPopupRouter = shopPopupRouter;
         }
 
@@ -36,11 +36,12 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
         {
             await base.Enter();
 
+            gameInput.OnEscape += OnBuild;
             gameInput.OnBuild += OnBuild;
             gameInput.OnRotate += OnRotate;
 
             creationService.StartPlacingTile();
-            mapVisualizator.Show();
+            gridVisualizer.Show();
             await shopPopupRouter.ShowShopPopup();
         }
 
@@ -49,7 +50,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             await base.Update();
 
             updateService.Update();
-
+            
             creationService.MoveActiveTile(gameInput.GetGridMousePosition());
 
             if (gameInput.IsMouseClicked())
@@ -64,9 +65,10 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             await base.Exit();
 
             creationService.StopPlacingTile();
-            mapVisualizator.Hide();
+            gridVisualizer.Hide();
             await shopPopupRouter.HideShopPopup();
 
+            gameInput.OnEscape -= OnBuild;
             gameInput.OnBuild -= OnBuild;
             gameInput.OnRotate -= OnRotate;
         }

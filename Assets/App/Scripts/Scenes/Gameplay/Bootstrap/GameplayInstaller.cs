@@ -11,10 +11,11 @@ using App.Scripts.Scenes.Gameplay.Features.CameraLogic.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Input;
 using App.Scripts.Scenes.Gameplay.Features.Map.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Map.Factories;
+using App.Scripts.Scenes.Gameplay.Features.Map.Items;
 using App.Scripts.Scenes.Gameplay.Features.Map.Providers;
 using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Cost;
 using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Grid;
-using App.Scripts.Scenes.Gameplay.Features.Map.Visualizators;
+using App.Scripts.Scenes.Gameplay.Features.Map.Visualizers;
 using App.Scripts.Scenes.Gameplay.Features.Materials.WaterMaterial;
 using App.Scripts.Scenes.Gameplay.Features.Materials.WaterMaterial.Configs;
 using Cinemachine;
@@ -28,9 +29,9 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
         [Header("Grid")]
         [SerializeField] private GridConfig gridConfig;
 
-        [SerializeField] private GameObject grid;
-        [SerializeField] private Transform chunksContainer;
+        [SerializeField] private WorldGrid grid;
         [SerializeField] private WorldChunk chunkTemplate;
+        [SerializeField] private Transform chunksContainer;
 
         [Header("Camera")]
         [SerializeField] private Camera mainCamera;
@@ -67,19 +68,25 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
 
             Container.Bind<IChunksFactory>().To<ChunksFactory>().AsSingle();
             BindMapProviders();
-            BindMapVisualizator();
+            BindMapVisualizers();
         }
 
-        private void BindMapVisualizator()
+        private void BindMapVisualizers()
         {
             Container.Bind<IPool<WorldChunk>>().To<MonoBehObjectPool<WorldChunk>>().AsSingle()
                 .WithArguments(chunkTemplate, chunksContainer, 10);
+            Container.Bind<IPool<WorldGrid>>().To<MonoBehObjectPool<WorldGrid>>().AsSingle()
+                .WithArguments(grid, chunksContainer, 10);
             
             Container
-                .Bind<IMapVisualizator>()
-                .To<MapVisualizator>()
-                .AsSingle()
-                .WithArguments(grid);
+                .Bind<IChunkVisualizer>()
+                .To<ChunkVisualizer>()
+                .AsSingle();
+
+            Container
+                .Bind<IVisualizer>()
+                .To<GridVisualizer>()
+                .AsSingle();
         }
 
         private void BindParticlesKeyPool()

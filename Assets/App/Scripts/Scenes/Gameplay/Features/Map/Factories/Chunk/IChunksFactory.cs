@@ -1,5 +1,5 @@
 using App.Scripts.Scenes.Gameplay.Features.Map.Providers;
-using App.Scripts.Scenes.Gameplay.Features.Map.Visualizators;
+using App.Scripts.Scenes.Gameplay.Features.Map.Visualizers;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Map.Factories
 {

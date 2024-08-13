@@ -14,18 +14,18 @@ namespace App.Scripts.Features.Popups.Buttons
 
         [SerializeField]
         private UnityEngine.UI.Button button;
-
-        public void UpdateText(string text)
-        {
-            buttonText.Key = text;
-        }
-
+        
         public void Initialize(ILocalizationSystem localizationSystem)
         {
             Cleanup();
 
             button.onClick.AddListener(() => onButtonClicked?.Invoke());
             buttonText.Initialize(localizationSystem);
+        }  
+        
+        public void UpdateText(string text)
+        {
+            buttonText.Key = text;
         }
 
         public void Translate()

@@ -28,6 +28,15 @@ public partial class @Input: IInputActionCollection2, IDisposable
             ""id"": ""3f50ca05-3bd3-4001-a4c4-782b6d422a5b"",
             ""actions"": [
                 {
+                    ""name"": ""ESC"",
+                    ""type"": ""Button"",
+                    ""id"": ""8699158e-f797-439f-a431-8062cfa8dcd8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Rotation"",
                     ""type"": ""Value"",
                     ""id"": ""e5b9f19f-a603-490e-b21c-520701296431"",
@@ -254,6 +263,17 @@ public partial class @Input: IInputActionCollection2, IDisposable
                     ""action"": ""Speed3"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""757ebd04-c21c-4911-b70d-6d4ea1c30fcc"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ESC"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -262,6 +282,7 @@ public partial class @Input: IInputActionCollection2, IDisposable
 }");
         // Game
         m_Game = asset.FindActionMap("Game", throwIfNotFound: true);
+        m_Game_ESC = m_Game.FindAction("ESC", throwIfNotFound: true);
         m_Game_Rotation = m_Game.FindAction("Rotation", throwIfNotFound: true);
         m_Game_Move = m_Game.FindAction("Move", throwIfNotFound: true);
         m_Game_Build = m_Game.FindAction("Build", throwIfNotFound: true);
@@ -331,6 +352,7 @@ public partial class @Input: IInputActionCollection2, IDisposable
     // Game
     private readonly InputActionMap m_Game;
     private List<IGameActions> m_GameActionsCallbackInterfaces = new List<IGameActions>();
+    private readonly InputAction m_Game_ESC;
     private readonly InputAction m_Game_Rotation;
     private readonly InputAction m_Game_Move;
     private readonly InputAction m_Game_Build;
@@ -343,6 +365,7 @@ public partial class @Input: IInputActionCollection2, IDisposable
     {
         private @Input m_Wrapper;
         public GameActions(@Input wrapper) { m_Wrapper = wrapper; }
+        public InputAction @ESC => m_Wrapper.m_Game_ESC;
         public InputAction @Rotation => m_Wrapper.m_Game_Rotation;
         public InputAction @Move => m_Wrapper.m_Game_Move;
         public InputAction @Build => m_Wrapper.m_Game_Build;
@@ -360,6 +383,9 @@ public partial class @Input: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_GameActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_GameActionsCallbackInterfaces.Add(instance);
+            @ESC.started += instance.OnESC;
+            @ESC.performed += instance.OnESC;
+            @ESC.canceled += instance.OnESC;
             @Rotation.started += instance.OnRotation;
             @Rotation.performed += instance.OnRotation;
             @Rotation.canceled += instance.OnRotation;
@@ -388,6 +414,9 @@ public partial class @Input: IInputActionCollection2, IDisposable
 
         private void UnregisterCallbacks(IGameActions instance)
         {
+            @ESC.started -= instance.OnESC;
+            @ESC.performed -= instance.OnESC;
+            @ESC.canceled -= instance.OnESC;
             @Rotation.started -= instance.OnRotation;
             @Rotation.performed -= instance.OnRotation;
             @Rotation.canceled -= instance.OnRotation;
@@ -431,6 +460,7 @@ public partial class @Input: IInputActionCollection2, IDisposable
     public GameActions @Game => new GameActions(this);
     public interface IGameActions
     {
+        void OnESC(InputAction.CallbackContext context);
         void OnRotation(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
         void OnBuild(InputAction.CallbackContext context);
