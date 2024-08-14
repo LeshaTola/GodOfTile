@@ -1,7 +1,6 @@
-using App.Scripts.Scenes.Gameplay.Features.Materials.WaterMaterial.Configs;
-using UnityEngine;
+using App.Scripts.Scenes.Gameplay.Features.Map.WaterMaterialController.Configs;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Materials.WaterMaterial
+namespace App.Scripts.Scenes.Gameplay.Features.Map.WaterMaterialController
 {
     public class WaterMaterialController : IWaterMaterialController
     {

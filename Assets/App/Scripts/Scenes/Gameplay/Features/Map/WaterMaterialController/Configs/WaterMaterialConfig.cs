@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Materials.WaterMaterial.Configs
+namespace App.Scripts.Scenes.Gameplay.Features.Map.WaterMaterialController.Configs
 {
     [CreateAssetMenu(fileName = "WaterMaterialConfig", menuName = "Configs/Materials/Water")]
     public class WaterMaterialConfig : ScriptableObject

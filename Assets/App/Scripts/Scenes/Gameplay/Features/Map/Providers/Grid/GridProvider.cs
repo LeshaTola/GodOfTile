@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using App.Scripts.Scenes.Gameplay.Features.Map.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Chunk;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.General;
 using UnityEngine;
 

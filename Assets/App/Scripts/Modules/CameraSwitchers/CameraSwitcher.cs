@@ -3,39 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using Cinemachine;
 
-namespace App.Scripts.Scenes.Gameplay.Features.CameraLogic.CameraSwitchers
+namespace App.Scripts.Modules.CameraSwitchers
 {
     public class CameraSwitcher : ICameraSwitcher
     {
-        public List<CameraWithId> Database { get; }
+        public CamerasDatabase database;
 
-        private CinemachineVirtualCamera currentCamera;
-
-        public CameraSwitcher(List<CameraWithId> database)
+        public CinemachineVirtualCamera CurrentCamera { get; private set; }
+        public string CurrentCameraId { get; private set; }
+        
+        public CameraSwitcher(CamerasDatabase database)
         {
-            Database = database;
+            this.database = database;
         }
 
         public void SwitchCamera(string id)
         {
-            if (currentCamera != null)
+            if (CurrentCamera != null)
             {
-                currentCamera.gameObject.SetActive(false);
+                CurrentCamera.gameObject.SetActive(false);
             }
 
-            var cameraWithId = Database.FirstOrDefault(x => x.Id.Equals(id));
-            if ( cameraWithId!= null)
+            
+            if (database.Cameras.ContainsKey(id))
             {
-                currentCamera = cameraWithId.Camera;
-                currentCamera.gameObject.SetActive(true);
+                CurrentCameraId = id;
+                CurrentCamera = database.Cameras[id];
+                CurrentCamera.gameObject.SetActive(true);
             }
         }
-    }
-
-    [Serializable]
-    public class CameraWithId
-    {
-        public CinemachineVirtualCamera Camera;
-        public string Id;
     }
 }

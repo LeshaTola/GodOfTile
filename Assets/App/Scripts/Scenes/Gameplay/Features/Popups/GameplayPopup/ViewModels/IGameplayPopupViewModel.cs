@@ -1,7 +1,7 @@
 using App.Scripts.Modules.Localization;
 using App.Scripts.Scenes.Gameplay.Features.Commands.General;
 
-namespace App.Scripts.Scenes.Gameplay.StateMachines.State.UI
+namespace App.Scripts.Scenes.Gameplay.Features.Popups.GameplayPopup.ViewModels
 {
     public interface IGameplayPopupViewModel
     {

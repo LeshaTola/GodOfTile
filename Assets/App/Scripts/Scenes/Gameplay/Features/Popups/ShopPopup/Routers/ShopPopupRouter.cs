@@ -1,7 +1,7 @@
 ﻿using App.Scripts.Modules.Localization;
 using App.Scripts.Modules.PopupLogic.General.Controllers;
 using App.Scripts.Scenes.Gameplay.Features.Inventory.Systems;
-using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.InformationWidget.ViewModels;
+using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget.ViewModels;
 using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.ViewModels;
 using App.Scripts.Scenes.Gameplay.Features.Shop.Factories.Cost;
 using App.Scripts.Scenes.Gameplay.Features.Shop.Factories.Item;

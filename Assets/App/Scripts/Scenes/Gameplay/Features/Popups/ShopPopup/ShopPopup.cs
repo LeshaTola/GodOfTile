@@ -2,7 +2,6 @@
 using App.Scripts.Modules.Localization.Localizers;
 using App.Scripts.Modules.PopupLogic.General.Popup;
 using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget;
-using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.InformationWidget;
 using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.Item;
 using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.ViewModels;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
@@ -29,7 +28,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup
             Cleanup();
 
             this.viewModule = viewModule;
-                informationWidget.Initialize(viewModule.ItemInformationWidget);
+            informationWidget.Initialize(viewModule.ItemInformationWidget);
             var tilesToBuy = viewModule.ShopSystem.AvailableTiles;
             AddItems(tilesToBuy.Count);
 

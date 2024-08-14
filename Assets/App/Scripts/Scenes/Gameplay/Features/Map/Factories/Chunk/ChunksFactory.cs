@@ -1,10 +1,9 @@
 using App.Scripts.Modules.ObjectPool.Pools;
-using App.Scripts.Scenes.Gameplay.Features.Map.Providers;
-using App.Scripts.Scenes.Gameplay.Features.Map.Visualizers;
+using App.Scripts.Scenes.Gameplay.Features.Map.Items;
 using App.Scripts.Scenes.Gameplay.Features.Popups.BuyAreaPopup.Routers;
 using UnityEngine;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Map.Factories
+namespace App.Scripts.Scenes.Gameplay.Features.Map.Factories.Chunk
 {
     public class ChunksFactory : IChunksFactory
     {
@@ -17,14 +16,14 @@ namespace App.Scripts.Scenes.Gameplay.Features.Map.Factories
             this.buyAreaPopupRouter = buyAreaPopupRouter;
         }
 
-        public WorldChunk GetChunk(Chunk chunk)
+        public WorldChunk GetChunk(Items.Chunk chunk)
         {
             var worldChunk = chunksPool.Get();
             SetupWorldChunk(worldChunk, chunk);
             return worldChunk;
         }
 
-        private void SetupWorldChunk(WorldChunk newChunk, Chunk chunk)
+        private void SetupWorldChunk(WorldChunk newChunk, Items.Chunk chunk)
         {
             newChunk.Initialize(() =>
             {

@@ -1,7 +1,7 @@
 ﻿using App.Scripts.Modules.Localization;
 using App.Scripts.Modules.PopupLogic.General.Controllers;
 using App.Scripts.Scenes.Gameplay.Features.Commands.General;
-using App.Scripts.Scenes.Gameplay.Features.Commands.GoToGamePlayStateCommands;
+using App.Scripts.Scenes.Gameplay.Features.Commands.GoToStateCommands;
 using App.Scripts.Scenes.Gameplay.Features.Popups.InformationPopup.ViewModels;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using Cysharp.Threading.Tasks;

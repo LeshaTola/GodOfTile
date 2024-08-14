@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using App.Scripts.Scenes.Gameplay.Features.Inventory.DTO;
-using App.Scripts.Scenes.Gameplay.Features.Map.Configs;
 using UnityEngine;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Map.Providers.Cost
+namespace App.Scripts.Scenes.Gameplay.Features.Map.Providers.Chunk.Cost
 {
     public interface IChunkCostProvider
     {

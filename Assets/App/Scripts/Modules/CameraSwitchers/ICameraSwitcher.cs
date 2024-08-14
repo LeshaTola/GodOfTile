@@ -1,11 +1,14 @@
 using System.Collections.Generic;
 using Cinemachine;
 
-namespace App.Scripts.Scenes.Gameplay.Features.CameraLogic.CameraSwitchers
+namespace App.Scripts.Modules.CameraSwitchers
 {
     public interface ICameraSwitcher
     {
-        List<CameraWithId>  Database { get; }
+
+        CinemachineVirtualCamera CurrentCamera { get; }
+        string CurrentCameraId { get; }
+        
         void SwitchCamera(string id);
     }
 }

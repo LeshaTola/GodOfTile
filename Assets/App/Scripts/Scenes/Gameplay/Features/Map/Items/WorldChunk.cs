@@ -3,7 +3,7 @@ using App.Scripts.Modules.ObjectPool.PooledObjects;
 using App.Scripts.Modules.ObjectPool.Pools;
 using UnityEngine;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Map.Visualizers
+namespace App.Scripts.Scenes.Gameplay.Features.Map.Items
 {
     public class WorldChunk : MonoBehaviour, IPoolableObject<WorldChunk>
     {

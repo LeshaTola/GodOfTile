@@ -1,4 +1,4 @@
-namespace App.Scripts.Scenes.Gameplay.Features.Materials.WaterMaterial
+namespace App.Scripts.Scenes.Gameplay.Features.Map.WaterMaterialController
 {
     public interface IWaterMaterialController
     {

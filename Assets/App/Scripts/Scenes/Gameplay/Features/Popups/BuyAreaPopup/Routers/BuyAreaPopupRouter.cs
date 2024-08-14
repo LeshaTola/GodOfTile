@@ -2,9 +2,9 @@ using App.Scripts.Modules.Localization;
 using App.Scripts.Modules.PopupLogic.General.Controllers;
 using App.Scripts.Scenes.Gameplay.Features.Commands;
 using App.Scripts.Scenes.Gameplay.Features.Commands.BuyAreaCommand;
-using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Cost;
+using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Chunk.Cost;
 using App.Scripts.Scenes.Gameplay.Features.Popups.BuyAreaPopup.ViewModules;
-using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.InformationWidget.ViewModels;
+using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget.ViewModels;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 

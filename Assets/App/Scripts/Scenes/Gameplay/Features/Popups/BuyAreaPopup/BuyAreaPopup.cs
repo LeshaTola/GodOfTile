@@ -1,19 +1,13 @@
-using System.Collections.Generic;
 using App.Scripts.Features.Popups.Buttons;
 using App.Scripts.Modules.Localization.Localizers;
 using App.Scripts.Modules.PopupLogic.General.Popup;
-using App.Scripts.Scenes.Gameplay.Features.Inventory.DTO;
 using App.Scripts.Scenes.Gameplay.Features.Popups.BuyAreaPopup.ViewModules;
-using App.Scripts.Scenes.Gameplay.Features.Popups.InformationPopup.ViewModels;
 using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget;
-using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.Configs;
-using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.InformationWidget;
-using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using UnityEngine;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Popups.BuyAreaPopup
 {
-    public class BuyAreaPopup: Popup
+    public class BuyAreaPopup : Popup
     {
         [SerializeField] private TMProLocalizer header;
         [SerializeField] private ItemInformationWidget informationWidget;
@@ -21,7 +15,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.BuyAreaPopup
         [SerializeField] private PopupButton closeButton;
 
         private IBuyAreaPopupViewModule viewModule;
-        
+
         public void Setup(IBuyAreaPopupViewModule viewModule)
         {
             this.viewModule = viewModule;
@@ -29,7 +23,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.BuyAreaPopup
             Initialize(viewModule);
             SetupUI(viewModule);
         }
-        
+
         private void SetupUI(IBuyAreaPopupViewModule viewModule)
         {
             informationWidget.UpdateInformation(viewModule.Resources);
@@ -45,10 +39,10 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.BuyAreaPopup
             header.Initialize(viewModule.LocalizationSystem);
 
             informationWidget.Initialize(this.viewModule.WidgetViewModule);
-            
+
             buyButton.Initialize(viewModule.LocalizationSystem);
             closeButton.Initialize(viewModule.LocalizationSystem);
-            
+
             buyButton.onButtonClicked += viewModule.BuyCommand.Execute;
             closeButton.onButtonClicked += viewModule.CloseCommand.Execute;
         }
@@ -58,7 +52,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.BuyAreaPopup
             header.Translate();
 
             informationWidget.Translate();
-            
+
             buyButton.Translate();
             closeButton.Translate();
         }

@@ -5,7 +5,7 @@ using App.Scripts.Scenes.Gameplay.Features.Map.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.General;
 using UnityEngine;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Map.Providers
+namespace App.Scripts.Scenes.Gameplay.Features.Map.Providers.Chunk
 {
     public class ChunksProvider : IChunksProvider
     {
@@ -27,8 +27,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.Map.Providers
             InitializeChunks();
         }
 
-        public HashSet<Chunk> OpenedChunks { get; private set; }
-        public HashSet<Chunk> ClosedChunks { get; private set; }
+        public HashSet<Items.Chunk> OpenedChunks { get; private set; }
+        public HashSet<Items.Chunk> ClosedChunks { get; private set; }
 
         public void OpenChunk(Vector2Int chunkId)
         {
@@ -42,7 +42,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Map.Providers
             OnChunkOpened?.Invoke();
         }
 
-        public void OpenChunk(Chunk chunk)
+        public void OpenChunk(Items.Chunk chunk)
         {
             if (!ClosedChunks.Contains(chunk))
             {
@@ -107,15 +107,15 @@ namespace App.Scripts.Scenes.Gameplay.Features.Map.Providers
 
         private void InitializeChunks()
         {
-            OpenedChunks = new HashSet<Chunk>();
-            ClosedChunks = new HashSet<Chunk>();
+            OpenedChunks = new HashSet<Items.Chunk>();
+            ClosedChunks = new HashSet<Items.Chunk>();
 
-            for (var i = 0; i < config.ChunkSize.x; i++)
+            for (var i = 0; i < config.ChunksCount.x; i++)
             {
-                for (var j = 0; j < config.ChunkSize.y; j++)
+                for (var j = 0; j < config.ChunksCount.y; j++)
                 {
                     var id = new Vector2Int(i, j);
-                    ClosedChunks.Add(new Chunk(id, config.ChunkSize));
+                    ClosedChunks.Add(new Items.Chunk(id, config.ChunkSize));
                 }
             }
 
@@ -127,7 +127,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Map.Providers
             return IsInOpenedChunk(new Vector2Int(x, y));
         }
 
-        private Chunk GetChunkById(Vector2Int chunkId)
+        private Items.Chunk GetChunkById(Vector2Int chunkId)
         {
             var chunk = ClosedChunks.FirstOrDefault(x => x.Id.Equals(chunkId));
             return chunk;

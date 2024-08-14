@@ -1,9 +1,9 @@
-using System;
 using App.Scripts.Features.Popups.Buttons;
 using App.Scripts.Modules.PopupLogic.General.Popup;
+using App.Scripts.Scenes.Gameplay.Features.Popups.GameplayPopup.ViewModels;
 using UnityEngine;
 
-namespace App.Scripts.Scenes.Gameplay.StateMachines.State.UI
+namespace App.Scripts.Scenes.Gameplay.Features.Popups.GameplayPopup
 {
     public class GameplayPopup: Popup
     {

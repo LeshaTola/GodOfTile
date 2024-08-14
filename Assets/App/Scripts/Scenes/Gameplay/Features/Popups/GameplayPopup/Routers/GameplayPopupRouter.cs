@@ -1,9 +1,10 @@
 using App.Scripts.Modules.Localization;
 using App.Scripts.Modules.PopupLogic.General.Controllers;
-using App.Scripts.Scenes.Gameplay.Features.Commands.GoToGamePlayStateCommands;
+using App.Scripts.Scenes.Gameplay.Features.Commands.GoToStateCommands;
+using App.Scripts.Scenes.Gameplay.Features.Popups.GameplayPopup.ViewModels;
 using Cysharp.Threading.Tasks;
 
-namespace App.Scripts.Scenes.Gameplay.StateMachines.State.UI.Routers
+namespace App.Scripts.Scenes.Gameplay.Features.Popups.GameplayPopup.Routers
 {
     public class GameplayPopupRouter : IGameplayPopupRouter
     {

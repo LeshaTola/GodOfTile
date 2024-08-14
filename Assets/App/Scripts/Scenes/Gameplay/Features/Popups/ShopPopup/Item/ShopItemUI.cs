@@ -1,6 +1,5 @@
 ﻿using System;
 using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget;
-using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.InformationWidget;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using UnityEngine;
 using UnityEngine.EventSystems;

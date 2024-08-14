@@ -1,6 +1,6 @@
 using Cysharp.Threading.Tasks;
 
-namespace App.Scripts.Scenes.Gameplay.StateMachines.State.UI.Routers
+namespace App.Scripts.Scenes.Gameplay.Features.Popups.GameplayPopup.Routers
 {
     public interface IGameplayPopupRouter
     {

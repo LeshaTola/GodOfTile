@@ -1,6 +1,7 @@
 using App.Scripts.Modules.StateMachine.Services.CleanupService;
 using App.Scripts.Modules.StateMachine.Services.InitializeService;
 using App.Scripts.Scenes.Gameplay.Features.Input;
+using App.Scripts.Scenes.Gameplay.Features.Time.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Time.Services.TimeServices;
 using App.Scripts.Scenes.Gameplay.Features.Time.UI;
 using UnityEngine.UI;
@@ -21,8 +22,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Time.Controllers
             this.timeService = timeService;
             this.timeControllerUI = timeControllerUI;
             this.config = config;
-            
-            SetSpeed1();
         }
 
         public void Initialize()
@@ -36,6 +35,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.Time.Controllers
             timeControllerUI.OnSpeed1ButtonClicked += SetSpeed1;
             timeControllerUI.OnSpeed2ButtonClicked += SetSpeed2;
             timeControllerUI.OnSpeed3ButtonClicked += SetSpeed3;
+            
+            SetSpeed1();
         }
 
         public void Cleanup()

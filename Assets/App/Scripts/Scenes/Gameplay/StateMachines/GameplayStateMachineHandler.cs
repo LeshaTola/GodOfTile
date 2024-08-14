@@ -1,6 +1,7 @@
 ﻿using App.Scripts.Features.StateMachines.States;
 using App.Scripts.Modules.StateMachine;
 using App.Scripts.Modules.StateMachine.Factories.States;
+using App.Scripts.Scenes.Gameplay.StateMachines.Ids;
 using App.Scripts.Scenes.Gameplay.StateMachines.State;
 using UnityEngine;
 using Zenject;

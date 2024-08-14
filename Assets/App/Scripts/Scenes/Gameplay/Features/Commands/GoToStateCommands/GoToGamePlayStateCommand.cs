@@ -1,8 +1,8 @@
 ﻿using App.Scripts.Modules.StateMachine;
 using App.Scripts.Scenes.Gameplay.Features.Commands.General;
-using App.Scripts.Scenes.Gameplay.StateMachines.State;
+using App.Scripts.Scenes.Gameplay.StateMachines.Ids;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Commands.GoToGamePlayStateCommands
+namespace App.Scripts.Scenes.Gameplay.Features.Commands.GoToStateCommands
 {
     public class GoToGamePlayStateCommand : LabeledCommand
     {

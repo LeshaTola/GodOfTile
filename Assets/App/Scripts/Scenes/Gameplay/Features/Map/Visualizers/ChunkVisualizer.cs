@@ -1,7 +1,10 @@
 using System.Collections.Generic;
 using App.Scripts.Modules.StateMachine.Services.CleanupService;
 using App.Scripts.Scenes.Gameplay.Features.Map.Factories;
+using App.Scripts.Scenes.Gameplay.Features.Map.Factories.Chunk;
+using App.Scripts.Scenes.Gameplay.Features.Map.Items;
 using App.Scripts.Scenes.Gameplay.Features.Map.Providers;
+using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Chunk;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Map.Visualizers
 {

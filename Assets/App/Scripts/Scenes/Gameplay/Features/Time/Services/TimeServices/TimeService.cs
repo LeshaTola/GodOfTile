@@ -1,5 +1,5 @@
 using App.Scripts.Modules.TimeProvider;
-using App.Scripts.Scenes.Gameplay.Features.Materials.WaterMaterial;
+using App.Scripts.Scenes.Gameplay.Features.Map.WaterMaterialController;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Time.Services.TimeServices
 {

@@ -1,5 +1,6 @@
 using App.Scripts.Modules.TimeProvider;
 using App.Scripts.Scenes.Gameplay.Features.CameraLogic;
+using App.Scripts.Scenes.Gameplay.Features.Time.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Time.Controllers;
 using App.Scripts.Scenes.Gameplay.Features.Time.Services.TimeServices;
 using App.Scripts.Scenes.Gameplay.Features.Time.UI;

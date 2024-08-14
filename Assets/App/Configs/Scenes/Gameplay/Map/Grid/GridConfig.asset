@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: GridConfig
   m_EditorClassIdentifier: 
   <ChunkSize>k__BackingField: {x: 10, y: 10}
-  <StartChunk>k__BackingField: {x: 5, y: 5}
-  <ChunksCount>k__BackingField: {x: 10, y: 10}
+  <StartChunk>k__BackingField: {x: 7, y: 5}
+  <ChunksCount>k__BackingField: {x: 15, y: 11}

@@ -1,6 +1,6 @@
 ﻿using App.Scripts.Scenes.Gameplay.Features.Commands;
 using App.Scripts.Scenes.Gameplay.Features.Commands.BuyAreaCommand;
-using App.Scripts.Scenes.Gameplay.Features.Commands.GoToGamePlayStateCommands;
+using App.Scripts.Scenes.Gameplay.Features.Commands.GoToStateCommands;
 using Zenject;
 
 namespace App.Scripts.Scenes.Gameplay.Bootstrap

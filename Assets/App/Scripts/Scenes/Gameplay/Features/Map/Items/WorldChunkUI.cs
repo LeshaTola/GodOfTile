@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Map.Visualizers
+namespace App.Scripts.Scenes.Gameplay.Features.Map.Items
 {
     public class WorldChunkUI : MonoBehaviour
     {

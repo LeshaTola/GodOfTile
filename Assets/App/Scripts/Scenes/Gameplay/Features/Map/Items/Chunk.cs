@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Map.Providers
+namespace App.Scripts.Scenes.Gameplay.Features.Map.Items
 {
     public class Chunk
     {

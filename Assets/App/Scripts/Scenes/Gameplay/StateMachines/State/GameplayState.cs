@@ -1,7 +1,8 @@
 ﻿using App.Scripts.Modules.StateMachine.Services.UpdateService;
 using App.Scripts.Scenes.Gameplay.Features.Input;
+using App.Scripts.Scenes.Gameplay.Features.Popups.GameplayPopup.Routers;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Selection;
-using App.Scripts.Scenes.Gameplay.StateMachines.State.UI.Routers;
+using App.Scripts.Scenes.Gameplay.StateMachines.Ids;
 using Cysharp.Threading.Tasks;
 
 namespace App.Scripts.Scenes.Gameplay.StateMachines.State
