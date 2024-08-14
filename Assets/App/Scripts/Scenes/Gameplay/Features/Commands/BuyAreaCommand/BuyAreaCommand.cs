@@ -28,7 +28,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Commands.BuyAreaCommand
         public override void Execute()
         {
             var cost = chunkCostProvider.GetCost(ChunkId);
-            if (!inventorySystem.IsEnough(cost))
+            if (cost == null || !inventorySystem.IsEnough(cost))
             {
                 return;
             }

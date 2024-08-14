@@ -31,6 +31,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
     {
         [Header("Grid")]
         [SerializeField] private GridConfig gridConfig;
+        [SerializeField] private ChunkCostConfig chunkCostConfig;
 
         [SerializeField] private WorldGrid grid;
         [SerializeField] private WorldChunk chunkTemplate;
@@ -130,7 +131,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
         {
             Container.Bind<IGridProvider>().To<GridProvider>().AsSingle().WithArguments(gridConfig);
             Container.Bind<IChunksProvider>().To<ChunksProvider>().AsSingle().WithArguments(gridConfig);
-            Container.Bind<IChunkCostProvider>().To<ChunkCostProvider>().AsSingle();
+            Container.Bind<IChunkCostProvider>().To<ChunkCostProvider>().AsSingle().WithArguments(chunkCostConfig);
         }
     }
 }

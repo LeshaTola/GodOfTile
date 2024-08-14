@@ -16,7 +16,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.BuyAreaPopup
     public class BuyAreaPopup: Popup
     {
         [SerializeField] private TMProLocalizer header;
-        [SerializeField] private InformationWidgetConfig config;
         [SerializeField] private ItemInformationWidget informationWidget;
         [SerializeField] private PopupButton buyButton;
         [SerializeField] private PopupButton closeButton;

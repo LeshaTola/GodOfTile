@@ -470,8 +470,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.24148785, y: -0.36937934, z: 0.10002755, w: 0.89176065}
-  m_LocalPosition: {x: 53.535534, y: 2.922287, z: 46.464466}
+  m_LocalRotation: {x: 0.46200237, y: -0.33139858, z: 0.1913676, w: 0.80006707}
+  m_LocalPosition: {x: 53.535534, y: 8.663384, z: 46.464466}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -950,11 +950,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridConfig: {fileID: 11400000, guid: 6a4ffd96575c5ab41af0a255807180dd, type: 2}
+  chunkCostConfig: {fileID: 11400000, guid: 79d9955152c589041bea80f2aaa74cc4, type: 2}
   grid: {fileID: -4314254410048320688, guid: 726717fae9b28bb409d6e9ceae9d962b, type: 3}
   chunkTemplate: {fileID: 8133163442808848749, guid: f6d99a8c9e2ad474d84aa62d371a4ce6,
     type: 3}
   chunksContainer: {fileID: 1865067828}
   mainCamera: {fileID: 330585545}
+  database:
+  - Camera: {fileID: 2128820151}
+    Id: main
+  - Camera: {fileID: 1593304042}
+    Id: buyArea
   virtualCamera: {fileID: 2128820151}
   cameraMovementConfig: {fileID: 11400000, guid: ad461738b599a49408f4728ed34c8ab9,
     type: 2}
@@ -1358,7 +1364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 2.922287, z: -5}
+  m_FollowOffset: {x: 0, y: 8.663384, z: -5}
   m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0
@@ -1842,8 +1848,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2128820150}
-  m_LocalRotation: {x: 0.24148785, y: -0.36937934, z: 0.10002755, w: 0.89176065}
-  m_LocalPosition: {x: 53.535534, y: 2.922287, z: 46.464466}
+  m_LocalRotation: {x: 0.46200237, y: -0.33139858, z: 0.1913676, w: 0.80006707}
+  m_LocalPosition: {x: 53.535534, y: 8.663384, z: 46.464466}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
