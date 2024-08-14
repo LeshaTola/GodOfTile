@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using App.Scripts.Modules.StateMachine.Services.CleanupService;
 using App.Scripts.Scenes.Gameplay.Features.Map.Factories;
 using App.Scripts.Scenes.Gameplay.Features.Map.Providers;
 
@@ -15,16 +16,20 @@ namespace App.Scripts.Scenes.Gameplay.Features.Map.Visualizers
         {
             this.chunksProvider = chunksProvider;
             this.chunksFactory = chunksFactory;
+            
         }
         
         public void Hide()
         {
             CleanupChunks();
+            chunksProvider.OnChunkOpened -= UpdateChunks;
         }
 
         public void Show()
         {
             SetupChunks();
+            chunksProvider.OnChunkOpened += UpdateChunks;
+
         }
 
         public void UpdateChunks()
