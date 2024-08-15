@@ -1,6 +1,7 @@
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.TileSystem;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.TileSystemUI;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Services;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Effectors.UI.Providers;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners.UI.Providers;
 using Zenject;
@@ -15,14 +16,21 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap.Tile
             BindSystemUIFactory();
 
             BindSystemService();
-            BindResourceEarnerUIProvider();
 
             Container.BindInterfacesTo<ResourceEarnerService>().AsSingle();
+            
+            BindSpeedupResourceEarningEffectorUIProvider();
+            BindResourceEarnerUIProvider();
+        }
+
+        private void BindSpeedupResourceEarningEffectorUIProvider()
+        {
+            Container.Bind<SpeedupResourceEarningEffectorUIProvider>().AsSingle();
         }
 
         private void BindResourceEarnerUIProvider()
         {
-            Container.Bind<IResourceEarnerUIProvider>().To<ResourceEarnerUIProvider>().AsSingle();
+            Container.Bind<ResourceEarnerUIProvider>().AsSingle();
         }
 
         private void BindSystemService()

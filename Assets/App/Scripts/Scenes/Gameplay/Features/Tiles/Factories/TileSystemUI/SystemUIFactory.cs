@@ -6,8 +6,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.TileSystemUI
 {
     public class SystemUIFactory : ISystemUIFactory
     {
-        private DiContainer diContainer;
-
         public SystemUI GetSystemUI(TileSystems.TileSystem tileSystem)
         {
             if (tileSystem.Data.TileUI == null)

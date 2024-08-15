@@ -1,4 +1,5 @@
-﻿using App.Scripts.Modules.StateMachine.Services.CleanupService;
+﻿using System;
+using App.Scripts.Modules.StateMachine.Services.CleanupService;
 using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Grid;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Providers;
@@ -10,11 +11,14 @@ using App.Scripts.Scenes.Gameplay.Features.Tiles.General;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Services;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCreation
 {
     public class TilesCreationService : ITilesCreationService, ICleanupable
     {
+        public event Action<Vector2Int, Tile>  OnTilePlaced;
+        
         private IGridProvider gridProvider;
         private ITilesFactory tileFactory;
         private IActiveTileProvider activeTileProvider;
@@ -94,6 +98,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
             PlayCreationVFX(tileBuffer).Forget();
             placementCostService.ProcessPlacementCost(tileBuffer.Config);
             systemsService.StartSystems(tileBuffer.Config);
+            OnTilePlaced?.Invoke(tileBuffer.Position, tileBuffer);
         }
 
         public void MoveActiveTile(Vector2Int gridPosition)

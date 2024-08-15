@@ -71,7 +71,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.Update
 
             systemsService.StopSystems(tile.Config);
 
-            var newSystems = systemsFactory.GetSystems(newTileConfig.Systems);
+            var newSystems = systemsFactory.GetSystems(newTileConfig.Systems, tile);
             newTileConfig.ActiveSystems = newSystems;
             tile.Initialize(newTileConfig);
 
