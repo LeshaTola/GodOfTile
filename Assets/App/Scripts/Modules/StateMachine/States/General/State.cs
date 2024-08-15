@@ -48,7 +48,7 @@ namespace App.Scripts.Modules.StateMachine.States.General
         public void AddStep(IStateStep step)
         {
             StateSteps.Add(step);
-            step.Init(this, StateMachine);
+            step.Initialize(this, StateMachine);
         }
 
         public void AddSteps(IEnumerable<IStateStep> steps)

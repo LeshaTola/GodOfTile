@@ -26,11 +26,11 @@ namespace App.Scripts.Modules.PopupLogic.General.Popup
         public IPopupAnimator PopupAnimator { get; private set; }
         public Canvas Canvas => canvas;
 
-        public void Init(IPopupController controller, IPopupAnimator popupAnimator)
+        public void Initialize(IPopupController controller, IPopupAnimator popupAnimator)
         {
             Controller = controller;
             PopupAnimator = popupAnimator;
-            PopupAnimator.Init(this);
+            PopupAnimator.Initialize(this);
             popupAnimator.Setup(animationConfig);
         }
 

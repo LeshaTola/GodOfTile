@@ -1,0 +1,432 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bd44634681c4ca2981ab9c87cc4e9db, type: 3}
+  m_Name: ChunkCostConfig
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: daae69d11c2f7994fad492095660114f, type: 2}
+    - {fileID: 11400000, guid: 7838b25836ffe8e45994e6ed94b3b2c7, type: 2}
+    - {fileID: 11400000, guid: d1457a3ec05187d4e828a5f43be2b55a, type: 2}
+    - {fileID: 11400000, guid: 12ea320e25139914cb79e34fc96f3d46, type: 2}
+    - {fileID: 11400000, guid: 9b66e0a0043809f4d92a82253c029e50, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: costs
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[System.Collections.Generic.List`1[[App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+        Assembly-CSharp]], mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 1|System.Collections.Generic.List`1[[App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 2|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount, Assembly-CSharp
+    - Name: Resource
+      Entry: 10
+      Data: 0
+    - Name: Count
+      Entry: 3
+      Data: 93
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 3|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount, Assembly-CSharp
+    - Name: Resource
+      Entry: 10
+      Data: 1
+    - Name: Count
+      Entry: 3
+      Data: 88
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 4|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount, Assembly-CSharp
+    - Name: Resource
+      Entry: 10
+      Data: 2
+    - Name: Count
+      Entry: 3
+      Data: 99
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 5|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount, Assembly-CSharp
+    - Name: Resource
+      Entry: 10
+      Data: 3
+    - Name: Count
+      Entry: 3
+      Data: 98
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 6|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount, Assembly-CSharp
+    - Name: Resource
+      Entry: 10
+      Data: 4
+    - Name: Count
+      Entry: 3
+      Data: 104
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 7|System.Collections.Generic.List`1[[App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 8|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount, Assembly-CSharp
+    - Name: Resource
+      Entry: 10
+      Data: 0
+    - Name: Count
+      Entry: 3
+      Data: 182
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 9|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount, Assembly-CSharp
+    - Name: Resource
+      Entry: 10
+      Data: 1
+    - Name: Count
+      Entry: 3
+      Data: 182
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 10|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+        Assembly-CSharp
+    - Name: Resource
+      Entry: 10
+      Data: 2
+    - Name: Count
+      Entry: 3
+      Data: 200
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 11|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+        Assembly-CSharp
+    - Name: Resource
+      Entry: 10
+      Data: 3
+    - Name: Count
+      Entry: 3
+      Data: 176
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 12|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+        Assembly-CSharp
+    - Name: Resource
+      Entry: 10
+      Data: 4
+    - Name: Count
+      Entry: 3
+      Data: 176
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 13|System.Collections.Generic.List`1[[App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 14|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+        Assembly-CSharp
+    - Name: Resource
+      Entry: 10
+      Data: 0
+    - Name: Count
+      Entry: 3
+      Data: 279
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 15|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+        Assembly-CSharp
+    - Name: Resource
+      Entry: 10
+      Data: 1
+    - Name: Count
+      Entry: 3
+      Data: 306
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 16|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+        Assembly-CSharp
+    - Name: Resource
+      Entry: 10
+      Data: 2
+    - Name: Count
+      Entry: 3
+      Data: 297
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 17|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+        Assembly-CSharp
+    - Name: Resource
+      Entry: 10
+      Data: 3
+    - Name: Count
+      Entry: 3
+      Data: 297
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 18|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+        Assembly-CSharp
+    - Name: Resource
+      Entry: 10
+      Data: 4
+    - Name: Count
+      Entry: 3
+      Data: 312
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 19|System.Collections.Generic.List`1[[App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 20|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+        Assembly-CSharp
+    - Name: Resource
+      Entry: 10
+      Data: 0
+    - Name: Count
+      Entry: 3
+      Data: 388
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 21|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+        Assembly-CSharp
+    - Name: Resource
+      Entry: 10
+      Data: 1
+    - Name: Count
+      Entry: 3
+      Data: 360
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 22|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+        Assembly-CSharp
+    - Name: Resource
+      Entry: 10
+      Data: 2
+    - Name: Count
+      Entry: 3
+      Data: 420
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 23|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+        Assembly-CSharp
+    - Name: Resource
+      Entry: 10
+      Data: 3
+    - Name: Count
+      Entry: 3
+      Data: 380
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 24|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+        Assembly-CSharp
+    - Name: Resource
+      Entry: 10
+      Data: 4
+    - Name: Count
+      Entry: 3
+      Data: 388
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 25|System.Collections.Generic.List`1[[App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 26|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+        Assembly-CSharp
+    - Name: Resource
+      Entry: 10
+      Data: 0
+    - Name: Count
+      Entry: 3
+      Data: 475
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 27|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+        Assembly-CSharp
+    - Name: Resource
+      Entry: 10
+      Data: 1
+    - Name: Count
+      Entry: 3
+      Data: 500
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 28|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+        Assembly-CSharp
+    - Name: Resource
+      Entry: 10
+      Data: 2
+    - Name: Count
+      Entry: 3
+      Data: 430
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 29|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+        Assembly-CSharp
+    - Name: Resource
+      Entry: 10
+      Data: 3
+    - Name: Count
+      Entry: 3
+      Data: 435
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 30|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+        Assembly-CSharp
+    - Name: Resource
+      Entry: 10
+      Data: 4
+    - Name: Count
+      Entry: 3
+      Data: 440
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  levelsToGenerate: 5
+  values:
+    Min: 20
+    Max: 500
+  stepOffset:
+    Min: -10
+    Max: 10
+  database: {fileID: 11400000, guid: 566e68ac22f22f5479bdce591760f218, type: 2}

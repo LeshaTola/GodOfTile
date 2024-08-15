@@ -1,6 +1,5 @@
 using System;
 using App.Scripts.Modules.StateMachine.Services.CleanupService;
-using App.Scripts.Scenes.Gameplay.Features.Grid;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -9,6 +8,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Input
 {
     public class GameInput : IGameInput, ICleanupable
     {
+        public event Action OnEscape;
         public event Action OnBuild;
         public event Action OnRotate;
         public event Action OnPause;
@@ -30,6 +30,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Input
             input = new global::Input();
             input.Game.Enable();
 
+            input.Game.ESC.performed += OnESCPerformed;
             input.Game.Build.performed += BuildButtonPerformed;
             input.Game.Rotate.performed += RotationButtonPerformed;
             
@@ -55,6 +56,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Input
 
         public void Cleanup()
         {
+            input.Game.ESC.performed -= OnESCPerformed;
             input.Game.Build.performed -= BuildButtonPerformed;
             input.Game.Rotate.performed -= RotationButtonPerformed;
             
@@ -92,6 +94,11 @@ namespace App.Scripts.Scenes.Gameplay.Features.Input
             );
 
             return lastPosition;
+        }
+
+        private void OnESCPerformed(InputAction.CallbackContext obj)
+        {
+            OnEscape?.Invoke();
         }
 
         private void BuildButtonPerformed(InputAction.CallbackContext obj)

@@ -1,5 +1,5 @@
 ﻿using App.Scripts.Modules.Localization;
-using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.InformationWidget.ViewModels;
+using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget.ViewModels;
 using App.Scripts.Scenes.Gameplay.Features.Shop.Factories.Item;
 using App.Scripts.Scenes.Gameplay.Features.Shop.Systems;
 

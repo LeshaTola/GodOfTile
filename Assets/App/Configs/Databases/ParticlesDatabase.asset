@@ -24,7 +24,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: particles
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[App.Scripts.Modules.ObjectPool.PooledObjects.PoolObject`1[[App.Scripts.Modules.ObjectPool.PooledObjects.PooledParticle,
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[App.Scripts.Modules.ObjectPool.PooledObjects.PoolObject`1[[App.Scripts.Modules.ObjectPool.PooledObjects.PoolableParticle,
         Assembly-CSharp]], Assembly-CSharp]], mscorlib
     - Name: comparer
       Entry: 7
@@ -44,11 +44,11 @@ MonoBehaviour:
       Data: Explosion
     - Name: $v
       Entry: 7
-      Data: App.Scripts.Modules.ObjectPool.PooledObjects.PoolObject`1[[App.Scripts.Modules.ObjectPool.PooledObjects.PooledParticle,
+      Data: App.Scripts.Modules.ObjectPool.PooledObjects.PoolObject`1[[App.Scripts.Modules.ObjectPool.PooledObjects.PoolableParticle,
         Assembly-CSharp]], Assembly-CSharp
     - Name: PreloadCount
       Entry: 3
-      Data: 10
+      Data: 5
     - Name: Template
       Entry: 10
       Data: 0

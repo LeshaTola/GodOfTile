@@ -48,7 +48,7 @@ namespace App.Scripts.Modules.ObjectPool.Pools
             var pooledObject = pool.Dequeue();
             active.Add(pooledObject);
 
-            if (pooledObject is IPooledObject<T> poolableObject)
+            if (pooledObject is IPoolableObject<T> poolableObject)
             {
                 poolableObject.OnGet(this);
             }
@@ -62,7 +62,7 @@ namespace App.Scripts.Modules.ObjectPool.Pools
             active.Remove(obj);
             pool.Enqueue(obj);
 
-            if (obj is IPooledObject<T> poolableObject)
+            if (obj is IPoolableObject<T> poolableObject)
             {
                 poolableObject.OnRelease();
             }

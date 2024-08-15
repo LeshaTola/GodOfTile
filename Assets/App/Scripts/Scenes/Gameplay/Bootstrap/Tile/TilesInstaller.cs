@@ -9,17 +9,16 @@ using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.PlacementCost
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCreation;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.Update;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.Tiles;
-using App.Scripts.Scenes.Gameplay.Features.Tiles.General;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Collection;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Selection;
 using UnityEngine;
 using Zenject;
 
-namespace App.Scripts.Scenes.Gameplay.Bootstrap
+namespace App.Scripts.Scenes.Gameplay.Bootstrap.Tile
 {
     public class TilesInstaller : MonoInstaller
     {
-        [SerializeField] private Tile tilePrefab;
+        [SerializeField] private Features.Tiles.General.Tile tilePrefab;
         [SerializeField] private Transform tilesContainer;
         [SerializeField] private TileAnimationConfig tileAnimationConfig;
         [SerializeField] private TilesCreationConfig tilesCreationConfig;

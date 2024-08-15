@@ -11,10 +11,10 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Resour
 
         private IResourceEarnerViewModule viewModule;
 
-        public void Init(IResourceEarnerViewModule viewModule)
+        public void Initialize(IResourceEarnerViewModule viewModule)
         {
             this.viewModule = viewModule;
-            resourceInfoUI.Init(viewModule.LocalizationSystem);
+            resourceInfoUI.Initialize(viewModule.LocalizationSystem);
         }
 
         public override void Setup()

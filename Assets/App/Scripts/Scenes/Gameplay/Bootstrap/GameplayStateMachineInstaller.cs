@@ -1,13 +1,26 @@
-﻿using App.Scripts.Modules.StateMachine;
+﻿using System.Collections.Generic;
+using App.Scripts.Modules.CameraSwitchers;
+using App.Scripts.Modules.StateMachine;
 using App.Scripts.Modules.StateMachine.Factories.States;
 using App.Scripts.Modules.StateMachine.States.General;
+using App.Scripts.Scenes.Gameplay.StateMachines.Ids;
 using App.Scripts.Scenes.Gameplay.StateMachines.State;
+using Sirenix.OdinInspector;
+using UnityEngine;
 using Zenject;
 
 namespace App.Scripts.Scenes.Gameplay.Bootstrap
 {
     public class GameplayStateMachineInstaller : MonoInstaller
     {
+        [SerializeField] private CamerasDatabase camerasDatabase;
+
+        [ValueDropdown(nameof(GetCamerasIds))]
+        [SerializeField] private string mainCameraId;
+
+        [ValueDropdown(nameof(GetCamerasIds))]
+        [SerializeField] private string buyAreaCameraId;
+
         public override void InstallBindings()
         {
             BindStatesFactory();
@@ -17,6 +30,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
             BindGameplayState();
             BindBuildState();
             BindInformationState();
+            BindBuyAreaState();
         }
 
         private void BindInformationState()
@@ -36,7 +50,8 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
 
         private void BindInitialState()
         {
-            BindState<GameplayInitialState>(StatesIds.GAMEPLAY_INITIAL_STATE);
+            Container.Bind<State>().To<GameplayInitialState>().AsSingle()
+                .WithArguments(StatesIds.GAMEPLAY_INITIAL_STATE, mainCameraId);
         }
 
         private void BindStateMachine()
@@ -49,10 +64,25 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
             Container.Bind<IStatesFactory>().To<StatesFactory>().AsSingle();
         }
 
+        private void BindBuyAreaState()
+        {
+            Container.Bind<State>().To<BuyAreaState>().AsSingle()
+                .WithArguments(StatesIds.BUY_AREA_STATE, buyAreaCameraId);
+        }
+
         private void BindState<T>(string stateId)
             where T : State
         {
             Container.Bind<State>().To<T>().AsSingle().WithArguments(stateId);
+        }
+
+        public IEnumerable<string> GetCamerasIds()
+        {
+            if (camerasDatabase == null)
+            {
+                return null;
+            }
+            return new List<string>(camerasDatabase.Cameras.Keys);
         }
     }
 }

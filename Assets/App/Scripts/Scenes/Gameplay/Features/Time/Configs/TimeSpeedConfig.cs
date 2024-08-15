@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Time.Controllers
+namespace App.Scripts.Scenes.Gameplay.Features.Time.Configs
 {
     [CreateAssetMenu(fileName = "TimeSpeedConfig", menuName = "Configs/Time/Speed")]
     public class TimeSpeedConfig : ScriptableObject

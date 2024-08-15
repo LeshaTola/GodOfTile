@@ -10,6 +10,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.CameraLogic
 {
     public class CameraController : ICameraController, IUpdatable
     {
+        private readonly CinemachineVirtualCamera virtualCamera;
         private CameraMovementConfig config;
         private Transform cameraTarget;
         private IGameInput gameInput;
@@ -25,6 +26,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.CameraLogic
             ITimeProvider timeProvider
         )
         {
+            this.virtualCamera = virtualCamera;
             this.config = config;
             this.cameraTarget = cameraTarget;
             this.gameInput = gameInput;
@@ -38,6 +40,16 @@ namespace App.Scripts.Scenes.Gameplay.Features.CameraLogic
             Move(gameInput.GetMoveVectorNormalized());
             Rotate(gameInput.GetRotationValueNormalized());
             Focus();
+        }
+
+        public void Activate()
+        {
+            virtualCamera.gameObject.SetActive(true);
+        }
+
+        public void Deactivate()
+        {
+            virtualCamera.gameObject.SetActive(false);
         }
 
         public void Rotate(float value)

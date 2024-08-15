@@ -1,18 +1,29 @@
-﻿using App.Scripts.Modules.ObjectPool.KeyPools;
+﻿using System.Collections.Generic;
+using App.Scripts.Modules.CameraSwitchers;
+using App.Scripts.Modules.ObjectPool.KeyPools;
 using App.Scripts.Modules.ObjectPool.KeyPools.Configs;
+using App.Scripts.Modules.ObjectPool.MonoObjectPools;
 using App.Scripts.Modules.ObjectPool.PooledObjects;
+using App.Scripts.Modules.ObjectPool.Pools;
 using App.Scripts.Modules.StateMachine.Services.CleanupService;
 using App.Scripts.Modules.StateMachine.Services.InitializeService;
 using App.Scripts.Modules.StateMachine.Services.UpdateService;
 using App.Scripts.Scenes.Gameplay.Features.CameraLogic;
 using App.Scripts.Scenes.Gameplay.Features.CameraLogic.Configs;
-using App.Scripts.Scenes.Gameplay.Features.Grid;
-using App.Scripts.Scenes.Gameplay.Features.Grid.Configs;
-using App.Scripts.Scenes.Gameplay.Features.Grid.Visualizators;
 using App.Scripts.Scenes.Gameplay.Features.Input;
-using App.Scripts.Scenes.Gameplay.Features.Materials.WaterMaterial;
-using App.Scripts.Scenes.Gameplay.Features.Materials.WaterMaterial.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Map.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Map.Factories;
+using App.Scripts.Scenes.Gameplay.Features.Map.Factories.Chunk;
+using App.Scripts.Scenes.Gameplay.Features.Map.Items;
+using App.Scripts.Scenes.Gameplay.Features.Map.Providers;
+using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Chunk;
+using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Chunk.Cost;
+using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Grid;
+using App.Scripts.Scenes.Gameplay.Features.Map.Visualizers;
+using App.Scripts.Scenes.Gameplay.Features.Map.WaterMaterialController;
+using App.Scripts.Scenes.Gameplay.Features.Map.WaterMaterialController.Configs;
 using Cinemachine;
+using Sirenix.Serialization;
 using UnityEngine;
 using Zenject;
 
@@ -21,28 +32,23 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
     public class GameplayInstaller : MonoInstaller
     {
         [Header("Grid")]
-        [SerializeField]
-        private GridConfig gridConfig;
+        [SerializeField] private GridConfig gridConfig;
+        [SerializeField] private ChunkCostConfig chunkCostConfig;
 
-        [SerializeField]
-        private GameObject grid;
+        [SerializeField] private WorldGrid grid;
+        [SerializeField] private WorldChunk chunkTemplate;
+        [SerializeField] private Transform chunksContainer;
 
         [Header("Camera")]
-        [SerializeField]
-        private Camera mainCamera;
+        [SerializeField] private Camera mainCamera;
+        [SerializeField] private CamerasDatabase camerasDatabase;
 
-        [SerializeField]
-        private CinemachineVirtualCamera virtualCamera;
-
-        [SerializeField]
-        private CameraMovementConfig cameraMovementConfig;
-
-        [SerializeField]
-        private Transform cameraTarget;
+        [SerializeField] private CinemachineVirtualCamera virtualCamera;
+        [SerializeField] private CameraMovementConfig cameraMovementConfig;
+        [SerializeField] private Transform cameraTarget;
 
         [Header("Particles")]
-        [SerializeField]
-        private ParticlesDatabase particlesDatabase;
+        [SerializeField] private ParticlesDatabase particlesDatabase;
 
         [SerializeField] private Transform particlesContainer;
         [SerializeField] private WaterMaterialConfig waterMaterialConfig;
@@ -67,23 +73,34 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
 
             BindParticlesKeyPool();
 
-            BindGridProvider();
-            BindGridVisualizator();
+            Container.Bind<IChunksFactory>().To<ChunksFactory>().AsSingle();
+            Container.Bind<ICameraSwitcher>().To<CameraSwitcher>().AsSingle().WithArguments(camerasDatabase);
+            BindMapProviders();
+            BindMapVisualizers();
         }
 
-        private void BindGridVisualizator()
+        private void BindMapVisualizers()
         {
+            Container.Bind<IPool<WorldChunk>>().To<MonoBehObjectPool<WorldChunk>>().AsSingle()
+                .WithArguments(chunkTemplate, chunksContainer, 10);
+            Container.Bind<IPool<WorldGrid>>().To<MonoBehObjectPool<WorldGrid>>().AsSingle()
+                .WithArguments(grid, chunksContainer, 10);
+
             Container
-                .Bind<IGridVisualizator>()
-                .To<GridVisualizator>()
-                .AsSingle()
-                .WithArguments(grid);
+                .Bind<IChunkVisualizer>()
+                .To<ChunkVisualizer>()
+                .AsSingle();
+
+            Container
+                .Bind<IVisualizer>()
+                .To<GridVisualizer>()
+                .AsSingle();
         }
 
         private void BindParticlesKeyPool()
         {
             Container
-                .Bind<KeyPool<PooledParticle>>()
+                .Bind<KeyPool<PoolableParticle>>()
                 .AsSingle()
                 .WithArguments(particlesDatabase.Particles, particlesContainer);
         }
@@ -111,9 +128,11 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
             Container.BindInterfacesTo<GameInput>().AsSingle();
         }
 
-        private void BindGridProvider()
+        private void BindMapProviders()
         {
             Container.Bind<IGridProvider>().To<GridProvider>().AsSingle().WithArguments(gridConfig);
+            Container.Bind<IChunksProvider>().To<ChunksProvider>().AsSingle().WithArguments(gridConfig);
+            Container.Bind<IChunkCostProvider>().To<ChunkCostProvider>().AsSingle().WithArguments(chunkCostConfig);
         }
     }
 }

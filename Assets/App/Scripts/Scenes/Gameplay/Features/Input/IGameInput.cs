@@ -5,6 +5,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Input
 {
     public interface IGameInput
     {
+        event Action OnEscape;
         event Action OnBuild;
         event Action OnRotate;
         

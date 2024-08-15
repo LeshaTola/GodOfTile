@@ -1,5 +1,5 @@
 ﻿using System;
-using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.InformationWidget;
+using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -42,7 +42,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.Item
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            informationWidget.UpdateInformation(tileConfig);
+            informationWidget.UpdateInformation(tileConfig.Cost);
+            informationWidget.Translate();
             informationWidget.Show();
         }
 

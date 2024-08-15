@@ -1,7 +1,7 @@
 ﻿using App.Scripts.Modules.Localization;
 using App.Scripts.Modules.PopupLogic.General.Controllers;
 using App.Scripts.Scenes.Gameplay.Features.Inventory.Systems;
-using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.InformationWidget.ViewModels;
+using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget.ViewModels;
 using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.ViewModels;
 using App.Scripts.Scenes.Gameplay.Features.Shop.Factories.Cost;
 using App.Scripts.Scenes.Gameplay.Features.Shop.Factories.Item;
@@ -14,10 +14,9 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.Routers
     {
         private IPopupController popupController;
         private ILocalizationSystem localizationSystem;
-        private ICostUIFactory costUIFactory;
         private IItemFactory itemFactory;
         private IShopSystem shopSystem;
-        private IInventorySystem inventorySystem;
+        private IInformationWidgetViewModule informationWidgetViewModule;
 
         private ShopPopup popup;
 
@@ -25,28 +24,20 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.Routers
             IPopupController popupController,
             ILocalizationSystem localizationSystem,
             IItemFactory itemFactory,
-            IShopSystem shopSystem,
-            ICostUIFactory costUIFactory,
-            IInventorySystem inventorySystem
+            IShopSystem shopSystem, 
+            IInformationWidgetViewModule informationWidgetViewModule
         )
         {
             this.popupController = popupController;
             this.localizationSystem = localizationSystem;
             this.itemFactory = itemFactory;
+            this.informationWidgetViewModule = informationWidgetViewModule;
             this.shopSystem = shopSystem;
-            this.costUIFactory = costUIFactory;
-            this.inventorySystem = inventorySystem;
         }
 
         public async UniTask ShowShopPopup()
         {
             popup = popupController.GetPopup<ShopPopup>();
-
-            var informationWidgetViewModule = new InformationWidgetViewModule(
-                localizationSystem,
-                costUIFactory,
-                inventorySystem
-            );
 
             var viewModule = new ShopViewModule(
                 localizationSystem,

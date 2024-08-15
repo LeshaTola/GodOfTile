@@ -5,7 +5,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
 {
     public interface ITilesCreationService
     {
-        void FullFill();
         void MoveActiveTile(Vector2Int gridPosition);
         UniTask RotateActiveTile();
         void PlaceActiveTile();

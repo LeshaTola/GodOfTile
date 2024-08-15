@@ -9,9 +9,9 @@ namespace App.Scripts.Modules.ObjectPool.KeyPools.Configs
     public class ParticlesDatabase : SerializedScriptableObject
     {
         [SerializeField]
-        Dictionary<string, PoolObject<PooledParticle>> particles;
+        Dictionary<string, PoolObject<PoolableParticle>> particles;
 
-        public Dictionary<string, PoolObject<PooledParticle>> Particles => particles;
+        public Dictionary<string, PoolObject<PoolableParticle>> Particles => particles;
 
         public IEnumerable<string> GetKeys()
         {

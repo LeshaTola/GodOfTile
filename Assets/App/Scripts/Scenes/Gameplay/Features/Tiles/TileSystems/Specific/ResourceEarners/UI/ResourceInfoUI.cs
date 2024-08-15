@@ -12,10 +12,10 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Resour
         [SerializeField] private TMProLocalizer nameText;
         [SerializeField] private TMProLocalizer infoText;
 
-        public void Init(ILocalizationSystem localizationSystem)
+        public void Initialize(ILocalizationSystem localizationSystem)
         {
-            nameText.Init(localizationSystem);
-            infoText.Init(localizationSystem);
+            nameText.Initialize(localizationSystem);
+            infoText.Initialize(localizationSystem);
         }
 
         public void Setup(ResourceConfig resource, string info)
