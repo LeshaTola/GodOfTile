@@ -7,7 +7,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.GetTi
 {
     public interface IGetTilesStrategy
     {
-        List<Tile> GetTiles(Vector2Int center);
         void Initialize(IGridProvider gridProvider);
+        List<Tile> GetTiles(Vector2Int center);
+        List<Vector2Int> GetPositions(Vector2Int center);
     }
 }

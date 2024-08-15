@@ -1,42 +1,21 @@
 using System.Collections.Generic;
-using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Grid;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.General;
 using UnityEngine;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.GetTilesStrategies
 {
-    public class LinedGetTilesStrategy : IGetTilesStrategy
+    public class LinedGetTilesStrategy : GetTileStrategy
     {
         [SerializeField] private List<Line> steps;
-
-        private IGridProvider gridProvider;
-
-        public void Initialize(IGridProvider gridProvider)
-        {
-            this.gridProvider = gridProvider;
-        }
         
-        public List<Tile> GetTiles(Vector2Int center)
+        public override List<Vector2Int> GetPositions(Vector2Int center)
         {
             if (steps == null || steps.Count <= 0)
             {
                 return null;
             }
-
-            if (gridProvider == null)
-            {
-                Debug.LogWarning("gridProvider is null");
-                return null;
-            }
-
-
-            return GetValidTiles(center);
-        }
-
-        private List<Tile> GetValidTiles(Vector2Int center)
-        {
-            List<Tile> tiles = new();
-
+            
+            List<Vector2Int> positions = new();
             for (var i = 0; i < steps.Count; i++)
             {
                 var iteration = 1;
@@ -44,34 +23,23 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.GetTi
                 {
                     var tilePosition = center + steps[i].Direction * iteration;
 
-                    if (!IsValidPosition(tilePosition, gridProvider.GridSize) || IsCompete(steps[i], iteration))
+                    if (!IsValidPosition(tilePosition) || IsCompete(steps[i], iteration))
                     {
                         break;
                     }
-
-                    var neighbour = gridProvider.Grid[tilePosition.x, tilePosition.y];
-
-                    if (neighbour != null)
-                    {
-                        tiles.Add(neighbour);
-                    }
-
+                    
+                    positions.Add(tilePosition);
                     iteration++;
                 }
             }
 
-            return tiles;
+            return positions;
         }
-
+        
+        
         private bool IsCompete(Line step, int iteration)
         {
             return step.iterations != -1 && iteration > step.iterations;
-        }
-
-        private bool IsValidPosition(Vector2Int position, Vector2Int matrixSize)
-        {
-            return position.x >= 0 && position.x <= matrixSize.x &&
-                   position.y >= 0 && position.y <= matrixSize.y;
         }
     }
 }
