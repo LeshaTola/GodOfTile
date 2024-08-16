@@ -47,13 +47,13 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Resour
         public override void Start()
         {
             base.Start();
-            resourceEarnerService.AddResourceEarnerSystem(data.Resource.ResourceName, data.AmountPerSecond);
+            resourceEarnerService.AddResourceEarnerSystem(this);
         }
 
         public override void Stop()
         {
             base.Stop();
-            resourceEarnerService.RemoveResourceEarnerSystem(data.Resource.ResourceName, data.AmountPerSecond);
+            resourceEarnerService.RemoveResourceEarnerSystem(this);
         }
     }
 }

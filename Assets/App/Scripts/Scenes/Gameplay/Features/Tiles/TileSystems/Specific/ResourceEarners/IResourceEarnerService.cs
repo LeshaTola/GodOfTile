@@ -2,7 +2,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Resour
 {
     public interface IResourceEarnerService
     {
-        void AddResourceEarnerSystem(string resourceName, float amountPerSecond);
-        void RemoveResourceEarnerSystem(string resourceName, float amountPerSecond);
+        void AddResourceEarnerSystem(ResourceEarner resourceEarner);
+        void RemoveResourceEarnerSystem(ResourceEarner resourceEarner);
     }
 }

@@ -10,8 +10,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Resour
     {
         private IInventorySystem inventorySystem;
         private  ITimeProvider timeProvider;
-
-        private Dictionary<string, float> resourceExtraction = new();
+        
+        private List<ResourceEarner> resourceEarners = new();
         private float timer = 1f;
 
         public ResourceEarnerService(IInventorySystem inventorySystem, ITimeProvider timeProvider)
@@ -20,25 +20,14 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Resour
             this.timeProvider = timeProvider;
         }
 
-        public void AddResourceEarnerSystem(string resourceName, float amountPerSecond)
+        public void AddResourceEarnerSystem(ResourceEarner resourceEarner)
         {
-            if (!resourceExtraction.ContainsKey(resourceName))
-            {
-                resourceExtraction.Add(resourceName, amountPerSecond);
-                return;
-            }
-
-            resourceExtraction[resourceName] += amountPerSecond;
+            resourceEarners.Add(resourceEarner);
         }
 
-        public void RemoveResourceEarnerSystem(string resourceName, float amountPerSecond)
+        public void RemoveResourceEarnerSystem(ResourceEarner resourceEarner)
         {
-            if (!resourceExtraction.ContainsKey(resourceName))
-            {
-                return;
-            }
-
-            resourceExtraction[resourceName] -= amountPerSecond;
+            resourceEarners.Remove(resourceEarner);
         }
 
         public void Update()
@@ -53,9 +42,10 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Resour
 
         private void AddResources()
         {
-            foreach (var resource in resourceExtraction)
+            foreach (var resourceEarner in resourceEarners)
             {
-                inventorySystem.ChangeRecourseAmount(resource.Key, resource.Value);
+                var data = (ResourceEarnerSystemData) resourceEarner.Data; 
+                inventorySystem.ChangeRecourseAmount(data.Resource.ResourceName, data.AmountPerSecond);
             }
         }
     }

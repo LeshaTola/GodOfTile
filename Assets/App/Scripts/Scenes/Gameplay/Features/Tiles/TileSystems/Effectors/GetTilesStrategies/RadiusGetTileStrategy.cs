@@ -17,7 +17,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.GetTi
                 {
                     Vector2Int point = new Vector2Int(center.x + x, center.y + y);
             
-                    if (x * x + y * y <= radius * radius)
+                    if (x * x + y * y <= radius * radius && IsValidPosition(point))
                     {
                         positions.Add(point);
                     }

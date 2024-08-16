@@ -8,6 +8,7 @@ using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.PlacementCost
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.Update;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.Tiles;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.General;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.General.Effectors;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Services;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -26,6 +27,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
         private ITileCreationEffectsProvider effectsService;
         private ITilesUpdateService updateService;
         private ISystemsService systemsService;
+        private IEffectorVisual effectorVisual;
         private TilesCreationConfig config;
 
         private Tile activeTile;
@@ -38,6 +40,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
             ITileCreationEffectsProvider effectsService,
             ITilesUpdateService updateService,
             ISystemsService systemsService,
+            IEffectorVisual effectorVisual,
             TilesCreationConfig config
         )
         {
@@ -48,6 +51,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
             this.effectsService = effectsService;
             this.updateService = updateService;
             this.systemsService = systemsService;
+            this.effectorVisual = effectorVisual;
             this.config = config;
 
             activeTileProvider.OnActiveTileChanged += OnActiveTileChanged;
@@ -69,7 +73,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
             {
                 return;
             }
-
+            
+            effectorVisual.Cleanup();
             Object.Destroy(activeTile.gameObject);
             activeTile = null;
         }
@@ -116,6 +121,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
             activeTile.Position = gridPosition;
 
             ChangeState();
+            effectorVisual.Cleanup();
+            effectorVisual.Setup(activeTile);
         }
 
         public async UniTask RotateActiveTile()
