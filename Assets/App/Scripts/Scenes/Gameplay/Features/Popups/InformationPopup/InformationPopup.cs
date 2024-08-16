@@ -108,11 +108,13 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.InformationPopup
         {
             foreach (var system in tileSystems)
             {
-                var systemUI = system.GetSystemUI();
-                Transform transform1;
-                (transform1 = systemUI.transform).SetParent(tileSystemsContainer);
-                transform1.localPosition = Vector3.zero;
-                transform1.localScale = Vector3.one;
+                var uiProvider =
+                    viewModule.TileSystemUIProvidersFactory.GetSystemUIProvider(system.Data.SystemUIProvider);
+                var systemUI = uiProvider.GetSystemUI(system);
+                Transform systemUITransform= systemUI.transform;
+                systemUITransform.SetParent(tileSystemsContainer);
+                systemUITransform.localPosition = Vector3.zero;
+                systemUITransform.localScale = Vector3.one;
 
                 systemUI.Setup();
             }

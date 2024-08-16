@@ -14,14 +14,14 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
         private IGameInput gameInput;
         private IInformationPopupRouter informationPopupRouter;
         private ITileSelectionProvider tileSelectionProvider;
-        private IEffectorVisual effectorVisual;
+        private IEffectorVisualProvider effectorVisualProvider;
 
         public InformationState(
             string id,
             List<IUpdatable> updatables,
             IInformationPopupRouter informationPopupRouter,
             ITileSelectionProvider tileSelectionProvider,
-            IEffectorVisual effectorVisual,
+            IEffectorVisualProvider effectorVisualProvider,
             IGameInput gameInput
         )
             : base(id)
@@ -30,7 +30,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             this.informationPopupRouter = informationPopupRouter;
             this.tileSelectionProvider = tileSelectionProvider;
             this.gameInput = gameInput;
-            this.effectorVisual = effectorVisual;
+            this.effectorVisualProvider = effectorVisualProvider;
         }
 
         public override async UniTask Enter()
@@ -58,7 +58,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
         {
             await base.Exit();
             await informationPopupRouter.HideInformationPopup();
-            effectorVisual.Cleanup();
+            effectorVisualProvider.Cleanup();
         }
 
         private async UniTask ShowTileInformation()
@@ -70,8 +70,8 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
                 return;
             }
 
-            effectorVisual.Cleanup();
-            effectorVisual.Setup(tile);
+            effectorVisualProvider.Cleanup();
+            effectorVisualProvider.Setup(tile);
             
             await informationPopupRouter.ShowInformationPopup(tile.Config);
         }

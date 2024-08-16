@@ -27,7 +27,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
         private ITileCreationEffectsProvider effectsService;
         private ITilesUpdateService updateService;
         private ISystemsService systemsService;
-        private IEffectorVisual effectorVisual;
+        private IEffectorVisualProvider effectorVisualProvider;
         private TilesCreationConfig config;
 
         private Tile activeTile;
@@ -40,7 +40,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
             ITileCreationEffectsProvider effectsService,
             ITilesUpdateService updateService,
             ISystemsService systemsService,
-            IEffectorVisual effectorVisual,
+            IEffectorVisualProvider effectorVisualProvider,
             TilesCreationConfig config
         )
         {
@@ -51,7 +51,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
             this.effectsService = effectsService;
             this.updateService = updateService;
             this.systemsService = systemsService;
-            this.effectorVisual = effectorVisual;
+            this.effectorVisualProvider = effectorVisualProvider;
             this.config = config;
 
             activeTileProvider.OnActiveTileChanged += OnActiveTileChanged;
@@ -74,7 +74,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
                 return;
             }
             
-            effectorVisual.Cleanup();
+            effectorVisualProvider.Cleanup();
             Object.Destroy(activeTile.gameObject);
             activeTile = null;
         }
@@ -121,8 +121,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
             activeTile.Position = gridPosition;
 
             ChangeState();
-            effectorVisual.Cleanup();
-            effectorVisual.Setup(activeTile);
+            effectorVisualProvider.Cleanup();
+            effectorVisualProvider.Setup(activeTile);
         }
 
         public async UniTask RotateActiveTile()

@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Tiles.General.Effectors
 {
-    public class EffectorVisual : IEffectorVisual
+    public class EffectorVisualProvider : IEffectorVisualProvider
     {
         private IPool<EffectorArea> areasPool;
 
@@ -14,7 +14,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.General.Effectors
         private List<EffectorArea> effectorAreas = new();
         private List<Tile> validTiles= new();
 
-        public EffectorVisual(IPool<EffectorArea> areasPool)
+        public EffectorVisualProvider(IPool<EffectorArea> areasPool)
         {
             this.areasPool = areasPool;
         }

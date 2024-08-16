@@ -1,19 +1,35 @@
+using System;
+using System.Linq;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.UI;
-using UnityEngine;
 using Zenject;
+using Object = UnityEngine.Object;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.TileSystemUI
 {
     public class SystemUIFactory : ISystemUIFactory
     {
-        public SystemUI GetSystemUI(TileSystems.TileSystem tileSystem)
+        private SystemsUIsDatabase database;
+
+        public SystemUIFactory(SystemsUIsDatabase database)
         {
-            if (tileSystem.Data.TileUI == null)
+            this.database = database;
+        }
+
+        public T GetSystemUI<T>() where T : SystemUI
+        {
+            var type = typeof(T);
+            return (T)GetSystemUI(type);
+        }
+        
+        public SystemUI GetSystemUI(Type type)
+        {
+            var systemUI = database.UIs.FirstOrDefault(x => x.GetType().Equals(type));
+            if (systemUI == null)
             {
                 return null;
             }
-
-            var newSystemUI = Object.Instantiate(tileSystem.Data.TileUI);
+            
+            var newSystemUI = Object.Instantiate(systemUI);
             return newSystemUI;
         }
     }

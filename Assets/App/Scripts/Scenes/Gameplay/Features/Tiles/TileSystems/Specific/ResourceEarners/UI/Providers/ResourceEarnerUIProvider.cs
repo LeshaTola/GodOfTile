@@ -20,7 +20,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Resour
 
         public SystemUI GetSystemUI(TileSystem tileSystem)
         {
-            var systemUI = (ResourceEarnerUI) systemUIFactory.GetSystemUI(tileSystem);
+            var systemUI = systemUIFactory.GetSystemUI<ResourceEarnerUI>();
             var systemData = (ResourceEarnerSystemData) tileSystem.Data;
             ResourceEarnerViewModule viewModule = new(localizationSystem, systemData);
 

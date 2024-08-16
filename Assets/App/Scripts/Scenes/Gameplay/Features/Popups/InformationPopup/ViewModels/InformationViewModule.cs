@@ -1,17 +1,20 @@
 ﻿using App.Scripts.Modules.Localization;
 using App.Scripts.Scenes.Gameplay.Features.Commands.General;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.UIProvidersFactory;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Popups.InformationPopup.ViewModels
 {
     public class InformationViewModule : IInformationViewModule
     {
         public InformationViewModule(
+            ITileSystemUIProvidersFactory tileSystemUIProvidersFactory,
             ILocalizationSystem localizationSystem,
             ILabeledCommand goToGameplayStateCommand,
             TileConfig tileConfig
         )
         {
+            TileSystemUIProvidersFactory = tileSystemUIProvidersFactory;
             LocalizationSystem = localizationSystem;
             CloseCommand = goToGameplayStateCommand;
             TileConfig = tileConfig;
@@ -20,5 +23,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.InformationPopup.ViewModel
         public TileConfig TileConfig { get; }
         public ILocalizationSystem LocalizationSystem { get; }
         public ILabeledCommand CloseCommand { get; }
+        public ITileSystemUIProvidersFactory TileSystemUIProvidersFactory { get; }
+
     }
 }

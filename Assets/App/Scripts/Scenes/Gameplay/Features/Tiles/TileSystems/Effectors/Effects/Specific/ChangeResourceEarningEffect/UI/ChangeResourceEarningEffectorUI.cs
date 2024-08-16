@@ -6,13 +6,13 @@ using UnityEngine;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Effectors.UI
 {
-    public class SpeedupResourceEarningEffectorUI:SystemUI
+    public class ChangeResourceEarningEffectorUI:SystemUI
     {
         [SerializeField] private TMProLocalizer description;
         
-        private SpeedupResourceEarningEffectorViewModule viewModule;
+        private ChangeResourceEarningEffectorViewModule viewModule;
 
-        public void Initialize(SpeedupResourceEarningEffectorViewModule viewModule)
+        public void Initialize(ChangeResourceEarningEffectorViewModule viewModule)
         {
             this.viewModule = viewModule;
             description.Initialize(viewModule.LocalizationSystem);
@@ -25,7 +25,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Effect
                 return;
             }
 
-            description.Key = $"Accelerates resource extraction by {(viewModule.Data.EarningAmountMultiplier - 1) * 100}%" ;
+            description.Key = $"Accelerates resource extraction by {(viewModule.Effect.EarningAmountMultiplier - 1) * 100}%" ;
             description.Translate();
         }
 

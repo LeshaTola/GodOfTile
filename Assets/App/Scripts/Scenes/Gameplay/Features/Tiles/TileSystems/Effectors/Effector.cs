@@ -1,51 +1,99 @@
 using System.Collections.Generic;
 using System.Linq;
 using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Grid;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCreation;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.General;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effects;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.GetTilesStrategies;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.ValidationStrategies;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.General;
 using UnityEngine;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors
 {
-    public abstract class EffectorData : TileSystemData
+    public class EffectorData : TileSystemData
     {
         [SerializeField] private IGetTilesStrategy getTilesStrategy;
-        [SerializeField] private IValidationStrategy validationStrategy;
+        [SerializeField] private IEffect effect;
 
         public IGetTilesStrategy GetTilesStrategy => getTilesStrategy;
-
-        public IValidationStrategy ValidationStrategy => validationStrategy;
+        public IEffect Effect => effect;
+        public override ISystemUIProvider SystemUIProvider => effect.SystemUIProvider;
     }
 
-    public abstract class Effector : TileSystem
+    public class Effector : TileSystem
     {
-        public Effector(Tile parentTile, IGridProvider gridProvider) : base(parentTile)
+        [SerializeField] private EffectorData data;
+        
+        private ITilesCreationService tilesCreationService;
+        private List<TileSystem> boostedSystems = new();
+
+        public override TileSystemData Data => data;
+
+        public Effector(EffectorData data, Tile parentTile, IGridProvider gridProvider,
+            ITilesCreationService tilesCreationService) : base(parentTile)
         {
+            this.tilesCreationService = tilesCreationService;
+            this.data = data;
+            data.GetTilesStrategy.Initialize(gridProvider);
+            data.Effect.Initialize(this);
+        }
+
+        public override void Start()
+        {
+            base.Start();
+            tilesCreationService.OnTilePlaced += OnTilePlaced;
+            BoostTiles();
+        }
+
+        public override void Stop()
+        {
+            tilesCreationService.OnTilePlaced -= OnTilePlaced;
+            UnBoostTiles();
         }
 
         public List<Vector2Int> GetAreaPositions()
         {
-            var data = (EffectorData) Data;
-
-            if (data == null)
-            {
-                return null;
-            }
-
             return data.GetTilesStrategy.GetPositions(ParentTile.Position);
         }
 
         public List<Tile> GetValidTiles()
         {
-            var data = (EffectorData) Data;
+            return data
+                .Effect
+                .ValidationStrategy
+                .ValidateTiles(data.GetTilesStrategy.GetTiles(ParentTile.Position).ToList());
+        }
 
-            if (data == null)
+        private void OnTilePlaced(Vector2Int position, Tile tile)
+        {
+            UpdateBoostedTiles();
+        }
+
+        private void UpdateBoostedTiles()
+        {
+            UnBoostTiles();
+            BoostTiles();
+        }
+
+        private void BoostTiles()
+        {
+            boostedSystems
+                = data.Effect.ValidationStrategy.GetValidSystems(data.GetTilesStrategy.GetTiles(ParentTile.Position));
+            foreach (var boostedSystem in boostedSystems)
             {
-                return null;
+                boostedSystem.AddEffect(data.Effect);
+            }
+        }
+
+        private void UnBoostTiles()
+        {
+            foreach (var boostedSystem in boostedSystems)
+            {
+                boostedSystem.RemoveEffect(data.Effect);
             }
 
-            return data.ValidationStrategy.ValidateTiles(data.GetTilesStrategy.GetTiles(ParentTile.Position).ToList());
+            boostedSystems.Clear();
         }
     }
 }

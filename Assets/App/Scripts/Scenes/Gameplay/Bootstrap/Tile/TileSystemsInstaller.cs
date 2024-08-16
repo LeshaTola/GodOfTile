@@ -2,6 +2,7 @@ using App.Scripts.Modules.ObjectPool.MonoObjectPools;
 using App.Scripts.Modules.ObjectPool.Pools;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.TileSystem;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.TileSystemUI;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.UIProvidersFactory;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.General.Effectors;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Services;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Effectors.UI.Providers;
@@ -16,14 +17,18 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap.Tile
     {
         [SerializeField] private EffectorArea effectorAreaTemplate;
         [SerializeField] private Transform container;
-
+        [SerializeField] private SystemsUIsDatabase systemsUIsDatabase;
         public override void InstallBindings()
         {
             Container.Bind<IPool<EffectorArea>>().To<MonoBehObjectPool<EffectorArea>>().AsSingle()
                 .WithArguments(effectorAreaTemplate, 10, container);
             Container
-                .Bind<IEffectorVisual>()
-                .To<EffectorVisual>()
+                .Bind<IEffectorVisualProvider>()
+                .To<EffectorVisualProvider>()
+                .AsSingle();
+            Container
+                .Bind<ITileSystemUIProvidersFactory>()
+                .To<TileSystemUIProvidersFactory>()
                 .AsSingle();
             
             BindSystemFactory();
@@ -40,7 +45,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap.Tile
 
         private void BindSpeedupResourceEarningEffectorUIProvider()
         {
-            Container.Bind<SpeedupResourceEarningEffectorUIProvider>().AsSingle();
+            Container.Bind<ChangeResourceEarningEffectorUIProvider>().AsSingle();
         }
 
         private void BindResourceEarnerUIProvider()
@@ -60,7 +65,8 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap.Tile
             Container
                 .Bind<ISystemUIFactory>()
                 .To<SystemUIFactory>()
-                .AsSingle();
+                .AsSingle()
+                .WithArguments(systemsUIsDatabase);
         }
 
         private void BindSystemFactory()

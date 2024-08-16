@@ -15,8 +15,7 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 3309173844424395790, guid: 2093887bf8ec656488318a77cff4cff5, type: 3}
+    ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -31,11 +30,11 @@ MonoBehaviour:
       Data: 1
     - Name: 
       Entry: 7
-      Data: 1|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Effectors.SpeedupResourceEarningEffector,
+      Data: 1|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effector,
         Assembly-CSharp
     - Name: data
       Entry: 7
-      Data: 2|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Effectors.SpeedupResourceEarningEffectorData,
+      Data: 2|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.EffectorData,
         Assembly-CSharp
     - Name: getTilesStrategy
       Entry: 7
@@ -47,42 +46,23 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: validationStrategy
+    - Name: effect
       Entry: 7
-      Data: 4|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.ValidationStrategies.WhiteListValidationStrategy,
+      Data: 4|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effects.Specific.ChangeResourceEarningEffect.ChangeResourceEarningEffect,
         Assembly-CSharp
-    - Name: systemsToAffect
-      Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.TileSystem,
-        Assembly-CSharp]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 6|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners.ResourceEarner,
-        Assembly-CSharp
-    - Name: data
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: tileUI
-      Entry: 10
-      Data: 0
     - Name: earningAmountMultiplier
       Entry: 4
-      Data: 2
+      Data: 1.2
+    - Name: systemUIProvider
+      Entry: 7
+      Data: 5|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Effectors.UI.Providers.ChangeResourceEarningEffectorUIProvider,
+        Assembly-CSharp
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 8
       Data: 

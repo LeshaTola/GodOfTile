@@ -4,12 +4,14 @@ using App.Scripts.Scenes.Gameplay.Features.Commands.General;
 using App.Scripts.Scenes.Gameplay.Features.Commands.GoToStateCommands;
 using App.Scripts.Scenes.Gameplay.Features.Popups.InformationPopup.ViewModels;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.UIProvidersFactory;
 using Cysharp.Threading.Tasks;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Popups.InformationPopup.Routers
 {
     public class InformationPopupRouter : IInformationPopupRouter
     {
+        private ITileSystemUIProvidersFactory tileSystemUIProvidersFactory;
         private ILabeledCommand goToGameplayStateCommand;
         private ILocalizationSystem localizationSystem;
         private IPopupController popupController;
@@ -17,11 +19,13 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.InformationPopup.Routers
         private InformationPopup popup;
 
         public InformationPopupRouter(
+            ITileSystemUIProvidersFactory tileSystemUIProvidersFactory,
             GoToGamePlayStateCommand goToGameplayStateCommand,
             ILocalizationSystem localizationSystem,
             IPopupController popupController
         )
         {
+            this.tileSystemUIProvidersFactory = tileSystemUIProvidersFactory;
             this.goToGameplayStateCommand = goToGameplayStateCommand;
             this.localizationSystem = localizationSystem;
             this.popupController = popupController;
@@ -46,6 +50,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.InformationPopup.Routers
             }
 
             var viewModule = new InformationViewModule(
+                tileSystemUIProvidersFactory,
                 localizationSystem,
                 goToGameplayStateCommand,
                 tileConfig
