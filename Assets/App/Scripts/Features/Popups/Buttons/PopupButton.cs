@@ -2,6 +2,7 @@
 using App.Scripts.Modules.Localization;
 using App.Scripts.Modules.Localization.Localizers;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace App.Scripts.Features.Popups.Buttons
 {
@@ -13,23 +14,37 @@ namespace App.Scripts.Features.Popups.Buttons
         private TMProLocalizer buttonText;
 
         [SerializeField]
-        private UnityEngine.UI.Button button;
+        private Button button;
         
         public void Initialize(ILocalizationSystem localizationSystem)
         {
             Cleanup();
 
             button.onClick.AddListener(() => onButtonClicked?.Invoke());
-            buttonText.Initialize(localizationSystem);
+
+            if (buttonText != null)
+            {
+                buttonText.Initialize(localizationSystem);
+            }
         }  
         
         public void UpdateText(string text)
         {
+            if (buttonText == null)
+            {
+                return;
+            }
+            
             buttonText.Key = text;
         }
 
         public void Translate()
         {
+            if (buttonText == null)
+            {
+                return;
+            }
+
             buttonText.Translate();
         }
 

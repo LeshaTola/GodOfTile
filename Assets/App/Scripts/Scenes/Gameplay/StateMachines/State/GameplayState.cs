@@ -12,7 +12,8 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
         private IUpdateService updateService;
         private IGameInput gameInput;
         private ITileSelectionProvider tileSelectionProvider;
-        private IGameplayPopupRouter gameplayPopupRouter; 
+        private IGameplayPopupRouter gameplayPopupRouter;
+
         public GameplayState(
             string id,
             IUpdateService updateService,
@@ -30,7 +31,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
 
         public override async UniTask Enter()
         {
-            await base.Enter(); 
+            await base.Enter();
             await gameplayPopupRouter.Show();
             gameInput.OnBuild += OnBuild;
         }
