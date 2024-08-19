@@ -9,5 +9,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Collection
         List<TileConfig> Collection { get; }
 
         event Action<TileConfig> OnNewTileAdd;
+        void AddIfNotContains(TileConfig tileConfig);
     }
 }

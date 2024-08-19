@@ -28,17 +28,12 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup
             Cleanup();
 
             this.viewModule = viewModule;
+            viewModule.ShopSystem.OnNewTileAdd += OnNewTileAdded;
+            
             informationWidget.Initialize(viewModule.ItemInformationWidget);
-            var tilesToBuy = viewModule.ShopSystem.AvailableTiles;
-            AddItems(tilesToBuy.Count);
-
             header.Initialize(viewModule.LocalizationSystem);
-
-            for (var i = 0; i < tilesToBuy.Count; i++)
-            {
-                SetupItem(shopItems[i], tilesToBuy[i]);
-                shopItems[i].Show();
-            }
+            
+            UpdateItems();
 
             header.Translate();
         }
@@ -55,6 +50,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup
             {
                 return;
             }
+            
+            viewModule.ShopSystem.OnNewTileAdd -= OnNewTileAdded;
         }
 
         private void AddItems(int count)
@@ -91,6 +88,23 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup
             }
 
             viewModule.ShopSystem.BuyTile(tileConfig);
+        }
+
+        private void UpdateItems()
+        {
+            var itemsToBuy = viewModule.ShopSystem.AvailableTiles;
+            AddItems(itemsToBuy.Count);
+
+            for (var i = 0; i < itemsToBuy.Count; i++)
+            {
+                SetupItem(shopItems[i], itemsToBuy[i]);
+                shopItems[i].Show();
+            }
+        }
+
+        private void OnNewTileAdded(TileConfig tileConfig)
+        {
+            UpdateItems();
         }
     }
 }

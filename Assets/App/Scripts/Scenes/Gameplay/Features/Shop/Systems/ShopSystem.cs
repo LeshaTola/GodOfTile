@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using App.Scripts.Modules.StateMachine.Services.CleanupService;
 using App.Scripts.Scenes.Gameplay.Features.Inventory.Systems;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Providers;
@@ -6,8 +8,10 @@ using App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Collection;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Shop.Systems
 {
-    public class ShopSystem : IShopSystem
+    public class ShopSystem : IShopSystem, ICleanupable
     {
+        public event Action<TileConfig> OnNewTileAdd;
+        
         private IInventorySystem inventorySystem;
         private IActiveTileProvider activeTileProvider;
         private ITileCollectionProvider tileCollectionProvider;
@@ -24,6 +28,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Shop.Systems
             this.activeTileProvider = activeTileProvider;
 
             this.tileCollectionProvider = tileCollectionProvider;
+            tileCollectionProvider.OnNewTileAdd += NewTileAdded;
         }
 
         public bool IsEnough(TileConfig tileConfig)
@@ -45,6 +50,17 @@ namespace App.Scripts.Scenes.Gameplay.Features.Shop.Systems
         public void BuyTile(TileConfig tileConfig)
         {
             activeTileProvider.ActiveTileConfig = tileConfig;
+        }
+
+        public void Cleanup()
+        {
+            tileCollectionProvider.OnNewTileAdd -= NewTileAdded;
+        }
+        
+
+        private void NewTileAdded(TileConfig tileConfig)
+        {
+            OnNewTileAdd?.Invoke(tileConfig);
         }
     }
 }

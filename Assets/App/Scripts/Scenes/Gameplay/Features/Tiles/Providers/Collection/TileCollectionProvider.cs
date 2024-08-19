@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using App.Scripts.Scenes.Gameplay.Features.Shop.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 
@@ -27,6 +28,15 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Collection
         {
             Collection.Add(tileConfig);
             OnNewTileAdd?.Invoke(tileConfig);
+        }
+
+        public void AddIfNotContains(TileConfig tileConfig)
+        {
+            if (Collection
+                    .FirstOrDefault(x => x.Id.Equals(tileConfig.Id)) == null)
+            {
+                AddTile(tileConfig);
+            }
         }
     }
 }

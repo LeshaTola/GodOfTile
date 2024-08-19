@@ -2,6 +2,7 @@
 using System.Linq;
 using App.Scripts.Scenes.Gameplay.Features.CraftSystem.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Collection;
 using UnityEngine;
 
 namespace App.Scripts.Scenes.Gameplay.Features.CraftSystem.Providers

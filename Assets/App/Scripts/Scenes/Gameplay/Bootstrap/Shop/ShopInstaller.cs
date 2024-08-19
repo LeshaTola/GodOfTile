@@ -29,7 +29,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap.Shop
                 .AsSingle()
                 .WithArguments(costUITemplate);
 
-            Container.Bind<IShopSystem>().To<ShopSystem>().AsSingle();
+            Container.BindInterfacesTo<ShopSystem>().AsSingle();
         }
     }
 }
