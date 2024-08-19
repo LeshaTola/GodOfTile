@@ -39,7 +39,7 @@ MonoBehaviour:
   tileTypeDatabase: {fileID: 11400000, guid: 6e8687d462988db44889225b2fec324e, type: 2}
   building: {fileID: 0}
   type: pink
-  tileImage: {fileID: 0}
+  tileImage: {fileID: 21300000, guid: c1eecb070fba6c247b8e1d35b37193bc, type: 3}
   tileName: Pink
   description: Pink
   cost: []

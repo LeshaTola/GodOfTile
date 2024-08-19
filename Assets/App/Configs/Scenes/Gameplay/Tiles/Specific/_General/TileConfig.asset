@@ -39,8 +39,8 @@ MonoBehaviour:
   tileTypeDatabase: {fileID: 11400000, guid: 6e8687d462988db44889225b2fec324e, type: 2}
   building: {fileID: 3825185920789955647, guid: 2947c5bba80a6d444b26e3d4cf1bae0f,
     type: 3}
-  type: grass
-  tileImage: {fileID: 21300000, guid: 657cab9740542094fa02e06a2c6bca54, type: 3}
+  type: field
+  tileImage: {fileID: 21300000, guid: 793db032f1b47cb4598b5d46c020e47b, type: 3}
   tileName: Base Tile
   description: Base tile. only for test
   cost: []
