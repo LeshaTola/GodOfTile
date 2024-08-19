@@ -38,7 +38,7 @@ MonoBehaviour:
         Assembly-CSharp
     - Name: getTilesStrategy
       Entry: 7
-      Data: 3|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.GetTilesStrategies.RadiusGetTileStrategy,
+      Data: 3|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.GetTilesStrategies.Radius.RadiusGetTileStrategy,
         Assembly-CSharp
     - Name: radius
       Entry: 3
@@ -55,7 +55,7 @@ MonoBehaviour:
       Data: 1.2
     - Name: systemUIProvider
       Entry: 7
-      Data: 5|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Effectors.UI.Providers.ChangeResourceEarningEffectorUIProvider,
+      Data: 5|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effects.Specific.ChangeResourceEarningEffect.UI.Providers.ChangeResourceEarningEffectorUIProvider,
         Assembly-CSharp
     - Name: 
       Entry: 8

@@ -22,6 +22,8 @@ using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Grid;
 using App.Scripts.Scenes.Gameplay.Features.Map.Visualizers;
 using App.Scripts.Scenes.Gameplay.Features.Map.WaterMaterialController;
 using App.Scripts.Scenes.Gameplay.Features.Map.WaterMaterialController.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Researches.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Researches.Services;
 using Cinemachine;
 using Sirenix.Serialization;
 using UnityEngine;
@@ -53,6 +55,9 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
         [SerializeField] private Transform particlesContainer;
         [SerializeField] private WaterMaterialConfig waterMaterialConfig;
 
+        [Header("Research")]
+        [SerializeField] private ResearchServiceConfig researchServiceConfig;
+
         public override void InstallBindings()
         {
             CommandInstaller.Install(Container);
@@ -77,6 +82,9 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
             Container.Bind<ICameraSwitcher>().To<CameraSwitcher>().AsSingle().WithArguments(camerasDatabase);
             BindMapProviders();
             BindMapVisualizers();
+            
+            
+            Container.Bind<IResearchService>().To<ResearchService>().AsSingle().WithArguments(researchServiceConfig);
         }
 
         private void BindMapVisualizers()

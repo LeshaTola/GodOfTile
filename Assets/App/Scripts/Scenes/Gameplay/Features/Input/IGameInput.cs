@@ -18,5 +18,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Input
         float GetRotationValueNormalized();
         Vector2 GetMoveVectorNormalized();
         bool IsMouseClicked();
+        event Action OnI;
+        event Action OnM;
     }
 }

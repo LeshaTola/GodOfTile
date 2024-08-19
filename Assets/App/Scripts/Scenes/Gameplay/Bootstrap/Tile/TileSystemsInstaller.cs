@@ -7,6 +7,7 @@ using App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.TileSystemUIProvider;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Services;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effects.Specific.ChangeResourceEarningEffect.UI.Providers;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Views;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Research.UI.Providers;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners.UI.Providers;
 using UnityEngine;
@@ -42,6 +43,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap.Tile
 
             BindSpeedupResourceEarningEffectorUIProvider();
             BindResourceEarnerUIProvider();
+            Container.Bind<ResearchSystemUIProvider>().AsSingle();
         }
 
         private void BindSpeedupResourceEarningEffectorUIProvider()

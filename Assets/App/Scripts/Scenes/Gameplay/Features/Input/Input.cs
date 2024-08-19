@@ -107,6 +107,24 @@ public partial class @Input: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""I"",
+                    ""type"": ""Button"",
+                    ""id"": ""e0130006-1de2-4d01-bab6-1cb44763cb10"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""M"",
+                    ""type"": ""Button"",
+                    ""id"": ""523a0651-4915-4e23-b26a-4b8e8f7d4fcf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -274,6 +292,28 @@ public partial class @Input: IInputActionCollection2, IDisposable
                     ""action"": ""ESC"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ac35c529-dd1b-463a-ad08-1a02b64a8cad"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""I"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8589c21f-cf3f-4fb1-a5af-b3e728b0e154"",
+                    ""path"": ""<Keyboard>/m"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""M"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -291,6 +331,8 @@ public partial class @Input: IInputActionCollection2, IDisposable
         m_Game_Speed1 = m_Game.FindAction("Speed1", throwIfNotFound: true);
         m_Game_Speed2 = m_Game.FindAction("Speed2", throwIfNotFound: true);
         m_Game_Speed3 = m_Game.FindAction("Speed3", throwIfNotFound: true);
+        m_Game_I = m_Game.FindAction("I", throwIfNotFound: true);
+        m_Game_M = m_Game.FindAction("M", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -361,6 +403,8 @@ public partial class @Input: IInputActionCollection2, IDisposable
     private readonly InputAction m_Game_Speed1;
     private readonly InputAction m_Game_Speed2;
     private readonly InputAction m_Game_Speed3;
+    private readonly InputAction m_Game_I;
+    private readonly InputAction m_Game_M;
     public struct GameActions
     {
         private @Input m_Wrapper;
@@ -374,6 +418,8 @@ public partial class @Input: IInputActionCollection2, IDisposable
         public InputAction @Speed1 => m_Wrapper.m_Game_Speed1;
         public InputAction @Speed2 => m_Wrapper.m_Game_Speed2;
         public InputAction @Speed3 => m_Wrapper.m_Game_Speed3;
+        public InputAction @I => m_Wrapper.m_Game_I;
+        public InputAction @M => m_Wrapper.m_Game_M;
         public InputActionMap Get() { return m_Wrapper.m_Game; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -410,6 +456,12 @@ public partial class @Input: IInputActionCollection2, IDisposable
             @Speed3.started += instance.OnSpeed3;
             @Speed3.performed += instance.OnSpeed3;
             @Speed3.canceled += instance.OnSpeed3;
+            @I.started += instance.OnI;
+            @I.performed += instance.OnI;
+            @I.canceled += instance.OnI;
+            @M.started += instance.OnM;
+            @M.performed += instance.OnM;
+            @M.canceled += instance.OnM;
         }
 
         private void UnregisterCallbacks(IGameActions instance)
@@ -441,6 +493,12 @@ public partial class @Input: IInputActionCollection2, IDisposable
             @Speed3.started -= instance.OnSpeed3;
             @Speed3.performed -= instance.OnSpeed3;
             @Speed3.canceled -= instance.OnSpeed3;
+            @I.started -= instance.OnI;
+            @I.performed -= instance.OnI;
+            @I.canceled -= instance.OnI;
+            @M.started -= instance.OnM;
+            @M.performed -= instance.OnM;
+            @M.canceled -= instance.OnM;
         }
 
         public void RemoveCallbacks(IGameActions instance)
@@ -469,5 +527,7 @@ public partial class @Input: IInputActionCollection2, IDisposable
         void OnSpeed1(InputAction.CallbackContext context);
         void OnSpeed2(InputAction.CallbackContext context);
         void OnSpeed3(InputAction.CallbackContext context);
+        void OnI(InputAction.CallbackContext context);
+        void OnM(InputAction.CallbackContext context);
     }
 }

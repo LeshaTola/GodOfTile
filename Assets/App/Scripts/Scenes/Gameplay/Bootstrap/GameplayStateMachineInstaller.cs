@@ -31,6 +31,8 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
             BindBuildState();
             BindInformationState();
             BindBuyAreaState();
+            BindState<ResearchState>(StatesIds.RESEARCH_STATE);
+
         }
 
         private void BindInformationState()
