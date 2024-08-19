@@ -1,6 +1,6 @@
-using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.General;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Tiles.General.Effectors
+namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Views
 {
     public interface IEffectorVisualProvider
     {

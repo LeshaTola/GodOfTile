@@ -1,8 +1,8 @@
 using System;
 using App.Scripts.Scenes.Gameplay.Features.Inventory.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.General;
-using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.General;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners.UI.Providers;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.UI;
 using UnityEngine;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners

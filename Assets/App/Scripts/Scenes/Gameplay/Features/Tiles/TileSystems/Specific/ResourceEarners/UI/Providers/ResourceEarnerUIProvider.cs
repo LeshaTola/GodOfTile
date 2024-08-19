@@ -1,6 +1,5 @@
 using App.Scripts.Modules.Localization;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.TileSystemUI;
-using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.General;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners.UI.ViewModels;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.UI;
 

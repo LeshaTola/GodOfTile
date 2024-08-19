@@ -2,12 +2,12 @@
 using App.Scripts.Modules.Localization.Localizers;
 using App.Scripts.Modules.PopupLogic.General.Popup;
 using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget;
-using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.Item;
-using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.ViewModels;
+using App.Scripts.Scenes.Gameplay.Features.Popups.Shop.Item;
+using App.Scripts.Scenes.Gameplay.Features.Popups.Shop.ViewModels;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using UnityEngine;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup
+namespace App.Scripts.Scenes.Gameplay.Features.Popups.Shop
 {
     public class ShopPopup : Popup
     {

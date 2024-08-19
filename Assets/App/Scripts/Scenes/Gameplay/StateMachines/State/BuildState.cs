@@ -1,7 +1,7 @@
 ﻿using App.Scripts.Modules.StateMachine.Services.UpdateService;
 using App.Scripts.Scenes.Gameplay.Features.Input;
 using App.Scripts.Scenes.Gameplay.Features.Map.Visualizers;
-using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.Routers;
+using App.Scripts.Scenes.Gameplay.Features.Popups.Shop.Routers;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCreation;
 using App.Scripts.Scenes.Gameplay.StateMachines.Ids;
 using Cysharp.Threading.Tasks;

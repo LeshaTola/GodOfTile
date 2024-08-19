@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.Item
+namespace App.Scripts.Scenes.Gameplay.Features.Popups.Shop.Item
 {
     public class ShopItemUI
         : MonoBehaviour,

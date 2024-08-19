@@ -1,16 +1,14 @@
 ﻿using System.Collections.Generic;
-using App.Scripts.Features.Popups.Buttons;
-using App.Scripts.Features.UI.PairedTexts;
 using App.Scripts.Modules.Localization.Localizers;
 using App.Scripts.Modules.PopupLogic.General.Popup;
-using App.Scripts.Scenes.Gameplay.Features.Popups.InformationPopup.ViewModels;
+using App.Scripts.Scenes.Gameplay.Features.Popups.Information.ViewModels;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Popups.InformationPopup
+namespace App.Scripts.Scenes.Gameplay.Features.Popups.Information
 {
     public class InformationPopup : Popup
     {

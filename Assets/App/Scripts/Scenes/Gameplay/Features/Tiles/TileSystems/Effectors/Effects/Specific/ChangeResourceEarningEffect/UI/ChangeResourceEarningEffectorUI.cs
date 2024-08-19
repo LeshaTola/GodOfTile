@@ -1,10 +1,9 @@
 using App.Scripts.Modules.Localization.Localizers;
-using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Effectors.UI.ViewModels;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effects.Specific.ChangeResourceEarningEffect.UI.ViewModels;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.UI;
-using TMPro;
 using UnityEngine;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Effectors.UI
+namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effects.Specific.ChangeResourceEarningEffect.UI
 {
     public class ChangeResourceEarningEffectorUI:SystemUI
     {

@@ -1,11 +1,12 @@
 using App.Scripts.Modules.ObjectPool.MonoObjectPools;
 using App.Scripts.Modules.ObjectPool.Pools;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.TileSystem;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.TileSystemUI;
-using App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.UIProvidersFactory;
-using App.Scripts.Scenes.Gameplay.Features.Tiles.General.Effectors;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.TileSystemUIProvider;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Services;
-using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Effectors.UI.Providers;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effects.Specific.ChangeResourceEarningEffect.UI.Providers;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Views;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners.UI.Providers;
 using UnityEngine;

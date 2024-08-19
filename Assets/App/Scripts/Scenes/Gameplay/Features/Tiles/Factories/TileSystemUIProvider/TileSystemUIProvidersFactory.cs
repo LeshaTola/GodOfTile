@@ -1,8 +1,8 @@
 using System;
-using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.General;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.UI;
 using Zenject;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.UIProvidersFactory
+namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.TileSystemUIProvider
 {
     public class TileSystemUIProvidersFactory : ITileSystemUIProvidersFactory
     {

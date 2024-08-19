@@ -6,7 +6,7 @@ using App.Scripts.Scenes.Gameplay.Features.Tiles.General;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effects;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.GetTilesStrategies;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.ValidationStrategies;
-using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.General;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.UI;
 using UnityEngine;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors

@@ -1,9 +1,9 @@
 ﻿using App.Scripts.Modules.Localization;
 using App.Scripts.Scenes.Gameplay.Features.Commands.General;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
-using App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.UIProvidersFactory;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.TileSystemUIProvider;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Popups.InformationPopup.ViewModels
+namespace App.Scripts.Scenes.Gameplay.Features.Popups.Information.ViewModels
 {
     public class InformationViewModule : IInformationViewModule
     {

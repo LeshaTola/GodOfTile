@@ -1,8 +1,7 @@
 using System.Collections.Generic;
-using App.Scripts.Scenes.Gameplay.Features.Tiles.General;
 using UnityEngine;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.GetTilesStrategies
+namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.GetTilesStrategies.Lined
 {
     public class LinedGetTilesStrategy : GetTileStrategy
     {

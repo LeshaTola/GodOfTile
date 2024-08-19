@@ -1,8 +1,8 @@
-﻿using App.Scripts.Scenes.Gameplay.Features.Popups.BuyAreaPopup.Routers;
+﻿using App.Scripts.Scenes.Gameplay.Features.Popups.BuyArea.Routers;
 using App.Scripts.Scenes.Gameplay.Features.Popups.GameplayPopup.Routers;
-using App.Scripts.Scenes.Gameplay.Features.Popups.InformationPopup.Routers;
+using App.Scripts.Scenes.Gameplay.Features.Popups.Information.Routers;
 using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget.ViewModels;
-using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.Routers;
+using App.Scripts.Scenes.Gameplay.Features.Popups.Shop.Routers;
 using Zenject;
 
 namespace App.Scripts.Scenes.Gameplay.Bootstrap

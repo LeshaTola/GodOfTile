@@ -1,7 +1,7 @@
 ﻿using App.Scripts.Scenes.Gameplay.Features.Popups.Configs;
 using UnityEngine;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.Configs
+namespace App.Scripts.Scenes.Gameplay.Features.Popups.Shop.Configs
 {
     [CreateAssetMenu(
         fileName = "InformationWidgetConfig",

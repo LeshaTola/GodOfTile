@@ -1,5 +1,4 @@
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
-using App.Scripts.Scenes.Gameplay.Features.Tiles.General.Effectors;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;

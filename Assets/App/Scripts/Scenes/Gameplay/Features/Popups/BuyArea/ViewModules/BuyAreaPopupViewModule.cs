@@ -4,7 +4,7 @@ using App.Scripts.Scenes.Gameplay.Features.Commands.General;
 using App.Scripts.Scenes.Gameplay.Features.Inventory.DTO;
 using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget.ViewModels;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Popups.BuyAreaPopup.ViewModules
+namespace App.Scripts.Scenes.Gameplay.Features.Popups.BuyArea.ViewModules
 {
     public class BuyAreaPopupViewModule : IBuyAreaPopupViewModule
     {

@@ -3,12 +3,12 @@ using App.Scripts.Modules.PopupLogic.General.Controllers;
 using App.Scripts.Scenes.Gameplay.Features.Commands;
 using App.Scripts.Scenes.Gameplay.Features.Commands.BuyAreaCommand;
 using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Chunk.Cost;
-using App.Scripts.Scenes.Gameplay.Features.Popups.BuyAreaPopup.ViewModules;
+using App.Scripts.Scenes.Gameplay.Features.Popups.BuyArea.ViewModules;
 using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget.ViewModels;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Popups.BuyAreaPopup.Routers
+namespace App.Scripts.Scenes.Gameplay.Features.Popups.BuyArea.Routers
 {
     public class BuyAreaPopupRouter : IBuyAreaPopupRouter
     {

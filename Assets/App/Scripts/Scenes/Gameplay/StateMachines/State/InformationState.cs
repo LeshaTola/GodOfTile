@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using App.Scripts.Modules.StateMachine.Services.UpdateService;
 using App.Scripts.Scenes.Gameplay.Features.Input;
-using App.Scripts.Scenes.Gameplay.Features.Popups.InformationPopup.Routers;
-using App.Scripts.Scenes.Gameplay.Features.Tiles.General.Effectors;
+using App.Scripts.Scenes.Gameplay.Features.Popups.Information.Routers;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Selection;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Views;
 using Cysharp.Threading.Tasks;
 
 namespace App.Scripts.Scenes.Gameplay.StateMachines.State

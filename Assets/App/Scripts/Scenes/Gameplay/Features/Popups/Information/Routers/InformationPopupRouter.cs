@@ -2,12 +2,12 @@
 using App.Scripts.Modules.PopupLogic.General.Controllers;
 using App.Scripts.Scenes.Gameplay.Features.Commands.General;
 using App.Scripts.Scenes.Gameplay.Features.Commands.GoToStateCommands;
-using App.Scripts.Scenes.Gameplay.Features.Popups.InformationPopup.ViewModels;
+using App.Scripts.Scenes.Gameplay.Features.Popups.Information.ViewModels;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
-using App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.UIProvidersFactory;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.TileSystemUIProvider;
 using Cysharp.Threading.Tasks;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Popups.InformationPopup.Routers
+namespace App.Scripts.Scenes.Gameplay.Features.Popups.Information.Routers
 {
     public class InformationPopupRouter : IInformationPopupRouter
     {
