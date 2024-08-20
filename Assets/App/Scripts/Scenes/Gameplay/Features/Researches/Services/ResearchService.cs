@@ -1,35 +1,53 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using App.Scripts.Modules.StateMachine.Services.UpdateService;
 using App.Scripts.Modules.TimeProvider;
 using App.Scripts.Scenes.Gameplay.Features.Researches.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Researches.Factories;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Research;
+using UnityEngine;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Researches.Services
 {
     public class ResearchService : IUpdatable, IResearchService
     {
         public event Action OnResearchSystemsCountChanged;
-        
+
         private ResearchServiceConfig config;
         private ITimeProvider timeProvider;
-        
-        public float Timer = 0;
+        private IResearchCommandsFactory researchCommandsFactory;
+
         private List<ResearchSystem> researchSystems = new();
-        
-        public ResearchConfig ActiveResearch { get; private set; }
+        private List<RuntimeResearch> researches = new();
+        public float Timer = 0;
+
+        public RuntimeResearch ActiveResearch { get; private set; }
         public IReadOnlyCollection<ResearchSystem> ResearchSystems => researchSystems;
-        
-        public ResearchService(ResearchServiceConfig config, ITimeProvider timeProvider)
+        public IReadOnlyCollection<RuntimeResearch> Researches => researches;
+
+        public ResearchService(ResearchServiceConfig config, ITimeProvider timeProvider,
+            IResearchCommandsFactory researchCommandsFactory)
         {
             this.config = config;
             this.timeProvider = timeProvider;
+            this.researchCommandsFactory = researchCommandsFactory;
+
+            Initialize();
         }
-        
+
         public void StartResearch(ResearchConfig research)
         {
-            Timer = research.ResearchTime;
-            ActiveResearch = research;
+            var runtimeResearch
+                = researches.FirstOrDefault(x => x.ResearchConfig.Name.Equals(research.Name));
+            if (runtimeResearch == null)
+            {
+                Debug.LogError($"Can't find research with such name {research.Name}");
+                return;
+            }
+
+            Timer = runtimeResearch.ResearchConfig.ResearchTime;
+            ActiveResearch = runtimeResearch;
         }
 
         public void AddResearchSystem(ResearchSystem researchSystem)
@@ -43,14 +61,35 @@ namespace App.Scripts.Scenes.Gameplay.Features.Researches.Services
             researchSystems.Remove(researchSystem);
             OnResearchSystemsCountChanged?.Invoke();
         }
-        
+
         public void Update()
         {
+            if (ActiveResearch == null)
+            {
+                return;
+            }
+            
             var speedMultiplier = researchSystems.Count;
             Timer -= timeProvider.DeltaTime * speedMultiplier;
             if (Timer <= 0)
             {
-                ActiveResearch.Command.Execute();
+                researchCommandsFactory.GetResearch(ActiveResearch.ResearchConfig.Command).Execute();
+                ActiveResearch.IsCompleate = true;
+                ActiveResearch = null;
+            }
+        }
+
+        private void Initialize()
+        {
+            researches = new List<RuntimeResearch>();
+            foreach (var runtimeResearch in config.Researches)
+            {
+                if (runtimeResearch.IsCompleate)
+                {
+                    researchCommandsFactory.GetResearch(runtimeResearch.ResearchConfig.Command).Execute();
+                }
+
+                researches.Add(runtimeResearch);
             }
         }
     }

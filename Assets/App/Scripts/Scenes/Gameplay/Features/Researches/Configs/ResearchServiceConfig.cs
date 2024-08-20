@@ -12,6 +12,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Researches.Configs
         [field: SerializeField,FoldoutGroup("For Tests")] 
         public List<ResearchConfig> OpenedResearches { get; private set;}
 
-        [field: SerializeField] public List<ResearchConfig> Researches { get; private set; }
+        [field: SerializeField] public List<RuntimeResearch> Researches { get; private set; }
     }
 }

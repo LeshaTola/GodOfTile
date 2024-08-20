@@ -12,7 +12,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Researches.Configs
         [field: PreviewField]
         [field: SerializeField]
         [field: FoldoutGroup("Extra Information")]
-        public Sprite ResearchImage { get; private set; }
+        public Sprite Sprite { get; private set; }
 
         [field: SerializeField]
         [field: FoldoutGroup("Extra Information")]
@@ -23,8 +23,14 @@ namespace App.Scripts.Scenes.Gameplay.Features.Researches.Configs
         [field: FoldoutGroup("Extra Information")]
         public string Description { get; private set; }
 
-        [field: SerializeField] public int Level { get; private set; }
-        [field: SerializeField] public float ResearchTime { get; private set; }
+        [field: Min(1)] 
+        [field: SerializeField] 
+        public int Level { get; private set; }
+        
+        [field: Min(0)] 
+        [field: SerializeField] 
+        public float ResearchTime { get; private set; }
+        
         [field: SerializeField] public List<ResourceCount> Cost { get; private set; }
         [field: SerializeField] public ResearchCommand Command { get; private set; }
     }

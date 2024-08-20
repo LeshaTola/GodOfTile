@@ -8,8 +8,9 @@ namespace App.Scripts.Scenes.Gameplay.Features.Researches.Services
     public interface IResearchService
     {
         IReadOnlyCollection<ResearchSystem> ResearchSystems { get; }
-        ResearchConfig ActiveResearch { get; }
-        
+        RuntimeResearch ActiveResearch { get; }
+        IReadOnlyCollection<RuntimeResearch> Researches { get; }
+
         void StartResearch(ResearchConfig research);
         void AddResearchSystem(ResearchSystem researchSystem);
         void RemoveResearchSystem(ResearchSystem researchSystem);

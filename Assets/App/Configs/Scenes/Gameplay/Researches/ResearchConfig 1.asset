@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab27c13d5f4348409edc2f9b281e4bfe, type: 3}
-  m_Name: ResearchConfig
+  m_Name: ResearchConfig 1
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -39,11 +39,11 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  <Sprite>k__BackingField: {fileID: 21300000, guid: 793db032f1b47cb4598b5d46c020e47b,
+  <Sprite>k__BackingField: {fileID: 21300000, guid: 29dbbf89988c9ed44af0e58e6efba11c,
     type: 3}
-  <Name>k__BackingField: OpenTile
-  <Description>k__BackingField: Open Tile
-  <Level>k__BackingField: 1
+  <Name>k__BackingField: CloseTile
+  <Description>k__BackingField: Close Tile
+  <Level>k__BackingField: 2
   <ResearchTime>k__BackingField: 20
   <Cost>k__BackingField:
   - Resource: {fileID: 11400000, guid: 12ea320e25139914cb79e34fc96f3d46, type: 2}

@@ -55,8 +55,6 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
         [SerializeField] private Transform particlesContainer;
         [SerializeField] private WaterMaterialConfig waterMaterialConfig;
 
-        [Header("Research")]
-        [SerializeField] private ResearchServiceConfig researchServiceConfig;
 
         public override void InstallBindings()
         {
@@ -82,9 +80,6 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
             Container.Bind<ICameraSwitcher>().To<CameraSwitcher>().AsSingle().WithArguments(camerasDatabase);
             BindMapProviders();
             BindMapVisualizers();
-            
-            
-            Container.Bind<IResearchService>().To<ResearchService>().AsSingle().WithArguments(researchServiceConfig);
         }
 
         private void BindMapVisualizers()

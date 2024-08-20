@@ -15,4 +15,7 @@ MonoBehaviour:
   <StartLevel>k__BackingField: 0
   <OpenedResearches>k__BackingField: []
   <Researches>k__BackingField:
-  - {fileID: 11400000, guid: 9b98bb9c5660acf4f98ec0b4ccf165cf, type: 2}
+  - ResearchConfig: {fileID: 11400000, guid: 9b98bb9c5660acf4f98ec0b4ccf165cf, type: 2}
+    IsCompleate: 0
+  - ResearchConfig: {fileID: 11400000, guid: 9a90f0fb3687d3b468b3e9dddb30b7f7, type: 2}
+    IsCompleate: 0

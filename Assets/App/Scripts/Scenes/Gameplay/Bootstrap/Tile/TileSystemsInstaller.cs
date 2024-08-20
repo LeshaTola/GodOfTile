@@ -20,6 +20,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap.Tile
         [SerializeField] private EffectorArea effectorAreaTemplate;
         [SerializeField] private Transform container;
         [SerializeField] private SystemsUIsDatabase systemsUIsDatabase;
+        
         public override void InstallBindings()
         {
             Container.Bind<IPool<EffectorArea>>().To<MonoBehObjectPool<EffectorArea>>().AsSingle()
@@ -35,7 +36,6 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap.Tile
             
             BindSystemFactory();
             BindSystemUIFactory();
-
 
             BindSystemService();
 
