@@ -14,9 +14,17 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Research.Elements.Research
         [SerializeField] private Image image;
         [SerializeField] private Button researchButton;
         
-        public void Setup(ResearchConfig researchConfig)
+        public void Setup(RuntimeResearch runtimeResearch)
         {
-            image.sprite = researchConfig.Sprite;
+            image.sprite = runtimeResearch.ResearchConfig.Sprite;
+            if (runtimeResearch.IsCompleate)
+            {
+                image.color = new Color(image.color.r, image.color.g, image.color.b, 0.5f);
+            }
+            else
+            {
+                image.color = new Color(image.color.r, image.color.g, image.color.b, 1f);
+            }
             
             researchButton.onClick.RemoveAllListeners();
             researchButton.onClick.AddListener(()=>OnResearchButtonClicked?.Invoke());

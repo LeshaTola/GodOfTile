@@ -43,7 +43,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Research
             foreach (var runtimeResearch in viewModule.ResearchService.Researches)
             {
                 var researchElement = viewModule.ResearchesFactory.GetItem();
-                researchElement.Setup(runtimeResearch.ResearchConfig);
+                researchElement.Setup(runtimeResearch);
 
                 researchElement.OnResearchButtonClicked +=
                     () => ResearchElementOnOnResearchButtonClicked(runtimeResearch);
@@ -71,36 +71,43 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Research
             viewModule = null;
         }
 
-        private void ConnectToLevelElement(int level, ResearchElement researchElement)
-        {
-            if (!levelElements.ContainsKey(level))
-            {
-                var levelElement = viewModule.LevelsFactory.GetItem();
-                SetupTransform(levelElement);
-                levelElement.Setup(viewModule.LocalizationSystem, $"level: {level}");
-                levelElements.Add(level, levelElement);
-            }
-
-            levelElements[level].AddResearch(researchElement);
-        }
-
         private void SetupMoreInfoTab()
         {
-            var activeResearch = viewModule.ResearchService.ActiveResearch;
-            if (activeResearch != null)
+            var research = viewModule.ResearchService.ActiveResearch;
+            if (research == null)
             {
-                SetResearch(activeResearch);
+                research = viewModule.ResearchService.Researches.FirstOrDefault(x => x.IsCompleate == false);
+                if (research == null)
+                {
+                    research = viewModule.ResearchService.Researches.First();
+                }
+            }
+            
+            SetResearch(research);
+        }
+
+        private void SetResearch(RuntimeResearch runtimeResearch)
+        {
+            moreInfoTab.UpdateInformation(runtimeResearch.ResearchConfig);
+            
+            var activeResearch = viewModule.ResearchService.ActiveResearch;
+            if (activeResearch != null 
+                && activeResearch.ResearchConfig.Name.Equals(runtimeResearch.ResearchConfig.Name))
+            {
+                viewModule.ResearchService.OnTimerChanged += SetButtonTimer;
+
+                SetButtonTimer(viewModule.ResearchService.Timer);
+                return;
+            }
+            
+            if (runtimeResearch.IsCompleate)
+            {
+                moreInfoTab.UpdateButton("It has already been researched");
                 return;
             }
 
-            var research = viewModule.ResearchService.Researches.FirstOrDefault(x => x.IsCompleate == false);
-            SetInactiveResearch(research);
-        }
-
-        private void SetInactiveResearch(RuntimeResearch runtimeResearch)
-        {
-            viewModule.ResearchService.OnTimerChanged -= OnResearchTimerChanged;
-            moreInfoTab.UpdateInformation(runtimeResearch, () => { ResearchAction(runtimeResearch); });
+            viewModule.ResearchService.OnTimerChanged -= SetButtonTimer;
+            moreInfoTab.UpdateButton("buy",() => { ResearchAction(runtimeResearch); });
         }
 
         private void ResearchAction(RuntimeResearch runtimeResearch)
@@ -117,9 +124,23 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Research
             }
 
             viewModule.ResearchService.StartResearch(runtimeResearch.ResearchConfig);
-            moreInfoTab.UpdateTimerText(TimeSpan.FromSeconds(viewModule.ResearchService.Timer));
+            SetButtonTimer(viewModule.ResearchService.Timer);
         }
 
+
+        private void ConnectToLevelElement(int level, ResearchElement researchElement)
+        {
+            if (!levelElements.ContainsKey(level))
+            {
+                var levelElement = viewModule.LevelsFactory.GetItem();
+                SetupTransform(levelElement);
+                levelElement.Setup(viewModule.LocalizationSystem, $"level: {level}");
+                levelElements.Add(level, levelElement);
+            }
+
+            levelElements[level].AddResearch(researchElement);
+        }
+        
         private void SetupTransform(LevelElement levelElement)
         {
             var levelTransform = levelElement.transform;
@@ -136,28 +157,16 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Research
             }
         }
 
+        private void SetButtonTimer(float timer)
+        {
+            var time = TimeSpan.FromSeconds(timer);
+            var timeText = string.Format("{0:D2}:{1:D2}", time.Minutes, time.Seconds);
+            moreInfoTab.UpdateButton(timeText);
+        }
+
         private void ResearchElementOnOnResearchButtonClicked(RuntimeResearch runtimeResearch)
         {
             SetResearch(runtimeResearch);
-        }
-
-        private void SetResearch(RuntimeResearch runtimeResearch)
-        {
-            var activeResearch = viewModule.ResearchService.ActiveResearch;
-            if (activeResearch != null && activeResearch.ResearchConfig.Name.Equals(
-                    runtimeResearch.ResearchConfig.Name))
-            {
-                viewModule.ResearchService.OnTimerChanged += OnResearchTimerChanged;
-                moreInfoTab.UpdateInformation(runtimeResearch);
-                return;
-            }
-
-            SetInactiveResearch(runtimeResearch);
-        }
-
-        private void OnResearchTimerChanged(float timer)
-        {
-            moreInfoTab.UpdateTimerText(TimeSpan.FromSeconds(timer));
         }
     }
 }

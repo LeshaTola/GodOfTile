@@ -33,8 +33,8 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
         {
             await base.Exit();
             
-            gameInput.OnEscape += Back;
-            gameInput.OnM += Back;
+            gameInput.OnEscape -= Back;
+            gameInput.OnM -= Back;
             
             await researchPopupRouter.HidePopup();
         }

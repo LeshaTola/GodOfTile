@@ -2,6 +2,7 @@ using System;
 using App.Scripts.Features.Popups.Buttons;
 using App.Scripts.Modules.Localization;
 using App.Scripts.Modules.Localization.Localizers;
+using App.Scripts.Scenes.Gameplay.Features.Inventory.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget;
 using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget.ViewModels;
 using App.Scripts.Scenes.Gameplay.Features.Researches.Configs;
@@ -45,26 +46,32 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Research.Elements
             Translate();
         }
 
-        public void UpdateInformation(RuntimeResearch runtimeResearch, Action action = null)
+        public void UpdateInformation(ResearchConfig researchConfig)
         {
-            var resourceConfig = runtimeResearch.ResearchConfig;
-
-            image.sprite = resourceConfig.Sprite;
-            nameText.Key = resourceConfig.Name;
-            description.Key = resourceConfig.Description;
-
-            informationWidget.UpdateInformation(resourceConfig.Cost);
-            UpdateButton(runtimeResearch, action);
+            image.sprite = researchConfig.Sprite;
+            nameText.Key = researchConfig.Name;
+            description.Key = researchConfig.Description;
+            informationWidget.UpdateInformation(researchConfig.Cost);
 
             Translate();
         }
 
-        public void UpdateTimerText(TimeSpan timer)
+        public void UpdateButton(string text, Action action = null)
         {
-            researchButton.UpdateText(string.Format("{0:D2}:{1:D2}", 
-                timer.Minutes, 
-                timer.Seconds));
-            researchButton.Interactable = false;
+            researchButton.UpdateText("buy");
+            researchButton.UpdateText(text);
+            Translate();
+            
+            if (action == null)
+            {
+                researchButton.Interactable = false;
+                return;
+            }
+
+            researchButton.Interactable = true;
+            researchButton.onButtonClicked -= researchAction;
+            researchAction = action;
+            researchButton.onButtonClicked += researchAction;
         }
 
         public void Translate()
@@ -75,21 +82,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Research.Elements
             descriptionHeader.Translate();
             description.Translate();
             researchButton.Translate();
-        }
-
-        private void UpdateButton(RuntimeResearch runtimeResearch, Action action )
-        {
-            if (runtimeResearch.IsCompleate)
-            {
-                researchButton.UpdateText("It has already been researched");
-                researchButton.Interactable = false;
-                return;
-            }
-
-            researchButton.Interactable = true;
-            researchButton.onButtonClicked -= researchAction;
-            researchAction = action;
-            researchButton.onButtonClicked += researchAction;
         }
     }
 }

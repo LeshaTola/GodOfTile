@@ -87,12 +87,17 @@ namespace App.Scripts.Scenes.Gameplay.Features.Researches.Services
             researches = new List<RuntimeResearch>();
             foreach (var runtimeResearch in config.Researches)
             {
+                researches.Add(new RuntimeResearch()
+                {
+                    ResearchConfig = runtimeResearch.ResearchConfig, 
+                    IsCompleate = runtimeResearch.IsCompleate
+                });
+                
                 if (runtimeResearch.IsCompleate)
                 {
                     researchCommandsFactory.GetResearch(runtimeResearch.ResearchConfig.Command).Execute();
                 }
 
-                researches.Add(runtimeResearch);
             }
         }
     }
