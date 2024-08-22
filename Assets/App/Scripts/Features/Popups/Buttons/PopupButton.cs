@@ -10,12 +10,15 @@ namespace App.Scripts.Features.Popups.Buttons
     {
         public event Action onButtonClicked;
 
-        [SerializeField]
-        private TMProLocalizer buttonText;
+        [SerializeField] private TMProLocalizer buttonText;
+        [SerializeField] private Button button;
 
-        [SerializeField]
-        private Button button;
-        
+        public bool Interactable
+        {
+            get => button.interactable;
+            set => button.interactable = value;
+        }
+
         public void Initialize(ILocalizationSystem localizationSystem)
         {
             Cleanup();
@@ -26,8 +29,8 @@ namespace App.Scripts.Features.Popups.Buttons
             {
                 buttonText.Initialize(localizationSystem);
             }
-        }  
-        
+        }
+
         public void UpdateText(string text)
         {
             if (buttonText == null)

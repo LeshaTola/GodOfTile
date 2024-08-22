@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using App.Scripts.Modules.Localization.Localizers;
 using App.Scripts.Modules.PopupLogic.General.Popup;
 using App.Scripts.Scenes.Gameplay.Features.Popups.Research.Elements;
@@ -48,11 +50,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Research
 
                 ConnectToLevelElement(runtimeResearch.ResearchConfig.Level, researchElement);
             }
-        }
 
-        private void ResearchElementOnOnResearchButtonClicked(RuntimeResearch runtimeResearch)
-        {
-            moreInfoTab.UpdateInformation(runtimeResearch.ResearchConfig);
+            SetupMoreInfoTab();
         }
 
         public void Translate()
@@ -68,7 +67,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Research
             }
 
             CleanupElements();
-            
+
             viewModule = null;
         }
 
@@ -85,6 +84,42 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Research
             levelElements[level].AddResearch(researchElement);
         }
 
+        private void SetupMoreInfoTab()
+        {
+            var activeResearch = viewModule.ResearchService.ActiveResearch;
+            if (activeResearch != null)
+            {
+                SetResearch(activeResearch);
+                return;
+            }
+
+            var research = viewModule.ResearchService.Researches.FirstOrDefault(x => x.IsCompleate == false);
+            SetInactiveResearch(research);
+        }
+
+        private void SetInactiveResearch(RuntimeResearch runtimeResearch)
+        {
+            viewModule.ResearchService.OnTimerChanged -= OnResearchTimerChanged;
+            moreInfoTab.UpdateInformation(runtimeResearch, () => { ResearchAction(runtimeResearch); });
+        }
+
+        private void ResearchAction(RuntimeResearch runtimeResearch)
+        {
+            if (!viewModule.InventorySystem.IsEnough(runtimeResearch.ResearchConfig.Cost))
+            {
+                return;
+            }
+
+            foreach (var resourceCount in runtimeResearch.ResearchConfig.Cost)
+            {
+                viewModule.InventorySystem.ChangeRecourseAmount(resourceCount.Resource.ResourceName,
+                    -resourceCount.Count);
+            }
+
+            viewModule.ResearchService.StartResearch(runtimeResearch.ResearchConfig);
+            moreInfoTab.UpdateTimerText(TimeSpan.FromSeconds(viewModule.ResearchService.Timer));
+        }
+
         private void SetupTransform(LevelElement levelElement)
         {
             var levelTransform = levelElement.transform;
@@ -99,6 +134,30 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Research
             {
                 levelElement.Value.Cleanup();
             }
+        }
+
+        private void ResearchElementOnOnResearchButtonClicked(RuntimeResearch runtimeResearch)
+        {
+            SetResearch(runtimeResearch);
+        }
+
+        private void SetResearch(RuntimeResearch runtimeResearch)
+        {
+            var activeResearch = viewModule.ResearchService.ActiveResearch;
+            if (activeResearch != null && activeResearch.ResearchConfig.Name.Equals(
+                    runtimeResearch.ResearchConfig.Name))
+            {
+                viewModule.ResearchService.OnTimerChanged += OnResearchTimerChanged;
+                moreInfoTab.UpdateInformation(runtimeResearch);
+                return;
+            }
+
+            SetInactiveResearch(runtimeResearch);
+        }
+
+        private void OnResearchTimerChanged(float timer)
+        {
+            moreInfoTab.UpdateTimerText(TimeSpan.FromSeconds(timer));
         }
     }
 }

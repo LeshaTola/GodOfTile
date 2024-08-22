@@ -13,6 +13,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Researches.Services
     public class ResearchService : IUpdatable, IResearchService
     {
         public event Action OnResearchSystemsCountChanged;
+        public event Action<float> OnTimerChanged;
 
         private ResearchServiceConfig config;
         private ITimeProvider timeProvider;
@@ -20,8 +21,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.Researches.Services
 
         private List<ResearchSystem> researchSystems = new();
         private List<RuntimeResearch> researches = new();
-        public float Timer = 0;
 
+        public float Timer { get; private set; } = 0;
         public RuntimeResearch ActiveResearch { get; private set; }
         public IReadOnlyCollection<ResearchSystem> ResearchSystems => researchSystems;
         public IReadOnlyCollection<RuntimeResearch> Researches => researches;
@@ -76,7 +77,9 @@ namespace App.Scripts.Scenes.Gameplay.Features.Researches.Services
                 researchCommandsFactory.GetResearch(ActiveResearch.ResearchConfig.Command).Execute();
                 ActiveResearch.IsCompleate = true;
                 ActiveResearch = null;
+                Timer = 0;
             }
+            OnTimerChanged?.Invoke(Timer);
         }
 
         private void Initialize()

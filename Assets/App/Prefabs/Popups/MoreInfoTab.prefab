@@ -94,7 +94,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30.75
+  m_fontSize: 23.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -318,7 +318,7 @@ MonoBehaviour:
   image: {fileID: 3194662974584273468}
   nameText: {fileID: 7793865901168440448}
   informationWidget: {fileID: 5326886535368484469}
-  popupButton: {fileID: 8113712922384526393}
+  researchButton: {fileID: 8113712922384526393}
   descriptionHeader: {fileID: 2270395737388559685}
   description: {fileID: 6140524693262947841}
 --- !u!1 &1974529777893883629
@@ -927,7 +927,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42
+  m_fontSize: 32.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1076,7 +1076,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35.8
+  m_fontSize: 31.55
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1547,6 +1547,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7988395726237376321, guid: 1c68525df55af9c4bac84cc7136cdef3,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 26
+      objectReference: {fileID: 0}
     - target: {fileID: 9089224880817354275, guid: 1c68525df55af9c4bac84cc7136cdef3,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1783,7 +1788,7 @@ PrefabInstance:
     - target: {fileID: 5493912572819068921, guid: 55910f6a0b840fc4babe99a6cb819416,
         type: 3}
       propertyPath: m_fontSize
-      value: 44.75
+      value: 34.2
       objectReference: {fileID: 0}
     - target: {fileID: 9091040491169326135, guid: 55910f6a0b840fc4babe99a6cb819416,
         type: 3}
