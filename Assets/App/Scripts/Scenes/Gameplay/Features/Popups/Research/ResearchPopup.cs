@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using App.Scripts.Modules.Localization.Localizers;
 using App.Scripts.Modules.PopupLogic.General.Popup;
@@ -36,9 +37,11 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Research
         {
             header.Initialize(viewModule.LocalizationSystem);
             moreInfoTab.Initialize(viewModule.LocalizationSystem, viewModule.InformationWidgetViewModule);
+            
+            viewModule.ResearchService.LevelChanged += OnLevelChanged;
         }
 
-        public void SetupUI()
+        private void SetupElements()
         {
             foreach (var runtimeResearch in viewModule.ResearchService.Researches)
             {
@@ -51,6 +54,20 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Research
                 ConnectToLevelElement(runtimeResearch.ResearchConfig.Level, researchElement);
             }
 
+            for (int i = 1; i <= viewModule.ResearchService.Level; i++)
+            {
+                if (!levelElements.ContainsKey(i))
+                {
+                    return;
+                }
+                
+                levelElements[i].Open();
+            }
+        }
+
+        public void SetupUI()
+        {
+            SetupElements();
             SetupMoreInfoTab();
         }
 
@@ -67,7 +84,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Research
             }
 
             CleanupElements();
-
+            viewModule.ResearchService.LevelChanged -= OnLevelChanged;
             viewModule = null;
         }
 
@@ -94,7 +111,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Research
             if (activeResearch != null 
                 && activeResearch.ResearchConfig.Name.Equals(runtimeResearch.ResearchConfig.Name))
             {
-                viewModule.ResearchService.OnTimerChanged += SetButtonTimer;
+                viewModule.ResearchService.TimerChanged += SetButtonTimer;
 
                 SetButtonTimer(viewModule.ResearchService.Timer);
                 return;
@@ -106,7 +123,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Research
                 return;
             }
 
-            viewModule.ResearchService.OnTimerChanged -= SetButtonTimer;
+            viewModule.ResearchService.TimerChanged -= SetButtonTimer;
             moreInfoTab.UpdateButton("buy",() => { ResearchAction(runtimeResearch); });
         }
 
@@ -134,9 +151,10 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Research
                 var levelElement = viewModule.LevelsFactory.GetItem();
                 levelElement.transform.SetParent(levelsContainer,false);
                 levelElement.Setup(viewModule.LocalizationSystem, $"level: {level}");
+
                 levelElements.Add(level, levelElement);
             }
-
+            
             levelElements[level].AddResearch(researchElement);
         }
 
@@ -145,6 +163,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Research
             foreach (var levelElement in levelElements)
             {
                 levelElement.Value.Cleanup();
+                levelElement.Value.Close();
             }
         }
 
@@ -158,6 +177,12 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Research
         private void ResearchElementOnOnResearchButtonClicked(RuntimeResearch runtimeResearch)
         {
             SetResearch(runtimeResearch);
+        }
+        
+        private void OnLevelChanged(int level)
+        {
+            CleanupElements();
+            SetupElements();
         }
     }
 }

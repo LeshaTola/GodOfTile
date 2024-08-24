@@ -12,8 +12,9 @@ namespace App.Scripts.Scenes.Gameplay.Features.Researches.Services
 {
     public class ResearchService : IUpdatable, IResearchService
     {
-        public event Action OnResearchSystemsCountChanged;
-        public event Action<float> OnTimerChanged;
+        public event Action ResearchSystemsCountChanged;
+        public event Action<float> TimerChanged;
+        public event Action<int> LevelChanged;
 
         private ResearchServiceConfig config;
         private ITimeProvider timeProvider;
@@ -22,6 +23,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Researches.Services
         private List<ResearchSystem> researchSystems = new();
         private List<RuntimeResearch> researches = new();
 
+        public int Level { get; private set; }
         public float Timer { get; private set; } = 0;
         public RuntimeResearch ActiveResearch { get; private set; }
         public IReadOnlyCollection<ResearchSystem> ResearchSystems => researchSystems;
@@ -50,17 +52,22 @@ namespace App.Scripts.Scenes.Gameplay.Features.Researches.Services
             Timer = runtimeResearch.ResearchConfig.ResearchTime;
             ActiveResearch = runtimeResearch;
         }
+        
+        public void LevelUp()
+        {
+            SetLevel(Level + 1);
+        }
 
         public void AddResearchSystem(ResearchSystem researchSystem)
         {
             researchSystems.Add(researchSystem);
-            OnResearchSystemsCountChanged?.Invoke();
+            ResearchSystemsCountChanged?.Invoke();
         }
 
         public void RemoveResearchSystem(ResearchSystem researchSystem)
         {
             researchSystems.Remove(researchSystem);
-            OnResearchSystemsCountChanged?.Invoke();
+            ResearchSystemsCountChanged?.Invoke();
         }
 
         public void Update()
@@ -79,11 +86,13 @@ namespace App.Scripts.Scenes.Gameplay.Features.Researches.Services
                 ActiveResearch = null;
                 Timer = 0;
             }
-            OnTimerChanged?.Invoke(Timer);
+            TimerChanged?.Invoke(Timer);
         }
 
         private void Initialize()
         {
+            SetLevel(config.StartLevel);
+            
             researches = new List<RuntimeResearch>();
             foreach (var runtimeResearch in config.Researches)
             {
@@ -99,6 +108,12 @@ namespace App.Scripts.Scenes.Gameplay.Features.Researches.Services
                 }
 
             }
+        }
+
+        private void SetLevel(int level)
+        {
+            Level = level;
+            LevelChanged?.Invoke(Level);
         }
     }
 }

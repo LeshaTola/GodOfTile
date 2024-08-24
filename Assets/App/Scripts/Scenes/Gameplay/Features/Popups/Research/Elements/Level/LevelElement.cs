@@ -10,7 +10,9 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Research.Elements.Level
     {
         [SerializeField] private TMProLocalizer header;
         [SerializeField] private RectTransform researchesContainer;
+        [SerializeField] private GameObject blocker;
 
+        
         public void Setup(ILocalizationSystem localizationSystem, string headerText)
         {
             header.Initialize(localizationSystem);
@@ -21,6 +23,16 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Research.Elements.Level
         public void AddResearch(ResearchElement researchElement)
         {
             researchElement.transform.SetParent(researchesContainer,false);
+        }
+        
+        public void Open()
+        {
+            blocker.SetActive(false);
+        }
+        
+        public void Close()
+        {
+            blocker.SetActive(true);
         }
 
         public void Cleanup()
