@@ -56,9 +56,8 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
                 if (tile == null)
                 {
                     return;
-                }
-
-                await StateMachine.ChangeState(StatesIds.INFORMATION_STATE);
+                }            
+                tileSelectionProvider.SelectTile(tile);
             }
         }
 
@@ -70,6 +69,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             gameInput.OnI -= OnI;
             gameInput.OnM -= OnM;
             
+            tileSelectionProvider.Cleanup();
             await gameplayPopupRouter.Hide();
         }
 

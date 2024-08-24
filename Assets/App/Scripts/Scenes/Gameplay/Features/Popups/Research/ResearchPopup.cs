@@ -127,26 +127,17 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Research
             SetButtonTimer(viewModule.ResearchService.Timer);
         }
 
-
         private void ConnectToLevelElement(int level, ResearchElement researchElement)
         {
             if (!levelElements.ContainsKey(level))
             {
                 var levelElement = viewModule.LevelsFactory.GetItem();
-                SetupTransform(levelElement);
+                levelElement.transform.SetParent(levelsContainer,false);
                 levelElement.Setup(viewModule.LocalizationSystem, $"level: {level}");
                 levelElements.Add(level, levelElement);
             }
 
             levelElements[level].AddResearch(researchElement);
-        }
-        
-        private void SetupTransform(LevelElement levelElement)
-        {
-            var levelTransform = levelElement.transform;
-            levelTransform.SetParent(levelsContainer);
-            levelTransform.localScale = Vector3.one;
-            levelTransform.localPosition = Vector3.zero;
         }
 
         private void CleanupElements()

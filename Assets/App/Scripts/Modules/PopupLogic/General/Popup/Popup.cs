@@ -25,6 +25,7 @@ namespace App.Scripts.Modules.PopupLogic.General.Popup
         public IPopupController Controller { get; private set; }
         public IPopupAnimator PopupAnimator { get; private set; }
         public Canvas Canvas => canvas;
+        public bool Active { get; private set; }
 
         public void Initialize(IPopupController controller, IPopupAnimator popupAnimator)
         {
@@ -54,11 +55,13 @@ namespace App.Scripts.Modules.PopupLogic.General.Popup
 
         public void Activate()
         {
+            Active = true;
             raycaster.enabled = true;
         }
 
         public void Deactivate()
         {
+            Active = false;
             raycaster.enabled = false;
         }
     }

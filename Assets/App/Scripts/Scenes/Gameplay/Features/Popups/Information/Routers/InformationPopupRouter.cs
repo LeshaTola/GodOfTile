@@ -1,37 +1,67 @@
-﻿using App.Scripts.Modules.Localization;
+﻿using System.Threading;
+using App.Scripts.Modules.Localization;
 using App.Scripts.Modules.PopupLogic.General.Controllers;
+using App.Scripts.Scenes.Gameplay.Features.Commands;
 using App.Scripts.Scenes.Gameplay.Features.Commands.General;
 using App.Scripts.Scenes.Gameplay.Features.Commands.GoToStateCommands;
 using App.Scripts.Scenes.Gameplay.Features.Popups.Information.ViewModels;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.TileSystemUIProvider;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Popups.Information.Routers
 {
     public class InformationPopupRouter : IInformationPopupRouter
     {
         private ITileSystemUIProvidersFactory tileSystemUIProvidersFactory;
-        private ILabeledCommand goToGameplayStateCommand;
         private ILocalizationSystem localizationSystem;
         private IPopupController popupController;
 
         private InformationPopup popup;
+        private CancellationTokenSource cts;
 
         public InformationPopupRouter(
             ITileSystemUIProvidersFactory tileSystemUIProvidersFactory,
-            GoToGamePlayStateCommand goToGameplayStateCommand,
             ILocalizationSystem localizationSystem,
             IPopupController popupController
         )
         {
             this.tileSystemUIProvidersFactory = tileSystemUIProvidersFactory;
-            this.goToGameplayStateCommand = goToGameplayStateCommand;
             this.localizationSystem = localizationSystem;
             this.popupController = popupController;
         }
 
-        public async UniTask HideInformationPopup()
+        public async UniTask ShowPopup(TileConfig tileConfig, CancellationToken cancellationToken)
+        {
+            if (popup == null)
+            {
+                popup = popupController.GetPopup<InformationPopup>();
+                cts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+            }
+
+            UpdatePopup(tileConfig);
+
+            if (!popup.Active)
+            {
+                await popup.Show();
+                await WaitForButtonPress(cts.Token);
+                await HidePopup();
+            }
+        }
+
+        public void UpdatePopup(TileConfig tileConfig)
+        {
+            var viewModule = new InformationViewModule(
+                tileSystemUIProvidersFactory,
+                localizationSystem,
+                new CtsCancelCommand("close",cts),
+                tileConfig
+            );
+            popup.Setup(viewModule);
+        }
+
+        public async UniTask HidePopup()
         {
             if (popup == null)
             {
@@ -42,22 +72,12 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Information.Routers
             popup = null;
         }
 
-        public async UniTask ShowInformationPopup(TileConfig tileConfig)
+        private async UniTask WaitForButtonPress(CancellationToken token)
         {
-            if (popup == null)
+            while (!token.IsCancellationRequested)
             {
-                popup = popupController.GetPopup<InformationPopup>();
+                await UniTask.Yield();
             }
-
-            var viewModule = new InformationViewModule(
-                tileSystemUIProvidersFactory,
-                localizationSystem,
-                goToGameplayStateCommand,
-                tileConfig
-            );
-            popup.Setup(viewModule);
-
-            await popup.Show();
         }
     }
 }

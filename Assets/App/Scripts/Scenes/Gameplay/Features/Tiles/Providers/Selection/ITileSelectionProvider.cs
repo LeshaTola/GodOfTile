@@ -5,5 +5,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Selection
     public interface ITileSelectionProvider
     {
         Tile GetTileAtMousePosition();
+        void SelectTile(Tile tile);
+        void Cleanup();
     }
 }

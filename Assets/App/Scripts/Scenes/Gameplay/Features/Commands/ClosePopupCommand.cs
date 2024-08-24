@@ -1,4 +1,4 @@
-﻿using App.Scripts.Modules.PopupLogic.General.Controllers;
+using App.Scripts.Modules.PopupLogic.General.Controllers;
 using App.Scripts.Scenes.Gameplay.Features.Commands.General;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Commands

@@ -20,10 +20,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Research.Elements.Level
         
         public void AddResearch(ResearchElement researchElement)
         {
-            var researchTransform = researchElement.transform;
-            researchTransform.transform.SetParent(researchesContainer);
-            researchTransform.localScale = Vector3.one;
-            researchTransform.localPosition = Vector3.zero;
+            researchElement.transform.SetParent(researchesContainer,false);
         }
 
         public void Cleanup()
