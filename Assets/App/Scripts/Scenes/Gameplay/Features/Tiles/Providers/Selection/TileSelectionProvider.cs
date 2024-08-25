@@ -49,9 +49,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Selection
 
         private async UniTask ShowTileInformation(Tile tile)
         {
-            effectorVisualProvider.Cleanup();
-            effectorVisualProvider.Setup(tile);
-            
             if (selectedTile == null)
             {
                 cts = new CancellationTokenSource();
@@ -60,9 +57,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Selection
                 tile.Visual.StartGlow();
 
                 await informationPopupRouter.ShowPopup(tile.Config,cts.Token);
-                tile.Visual.StopGlow();
-                selectedTile = null;
-                effectorVisualProvider.Cleanup();
+                Cleanup();
             }
             else
             {
@@ -73,10 +68,20 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Selection
                 informationPopupRouter.UpdatePopup(tile.Config);
 
             }
+            
+            effectorVisualProvider.Cleanup();
+            effectorVisualProvider.Setup(tile);
         }
 
         public void Cleanup()
         {
+            if (selectedTile != null)
+            {
+                selectedTile.Visual.StopGlow();
+                selectedTile = null;
+            }
+
+            effectorVisualProvider.Cleanup();
             cts?.Cancel();
         }
 

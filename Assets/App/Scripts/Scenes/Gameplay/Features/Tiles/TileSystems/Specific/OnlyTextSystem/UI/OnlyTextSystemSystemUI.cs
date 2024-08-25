@@ -1,18 +1,17 @@
 using App.Scripts.Modules.Localization.Localizers;
-using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Research.UI.ViewModels;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.OnlyTextSystem.UI.ViewModels;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.UI;
 using UnityEngine;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Research.UI
+namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.OnlyTextSystem.UI
 {
-    public class ResearchSystemUI : SystemUI
+    public class OnlyTextSystemSystemUI : SystemUI
     {
-        [SerializeField]
-        private TMProLocalizer text;
+        [SerializeField] private TMProLocalizer text;
     
-        private ResearchSystemViewModel viewModule;
+        private OnlyTextSystemSystemViewModel viewModule;
 
-        public void Initialize(ResearchSystemViewModel viewModule)
+        public void Initialize(OnlyTextSystemSystemViewModel viewModule)
         {
             Cleanup();
             this.viewModule = viewModule;
@@ -29,18 +28,13 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Resear
                 return;
             }
 
-            text.Key = viewModule.Data.Description;
+            text.Key = viewModule.Data;
             
             text.Translate();
         }
 
         public override void Cleanup()
         {
-            if (viewModule == null)
-            {
-                return;
-            }
-
             viewModule = null;
         }
     }

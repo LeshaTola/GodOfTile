@@ -10,7 +10,10 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Resear
     public class ResearchSystemData : TileSystemData
     {
         [SerializeField] private ResearchSystemUIProvider uiProvider;
-        
+
+        [field: TextArea]
+        [field: SerializeField] public string Description { get; private set; }
+
         public override ISystemUIProvider SystemUIProvider => uiProvider;
     }
 

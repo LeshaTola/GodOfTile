@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3063849463693763867}
   - component: {fileID: 2157016770861012880}
-  - component: {fileID: 7715313814403773578}
+  - component: {fileID: -1693971080807500600}
   m_Layer: 6
-  m_Name: OnlyTextSystemUI
+  m_Name: OnlyTextUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
---- !u!114 &7715313814403773578
+--- !u!114 &-1693971080807500600
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -68,9 +68,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 252240145846003004}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0327532b286f46759e9aff2009bbfb06, type: 3}
+  m_Script: {fileID: 11500000, guid: 14a44d8aa6a145bb9dd9eeb4b6f69f6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: {fileID: 8586476328388083475}
 --- !u!1 &482980329645155416
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,8 +148,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -172,7 +173,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -280,7 +281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.25882354}
+  m_Color: {r: 0.5529412, g: 0.5529412, b: 0.5529412, a: 0.2509804}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

@@ -1,5 +1,7 @@
 using App.Scripts.Modules.Localization;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.TileSystemUI;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.OnlyTextSystem.UI;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.OnlyTextSystem.UI.ViewModels;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Research.UI.ViewModels;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.UI;
 
@@ -18,9 +20,9 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Resear
         
         public SystemUI GetSystemUI(TileSystem tileSystem)
         {
-            var systemUI = systemUIFactory.GetSystemUI<ResearchSystemUI>();
+            var systemUI = systemUIFactory.GetSystemUI<OnlyTextSystemSystemUI>();
             var systemData = (ResearchSystemData) tileSystem.Data;
-            ResearchSystemViewModel viewModule = new(localizationSystem, systemData);
+            OnlyTextSystemSystemViewModel viewModule = new(localizationSystem, systemData.Description);
 
             systemUI.Initialize(viewModule);
             return systemUI;
