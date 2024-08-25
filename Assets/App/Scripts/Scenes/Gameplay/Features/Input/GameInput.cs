@@ -53,6 +53,26 @@ namespace App.Scripts.Scenes.Gameplay.Features.Input
             return moveVector.normalized;
         }
 
+        public float GetMouseScrollNormalized()
+        {
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                return 0;
+            }
+            
+            if (Mouse.current.scroll.ReadValue().y < 0)
+            {
+                return 1;
+            }
+
+            if (Mouse.current.scroll.ReadValue().y > 0)
+            {
+                return -1;
+            }
+
+            return 0;
+        }
+
         public float GetRotationValueNormalized()
         {
             return input.Game.Rotation.ReadValue<float>();

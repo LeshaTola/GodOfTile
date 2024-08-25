@@ -10,13 +10,14 @@ namespace App.Scripts.Scenes.Gameplay.Features.CameraLogic
 {
     public class CameraController : ICameraController, IUpdatable
     {
-        private readonly CinemachineVirtualCamera virtualCamera;
         private CameraMovementConfig config;
         private Transform cameraTarget;
         private IGameInput gameInput;
         private readonly ITimeProvider timeProvider;
 
         private CinemachineTransposer cinemachineTransposer;
+
+        public bool Active { get; set; } = true;
 
         public CameraController(
             CinemachineVirtualCamera virtualCamera,
@@ -26,7 +27,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.CameraLogic
             ITimeProvider timeProvider
         )
         {
-            this.virtualCamera = virtualCamera;
             this.config = config;
             this.cameraTarget = cameraTarget;
             this.gameInput = gameInput;
@@ -37,19 +37,13 @@ namespace App.Scripts.Scenes.Gameplay.Features.CameraLogic
 
         public void Update()
         {
+            if (!Active)
+            {
+                return;
+            }
             Move(gameInput.GetMoveVectorNormalized());
             Rotate(gameInput.GetRotationValueNormalized());
             Focus();
-        }
-
-        public void Activate()
-        {
-            virtualCamera.gameObject.SetActive(true);
-        }
-
-        public void Deactivate()
-        {
-            virtualCamera.gameObject.SetActive(false);
         }
 
         public void Rotate(float value)
@@ -78,22 +72,14 @@ namespace App.Scripts.Scenes.Gameplay.Features.CameraLogic
             
             targetTransform.position = new Vector3(x, targetTransform.position.y, y);
         }
-
+        
         public void Focus()
         {
             var targetFocus = cinemachineTransposer.m_FollowOffset;
-            if (Mouse.current.scroll.ReadValue().y < 0)
-            {
-                targetFocus.y += config.FocusStep;
-            }
-
-            if (Mouse.current.scroll.ReadValue().y > 0)
-            {
-                targetFocus.y -= config.FocusStep;
-            }
-
+            
+            targetFocus.y += config.FocusStep*gameInput.GetMouseScrollNormalized();
             targetFocus.y = Mathf.Clamp(targetFocus.y, config.Offset.Min, config.Offset.Max);
-
+            
             cinemachineTransposer.m_FollowOffset = Vector3.Lerp(
                 cinemachineTransposer.m_FollowOffset,
                 targetFocus,
