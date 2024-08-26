@@ -58,7 +58,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Research.Elements
 
         public void UpdateButton(string text, Action action = null)
         {
-            researchButton.UpdateText("buy");
             researchButton.UpdateText(text);
             Translate();
             

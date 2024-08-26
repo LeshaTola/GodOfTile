@@ -7,8 +7,12 @@ namespace App.Scripts.Scenes.Gameplay.Features.Researches.Services
 {
     public interface IResearchService
     {
-        event Action<float> TimerChanged;
-        event Action ResearchSystemsCountChanged;
+        bool Active { get; set; }
+
+        event Action<float> OnTimerChanged;
+        event Action OnResearchSystemsCountChanged;
+        event Action<int> OnLevelChanged;
+        event Action<RuntimeResearch>  OnResearchCompleted;
         
         IReadOnlyCollection<ResearchSystem> ResearchSystems { get; }
         IReadOnlyCollection<RuntimeResearch> Researches { get; }
@@ -24,6 +28,5 @@ namespace App.Scripts.Scenes.Gameplay.Features.Researches.Services
         void AddResearchSystem(ResearchSystem researchSystem);
         void RemoveResearchSystem(ResearchSystem researchSystem);
 
-        event Action<int> LevelChanged;
     }
 }

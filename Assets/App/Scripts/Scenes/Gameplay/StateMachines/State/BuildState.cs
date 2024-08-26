@@ -1,4 +1,5 @@
 ﻿using App.Scripts.Modules.StateMachine.Services.UpdateService;
+using App.Scripts.Scenes.Gameplay.Features.CameraLogic;
 using App.Scripts.Scenes.Gameplay.Features.Input;
 using App.Scripts.Scenes.Gameplay.Features.Map.Visualizers;
 using App.Scripts.Scenes.Gameplay.Features.Popups.Shop.Routers;
@@ -10,11 +11,12 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
 {
     public class BuildState : Modules.StateMachine.States.General.State
     {
-        private IUpdateService updateService;
         private IGameInput gameInput;
-        private ITilesCreationService creationService;
         private IVisualizer gridVisualizer;
+        private IUpdateService updateService;
         private IShopPopupRouter shopPopupRouter;
+        private ICameraController cameraController;
+        private ITilesCreationService creationService;
 
         public BuildState(
             string id,
@@ -22,7 +24,8 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             IGameInput gameInput,
             ITilesCreationService creationService,
             IVisualizer gridVisualizer,
-            IShopPopupRouter shopPopupRouter
+            IShopPopupRouter shopPopupRouter,
+            ICameraController cameraController
         )
             : base(id)
         {
@@ -31,18 +34,20 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             this.creationService = creationService;
             this.gridVisualizer = gridVisualizer;
             this.shopPopupRouter = shopPopupRouter;
+            this.cameraController = cameraController;
         }
 
         public override async UniTask Enter()
         {
             await base.Enter();
+            cameraController.Active = true;
 
             await shopPopupRouter.ShowShopPopup();
             
             gameInput.OnEscape += OnBuild;
             gameInput.OnBuild += OnBuild;
             gameInput.OnRotate += OnRotate;
-
+            
             creationService.StartPlacingTile();
             gridVisualizer.Show();
         }
@@ -70,6 +75,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             gameInput.OnBuild -= OnBuild;
             gameInput.OnRotate -= OnRotate;
             
+            cameraController.Active = false;
             creationService.StopPlacingTile();
             gridVisualizer.Hide();
 

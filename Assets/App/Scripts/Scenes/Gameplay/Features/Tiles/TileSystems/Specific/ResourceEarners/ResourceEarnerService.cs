@@ -14,6 +14,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Resour
         private List<ResourceEarner> resourceEarners = new();
         private float timer = 1f;
 
+        public bool Active { get; set; } = true;
+
         public ResourceEarnerService(IInventorySystem inventorySystem, ITimeProvider timeProvider)
         {
             this.inventorySystem = inventorySystem;
@@ -32,6 +34,11 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Resour
 
         public void Update()
         {
+            if (!Active)
+            {
+                return;
+            }
+            
             timer -= timeProvider.DeltaTime;
             if (timer <= 0)
             {

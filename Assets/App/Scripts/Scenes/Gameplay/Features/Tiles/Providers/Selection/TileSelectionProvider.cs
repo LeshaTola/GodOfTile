@@ -49,6 +49,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Selection
 
         private async UniTask ShowTileInformation(Tile tile)
         {
+            effectorVisualProvider.Cleanup();
+
             if (selectedTile == null)
             {
                 cts = new CancellationTokenSource();
@@ -69,7 +71,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Selection
 
             }
             
-            effectorVisualProvider.Cleanup();
             effectorVisualProvider.Setup(tile);
         }
 

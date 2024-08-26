@@ -1,4 +1,5 @@
 ﻿using App.Scripts.Modules.StateMachine.Services.UpdateService;
+using App.Scripts.Scenes.Gameplay.Features.CameraLogic;
 using App.Scripts.Scenes.Gameplay.Features.Commands.GoToStateCommands;
 using App.Scripts.Scenes.Gameplay.Features.Commands.Provider;
 using App.Scripts.Scenes.Gameplay.Features.Input;
@@ -16,6 +17,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
         private ICommandsProvider commandsProvider;
         private ITileSelectionProvider tileSelectionProvider;
         private IGameplayPopupRouter gameplayPopupRouter;
+        private readonly ICameraController cameraController;
 
         public GameplayState(
             string id,
@@ -23,7 +25,8 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             IGameInput gameInput,
             ICommandsProvider commandsProvider,
             ITileSelectionProvider tileSelectionProvider,
-            IGameplayPopupRouter gameplayPopupRouter
+            IGameplayPopupRouter gameplayPopupRouter,
+            ICameraController cameraController
         )
             : base(id)
         {
@@ -32,11 +35,13 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             this.commandsProvider = commandsProvider;
             this.tileSelectionProvider = tileSelectionProvider;
             this.gameplayPopupRouter = gameplayPopupRouter;
+            this.cameraController = cameraController;
         }
 
         public override async UniTask Enter()
         {
             await base.Enter();
+            cameraController.Active = true;
             await gameplayPopupRouter.Show();
             
             gameInput.OnBuild += OnBuild;
@@ -69,6 +74,8 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             gameInput.OnI -= OnI;
             gameInput.OnM -= OnM;
             
+            cameraController.Active = false;
+
             tileSelectionProvider.Cleanup();
             await gameplayPopupRouter.Hide();
         }

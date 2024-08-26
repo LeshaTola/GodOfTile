@@ -1,4 +1,5 @@
 using App.Scripts.Modules.CameraSwitchers;
+using App.Scripts.Modules.StateMachine.Services.UpdateService;
 using App.Scripts.Scenes.Gameplay.Features.Commands.GoToStateCommands;
 using App.Scripts.Scenes.Gameplay.Features.Commands.Provider;
 using App.Scripts.Scenes.Gameplay.Features.Input;
@@ -12,6 +13,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
     {
         private IGameInput gameInput;
         private ICommandsProvider commandsProvider;
+        private readonly IUpdateService updateService;
         private IChunkVisualizer chunkVisualizer;
         private ICameraSwitcher cameraSwitcher;
         private string cameraId;
@@ -20,11 +22,13 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
 
         public BuyAreaState(string id, IChunkVisualizer chunkVisualizer, IGameInput gameInput,
             ICommandsProvider commandsProvider,
+            IUpdateService updateService,
             ICameraSwitcher cameraSwitcher, string cameraId) : base(id)
         {
             this.chunkVisualizer = chunkVisualizer;
             this.gameInput = gameInput;
             this.commandsProvider = commandsProvider;
+            this.updateService = updateService;
             this.cameraSwitcher = cameraSwitcher;
             this.cameraId = cameraId;
         }
@@ -40,6 +44,13 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             cameraSwitcher.SwitchCamera(cameraId);
 
             chunkVisualizer.Show();
+        }
+
+        public override async UniTask Update()
+        {
+            await base.Update();
+            
+            updateService.Update();
         }
 
         public override async UniTask Exit()

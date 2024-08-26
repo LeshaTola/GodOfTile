@@ -12,14 +12,15 @@ namespace App.Scripts.Scenes.Gameplay.Features.Researches.Services
 {
     public class ResearchService : IUpdatable, IResearchService
     {
-        public event Action ResearchSystemsCountChanged;
-        public event Action<float> TimerChanged;
-        public event Action<int> LevelChanged;
+        public event Action<RuntimeResearch> OnResearchCompleted;
+        public event Action OnResearchSystemsCountChanged;
+        public event Action<float> OnTimerChanged;
+        public event Action<int> OnLevelChanged;
 
         private ResearchServiceConfig config;
         private ITimeProvider timeProvider;
         private IResearchCommandsFactory researchCommandsFactory;
-
+        
         private List<ResearchSystem> researchSystems = new();
         private List<RuntimeResearch> researches = new();
 
@@ -28,6 +29,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.Researches.Services
         public RuntimeResearch ActiveResearch { get; private set; }
         public IReadOnlyCollection<ResearchSystem> ResearchSystems => researchSystems;
         public IReadOnlyCollection<RuntimeResearch> Researches => researches;
+
+        public bool Active { get; set; } = true;
 
         public ResearchService(ResearchServiceConfig config, ITimeProvider timeProvider,
             IResearchCommandsFactory researchCommandsFactory)
@@ -52,7 +55,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Researches.Services
             Timer = runtimeResearch.ResearchConfig.ResearchTime;
             ActiveResearch = runtimeResearch;
         }
-        
+
         public void LevelUp()
         {
             SetLevel(Level + 1);
@@ -61,18 +64,18 @@ namespace App.Scripts.Scenes.Gameplay.Features.Researches.Services
         public void AddResearchSystem(ResearchSystem researchSystem)
         {
             researchSystems.Add(researchSystem);
-            ResearchSystemsCountChanged?.Invoke();
+            OnResearchSystemsCountChanged?.Invoke();
         }
 
         public void RemoveResearchSystem(ResearchSystem researchSystem)
         {
             researchSystems.Remove(researchSystem);
-            ResearchSystemsCountChanged?.Invoke();
+            OnResearchSystemsCountChanged?.Invoke();
         }
 
         public void Update()
         {
-            if (ActiveResearch == null)
+            if (!Active || ActiveResearch == null )
             {
                 return;
             }
@@ -83,10 +86,13 @@ namespace App.Scripts.Scenes.Gameplay.Features.Researches.Services
             {
                 researchCommandsFactory.GetResearch(ActiveResearch.ResearchConfig.Command).Execute();
                 ActiveResearch.IsCompleate = true;
+                var researchBuffer = ActiveResearch;
                 ActiveResearch = null;
                 Timer = 0;
+                
+                OnResearchCompleted?.Invoke(researchBuffer);
             }
-            TimerChanged?.Invoke(Timer);
+            OnTimerChanged?.Invoke(Timer);
         }
 
         private void Initialize()
@@ -113,7 +119,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Researches.Services
         private void SetLevel(int level)
         {
             Level = level;
-            LevelChanged?.Invoke(Level);
+            OnLevelChanged?.Invoke(Level);
         }
     }
 }
