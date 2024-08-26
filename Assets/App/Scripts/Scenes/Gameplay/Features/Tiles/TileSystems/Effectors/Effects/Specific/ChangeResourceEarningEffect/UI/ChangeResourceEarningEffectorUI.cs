@@ -7,7 +7,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effec
 {
     public class ChangeResourceEarningEffectorUI:SystemUI
     {
-        [SerializeField] private TMProLocalizer description;
+        [SerializeField] private TMPLocalizer description;
         
         private ChangeResourceEarningEffectorViewModule viewModule;
 

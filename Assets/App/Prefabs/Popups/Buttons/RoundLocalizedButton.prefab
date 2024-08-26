@@ -161,9 +161,9 @@ GameObject:
   - component: {fileID: 964681099719169811}
   - component: {fileID: 5354714114286880261}
   - component: {fileID: 8529374775434993230}
-  - component: {fileID: 6894474988282549220}
+  - component: {fileID: 4513770423000509572}
   m_Layer: 5
-  m_Name: RoundPopupButton
+  m_Name: RoundLocalizedButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -273,7 +273,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &6894474988282549220
+--- !u!114 &4513770423000509572
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -282,8 +282,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 7821554744714066051}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfb3886dcf5353f4fa1460a4bac856c5, type: 3}
+  m_Script: {fileID: 11500000, guid: 08150d14509842c2aebc934532864ecb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonText: {fileID: 3664796969216337820}
+  text: {fileID: 3664796969216337820}
   button: {fileID: 8529374775434993230}

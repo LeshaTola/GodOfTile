@@ -5,7 +5,7 @@ using Zenject;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Time.UI
 {
-    public class TimeControllerUI : MonoBehaviour, IInitializable
+    public class TimeControllerView : MonoBehaviour
     {
         public event Action OnPauseButtonClicked;
         public event Action OnSpeed1ButtonClicked;
@@ -27,7 +27,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Time.UI
             Speed1Button.onClick.AddListener(()=> OnSpeed1ButtonClicked?.Invoke());
             Speed2Button.onClick.AddListener(()=> OnSpeed2ButtonClicked?.Invoke());
             Speed3Button.onClick.AddListener(()=> OnSpeed3ButtonClicked?.Invoke());
-            
         }
 
         public void Cleanup()
@@ -42,6 +41,16 @@ namespace App.Scripts.Scenes.Gameplay.Features.Time.UI
         {
             var rectTransform = button.transform as RectTransform;
             selectorImage.rectTransform.anchoredPosition = rectTransform.anchoredPosition;
+        }
+
+        public void Show()
+        {
+            gameObject.SetActive(transform);
+        }
+
+        public void Hide()
+        {
+            gameObject.SetActive(transform);
         }
     }
 }

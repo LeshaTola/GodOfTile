@@ -9,13 +9,13 @@ namespace App.Scripts.Features.UI.PairedTexts
     public class PairedText : MonoBehaviour
     {
         [SerializeField]
-        private TMProLocalizer header;
+        private TMPLocalizer header;
 
         [SerializeField]
-        private TMProLocalizer value;
+        private TMPLocalizer value;
 
-        public TMProLocalizer Header => header;
-        public TMProLocalizer Value => value;
+        public TMPLocalizer Header => header;
+        public TMPLocalizer Value => value;
 
         public void Initialize(ILocalizationSystem localizationSystem)
         {

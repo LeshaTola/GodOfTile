@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace App.Scripts.Modules.Localization.Localizers
 {
-    public class TMProLocalizer : MonoBehaviour, ITextLocalizer
+    public class TMPLocalizer : MonoBehaviour, ITextLocalizer
     {
         [SerializeField]
         private TextMeshProUGUI text;

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using App.Scripts.Modules.CameraSwitchers;
+﻿using App.Scripts.Modules.CameraSwitchers;
 using App.Scripts.Modules.ObjectPool.KeyPools;
 using App.Scripts.Modules.ObjectPool.KeyPools.Configs;
 using App.Scripts.Modules.ObjectPool.MonoObjectPools;
@@ -12,20 +11,15 @@ using App.Scripts.Scenes.Gameplay.Features.CameraLogic;
 using App.Scripts.Scenes.Gameplay.Features.CameraLogic.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Input;
 using App.Scripts.Scenes.Gameplay.Features.Map.Configs;
-using App.Scripts.Scenes.Gameplay.Features.Map.Factories;
 using App.Scripts.Scenes.Gameplay.Features.Map.Factories.Chunk;
 using App.Scripts.Scenes.Gameplay.Features.Map.Items;
-using App.Scripts.Scenes.Gameplay.Features.Map.Providers;
 using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Chunk;
 using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Chunk.Cost;
 using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Grid;
 using App.Scripts.Scenes.Gameplay.Features.Map.Visualizers;
 using App.Scripts.Scenes.Gameplay.Features.Map.WaterMaterialController;
 using App.Scripts.Scenes.Gameplay.Features.Map.WaterMaterialController.Configs;
-using App.Scripts.Scenes.Gameplay.Features.Researches.Configs;
-using App.Scripts.Scenes.Gameplay.Features.Researches.Services;
 using Cinemachine;
-using Sirenix.Serialization;
 using UnityEngine;
 using Zenject;
 
@@ -35,6 +29,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
     {
         [Header("Grid")]
         [SerializeField] private GridConfig gridConfig;
+
         [SerializeField] private ChunkCostConfig chunkCostConfig;
 
         [SerializeField] private WorldGrid grid;
@@ -43,6 +38,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
 
         [Header("Camera")]
         [SerializeField] private Camera mainCamera;
+
         [SerializeField] private CamerasDatabase camerasDatabase;
 
         [SerializeField] private CinemachineVirtualCamera virtualCamera;

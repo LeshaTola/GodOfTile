@@ -12,17 +12,17 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Information
 {
     public class InformationPopup : Popup
     {
-        [SerializeField] private TMProLocalizer header;
+        [SerializeField] private TMPLocalizer header;
         [SerializeField] private Image tileImage;
-        [SerializeField] private TMProLocalizer tileName;
+        [SerializeField] private TMPLocalizer tileName;
 
         [SerializeField]
         [FoldoutGroup("Description")]
-        private TMProLocalizer descriptionHeader;
+        private TMPLocalizer descriptionHeader;
 
         [SerializeField]
         [FoldoutGroup("Description")]
-        private TMProLocalizer description;
+        private TMPLocalizer description;
 
         [SerializeField] private Button closeButton;
         [SerializeField] private RectTransform tileSystemsContainer;

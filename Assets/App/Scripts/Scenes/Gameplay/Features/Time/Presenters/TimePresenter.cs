@@ -8,73 +8,82 @@ using UnityEngine.UI;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Time.Controllers
 {
-    public class TimeController : IInitializable, ICleanupable
+    public class TimePresenter : IInitializable, ICleanupable
     {
         private IGameInput gameInput;
         private ITimeService timeService;
-        private TimeControllerUI timeControllerUI;
+        private TimeControllerView timeControllerView;
         private TimeSpeedConfig config;
 
-        public TimeController(IGameInput gameInput, ITimeService timeService, TimeControllerUI timeControllerUI,
+        public TimePresenter(IGameInput gameInput,
+            ITimeService timeService, 
+            TimeControllerView timeControllerView,
             TimeSpeedConfig config)
         {
             this.gameInput = gameInput;
             this.timeService = timeService;
-            this.timeControllerUI = timeControllerUI;
+            this.timeControllerView = timeControllerView;
             this.config = config;
         }
 
         public void Initialize()
         {
+            timeControllerView.Initialize();
+            
             gameInput.OnPause += SetPause;
             gameInput.OnSpeed1 += SetSpeed1;
             gameInput.OnSpeed2 += SetSpeed2;
             gameInput.OnSpeed3 += SetSpeed3;
 
-            timeControllerUI.OnPauseButtonClicked += SetPause;
-            timeControllerUI.OnSpeed1ButtonClicked += SetSpeed1;
-            timeControllerUI.OnSpeed2ButtonClicked += SetSpeed2;
-            timeControllerUI.OnSpeed3ButtonClicked += SetSpeed3;
+            timeControllerView.OnPauseButtonClicked += SetPause;
+            timeControllerView.OnSpeed1ButtonClicked += SetSpeed1;
+            timeControllerView.OnSpeed2ButtonClicked += SetSpeed2;
+            timeControllerView.OnSpeed3ButtonClicked += SetSpeed3;
             
             SetSpeed1();
+            timeControllerView.Show();
         }
 
         public void Cleanup()
         {
+            timeControllerView.Cleanup();
+            
             gameInput.OnPause -= SetPause;
             gameInput.OnSpeed1 -= SetSpeed1;
             gameInput.OnSpeed2 -= SetSpeed2;
             gameInput.OnSpeed3 -= SetSpeed3;
 
-            timeControllerUI.OnPauseButtonClicked -= SetPause;
-            timeControllerUI.OnSpeed1ButtonClicked -= SetSpeed1;
-            timeControllerUI.OnSpeed2ButtonClicked -= SetSpeed2;
-            timeControllerUI.OnSpeed3ButtonClicked -= SetSpeed3;
+            timeControllerView.OnPauseButtonClicked -= SetPause;
+            timeControllerView.OnSpeed1ButtonClicked -= SetSpeed1;
+            timeControllerView.OnSpeed2ButtonClicked -= SetSpeed2;
+            timeControllerView.OnSpeed3ButtonClicked -= SetSpeed3;
+            
+            timeControllerView.Hide();
         }
 
         private void SetPause()
         {
             timeService.SetPause();
-            timeControllerUI.SetSelector(timeControllerUI.PauseButton);
+            timeControllerView.SetSelector(timeControllerView.PauseButton);
         }
 
         private void SetSpeed1()
         {
             timeService.SetSpeed(config.Speed1);
-            timeControllerUI.SetSelector(timeControllerUI.Speed1Button);
+            timeControllerView.SetSelector(timeControllerView.Speed1Button);
 
         }
 
         private void SetSpeed2()
         {
             timeService.SetSpeed(config.Speed2);
-            timeControllerUI.SetSelector(timeControllerUI.Speed2Button);
+            timeControllerView.SetSelector(timeControllerView.Speed2Button);
         }
 
         private void SetSpeed3()
         {
             timeService.SetSpeed(config.Speed3);
-            timeControllerUI.SetSelector(timeControllerUI.Speed3Button);
+            timeControllerView.SetSelector(timeControllerView.Speed3Button);
         }
     }
 }

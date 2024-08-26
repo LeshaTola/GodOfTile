@@ -12,7 +12,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Shop
     public class ShopPopup : Popup
     {
         [SerializeField]
-        private TMProLocalizer header;
+        private TMPLocalizer header;
 
         [SerializeField]
         private RectTransform container;

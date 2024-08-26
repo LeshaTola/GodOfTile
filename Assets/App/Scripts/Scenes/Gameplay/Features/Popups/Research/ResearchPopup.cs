@@ -14,7 +14,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Research
 {
     public class ResearchPopup : Popup
     {
-        [SerializeField] private TMProLocalizer header;
+        [SerializeField] private TMPLocalizer header;
         [SerializeField] private RectTransform levelsContainer;
         [SerializeField] private MoreInfoTab moreInfoTab;
 

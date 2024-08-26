@@ -8,7 +8,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Research.Elements.Level
 {
     public class LevelElement:MonoBehaviour
     {
-        [SerializeField] private TMProLocalizer header;
+        [SerializeField] private TMPLocalizer header;
         [SerializeField] private RectTransform researchesContainer;
         [SerializeField] private GameObject blocker;
 

@@ -4,6 +4,8 @@ using App.Scripts.Scenes.Gameplay.Features.Commands.GoToStateCommands;
 using App.Scripts.Scenes.Gameplay.Features.Commands.Provider;
 using App.Scripts.Scenes.Gameplay.Features.Input;
 using App.Scripts.Scenes.Gameplay.Features.Popups.GameplayPopup.Routers;
+using App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay;
+using App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.Presenters;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Selection;
 using App.Scripts.Scenes.Gameplay.StateMachines.Ids;
 using Cysharp.Threading.Tasks;
@@ -16,7 +18,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
         private IGameInput gameInput;
         private ICommandsProvider commandsProvider;
         private ITileSelectionProvider tileSelectionProvider;
-        private IGameplayPopupRouter gameplayPopupRouter;
+        private readonly GameplayScreenPresenter gameplayScreenPresenter;
         private readonly ICameraController cameraController;
 
         public GameplayState(
@@ -25,7 +27,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             IGameInput gameInput,
             ICommandsProvider commandsProvider,
             ITileSelectionProvider tileSelectionProvider,
-            IGameplayPopupRouter gameplayPopupRouter,
+            GameplayScreenPresenter gameplayScreenPresenter,
             ICameraController cameraController
         )
             : base(id)
@@ -34,7 +36,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             this.gameInput = gameInput;
             this.commandsProvider = commandsProvider;
             this.tileSelectionProvider = tileSelectionProvider;
-            this.gameplayPopupRouter = gameplayPopupRouter;
+            this.gameplayScreenPresenter = gameplayScreenPresenter;
             this.cameraController = cameraController;
         }
 
@@ -42,7 +44,8 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
         {
             await base.Enter();
             cameraController.Active = true;
-            await gameplayPopupRouter.Show();
+
+            gameplayScreenPresenter.Initialize();
             
             gameInput.OnBuild += OnBuild;
             gameInput.OnI += OnI;
@@ -70,6 +73,8 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
         {
             await base.Exit();
             
+            gameplayScreenPresenter.Cleanup();
+
             gameInput.OnBuild -= OnBuild;
             gameInput.OnI -= OnI;
             gameInput.OnM -= OnM;
@@ -77,7 +82,6 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             cameraController.Active = false;
 
             tileSelectionProvider.Cleanup();
-            await gameplayPopupRouter.Hide();
         }
 
         private void OnBuild()

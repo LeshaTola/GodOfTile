@@ -10,7 +10,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget
 {
     public class ItemInformationWidget : MonoBehaviour
     {
-        [SerializeField] private TMProLocalizer header;
+        [SerializeField] private TMPLocalizer header;
 
         [SerializeField]
         private RectTransform container;

@@ -9,8 +9,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Resour
     public class ResourceInfoUI : MonoBehaviour
     {
         [SerializeField] private Image image;
-        [SerializeField] private TMProLocalizer nameText;
-        [SerializeField] private TMProLocalizer infoText;
+        [SerializeField] private TMPLocalizer nameText;
+        [SerializeField] private TMPLocalizer infoText;
 
         public void Initialize(ILocalizationSystem localizationSystem)
         {

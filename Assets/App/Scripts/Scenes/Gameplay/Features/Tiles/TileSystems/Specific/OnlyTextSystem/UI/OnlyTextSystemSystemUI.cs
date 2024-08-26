@@ -7,7 +7,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.OnlyTe
 {
     public class OnlyTextSystemSystemUI : SystemUI
     {
-        [SerializeField] private TMProLocalizer text;
+        [SerializeField] private TMPLocalizer text;
     
         private OnlyTextSystemSystemViewModel viewModule;
 

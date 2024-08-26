@@ -15,19 +15,19 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Research.Elements
 {
     public class MoreInfoTab : MonoBehaviour
     {
-        [SerializeField] private TMProLocalizer header;
+        [SerializeField] private TMPLocalizer header;
         [SerializeField] private Image image;
-        [SerializeField] private TMProLocalizer nameText;
+        [SerializeField] private TMPLocalizer nameText;
         [SerializeField] private ItemInformationWidget informationWidget;
         [SerializeField] private PopupButton researchButton;
 
         [SerializeField]
         [FoldoutGroup("Description")]
-        private TMProLocalizer descriptionHeader;
+        private TMPLocalizer descriptionHeader;
 
         [SerializeField]
         [FoldoutGroup("Description")]
-        private TMProLocalizer description;
+        private TMPLocalizer description;
 
         private Action researchAction;
 

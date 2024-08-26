@@ -8,7 +8,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Resear
     public class ResearchSystemUI : SystemUI
     {
         [SerializeField]
-        private TMProLocalizer text;
+        private TMPLocalizer text;
     
         private ResearchSystemViewModel viewModule;
 

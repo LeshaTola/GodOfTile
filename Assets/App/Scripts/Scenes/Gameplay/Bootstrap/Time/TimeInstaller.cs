@@ -11,13 +11,9 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap.Time
 {
     public class TimeInstaller : MonoInstaller
     {
-        [SerializeField] private TimeControllerUI timeControllerUI;
-        [SerializeField] private TimeSpeedConfig timeSpeedConfig;
-
         public override void InstallBindings()
         {
-            Container.BindInterfacesAndSelfTo<TimeController>().AsSingle().WithArguments(timeSpeedConfig).NonLazy();
-            Container.BindInterfacesAndSelfTo<TimeControllerUI>().FromInstance(timeControllerUI).AsSingle();
+
             Container.Bind<ITimeService>().To<TimeService>().AsSingle();
 
             BindTimeProviders();
