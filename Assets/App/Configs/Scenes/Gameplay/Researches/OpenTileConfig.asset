@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab27c13d5f4348409edc2f9b281e4bfe, type: 3}
+  m_Name: OpenTileConfig
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: c6661d035ed419e48b3345d5cd83810b, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: <Command>k__BackingField
+      Entry: 7
+      Data: 0|App.Scripts.Scenes.Gameplay.Features.Researches.Commands.Specific.OpenTileCommand.OpenTileCommand,
+        Assembly-CSharp
+    - Name: data
+      Entry: 7
+      Data: 1|App.Scripts.Scenes.Gameplay.Features.Researches.Commands.Specific.OpenTileCommand.OpenTileCommandData,
+        Assembly-CSharp
+    - Name: <TileConfig>k__BackingField
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  <Sprite>k__BackingField: {fileID: 21300000, guid: 793db032f1b47cb4598b5d46c020e47b,
+    type: 3}
+  <Name>k__BackingField: OpenTile
+  <Description>k__BackingField: Open Tile
+  <Level>k__BackingField: 1
+  <ResearchTime>k__BackingField: 20
+  <Cost>k__BackingField:
+  - Resource: {fileID: 11400000, guid: 12ea320e25139914cb79e34fc96f3d46, type: 2}
+    Count: 12

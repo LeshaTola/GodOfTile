@@ -13,10 +13,14 @@ namespace App.Scripts.Scenes.Gameplay.Features.Input
         event Action OnSpeed1;
         event Action OnSpeed2;
         event Action OnSpeed3;
+        
+        event Action OnI;
+        event Action OnM;
 
         Vector2Int GetGridMousePosition();
         float GetRotationValueNormalized();
         Vector2 GetMoveVectorNormalized();
+        float GetMouseScrollNormalized();
         bool IsMouseClicked();
     }
 }

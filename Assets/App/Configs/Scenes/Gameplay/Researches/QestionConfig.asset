@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab27c13d5f4348409edc2f9b281e4bfe, type: 3}
+  m_Name: QestionConfig
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: <Command>k__BackingField
+      Entry: 7
+      Data: 0|App.Scripts.Scenes.Gameplay.Features.Researches.Commands.Specific.OpenTileCommand.OpenTileCommand,
+        Assembly-CSharp
+    - Name: data
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  <Sprite>k__BackingField: {fileID: 21300000, guid: 29dbbf89988c9ed44af0e58e6efba11c,
+    type: 3}
+  <Name>k__BackingField: ???
+  <Description>k__BackingField: ???
+  <Level>k__BackingField: 3
+  <ResearchTime>k__BackingField: 20
+  <Cost>k__BackingField:
+  - Resource: {fileID: 11400000, guid: 7838b25836ffe8e45994e6ed94b3b2c7, type: 2}
+    Count: 123

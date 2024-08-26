@@ -1,4 +1,5 @@
-﻿using App.Scripts.Modules.StateMachine.Services.CleanupService;
+﻿using System;
+using App.Scripts.Modules.StateMachine.Services.CleanupService;
 using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Grid;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Providers;
@@ -8,13 +9,17 @@ using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.Update;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.Tiles;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.General;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Services;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Views;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCreation
 {
     public class TilesCreationService : ITilesCreationService, ICleanupable
     {
+        public event Action<Vector2Int, Tile>  OnTilePlaced;
+        
         private IGridProvider gridProvider;
         private ITilesFactory tileFactory;
         private IActiveTileProvider activeTileProvider;
@@ -22,6 +27,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
         private ITileCreationEffectsProvider effectsService;
         private ITilesUpdateService updateService;
         private ISystemsService systemsService;
+        private IEffectorVisualProvider effectorVisualProvider;
         private TilesCreationConfig config;
 
         private Tile activeTile;
@@ -34,6 +40,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
             ITileCreationEffectsProvider effectsService,
             ITilesUpdateService updateService,
             ISystemsService systemsService,
+            IEffectorVisualProvider effectorVisualProvider,
             TilesCreationConfig config
         )
         {
@@ -44,6 +51,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
             this.effectsService = effectsService;
             this.updateService = updateService;
             this.systemsService = systemsService;
+            this.effectorVisualProvider = effectorVisualProvider;
             this.config = config;
 
             activeTileProvider.OnActiveTileChanged += OnActiveTileChanged;
@@ -65,7 +73,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
             {
                 return;
             }
-
+            
+            effectorVisualProvider.Cleanup();
             Object.Destroy(activeTile.gameObject);
             activeTile = null;
         }
@@ -94,6 +103,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
             PlayCreationVFX(tileBuffer).Forget();
             placementCostService.ProcessPlacementCost(tileBuffer.Config);
             systemsService.StartSystems(tileBuffer.Config);
+            OnTilePlaced?.Invoke(tileBuffer.Position, tileBuffer);
         }
 
         public void MoveActiveTile(Vector2Int gridPosition)
@@ -111,6 +121,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
             activeTile.Position = gridPosition;
 
             ChangeState();
+            effectorVisualProvider.Cleanup();
+            effectorVisualProvider.Setup(activeTile);
         }
 
         public async UniTask RotateActiveTile()

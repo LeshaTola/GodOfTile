@@ -5,6 +5,7 @@ using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Providers.Effects;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.TileSystem;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Collection;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Services;
 using UnityEngine;
 
@@ -18,6 +19,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.Update
         private TilesCreationConfig config;
         private ISystemsService systemsService;
         private ISystemsFactory systemsFactory;
+        private readonly ITileCollectionProvider tileCollectionProvider;
 
         public TilesUpdateService(
             IGridProvider gridProvider,
@@ -25,7 +27,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.Update
             ITileCreationEffectsProvider effectsService,
             TilesCreationConfig config,
             ISystemsService systemsService,
-            ISystemsFactory systemsFactory
+            ISystemsFactory systemsFactory,
+            ITileCollectionProvider tileCollectionProvider
         )
         {
             this.gridProvider = gridProvider;
@@ -34,6 +37,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.Update
             this.config = config;
             this.systemsService = systemsService;
             this.systemsFactory = systemsFactory;
+            this.tileCollectionProvider = tileCollectionProvider;
         }
 
         public void UpdateConnectedTiles(Vector2Int tilePosition)
@@ -71,11 +75,12 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.Update
 
             systemsService.StopSystems(tile.Config);
 
-            var newSystems = systemsFactory.GetSystems(newTileConfig.Systems);
+            var newSystems = systemsFactory.GetSystems(newTileConfig.Systems, tile);
             newTileConfig.ActiveSystems = newSystems;
             tile.Initialize(newTileConfig);
 
             systemsService.StartSystems(tile.Config);
+            tileCollectionProvider.AddIfNotContains(newTileConfig);
         }
 
         private TileConfig UpdateTile(Vector2Int tilePosition)

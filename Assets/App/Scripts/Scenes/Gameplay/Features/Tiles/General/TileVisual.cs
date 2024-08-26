@@ -8,15 +8,12 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.General
 {
     public class TileVisual : MonoBehaviour
     {
-        [SerializeField]
-        private TileVisualConfig config;
-
-        [SerializeField]
-        private Transform buildingPosition;
+        [SerializeField] private TileVisualConfig config;
+        [SerializeField] private GameObject glow;
+        [SerializeField] private Transform buildingPosition;
 
         [Header("Renderer")]
-        [SerializeField]
-        private MeshRenderer meshRenderer;
+        [SerializeField] private MeshRenderer meshRenderer;
 
         private ITileAnimator animator;
 
@@ -40,6 +37,16 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.General
             {
                 Instantiate(building, buildingPosition);
             }
+        }
+
+        public void StartGlow()
+        {
+            glow.SetActive(true);
+        }
+        
+        public void StopGlow()
+        {
+            glow.SetActive(false);
         }
 
         public async UniTask PlayRotation()

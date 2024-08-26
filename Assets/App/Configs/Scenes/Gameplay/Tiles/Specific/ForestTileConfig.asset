@@ -40,7 +40,7 @@ MonoBehaviour:
   building: {fileID: 1244113167826116937, guid: 035b6050f1b6c434fabc1a191f43e8a7,
     type: 3}
   type: grass
-  tileImage: {fileID: 21300000, guid: f9acaa0006412d2478a6a83e476e7531, type: 3}
+  tileImage: {fileID: 21300000, guid: 4521a563718fa8648966f184dc4b3786, type: 3}
   tileName: Forest
   description: "Give only food and wood. \u0427\u0435\u043C \u0434\u0430\u043B\u044C\u0448\u0435
     \u0432 \u043B\u0435\u0441 \u0442\u0435\u043C \u0431\u043E\u043B\u044C\u0448\u0435

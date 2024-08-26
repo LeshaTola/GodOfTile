@@ -1,7 +1,7 @@
 ﻿using App.Scripts.Modules.StateMachine.Services.UpdateService;
 using App.Scripts.Scenes.Gameplay.Features.Input;
 using App.Scripts.Scenes.Gameplay.Features.Map.Visualizers;
-using App.Scripts.Scenes.Gameplay.Features.Popups.ShopPopup.Routers;
+using App.Scripts.Scenes.Gameplay.Features.Popups.Shop.Routers;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCreation;
 using App.Scripts.Scenes.Gameplay.StateMachines.Ids;
 using Cysharp.Threading.Tasks;
@@ -37,13 +37,14 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
         {
             await base.Enter();
 
+            await shopPopupRouter.ShowShopPopup();
+            
             gameInput.OnEscape += OnBuild;
             gameInput.OnBuild += OnBuild;
             gameInput.OnRotate += OnRotate;
 
             creationService.StartPlacingTile();
             gridVisualizer.Show();
-            await shopPopupRouter.ShowShopPopup();
         }
 
         public override async UniTask Update()
@@ -65,13 +66,14 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
         {
             await base.Exit();
 
-            creationService.StopPlacingTile();
-            gridVisualizer.Hide();
-            await shopPopupRouter.HideShopPopup();
-
             gameInput.OnEscape -= OnBuild;
             gameInput.OnBuild -= OnBuild;
             gameInput.OnRotate -= OnRotate;
+            
+            creationService.StopPlacingTile();
+            gridVisualizer.Hide();
+
+            await shopPopupRouter.HideShopPopup();
         }
 
         private async void OnBuild()

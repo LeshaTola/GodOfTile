@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -23,6 +24,11 @@ namespace App.Scripts.Modules.Localization.Localizers
         {
             get => text;
             set => text = value;
+        }
+
+        private void OnValidate()
+        {
+            gameObject.TryGetComponent(out text);
         }
 
         public void Initialize(ILocalizationSystem localizationSystem)

@@ -10,6 +10,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.Input
     {
         public event Action OnEscape;
         public event Action OnBuild;
+        public event Action OnI;
+        public event Action OnM;
         public event Action OnRotate;
         public event Action OnPause;
         public event Action OnSpeed1;
@@ -33,6 +35,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.Input
             input.Game.ESC.performed += OnESCPerformed;
             input.Game.Build.performed += BuildButtonPerformed;
             input.Game.Rotate.performed += RotationButtonPerformed;
+            input.Game.I.performed += IButtonPerformed;
+            input.Game.M.performed += MButtonPerformed;
             
             input.Game.Pause.performed += PauseButtonPerformed;
             input.Game.Speed1.performed += Speed1ButtonPerformed;
@@ -49,6 +53,26 @@ namespace App.Scripts.Scenes.Gameplay.Features.Input
             return moveVector.normalized;
         }
 
+        public float GetMouseScrollNormalized()
+        {
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                return 0;
+            }
+            
+            if (Mouse.current.scroll.ReadValue().y < 0)
+            {
+                return 1;
+            }
+
+            if (Mouse.current.scroll.ReadValue().y > 0)
+            {
+                return -1;
+            }
+
+            return 0;
+        }
+
         public float GetRotationValueNormalized()
         {
             return input.Game.Rotation.ReadValue<float>();
@@ -59,6 +83,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.Input
             input.Game.ESC.performed -= OnESCPerformed;
             input.Game.Build.performed -= BuildButtonPerformed;
             input.Game.Rotate.performed -= RotationButtonPerformed;
+            input.Game.I.performed -= IButtonPerformed;
+            input.Game.M.performed -= MButtonPerformed;
             
             input.Game.Pause.performed -= PauseButtonPerformed;
             input.Game.Speed1.performed -= Speed1ButtonPerformed;
@@ -132,6 +158,16 @@ namespace App.Scripts.Scenes.Gameplay.Features.Input
         {
             OnPause?.Invoke();
 
+        }
+
+        private void MButtonPerformed(InputAction.CallbackContext obj)
+        {
+            OnM?.Invoke();
+        }
+
+        private void IButtonPerformed(InputAction.CallbackContext obj)
+        {
+            OnI?.Invoke();
         }
     }
 }

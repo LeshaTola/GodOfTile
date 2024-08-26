@@ -1,6 +1,6 @@
 using App.Scripts.Modules.ObjectPool.Pools;
 using App.Scripts.Scenes.Gameplay.Features.Map.Items;
-using App.Scripts.Scenes.Gameplay.Features.Popups.BuyAreaPopup.Routers;
+using App.Scripts.Scenes.Gameplay.Features.Popups.BuyArea.Routers;
 using UnityEngine;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Map.Factories.Chunk

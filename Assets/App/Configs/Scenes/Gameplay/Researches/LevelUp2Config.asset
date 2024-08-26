@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab27c13d5f4348409edc2f9b281e4bfe, type: 3}
+  m_Name: LevelUp2Config
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: <Command>k__BackingField
+      Entry: 7
+      Data: 0|App.Scripts.Scenes.Gameplay.Features.Researches.Commands.Specific.LevelupResearchSystemCommands.LevelupResearchSystemCommand,
+        Assembly-CSharp
+    - Name: data
+      Entry: 7
+      Data: 1|App.Scripts.Scenes.Gameplay.Features.Researches.Commands.ResearchCommandData,
+        Assembly-CSharp
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  <Sprite>k__BackingField: {fileID: 21300000, guid: bcd394b85959b5f47a34d8f73826c965,
+    type: 3}
+  <Name>k__BackingField: Level Up 2
+  <Description>k__BackingField: Open new level in research station
+  <Level>k__BackingField: 2
+  <ResearchTime>k__BackingField: 20
+  <Cost>k__BackingField:
+  - Resource: {fileID: 11400000, guid: 12ea320e25139914cb79e34fc96f3d46, type: 2}
+    Count: 0

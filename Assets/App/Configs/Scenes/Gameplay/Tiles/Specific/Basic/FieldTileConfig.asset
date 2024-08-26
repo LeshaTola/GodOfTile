@@ -16,7 +16,6 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 4270591148473921660, guid: 3b43aa0a445d55c448dcb581f2292ed2, type: 3}
     - {fileID: 11400000, guid: d1457a3ec05187d4e828a5f43be2b55a, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
@@ -38,12 +37,16 @@ MonoBehaviour:
       Entry: 7
       Data: 2|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners.ResourceEarnerSystemData,
         Assembly-CSharp
-    - Name: tileUI
-      Entry: 10
-      Data: 0
+    - Name: systemUIProvider
+      Entry: 7
+      Data: 3|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners.UI.Providers.ResourceEarnerUIProvider,
+        Assembly-CSharp
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: resource
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: amountPerSecond
       Entry: 4
       Data: 0.2
@@ -64,7 +67,7 @@ MonoBehaviour:
   tileTypeDatabase: {fileID: 11400000, guid: 6e8687d462988db44889225b2fec324e, type: 2}
   building: {fileID: 0}
   type: field
-  tileImage: {fileID: 21300000, guid: d2d635c0131858747b906796f21c9399, type: 3}
+  tileImage: {fileID: 21300000, guid: 4beb2aa3565b29245aa3ab4df92d829b, type: 3}
   tileName: Field
   description: Field
   cost: []

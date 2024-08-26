@@ -2,6 +2,7 @@ using App.Scripts.Modules.Localization;
 using App.Scripts.Modules.PopupLogic.General.Controllers;
 using App.Scripts.Scenes.Gameplay.Features.Commands.GoToStateCommands;
 using App.Scripts.Scenes.Gameplay.Features.Popups.GameplayPopup.ViewModels;
+using App.Scripts.Scenes.Gameplay.Features.Researches.Services;
 using Cysharp.Threading.Tasks;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Popups.GameplayPopup.Routers
@@ -12,17 +13,19 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.GameplayPopup.Routers
         private GoToBuildingStateCommand buildingStateCommand;
         private GoToBuyAreaStateCommand buyAreaStateCommand;
         private IPopupController popupController;
+        private readonly IResearchService researchService;
 
         private GameplayPopup popup;
-        
+
         public GameplayPopupRouter(ILocalizationSystem localizationSystem,
             GoToBuildingStateCommand buildingStateCommand, GoToBuyAreaStateCommand buyAreaStateCommand,
-            IPopupController popupController)
+            IPopupController popupController, IResearchService researchService)
         {
             this.localizationSystem = localizationSystem;
             this.buildingStateCommand = buildingStateCommand;
             this.buyAreaStateCommand = buyAreaStateCommand;
             this.popupController = popupController;
+            this.researchService = researchService;
         }
 
         public async UniTask Show()
@@ -30,7 +33,12 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.GameplayPopup.Routers
             popup = popupController.GetPopup<GameplayPopup>();
 
             var viewModel
-                = new GameplayPopupViewModel(localizationSystem, buildingStateCommand, buyAreaStateCommand);
+                = new GameplayPopupViewModel(
+                    localizationSystem,
+                    buildingStateCommand, 
+                    buyAreaStateCommand,
+                    researchService
+                    );
             popup.Setup(viewModel);
             await popup.Show();
         }

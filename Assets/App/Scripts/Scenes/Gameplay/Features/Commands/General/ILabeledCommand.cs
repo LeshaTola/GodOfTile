@@ -4,9 +4,4 @@
     {
         string Label { get; }
     }
-
-    public interface ICommand
-    {
-        void Execute();
-    }
 }

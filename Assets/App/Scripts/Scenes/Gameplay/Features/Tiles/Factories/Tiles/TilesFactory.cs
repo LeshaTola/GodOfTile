@@ -38,7 +38,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.Tiles
         {
             var tile = diContainer.InstantiatePrefabForComponent<Tile>(tilePrefab, container);
             var config = Object.Instantiate(tileConfig);
-            var systems = systemsFactory.GetSystems(config.Systems);
+            var systems = systemsFactory.GetSystems(config.Systems, tile);
             config.ActiveSystems = systems;
             tile.Initialize(config);
             return tile;
