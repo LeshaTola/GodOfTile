@@ -7,7 +7,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Commands
     {
         private readonly CancellationTokenSource cts;
 
-        public CtsCancelCommand(string label,CancellationTokenSource cts)
+        public CtsCancelCommand(string label, CancellationTokenSource cts)
             : base(label)
         {
             this.cts = cts;

@@ -6,7 +6,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Information.Routers
 {
     public interface IInformationPopupRouter
     {
-        UniTask ShowPopup(TileConfig tileConfig,CancellationToken cancellationToken);
+        UniTask ShowPopup(TileConfig tileConfig, CancellationToken cancellationToken);
         void UpdatePopup(TileConfig tileConfig);
         UniTask HidePopup();
     }

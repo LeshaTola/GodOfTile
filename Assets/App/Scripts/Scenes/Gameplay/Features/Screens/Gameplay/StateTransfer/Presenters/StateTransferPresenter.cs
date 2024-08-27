@@ -4,23 +4,24 @@ using App.Scripts.Modules.StateMachine.Services.InitializeService;
 using App.Scripts.Scenes.Gameplay.Features.Commands.GoToStateCommands;
 using App.Scripts.Scenes.Gameplay.Features.Commands.Provider;
 using App.Scripts.Scenes.Gameplay.Features.Researches.Services;
+using Cysharp.Threading.Tasks;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.StateTransitioner.Presenters
+namespace App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.StateTransfer.Presenters
 {
     public class StateTransferPresenter : IInitializable, ICleanupable
     {
-        private StateTransferView stateTransferView;
+        private StateTransferView view;
         private ICommandsProvider commandsProvider;
         private ILocalizationSystem localizationSystem;
         private readonly IResearchService researchService;
 
         public StateTransferPresenter(
-            StateTransferView stateTransferView,
+            StateTransferView view,
             ICommandsProvider commandsProvider,
             ILocalizationSystem localizationSystem,
-            IResearchService researchService )
+            IResearchService researchService)
         {
-            this.stateTransferView = stateTransferView;
+            this.view = view;
             this.commandsProvider = commandsProvider;
             this.localizationSystem = localizationSystem;
             this.researchService = researchService;
@@ -28,23 +29,25 @@ namespace App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.StateTransitione
 
         public void Initialize()
         {
-            stateTransferView.Initialize(localizationSystem);
-            
-            stateTransferView.OnBuildingStateButtonClicked += OnBuildingStateButtonClicked;
-            stateTransferView.OnBuyAreaStateButtonClicked += OnBuyAreaStateButtonClicked ;
-            stateTransferView.OnResearchStateButtonClicked += OnResearchStateButtonClicked;
-            
+            view.Initialize(localizationSystem);
+
+            view.OnBuildingStateButtonClicked += OnBuildingStateButtonClicked;
+            view.OnBuyAreaStateButtonClicked += OnBuyAreaStateButtonClicked;
+            view.OnResearchStateButtonClicked += OnResearchStateButtonClicked;
+
             researchService.OnResearchSystemsCountChanged += OnResearchSystemsCountChanged;
             OnResearchSystemsCountChanged();
         }
 
         public void Cleanup()
         {
-            stateTransferView.Cleanup();
-            
-            stateTransferView.OnBuildingStateButtonClicked += OnBuildingStateButtonClicked;
-            stateTransferView.OnBuyAreaStateButtonClicked += OnBuyAreaStateButtonClicked ;
-            stateTransferView.OnResearchStateButtonClicked += OnResearchStateButtonClicked ;
+            view.Cleanup();
+
+            view.OnBuildingStateButtonClicked -= OnBuildingStateButtonClicked;
+            view.OnBuyAreaStateButtonClicked -= OnBuyAreaStateButtonClicked;
+            view.OnResearchStateButtonClicked -= OnResearchStateButtonClicked;
+
+            researchService.OnResearchSystemsCountChanged -= OnResearchSystemsCountChanged;
         }
 
         private void OnBuildingStateButtonClicked()
@@ -58,7 +61,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.StateTransitione
         }
 
         private void OnResearchStateButtonClicked()
-        {            
+        {
             commandsProvider?.GetCommand<GoToResearchStateCommand>().Execute();
         }
 
@@ -66,10 +69,21 @@ namespace App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.StateTransitione
         {
             if (researchService.ResearchSystems.Count > 0)
             {
-                stateTransferView.ShowResearchButton();
+                view.ShowResearchButton();
                 return;
             }
-            stateTransferView.HideResearchButton();
+
+            view.HideResearchButton();
+        }
+
+        public async UniTask Show()
+        {
+            await view.Show();
+        }
+
+        public async UniTask Hide()
+        {
+            await view.Hide();
         }
     }
 }

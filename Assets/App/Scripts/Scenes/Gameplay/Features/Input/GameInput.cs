@@ -17,7 +17,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Input
         public event Action OnSpeed1;
         public event Action OnSpeed2;
         public event Action OnSpeed3;
-        
+
 
         private Camera mainCamera;
 
@@ -37,7 +37,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Input
             input.Game.Rotate.performed += RotationButtonPerformed;
             input.Game.I.performed += IButtonPerformed;
             input.Game.M.performed += MButtonPerformed;
-            
+
             input.Game.Pause.performed += PauseButtonPerformed;
             input.Game.Speed1.performed += Speed1ButtonPerformed;
             input.Game.Speed2.performed += Speed2ButtonPerformed;
@@ -59,7 +59,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Input
             {
                 return 0;
             }
-            
+
             if (Mouse.current.scroll.ReadValue().y < 0)
             {
                 return 1;
@@ -85,7 +85,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Input
             input.Game.Rotate.performed -= RotationButtonPerformed;
             input.Game.I.performed -= IButtonPerformed;
             input.Game.M.performed -= MButtonPerformed;
-            
+
             input.Game.Pause.performed -= PauseButtonPerformed;
             input.Game.Speed1.performed -= Speed1ButtonPerformed;
             input.Game.Speed2.performed -= Speed2ButtonPerformed;
@@ -141,23 +141,20 @@ namespace App.Scripts.Scenes.Gameplay.Features.Input
         {
             OnSpeed1?.Invoke();
         }
-        
+
         private void Speed2ButtonPerformed(InputAction.CallbackContext obj)
         {
             OnSpeed2?.Invoke();
-
         }
-        
+
         private void Speed3ButtonPerformed(InputAction.CallbackContext obj)
         {
             OnSpeed3?.Invoke();
-
         }
 
         private void PauseButtonPerformed(InputAction.CallbackContext obj)
         {
             OnPause?.Invoke();
-
         }
 
         private void MButtonPerformed(InputAction.CallbackContext obj)

@@ -37,7 +37,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Services
             {
                 return;
             }
-            
+
             foreach (var system in Systems)
             {
                 system.Update();

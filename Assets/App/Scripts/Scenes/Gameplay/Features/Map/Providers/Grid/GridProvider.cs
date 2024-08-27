@@ -17,7 +17,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Map.Providers.Grid
             this.chunksProvider = chunksProvider;
             GridSize = config.ChunkSize * config.ChunksCount;
             Grid = new Tile[GridSize.x, GridSize.y];
-
         }
 
         public Vector2Int GridSize { get; }

@@ -1,7 +1,7 @@
 ﻿using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget.Cost;
+using App.Scripts.Scenes.Gameplay.Features.Popups.Shop.Factories.Cost;
+using App.Scripts.Scenes.Gameplay.Features.Popups.Shop.Factories.Item;
 using App.Scripts.Scenes.Gameplay.Features.Popups.Shop.Item;
-using App.Scripts.Scenes.Gameplay.Features.Shop.Factories.Cost;
-using App.Scripts.Scenes.Gameplay.Features.Shop.Factories.Item;
 using App.Scripts.Scenes.Gameplay.Features.Shop.Systems;
 using UnityEngine;
 using Zenject;

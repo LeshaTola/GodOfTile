@@ -24,16 +24,16 @@ namespace App.Scripts.Modules.Localization.Elements.Buttons
             {
                 button.onClick.RemoveListener(buttonAction);
             }
-            
+
             buttonAction = new UnityAction(action);
             button.onClick.AddListener(buttonAction);
         }
-        
+
         public void UpdateText(string key)
         {
             text.Key = key;
         }
-        
+
         public void Translate()
         {
             text.Translate();

@@ -43,11 +43,11 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             cameraController.Active = true;
 
             await shopPopupRouter.ShowShopPopup();
-            
+
             gameInput.OnEscape += OnBuild;
             gameInput.OnBuild += OnBuild;
             gameInput.OnRotate += OnRotate;
-            
+
             creationService.StartPlacingTile();
             gridVisualizer.Show();
         }
@@ -57,7 +57,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             await base.Update();
 
             updateService.Update();
-            
+
             creationService.MoveActiveTile(gameInput.GetGridMousePosition());
 
             if (gameInput.IsMouseClicked())
@@ -74,7 +74,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             gameInput.OnEscape -= OnBuild;
             gameInput.OnBuild -= OnBuild;
             gameInput.OnRotate -= OnRotate;
-            
+
             cameraController.Active = false;
             creationService.StopPlacingTile();
             gridVisualizer.Hide();

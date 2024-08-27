@@ -1,14 +1,11 @@
 ﻿using System.Threading;
 using App.Scripts.Modules.Localization;
-using App.Scripts.Modules.PopupLogic.General.Controllers;
+using App.Scripts.Modules.PopupAndViews.General.Controllers;
 using App.Scripts.Scenes.Gameplay.Features.Commands;
-using App.Scripts.Scenes.Gameplay.Features.Commands.General;
-using App.Scripts.Scenes.Gameplay.Features.Commands.GoToStateCommands;
 using App.Scripts.Scenes.Gameplay.Features.Popups.Information.ViewModels;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.TileSystemUIProvider;
 using Cysharp.Threading.Tasks;
-using UnityEngine;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Popups.Information.Routers
 {
@@ -55,7 +52,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Information.Routers
             var viewModule = new InformationViewModule(
                 tileSystemUIProvidersFactory,
                 localizationSystem,
-                new CtsCancelCommand("close",cts),
+                new CtsCancelCommand("close", cts),
                 tileConfig
             );
             popup.Setup(viewModule);

@@ -11,7 +11,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Shop.Systems
     public class ShopSystem : IShopSystem, ICleanupable
     {
         public event Action<TileConfig> OnNewTileAdd;
-        
+
         private IInventorySystem inventorySystem;
         private IActiveTileProvider activeTileProvider;
         private ITileCollectionProvider tileCollectionProvider;
@@ -56,7 +56,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Shop.Systems
         {
             tileCollectionProvider.OnNewTileAdd -= NewTileAdded;
         }
-        
+
 
         private void NewTileAdded(TileConfig tileConfig)
         {

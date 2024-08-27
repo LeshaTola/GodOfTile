@@ -10,7 +10,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Map.Providers.Chunk
     public class ChunksProvider : IChunksProvider
     {
         public event Action OnChunkOpened;
-        
+
         private GridConfig config;
 
         private List<Vector2Int> neigboursDirection = new()
@@ -101,7 +101,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Map.Providers.Chunk
                     return true;
                 }
             }
-            
+
             return false;
         }
 

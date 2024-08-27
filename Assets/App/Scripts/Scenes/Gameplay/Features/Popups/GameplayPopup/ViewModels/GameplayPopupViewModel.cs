@@ -18,6 +18,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.GameplayPopup.ViewModels
         public ILocalizationSystem LocalizationSystem { get; }
         public ILabeledCommand BuildStateCommand { get; }
         public ILabeledCommand BuyAreaStateCommand { get; }
-        public IResearchService ResearchService {get;}
+        public IResearchService ResearchService { get; }
     }
 }

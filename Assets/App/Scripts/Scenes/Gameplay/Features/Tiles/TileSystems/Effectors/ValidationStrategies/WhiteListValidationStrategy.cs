@@ -9,42 +9,43 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Valid
 {
     public class WhiteListValidationStrategy : IValidationStrategy
     {
-        [SerializeField]     
+        [SerializeField]
         [TypeFilter("GetFilteredTypes")]
         public List<Type> typesToAffect = new();
 
         public WhiteListValidationStrategy(List<Type> typesToAffect)
-       {
-           this.typesToAffect = typesToAffect;
-       }
+        {
+            this.typesToAffect = typesToAffect;
+        }
 
         public List<Tile> ValidateTiles(List<Tile> tiles)
         {
             return tiles.Where(tile =>
                 tile.Config.ActiveSystems.Any(system =>
-                    typesToAffect.Any(type => type.Equals(system.GetType()) )
+                    typesToAffect.Any(type => type.Equals(system.GetType()))
                 )
             ).ToList();
-        } 
-        
+        }
+
         public List<Tile> ValidateTiles(List<Tile> tiles, List<Type> whiteList)
         {
             return tiles.Where(tile =>
                 tile.Config.ActiveSystems.Any(system =>
-                    whiteList.Any(type => type.Equals(system.GetType()) )
+                    whiteList.Any(type => type.Equals(system.GetType()))
                 )
             ).ToList();
-        } 
-        
+        }
+
         public List<TileSystem> GetValidSystems(List<Tile> tiles)
         {
             return tiles.SelectMany(tile =>
                 tile.Config.ActiveSystems.Where(system =>
-                    typesToAffect.Any(type => type.Equals(system.GetType()) 
+                    typesToAffect.Any(type => type.Equals(system.GetType())
                     )
-                )).ToList();;
-        } 
-        
+                )).ToList();
+            ;
+        }
+
         private IEnumerable<Type> GetFilteredTypes()
         {
             var baseType = typeof(TileSystem);

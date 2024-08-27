@@ -53,6 +53,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 673c04c55c984f07bb438d10210d3884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: animation
+      Entry: 7
+      Data: 0|App.Scripts.Features.View.Animations.SlideAnimation, Assembly-CSharp
+    - Name: showAnimationTime
+      Entry: 4
+      Data: 0.3
+    - Name: showScreenPosition
+      Entry: 7
+      Data: UnityEngine.Vector2, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 200
+    - Name: 
+      Entry: 4
+      Data: 50
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: showEase
+      Entry: 3
+      Data: 27
+    - Name: hideAnimationTime
+      Entry: 4
+      Data: 0.3
+    - Name: hideScreenPosition
+      Entry: 7
+      Data: UnityEngine.Vector2, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 200
+    - Name: 
+      Entry: 4
+      Data: -50
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: hideEase
+      Entry: 3
+      Data: 26
+    - Name: 
+      Entry: 8
+      Data: 
   buildingStateButton: {fileID: 5769101667003328183}
   buyAreaStateButton: {fileID: 6591718489693597927}
   researchStateButton: {fileID: 4910907839515483319}

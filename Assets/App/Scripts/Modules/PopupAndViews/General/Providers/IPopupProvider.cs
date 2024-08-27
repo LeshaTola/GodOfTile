@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using App.Scripts.Modules.ObjectPool.Pools;
 
-namespace App.Scripts.Modules.PopupLogic.General.Providers
+namespace App.Scripts.Modules.PopupAndViews.General.Providers
 {
     public interface IPopupProvider
     {

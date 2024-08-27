@@ -8,16 +8,16 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.OnlyTe
     public class OnlyTextSystemSystemUI : SystemUI
     {
         [SerializeField] private TMPLocalizer text;
-    
+
         private OnlyTextSystemSystemViewModel viewModule;
 
         public void Initialize(OnlyTextSystemSystemViewModel viewModule)
         {
             Cleanup();
             this.viewModule = viewModule;
-            
+
             text.Initialize(viewModule.LocalizationSystem);
-            
+
             Setup();
         }
 
@@ -29,7 +29,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.OnlyTe
             }
 
             text.Key = viewModule.Data;
-            
+
             text.Translate();
         }
 

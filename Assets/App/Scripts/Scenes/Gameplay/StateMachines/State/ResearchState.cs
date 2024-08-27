@@ -16,7 +16,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
 
         public ResearchState(string id,
             IGameInput gameInput,
-            ResearchPopupRouter researchPopupRouter, 
+            ResearchPopupRouter researchPopupRouter,
             ICommandsProvider commandsProvider,
             IUpdateService updateService) : base(id)
         {

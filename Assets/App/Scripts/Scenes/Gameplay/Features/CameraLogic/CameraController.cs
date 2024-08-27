@@ -4,7 +4,6 @@ using App.Scripts.Scenes.Gameplay.Features.CameraLogic.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Input;
 using Cinemachine;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace App.Scripts.Scenes.Gameplay.Features.CameraLogic
 {
@@ -41,6 +40,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.CameraLogic
             {
                 return;
             }
+
             Move(gameInput.GetMoveVectorNormalized());
             Rotate(gameInput.GetRotationValueNormalized());
             Focus();
@@ -69,17 +69,17 @@ namespace App.Scripts.Scenes.Gameplay.Features.CameraLogic
                 config.YCoordinate.Min,
                 config.YCoordinate.Max
             );
-            
+
             targetTransform.position = new Vector3(x, targetTransform.position.y, y);
         }
-        
+
         public void Focus()
         {
             var targetFocus = cinemachineTransposer.m_FollowOffset;
-            
-            targetFocus.y += config.FocusStep*gameInput.GetMouseScrollNormalized();
+
+            targetFocus.y += config.FocusStep * gameInput.GetMouseScrollNormalized();
             targetFocus.y = Mathf.Clamp(targetFocus.y, config.Offset.Min, config.Offset.Max);
-            
+
             cinemachineTransposer.m_FollowOffset = Vector3.Lerp(
                 cinemachineTransposer.m_FollowOffset,
                 targetFocus,

@@ -13,7 +13,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Valid
 
         public List<TileSystem> GetValidSystems(List<Tile> tiles)
         {
-            return tiles.SelectMany(tile =>tile.Config.ActiveSystems).ToList();
+            return tiles.SelectMany(tile => tile.Config.ActiveSystems).ToList();
             ;
         }
     }

@@ -1,18 +1,19 @@
-﻿using App.Scripts.Modules.PopupLogic.Animations.Animator;
-using App.Scripts.Modules.PopupLogic.General.Controllers;
+﻿using System.Threading;
+using App.Scripts.Modules.PopupAndViews.Animations;
+using App.Scripts.Modules.PopupAndViews.General.Controllers;
 using Cysharp.Threading.Tasks;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace App.Scripts.Modules.PopupLogic.General.Popup
+namespace App.Scripts.Modules.PopupAndViews.General.Popup
 {
     [RequireComponent(typeof(Canvas), typeof(GraphicRaycaster))]
     public abstract class Popup : MonoBehaviour, IPopup
     {
         [FoldoutGroup("General")]
         [SerializeReference]
-        PopupAnimationConfig animationConfig;
+        IAnimation popupAnimation;
 
         [FoldoutGroup("General")]
         [SerializeField]
@@ -23,23 +24,24 @@ namespace App.Scripts.Modules.PopupLogic.General.Popup
         protected Canvas canvas;
 
         public IPopupController Controller { get; private set; }
-        public IPopupAnimator PopupAnimator { get; private set; }
         public Canvas Canvas => canvas;
         public bool Active { get; private set; }
 
-        public void Initialize(IPopupController controller, IPopupAnimator popupAnimator)
+        private CancellationTokenSource cancellationTokenSource;
+
+        public void Initialize(IPopupController controller)
         {
             Controller = controller;
-            PopupAnimator = popupAnimator;
-            PopupAnimator.Initialize(this);
-            popupAnimator.Setup(animationConfig);
         }
 
         public virtual async UniTask Hide()
         {
             Deactivate();
 
-            await PopupAnimator.PlayHideAnimation();
+            Cleanup();
+            cancellationTokenSource = new CancellationTokenSource();
+            await popupAnimation.PlayHideAnimation(gameObject, cancellationTokenSource.Token);
+            
             Controller.RemoveActivePopup(this);
             gameObject.SetActive(false);
         }
@@ -48,8 +50,11 @@ namespace App.Scripts.Modules.PopupLogic.General.Popup
         {
             gameObject.SetActive(true);
             Controller.AddActivePopup(this);
-
-            await PopupAnimator.PlayShowAnimation();
+            
+            Cleanup();
+            cancellationTokenSource = new CancellationTokenSource();
+            await popupAnimation.PlayShowAnimation(gameObject, cancellationTokenSource.Token);
+            
             Activate();
         }
 
@@ -63,6 +68,16 @@ namespace App.Scripts.Modules.PopupLogic.General.Popup
         {
             Active = false;
             raycaster.enabled = false;
+        }
+        
+        private void Cleanup()
+        {
+            if (cancellationTokenSource != null)
+            {
+                cancellationTokenSource.Cancel();
+                cancellationTokenSource.Dispose();
+                cancellationTokenSource = null;
+            }
         }
     }
 }

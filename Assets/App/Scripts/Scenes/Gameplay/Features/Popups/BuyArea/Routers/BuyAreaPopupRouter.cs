@@ -1,5 +1,5 @@
 using App.Scripts.Modules.Localization;
-using App.Scripts.Modules.PopupLogic.General.Controllers;
+using App.Scripts.Modules.PopupAndViews.General.Controllers;
 using App.Scripts.Scenes.Gameplay.Features.Commands;
 using App.Scripts.Scenes.Gameplay.Features.Commands.BuyAreaCommand;
 using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Chunk.Cost;
@@ -32,11 +32,11 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.BuyArea.Routers
             this.closeCommand = closeCommand;
             this.buyCommand = buyCommand;
         }
-        
+
         public async UniTask Show(Vector2Int chinkId)
         {
             popup = popupController.GetPopup<BuyAreaPopup>();
-            
+
             buyCommand.ChunkId = chinkId;
             var resources = chunkCostProvider.GetCost(chinkId);
 
@@ -46,7 +46,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.BuyArea.Routers
 
             await popup.Show();
         }
-        
+
         public async UniTask Hide()
         {
             if (popup == null)

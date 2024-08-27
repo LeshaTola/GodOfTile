@@ -37,7 +37,7 @@ namespace App.Scripts.Features.Popups.Buttons
             {
                 return;
             }
-            
+
             buttonText.Key = text;
         }
 

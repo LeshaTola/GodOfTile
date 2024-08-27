@@ -13,14 +13,14 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.TileSystem
             this.diContainer = diContainer;
         }
 
-        public TileSystems.TileSystem GetSystem(TileSystems.TileSystem original,Tile parent)
+        public TileSystems.TileSystem GetSystem(TileSystems.TileSystem original, Tile parent)
         {
             var type = original.GetType();
             var newSystem = diContainer.Instantiate(type, new object[] {original.Data, parent});
             return (TileSystems.TileSystem) newSystem;
         }
 
-        public List<TileSystems.TileSystem> GetSystems(List<TileSystems.TileSystem> originals,Tile parent)
+        public List<TileSystems.TileSystem> GetSystems(List<TileSystems.TileSystem> originals, Tile parent)
         {
             List<TileSystems.TileSystem> tileSystems = new();
             foreach (var system in originals)

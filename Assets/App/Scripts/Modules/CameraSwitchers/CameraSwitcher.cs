@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Cinemachine;
 
 namespace App.Scripts.Modules.CameraSwitchers
@@ -11,7 +8,7 @@ namespace App.Scripts.Modules.CameraSwitchers
 
         public CinemachineVirtualCamera CurrentCamera { get; private set; }
         public string CurrentCameraId { get; private set; }
-        
+
         public CameraSwitcher(CamerasDatabase database)
         {
             this.database = database;
@@ -24,7 +21,7 @@ namespace App.Scripts.Modules.CameraSwitchers
                 CurrentCamera.gameObject.SetActive(false);
             }
 
-            
+
             if (database.Cameras.ContainsKey(id))
             {
                 CurrentCameraId = id;

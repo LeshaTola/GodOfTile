@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using App.Scripts.Modules.Localization.Localizers;
-using App.Scripts.Modules.PopupLogic.General.Popup;
+using App.Scripts.Modules.PopupAndViews.General.Popup;
 using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget;
 using App.Scripts.Scenes.Gameplay.Features.Popups.Shop.Item;
 using App.Scripts.Scenes.Gameplay.Features.Popups.Shop.ViewModels;
@@ -29,10 +29,10 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Shop
 
             this.viewModule = viewModule;
             viewModule.ShopSystem.OnNewTileAdd += OnNewTileAdded;
-            
+
             informationWidget.Initialize(viewModule.ItemInformationWidget);
             header.Initialize(viewModule.LocalizationSystem);
-            
+
             UpdateItems();
 
             header.Translate();
@@ -50,7 +50,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Shop
             {
                 return;
             }
-            
+
             viewModule.ShopSystem.OnNewTileAdd -= OnNewTileAdded;
         }
 

@@ -4,9 +4,9 @@ using App.Scripts.Scenes.Gameplay.Features.Input;
 using App.Scripts.Scenes.Gameplay.Features.Time.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Time.Services.TimeServices;
 using App.Scripts.Scenes.Gameplay.Features.Time.UI;
-using UnityEngine.UI;
+using Cysharp.Threading.Tasks;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Time.Controllers
+namespace App.Scripts.Scenes.Gameplay.Features.Time.Presenters
 {
     public class TimePresenter : IInitializable, ICleanupable
     {
@@ -16,7 +16,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Time.Controllers
         private TimeSpeedConfig config;
 
         public TimePresenter(IGameInput gameInput,
-            ITimeService timeService, 
+            ITimeService timeService,
             TimeControllerView timeControllerView,
             TimeSpeedConfig config)
         {
@@ -29,7 +29,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Time.Controllers
         public void Initialize()
         {
             timeControllerView.Initialize();
-            
+
             gameInput.OnPause += SetPause;
             gameInput.OnSpeed1 += SetSpeed1;
             gameInput.OnSpeed2 += SetSpeed2;
@@ -39,15 +39,14 @@ namespace App.Scripts.Scenes.Gameplay.Features.Time.Controllers
             timeControllerView.OnSpeed1ButtonClicked += SetSpeed1;
             timeControllerView.OnSpeed2ButtonClicked += SetSpeed2;
             timeControllerView.OnSpeed3ButtonClicked += SetSpeed3;
-            
+
             SetSpeed1();
-            timeControllerView.Show();
         }
 
         public void Cleanup()
         {
             timeControllerView.Cleanup();
-            
+
             gameInput.OnPause -= SetPause;
             gameInput.OnSpeed1 -= SetSpeed1;
             gameInput.OnSpeed2 -= SetSpeed2;
@@ -57,8 +56,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Time.Controllers
             timeControllerView.OnSpeed1ButtonClicked -= SetSpeed1;
             timeControllerView.OnSpeed2ButtonClicked -= SetSpeed2;
             timeControllerView.OnSpeed3ButtonClicked -= SetSpeed3;
-            
-            timeControllerView.Hide();
         }
 
         private void SetPause()
@@ -71,7 +68,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Time.Controllers
         {
             timeService.SetSpeed(config.Speed1);
             timeControllerView.SetSelector(timeControllerView.Speed1Button);
-
         }
 
         private void SetSpeed2()
@@ -84,6 +80,16 @@ namespace App.Scripts.Scenes.Gameplay.Features.Time.Controllers
         {
             timeService.SetSpeed(config.Speed3);
             timeControllerView.SetSelector(timeControllerView.Speed3Button);
+        }
+
+        public async UniTask Show()
+        {
+            await timeControllerView.Show();
+        }
+
+        public async UniTask Hide()
+        {
+            await timeControllerView.Hide();
         }
     }
 }

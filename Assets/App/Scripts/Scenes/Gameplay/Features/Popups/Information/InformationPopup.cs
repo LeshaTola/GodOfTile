@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using App.Scripts.Modules.Localization.Localizers;
-using App.Scripts.Modules.PopupLogic.General.Popup;
+using App.Scripts.Modules.PopupAndViews.General.Popup;
 using App.Scripts.Scenes.Gameplay.Features.Popups.Information.ViewModels;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems;
@@ -64,10 +64,10 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Information
 
             header.Initialize(viewModule.LocalizationSystem);
             descriptionHeader.Initialize(viewModule.LocalizationSystem);
-            
+
             tileName.Initialize(viewModule.LocalizationSystem);
             description.Initialize(viewModule.LocalizationSystem);
-            
+
             closeButton.onClick.AddListener(viewModule.CloseCommand.Execute);
         }
 
@@ -75,7 +75,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Information
         {
             header.Translate();
             descriptionHeader.Translate();
-            
+
             tileName.Translate();
             description.Translate();
         }
@@ -87,7 +87,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Information
                 var uiProvider =
                     viewModule.TileSystemUIProvidersFactory.GetSystemUIProvider(system.Data.SystemUIProvider);
                 var systemUI = uiProvider.GetSystemUI(system);
-                Transform systemUITransform= systemUI.transform;
+                Transform systemUITransform = systemUI.transform;
                 systemUITransform.SetParent(tileSystemsContainer);
                 systemUITransform.localPosition = Vector3.zero;
                 systemUITransform.localScale = Vector3.one;

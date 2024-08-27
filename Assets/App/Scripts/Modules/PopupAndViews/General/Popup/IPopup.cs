@@ -1,8 +1,7 @@
-using App.Scripts.Modules.PopupLogic.Animations.Animator;
-using App.Scripts.Modules.PopupLogic.General.Controllers;
+using App.Scripts.Modules.PopupAndViews.General.Controllers;
 using Cysharp.Threading.Tasks;
 
-namespace App.Scripts.Modules.PopupLogic.General.Popup
+namespace App.Scripts.Modules.PopupAndViews.General.Popup
 {
     public interface IPopup
     {
@@ -12,6 +11,6 @@ namespace App.Scripts.Modules.PopupLogic.General.Popup
         public UniTask Hide();
         public void Activate();
         public void Deactivate();
-        void Initialize(IPopupController controller, IPopupAnimator popupAnimator);
+        void Initialize(IPopupController controller);
     }
 }

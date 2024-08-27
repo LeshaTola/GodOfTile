@@ -24,6 +24,5 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Information.ViewModels
         public ILocalizationSystem LocalizationSystem { get; }
         public ILabeledCommand CloseCommand { get; }
         public ITileSystemUIProvidersFactory TileSystemUIProvidersFactory { get; }
-
     }
 }

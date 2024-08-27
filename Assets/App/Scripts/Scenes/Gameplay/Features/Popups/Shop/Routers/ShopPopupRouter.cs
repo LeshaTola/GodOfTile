@@ -1,8 +1,8 @@
 ﻿using App.Scripts.Modules.Localization;
-using App.Scripts.Modules.PopupLogic.General.Controllers;
+using App.Scripts.Modules.PopupAndViews.General.Controllers;
 using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget.ViewModels;
+using App.Scripts.Scenes.Gameplay.Features.Popups.Shop.Factories.Item;
 using App.Scripts.Scenes.Gameplay.Features.Popups.Shop.ViewModels;
-using App.Scripts.Scenes.Gameplay.Features.Shop.Factories.Item;
 using App.Scripts.Scenes.Gameplay.Features.Shop.Systems;
 using Cysharp.Threading.Tasks;
 
@@ -22,7 +22,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Shop.Routers
             IPopupController popupController,
             ILocalizationSystem localizationSystem,
             IItemFactory itemFactory,
-            IShopSystem shopSystem, 
+            IShopSystem shopSystem,
             IInformationWidgetViewModule informationWidgetViewModule
         )
         {

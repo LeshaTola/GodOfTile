@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using App.Scripts.Modules.ObjectPool.Pools;
-using App.Scripts.Modules.PopupLogic.Configs;
+using App.Scripts.Modules.PopupAndViews.Configs;
 using UnityEngine;
 
-namespace App.Scripts.Modules.PopupLogic.General.Providers
+namespace App.Scripts.Modules.PopupAndViews.General.Providers
 {
     public class PopupProvider : IPopupProvider
     {

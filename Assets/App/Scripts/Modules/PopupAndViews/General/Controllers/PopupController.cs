@@ -1,29 +1,25 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using App.Scripts.Modules.PopupLogic.Animations.Animator;
-using App.Scripts.Modules.PopupLogic.General.Providers;
+using App.Scripts.Modules.PopupAndViews.General.Providers;
 using Cysharp.Threading.Tasks;
 using UnityEngine.UI;
 
-namespace App.Scripts.Modules.PopupLogic.General.Controllers
+namespace App.Scripts.Modules.PopupAndViews.General.Controllers
 {
     public class PopupController : IPopupController
     {
         private IPopupProvider popupProvider;
         private Image screenBlocker;
         private List<Popup.Popup> currentPopups;
-        private IPopupAnimator popupAnimator;
 
         public PopupController(
             IPopupProvider popupProvider,
-            Image screenBlocker,
-            IPopupAnimator popupAnimator
+            Image screenBlocker
         )
         {
             this.popupProvider = popupProvider;
             this.screenBlocker = screenBlocker;
             currentPopups = new List<Popup.Popup>();
-            this.popupAnimator = popupAnimator;
         }
 
         public void AddActivePopup(Popup.Popup popup)
@@ -55,7 +51,7 @@ namespace App.Scripts.Modules.PopupLogic.General.Controllers
         {
             var type = typeof(T);
             var popup = popupProvider.PopupPoolsDictionary[type].Get();
-            popup.Initialize(this, popupAnimator);
+            popup.Initialize(this);
             return (T) popup;
         }
 

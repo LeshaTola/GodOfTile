@@ -524,8 +524,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea17cbf7298fdb94d913e1f30301883f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationConfig:
-    rid: 2174726602755145729
+  popupAnimation:
+    rid: 5190804909244022785
   raycaster: {fileID: 7217355885098715311}
   canvas: {fileID: 756468613956022958}
   header: {fileID: 5529495055484705698}
@@ -534,12 +534,14 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 2174726602755145729
-      type: {class: PopupAnimationConfig, ns: App.Scripts.Modules.PopupLogic.Animations.Animator,
+    - rid: 5190804909244022785
+      type: {class: ScaleAnimation, ns: App.Scripts.Modules.PopupAndViews.Animations,
         asm: Assembly-CSharp}
       data:
-        ShowAnimationTime: 0.3
-        HideAnimationTime: 0.3
+        showAnimationTime: 0.3
+        showEase: 27
+        hideAnimationTime: 0.3
+        hideEase: 26
 --- !u!223 &756468613956022958
 Canvas:
   m_ObjectHideFlags: 0

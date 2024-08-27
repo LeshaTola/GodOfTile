@@ -1,4 +1,3 @@
-using App.Scripts.Modules.PopupLogic.Animations.Animator;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -14,7 +13,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Screens
             gameObject.SetActive(true);
             return UniTask.CompletedTask;
         }
-        
+
         public virtual UniTask Hide()
         {
             gameObject.SetActive(false);

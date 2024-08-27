@@ -1,6 +1,6 @@
 ﻿using App.Scripts.Modules.Localization;
 using App.Scripts.Scenes.Gameplay.Features.Inventory.Systems;
-using App.Scripts.Scenes.Gameplay.Features.Shop.Factories.Cost;
+using App.Scripts.Scenes.Gameplay.Features.Popups.Shop.Factories.Cost;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget.ViewModels
 {

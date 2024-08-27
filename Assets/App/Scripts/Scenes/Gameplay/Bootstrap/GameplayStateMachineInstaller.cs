@@ -31,7 +31,6 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
             BindBuildState();
             BindBuyAreaState();
             BindState<ResearchState>(StatesIds.RESEARCH_STATE);
-
         }
 
         private void BindBuildState()
@@ -78,6 +77,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
             {
                 return null;
             }
+
             return new List<string>(camerasDatabase.Cameras.Keys);
         }
     }

@@ -1,5 +1,5 @@
 using App.Scripts.Modules.Localization;
-using App.Scripts.Modules.PopupLogic.General.Controllers;
+using App.Scripts.Modules.PopupAndViews.General.Controllers;
 using App.Scripts.Scenes.Gameplay.Features.Commands.GoToStateCommands;
 using App.Scripts.Scenes.Gameplay.Features.Popups.GameplayPopup.ViewModels;
 using App.Scripts.Scenes.Gameplay.Features.Researches.Services;
@@ -35,10 +35,10 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.GameplayPopup.Routers
             var viewModel
                 = new GameplayPopupViewModel(
                     localizationSystem,
-                    buildingStateCommand, 
+                    buildingStateCommand,
                     buyAreaStateCommand,
                     researchService
-                    );
+                );
             popup.Setup(viewModel);
             await popup.Show();
         }

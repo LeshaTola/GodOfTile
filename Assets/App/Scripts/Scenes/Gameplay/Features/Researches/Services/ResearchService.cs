@@ -4,7 +4,7 @@ using System.Linq;
 using App.Scripts.Modules.StateMachine.Services.UpdateService;
 using App.Scripts.Modules.TimeProvider;
 using App.Scripts.Scenes.Gameplay.Features.Researches.Configs;
-using App.Scripts.Scenes.Gameplay.Features.Researches.Factories;
+using App.Scripts.Scenes.Gameplay.Features.Researches.Factories.Commands;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Research;
 using UnityEngine;
 
@@ -20,7 +20,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Researches.Services
         private ResearchServiceConfig config;
         private ITimeProvider timeProvider;
         private IResearchCommandsFactory researchCommandsFactory;
-        
+
         private List<ResearchSystem> researchSystems = new();
         private List<RuntimeResearch> researches = new();
 
@@ -75,11 +75,11 @@ namespace App.Scripts.Scenes.Gameplay.Features.Researches.Services
 
         public void Update()
         {
-            if (!Active || ActiveResearch == null )
+            if (!Active || ActiveResearch == null)
             {
                 return;
             }
-            
+
             var speedMultiplier = researchSystems.Count;
             Timer -= timeProvider.DeltaTime * speedMultiplier;
             if (Timer <= 0)
@@ -89,30 +89,30 @@ namespace App.Scripts.Scenes.Gameplay.Features.Researches.Services
                 var researchBuffer = ActiveResearch;
                 ActiveResearch = null;
                 Timer = 0;
-                
+
                 OnResearchCompleted?.Invoke(researchBuffer);
             }
+
             OnTimerChanged?.Invoke(Timer);
         }
 
         private void Initialize()
         {
             SetLevel(config.StartLevel);
-            
+
             researches = new List<RuntimeResearch>();
             foreach (var runtimeResearch in config.Researches)
             {
                 researches.Add(new RuntimeResearch()
                 {
-                    ResearchConfig = runtimeResearch.ResearchConfig, 
+                    ResearchConfig = runtimeResearch.ResearchConfig,
                     IsCompleate = runtimeResearch.IsCompleate
                 });
-                
+
                 if (runtimeResearch.IsCompleate)
                 {
                     researchCommandsFactory.GetResearch(runtimeResearch.ResearchConfig.Command).Execute();
                 }
-
             }
         }
 

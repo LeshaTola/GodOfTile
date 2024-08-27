@@ -58,7 +58,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Selection
                 selectedTile = tile;
                 tile.Visual.StartGlow();
 
-                await informationPopupRouter.ShowPopup(tile.Config,cts.Token);
+                await informationPopupRouter.ShowPopup(tile.Config, cts.Token);
                 Cleanup();
             }
             else
@@ -68,9 +68,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Selection
                 tile.Visual.StartGlow();
 
                 informationPopupRouter.UpdatePopup(tile.Config);
-
             }
-            
+
             effectorVisualProvider.Setup(tile);
         }
 
@@ -85,7 +84,5 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Selection
             effectorVisualProvider.Cleanup();
             cts?.Cancel();
         }
-
-
     }
 }

@@ -1,12 +1,12 @@
 using System;
 using App.Scripts.Modules.Localization;
 using App.Scripts.Modules.Localization.Elements.Buttons;
-using App.Scripts.Modules.View.Views;
+using App.Scripts.Modules.PopupAndViews.Views;
 using UnityEngine;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.StateTransitioner
+namespace App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.StateTransfer
 {
-    public class StateTransferView : View
+    public class StateTransferView : AnimatedView
     {
         public event Action OnBuildingStateButtonClicked;
         public event Action OnBuyAreaStateButtonClicked;
@@ -15,7 +15,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.StateTransitione
         [SerializeField] private TMPLocalizedButton buildingStateButton;
         [SerializeField] private TMPLocalizedButton buyAreaStateButton;
         [SerializeField] private TMPLocalizedButton researchStateButton;
-        
+
         public void Initialize(ILocalizationSystem localizationSystem)
         {
             buildingStateButton.Initialize(localizationSystem);

@@ -1,7 +1,6 @@
-﻿using App.Scripts.Modules.PopupLogic.Animations.Animator;
-using App.Scripts.Modules.PopupLogic.Configs;
-using App.Scripts.Modules.PopupLogic.General.Controllers;
-using App.Scripts.Modules.PopupLogic.General.Providers;
+﻿using App.Scripts.Modules.PopupAndViews.Configs;
+using App.Scripts.Modules.PopupAndViews.General.Controllers;
+using App.Scripts.Modules.PopupAndViews.General.Providers;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -22,7 +21,6 @@ namespace App.Scripts.Features.Bootstrap
         public override void InstallBindings()
         {
             BindPopupProvider();
-            BindPopupAnimator();
             BindPopupController();
         }
 
@@ -33,11 +31,6 @@ namespace App.Scripts.Features.Bootstrap
                 .To<PopupController>()
                 .AsSingle()
                 .WithArguments(screenBlocker);
-        }
-
-        private void BindPopupAnimator()
-        {
-            Container.Bind<IPopupAnimator>().To<PopupAnimator>().AsSingle();
         }
 
         private void BindPopupProvider()

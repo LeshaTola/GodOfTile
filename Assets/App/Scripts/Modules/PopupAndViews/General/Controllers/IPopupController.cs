@@ -1,6 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
 
-namespace App.Scripts.Modules.PopupLogic.General.Controllers
+namespace App.Scripts.Modules.PopupAndViews.General.Controllers
 {
     public interface IPopupController
     {

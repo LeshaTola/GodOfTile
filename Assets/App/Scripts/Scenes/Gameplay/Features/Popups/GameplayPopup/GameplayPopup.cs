@@ -1,22 +1,22 @@
 using App.Scripts.Features.Popups.Buttons;
-using App.Scripts.Modules.PopupLogic.General.Popup;
+using App.Scripts.Modules.PopupAndViews.General.Popup;
 using App.Scripts.Scenes.Gameplay.Features.Popups.GameplayPopup.ViewModels;
 using UnityEngine;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Popups.GameplayPopup
 {
-    public class GameplayPopup: Popup
+    public class GameplayPopup : Popup
     {
         [SerializeField] private PopupButton buildStateButton;
         [SerializeField] private PopupButton buyAreaStateButton;
 
         private IGameplayPopupViewModel viewModel;
-        
+
         public void Setup(IGameplayPopupViewModel viewModel)
         {
             Cleanup();
             this.viewModel = viewModel;
-            
+
             Initialize();
             SetupInternal();
             Translate();
@@ -32,7 +32,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.GameplayPopup
         {
             buildStateButton.onButtonClicked += viewModel.BuildStateCommand.Execute;
             buyAreaStateButton.onButtonClicked += viewModel.BuyAreaStateCommand.Execute;
-            
+
             buildStateButton.UpdateText(viewModel.BuildStateCommand.Label);
             buyAreaStateButton.UpdateText(viewModel.BuyAreaStateCommand.Label);
         }
@@ -53,6 +53,5 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.GameplayPopup
             buildStateButton.onButtonClicked -= viewModel.BuildStateCommand.Execute;
             buyAreaStateButton.onButtonClicked -= viewModel.BuyAreaStateCommand.Execute;
         }
-
     }
 }

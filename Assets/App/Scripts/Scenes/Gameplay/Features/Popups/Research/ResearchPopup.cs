@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using App.Scripts.Modules.Localization.Localizers;
-using App.Scripts.Modules.PopupLogic.General.Popup;
+using App.Scripts.Modules.PopupAndViews.General.Popup;
 using App.Scripts.Scenes.Gameplay.Features.Popups.Research.Elements;
 using App.Scripts.Scenes.Gameplay.Features.Popups.Research.Elements.Level;
 using App.Scripts.Scenes.Gameplay.Features.Popups.Research.Elements.Research;
@@ -36,7 +36,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Research
         {
             header.Initialize(viewModule.LocalizationSystem);
             moreInfoTab.Initialize(viewModule.LocalizationSystem, viewModule.InformationWidgetViewModule);
-            
+
             viewModule.ResearchService.OnResearchCompleted += OnResearchCompleted;
             viewModule.ResearchService.OnLevelChanged += OnLevelChanged;
         }

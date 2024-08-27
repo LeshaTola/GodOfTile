@@ -1,14 +1,16 @@
 using App.Scripts.Modules.Localization.Localizers;
-using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effects.Specific.ChangeResourceEarningEffect.UI.ViewModels;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effects.Specific.ChangeResourceEarningEffect.UI.
+    ViewModels;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.UI;
 using UnityEngine;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effects.Specific.ChangeResourceEarningEffect.UI
+namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effects.Specific.ChangeResourceEarningEffect.
+    UI
 {
-    public class ChangeResourceEarningEffectorUI:SystemUI
+    public class ChangeResourceEarningEffectorUI : SystemUI
     {
         [SerializeField] private TMPLocalizer description;
-        
+
         private ChangeResourceEarningEffectorViewModule viewModule;
 
         public void Initialize(ChangeResourceEarningEffectorViewModule viewModule)
@@ -16,7 +18,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effec
             this.viewModule = viewModule;
             description.Initialize(viewModule.LocalizationSystem);
         }
-        
+
         public override void Setup()
         {
             if (viewModule == null)
@@ -24,7 +26,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effec
                 return;
             }
 
-            description.Key = $"Accelerates resource extraction by {(viewModule.Effect.EarningAmountMultiplier - 1) * 100}%" ;
+            description.Key =
+                $"Accelerates resource extraction by {(viewModule.Effect.EarningAmountMultiplier - 1) * 100}%";
             description.Translate();
         }
 

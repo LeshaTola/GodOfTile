@@ -2,11 +2,9 @@ using System;
 using App.Scripts.Features.Popups.Buttons;
 using App.Scripts.Modules.Localization;
 using App.Scripts.Modules.Localization.Localizers;
-using App.Scripts.Scenes.Gameplay.Features.Inventory.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget;
 using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget.ViewModels;
 using App.Scripts.Scenes.Gameplay.Features.Researches.Configs;
-using App.Scripts.Scenes.Gameplay.Features.Researches.Services;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
@@ -34,7 +32,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Research.Elements
         public void Initialize(ILocalizationSystem localizationSystem,
             IInformationWidgetViewModule informationWidgetViewModule)
         {
-
             header.Initialize(localizationSystem);
             nameText.Initialize(localizationSystem);
             descriptionHeader.Initialize(localizationSystem);
@@ -60,7 +57,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Research.Elements
         {
             researchButton.UpdateText(text);
             Translate();
-            
+
             if (action == null)
             {
                 researchButton.Interactable = false;

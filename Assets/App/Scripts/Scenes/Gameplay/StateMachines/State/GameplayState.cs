@@ -3,11 +3,8 @@ using App.Scripts.Scenes.Gameplay.Features.CameraLogic;
 using App.Scripts.Scenes.Gameplay.Features.Commands.GoToStateCommands;
 using App.Scripts.Scenes.Gameplay.Features.Commands.Provider;
 using App.Scripts.Scenes.Gameplay.Features.Input;
-using App.Scripts.Scenes.Gameplay.Features.Popups.GameplayPopup.Routers;
-using App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay;
 using App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.Presenters;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Selection;
-using App.Scripts.Scenes.Gameplay.StateMachines.Ids;
 using Cysharp.Threading.Tasks;
 
 namespace App.Scripts.Scenes.Gameplay.StateMachines.State
@@ -46,7 +43,8 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             cameraController.Active = true;
 
             gameplayScreenPresenter.Initialize();
-            
+            await gameplayScreenPresenter.Show();
+
             gameInput.OnBuild += OnBuild;
             gameInput.OnI += OnI;
             gameInput.OnM += OnM;
@@ -64,7 +62,8 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
                 if (tile == null)
                 {
                     return;
-                }            
+                }
+
                 tileSelectionProvider.SelectTile(tile);
             }
         }
@@ -72,23 +71,23 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
         public override async UniTask Exit()
         {
             await base.Exit();
-            
-            gameplayScreenPresenter.Cleanup();
 
             gameInput.OnBuild -= OnBuild;
             gameInput.OnI -= OnI;
             gameInput.OnM -= OnM;
-            
-            cameraController.Active = false;
 
+            gameplayScreenPresenter.Cleanup();
             tileSelectionProvider.Cleanup();
+
+            await gameplayScreenPresenter.Hide();
+            cameraController.Active = false;
         }
 
         private void OnBuild()
         {
             commandsProvider.GetCommand<GoToBuildingStateCommand>().Execute();
         }
-        
+
         private void OnM()
         {
             commandsProvider.GetCommand<GoToBuyAreaStateCommand>().Execute();

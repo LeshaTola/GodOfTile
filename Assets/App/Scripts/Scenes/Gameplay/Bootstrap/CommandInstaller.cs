@@ -11,12 +11,12 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
         public override void InstallBindings()
         {
             Container.Bind<ICommandsProvider>().To<CommandsProvider>().AsSingle();
-            
+
             BindGoToGameplayStateCommand();
             BindGoToBuyAreaStateCommand();
             BindGoToBuildingStateCommand();
             BindGoToResearchStateCommand();
-            
+
             BindBuyAreaCommand();
             Container
                 .Bind<ClosePopupCommand>()
@@ -31,7 +31,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
                 .AsSingle()
                 .WithArguments("close");
         }
-        
+
         private void BindBuyAreaCommand()
         {
             Container
@@ -39,7 +39,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
                 .AsSingle()
                 .WithArguments("buy");
         }
-        
+
         private void BindGoToBuyAreaStateCommand()
         {
             Container
@@ -47,7 +47,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
                 .AsSingle()
                 .WithArguments("buy area");
         }
-        
+
         private void BindGoToResearchStateCommand()
         {
             Container
@@ -55,7 +55,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
                 .AsSingle()
                 .WithArguments("research");
         }
-        
+
         private void BindGoToBuildingStateCommand()
         {
             Container

@@ -1,7 +1,7 @@
 ﻿using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget.Cost;
 using UnityEngine;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Shop.Factories.Cost
+namespace App.Scripts.Scenes.Gameplay.Features.Popups.Shop.Factories.Cost
 {
     public class CostUIFactory : ICostUIFactory
     {

@@ -43,7 +43,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.General
         {
             glow.SetActive(true);
         }
-        
+
         public void StopGlow()
         {
             glow.SetActive(false);
