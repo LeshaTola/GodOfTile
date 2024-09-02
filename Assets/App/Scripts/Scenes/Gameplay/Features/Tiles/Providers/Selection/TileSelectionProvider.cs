@@ -49,28 +49,30 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Selection
 
         private async UniTask ShowTileInformation(Tile tile)
         {
-            effectorVisualProvider.Cleanup();
 
             if (selectedTile == null)
             {
+                effectorVisualProvider.Setup(tile);
                 cts = new CancellationTokenSource();
 
                 selectedTile = tile;
-                tile.Visual.StartGlow();
+                selectedTile.Visual.StartGlow();
 
                 await informationPopupRouter.ShowPopup(tile.Config, cts.Token);
                 Cleanup();
+                effectorVisualProvider.Cleanup();
+                return;
             }
-            else
-            {
-                selectedTile.Visual.StopGlow();
-                selectedTile = tile;
-                tile.Visual.StartGlow();
+            effectorVisualProvider.Cleanup();
 
-                informationPopupRouter.UpdatePopup(tile.Config);
-            }
-
+            
+            selectedTile.Visual.StopGlow();
+            
+            selectedTile = tile;
+            selectedTile.Visual.StartGlow();
             effectorVisualProvider.Setup(tile);
+
+            informationPopupRouter.UpdatePopup(tile.Config);
         }
 
         public void Cleanup()
