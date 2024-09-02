@@ -24,17 +24,15 @@ namespace App.Scripts.Modules.PopupAndViews.Animations
         {
             target.transform.localScale = Vector3.zero;
             Tween tween = target.transform.DOScale(1, showAnimationTime);
-            
-            tween.SetEase(showEase);
-            await tween.ToUniTask(cancellationToken: cancellationToken);
+
+            await tween.SetEase(showEase).ToUniTask(cancellationToken: cancellationToken);
         }
 
         public async UniTask PlayHideAnimation(GameObject target, CancellationToken cancellationToken)
         {
             target.transform.localScale = Vector3.one;
-            Tween tween = target.transform.DOScale(0, showAnimationTime);
-            tween.SetEase(hideEase);
-            await tween.ToUniTask(cancellationToken: cancellationToken);
+            Tween tween = target.transform.DOScale(0, hideAnimationTime);
+            await tween.SetEase(hideEase).ToUniTask(cancellationToken: cancellationToken);
         }
     }
 }

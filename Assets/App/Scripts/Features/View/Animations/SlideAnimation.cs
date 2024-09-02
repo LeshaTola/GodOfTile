@@ -33,8 +33,7 @@ namespace App.Scripts.Features.View.Animations
             rectTransform.anchoredPosition = hideScreenPosition;
 
             Tween tween = rectTransform.DOAnchorPos(showScreenPosition, showAnimationTime);
-            tween.SetEase(showEase);
-            await tween.ToUniTask(cancellationToken: cancellationToken);
+            await tween.SetEase(showEase).ToUniTask(cancellationToken: cancellationToken);
         }
 
         public async UniTask PlayHideAnimation(GameObject target, CancellationToken cancellationToken)
@@ -43,8 +42,7 @@ namespace App.Scripts.Features.View.Animations
             rectTransform.anchoredPosition = showScreenPosition;
 
             Tween tween = rectTransform.DOAnchorPos(hideScreenPosition, hideAnimationTime);
-            tween.SetEase(hideEase);
-            await tween.ToUniTask(cancellationToken: cancellationToken);
+            await tween.SetEase(hideEase).ToUniTask(cancellationToken: cancellationToken);
         }
     }
 }

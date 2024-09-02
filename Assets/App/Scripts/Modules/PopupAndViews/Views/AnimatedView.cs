@@ -8,7 +8,7 @@ namespace App.Scripts.Modules.PopupAndViews.Views
 {
     public class AnimatedView : SerializedMonoBehaviour
     {
-        [SerializeField] private IAnimation animation;
+        [SerializeField] private IAnimation viewAnimation;
 
         private UniTask animationTask;
         private CancellationTokenSource cancellationTokenSource;
@@ -18,7 +18,7 @@ namespace App.Scripts.Modules.PopupAndViews.Views
             Cleanup();
 
             cancellationTokenSource = new CancellationTokenSource();
-            animationTask = animation.PlayShowAnimation(gameObject, cancellationTokenSource.Token);
+            animationTask = viewAnimation.PlayShowAnimation(gameObject, cancellationTokenSource.Token);
 
             gameObject.SetActive(true);
             await animationTask;
@@ -29,7 +29,7 @@ namespace App.Scripts.Modules.PopupAndViews.Views
             Cleanup();
 
             cancellationTokenSource = new CancellationTokenSource();
-            animationTask = animation.PlayHideAnimation(gameObject, cancellationTokenSource.Token);
+            animationTask = viewAnimation.PlayHideAnimation(gameObject, cancellationTokenSource.Token);
 
             await animationTask;
             gameObject.SetActive(false);

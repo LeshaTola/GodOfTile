@@ -3,7 +3,6 @@ using App.Scripts.Scenes.Gameplay.Features.Popups.GameplayPopup.Routers;
 using App.Scripts.Scenes.Gameplay.Features.Popups.Information.Routers;
 using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget.ViewModels;
 using App.Scripts.Scenes.Gameplay.Features.Popups.Research.Routers;
-using App.Scripts.Scenes.Gameplay.Features.Popups.Shop.Routers;
 using Zenject;
 
 namespace App.Scripts.Scenes.Gameplay.Bootstrap
@@ -17,7 +16,6 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
             BindInformationPopupRouter();
             BindGameplayPopupRouter();
             BindBuyAreaPopupRouter();
-            BindShopPopupRouter();
             Container.Bind<ResearchPopupRouter>().AsSingle();
         }
 
@@ -29,11 +27,6 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
         private void BindBuyAreaPopupRouter()
         {
             Container.Bind<IBuyAreaPopupRouter>().To<BuyAreaPopupRouter>().AsSingle();
-        }
-
-        private void BindShopPopupRouter()
-        {
-            Container.Bind<IShopPopupRouter>().To<ShopPopupRouter>().AsSingle();
         }
 
         private void BindInformationWidgetViewModule()

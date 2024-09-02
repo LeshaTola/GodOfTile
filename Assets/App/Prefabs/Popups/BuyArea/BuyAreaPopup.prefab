@@ -248,7 +248,7 @@ MonoBehaviour:
   raycaster: {fileID: 7677129623625394571}
   canvas: {fileID: 3297265027991315483}
   header: {fileID: 8696945881230697326}
-  informationWidget: {fileID: 1803292368512404647}
+  informationWidget: {fileID: 3881473316234681583}
   buyButton: {fileID: 5030320718426371398}
   closeButton: {fileID: 7830726933600505624}
   references:
@@ -982,7 +982,7 @@ PrefabInstance:
     - target: {fileID: 3499526384378461647, guid: 1c68525df55af9c4bac84cc7136cdef3,
         type: 3}
       propertyPath: m_Name
-      value: InformationWidget
+      value: CostWidget
       objectReference: {fileID: 0}
     - target: {fileID: 4238636205191058381, guid: 1c68525df55af9c4bac84cc7136cdef3,
         type: 3}
@@ -1027,7 +1027,7 @@ PrefabInstance:
     - target: {fileID: 4238636205191058381, guid: 1c68525df55af9c4bac84cc7136cdef3,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4238636205191058381, guid: 1c68525df55af9c4bac84cc7136cdef3,
         type: 3}
@@ -1157,12 +1157,12 @@ PrefabInstance:
     - target: {fileID: 9089224880817354275, guid: 1c68525df55af9c4bac84cc7136cdef3,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9089224880817354275, guid: 1c68525df55af9c4bac84cc7136cdef3,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9089224880817354275, guid: 1c68525df55af9c4bac84cc7136cdef3,
         type: 3}
@@ -1184,21 +1184,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9089224880817354275, guid: 1c68525df55af9c4bac84cc7136cdef3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c68525df55af9c4bac84cc7136cdef3, type: 3}
---- !u!114 &1803292368512404647 stripped
+--- !u!114 &3881473316234681583 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5891663070275076299, guid: 1c68525df55af9c4bac84cc7136cdef3,
+  m_CorrespondingSourceObject: {fileID: 9014011727989248131, guid: 1c68525df55af9c4bac84cc7136cdef3,
     type: 3}
   m_PrefabInstance: {fileID: 5243861782334950508}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 472e03e2f5c2bc04ca3a404069fb4a9f, type: 3}
+  m_Script: {fileID: 11500000, guid: ec2e8daf107946c1b36076341e92663a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &8221138230894370721 stripped

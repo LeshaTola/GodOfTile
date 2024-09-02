@@ -910,6 +910,11 @@ PrefabInstance:
       propertyPath: m_PixelsPerUnitMultiplier
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2936157810536717169, guid: 48c90244b6d8f1b4d908e32fad6c2e4f,
+        type: 3}
+      propertyPath: m_Name
+      value: CostWidget
+      objectReference: {fileID: 0}
     - target: {fileID: 5047547738607251814, guid: 48c90244b6d8f1b4d908e32fad6c2e4f,
         type: 3}
       propertyPath: m_AnchorMax.y

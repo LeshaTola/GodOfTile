@@ -186,6 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3d4519717e7339448df0c4604c6cd03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colorConfig: {fileID: 11400000, guid: 8d341f884b812e8448592aa78f489db8, type: 2}
   resourceImage: {fileID: 5064475193864401519}
   costText: {fileID: 239713352363112747}
 --- !u!1 &8380835785307438177

@@ -36,7 +36,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.Presenters
 
         public async UniTask Show()
         {
-            gameplayScreen.Show();
+            await gameplayScreen.Show();
             var timeTask = timePresenter.Show();
             var stateTransferTask = stateTransferPresenter.Show();
             await UniTask.WhenAll(timeTask, stateTransferTask);
@@ -47,7 +47,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.Presenters
             var timeTask = timePresenter.Hide();
             var stateTransferTask = stateTransferPresenter.Hide();
             await UniTask.WhenAll(timeTask, stateTransferTask);
-            gameplayScreen.Hide();
+            await gameplayScreen.Hide();
         }
     }
 }

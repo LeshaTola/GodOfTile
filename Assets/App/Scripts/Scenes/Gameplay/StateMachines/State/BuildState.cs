@@ -2,7 +2,7 @@
 using App.Scripts.Scenes.Gameplay.Features.CameraLogic;
 using App.Scripts.Scenes.Gameplay.Features.Input;
 using App.Scripts.Scenes.Gameplay.Features.Map.Visualizers;
-using App.Scripts.Scenes.Gameplay.Features.Popups.Shop.Routers;
+using App.Scripts.Scenes.Gameplay.Features.Screens.Shop.Presenters;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCreation;
 using App.Scripts.Scenes.Gameplay.StateMachines.Ids;
 using Cysharp.Threading.Tasks;
@@ -14,7 +14,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
         private IGameInput gameInput;
         private IVisualizer gridVisualizer;
         private IUpdateService updateService;
-        private IShopPopupRouter shopPopupRouter;
+        private ShopScreenPresenter shopScreenPresenter;
         private ICameraController cameraController;
         private ITilesCreationService creationService;
 
@@ -24,7 +24,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             IGameInput gameInput,
             ITilesCreationService creationService,
             IVisualizer gridVisualizer,
-            IShopPopupRouter shopPopupRouter,
+            ShopScreenPresenter shopScreenPresenter,
             ICameraController cameraController
         )
             : base(id)
@@ -33,7 +33,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             this.gameInput = gameInput;
             this.creationService = creationService;
             this.gridVisualizer = gridVisualizer;
-            this.shopPopupRouter = shopPopupRouter;
+            this.shopScreenPresenter = shopScreenPresenter;
             this.cameraController = cameraController;
         }
 
@@ -42,7 +42,9 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             await base.Enter();
             cameraController.Active = true;
 
-            await shopPopupRouter.ShowShopPopup();
+            shopScreenPresenter.Initialize();
+            shopScreenPresenter.Setup();
+            await shopScreenPresenter.Show();
 
             gameInput.OnEscape += OnBuild;
             gameInput.OnBuild += OnBuild;
@@ -79,7 +81,8 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             creationService.StopPlacingTile();
             gridVisualizer.Hide();
 
-            await shopPopupRouter.HideShopPopup();
+            shopScreenPresenter.Cleanup();
+            await shopScreenPresenter.Hide();
         }
 
         private async void OnBuild()
