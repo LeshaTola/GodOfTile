@@ -2,6 +2,8 @@ using App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay;
 using App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.Presenters;
 using App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.StateTransfer;
 using App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.StateTransfer.Presenters;
+using App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.TileInformation;
+using App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.TileInformation.Presenters;
 using App.Scripts.Scenes.Gameplay.Features.Time.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Time.Presenters;
 using App.Scripts.Scenes.Gameplay.Features.Time.UI;
@@ -14,12 +16,11 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap.Screens
     {
         [Header("GameplayScreen")]
         [SerializeField] private GameplayScreen gameplayScreen;
-
         [SerializeField] private StateTransferView stateTransferView;
+        [SerializeField] private TileInformationView tileInformationView;
 
         [Header("Time")]
         [SerializeField] private TimeControllerView timeControllerView;
-
         [SerializeField] private TimeSpeedConfig timeSpeedConfig;
 
         public override void InstallBindings()
@@ -27,6 +28,8 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap.Screens
             BindGameplayScreen();
             BindTimeControllerView();
             BindStateTransferView();
+            Container.Bind<TileInformationView>().FromInstance(tileInformationView).AsSingle();
+            Container.Bind<TileInformationPresenter>().AsSingle();
         }
 
         private void BindGameplayScreen()
