@@ -1,7 +1,6 @@
 ﻿using System.Threading;
 using App.Scripts.Scenes.Gameplay.Features.Input;
 using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Grid;
-using App.Scripts.Scenes.Gameplay.Features.Popups.Information.Routers;
 using App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.TileInformation.Presenters;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.General;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Views;
