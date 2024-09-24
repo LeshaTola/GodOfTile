@@ -21,7 +21,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.GetTi
             {
                 return null;
             }
-            
+
             List<Tile> tiles = new();
             foreach (var tilePosition in tilePositions)
             {

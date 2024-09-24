@@ -8,17 +8,17 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Resear
     public class ResearchSystemUI : SystemUI
     {
         [SerializeField]
-        private TMProLocalizer text;
-    
+        private TMPLocalizer text;
+
         private ResearchSystemViewModel viewModule;
 
         public void Initialize(ResearchSystemViewModel viewModule)
         {
             Cleanup();
             this.viewModule = viewModule;
-            
+
             text.Initialize(viewModule.LocalizationSystem);
-            
+
             Setup();
         }
 
@@ -30,7 +30,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Resear
             }
 
             text.Key = viewModule.Data.Description;
-            
+
             text.Translate();
         }
 

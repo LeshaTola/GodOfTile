@@ -1,7 +1,6 @@
 using App.Scripts.Scenes.Gameplay.Features.Researches.Services;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.General;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Research.UI.Providers;
-using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.UI;
 using UnityEngine;
 
@@ -24,7 +23,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Resear
         private IResearchService researchService;
 
         public override TileSystemData Data => data;
-        
+
         public ResearchSystem(Tile parentTile, ResearchSystemData data, IResearchService researchService) :
             base(parentTile)
         {

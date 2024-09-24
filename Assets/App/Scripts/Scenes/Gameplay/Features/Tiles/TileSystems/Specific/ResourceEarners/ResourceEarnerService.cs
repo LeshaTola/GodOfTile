@@ -2,17 +2,18 @@ using System.Collections.Generic;
 using App.Scripts.Modules.StateMachine.Services.UpdateService;
 using App.Scripts.Modules.TimeProvider;
 using App.Scripts.Scenes.Gameplay.Features.Inventory.Systems;
-using UnityEngine;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners
 {
     public class ResourceEarnerService : IUpdatable, IResourceEarnerService
     {
         private IInventorySystem inventorySystem;
-        private  ITimeProvider timeProvider;
-        
+        private ITimeProvider timeProvider;
+
         private List<ResourceEarner> resourceEarners = new();
         private float timer = 1f;
+
+        public bool Active { get; set; } = true;
 
         public ResourceEarnerService(IInventorySystem inventorySystem, ITimeProvider timeProvider)
         {
@@ -32,6 +33,11 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Resour
 
         public void Update()
         {
+            if (!Active)
+            {
+                return;
+            }
+
             timer -= timeProvider.DeltaTime;
             if (timer <= 0)
             {
@@ -44,7 +50,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Resour
         {
             foreach (var resourceEarner in resourceEarners)
             {
-                var data = (ResourceEarnerSystemData) resourceEarner.Data; 
+                var data = (ResourceEarnerSystemData) resourceEarner.Data;
                 inventorySystem.ChangeRecourseAmount(data.Resource.ResourceName, data.AmountPerSecond);
             }
         }

@@ -10,7 +10,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Resear
             Data = data;
         }
 
-        public ILocalizationSystem LocalizationSystem { get; private set; }
-        public ResearchSystemData Data { get; private set; } 
+        public ILocalizationSystem LocalizationSystem { get; }
+        public ResearchSystemData Data { get; }
     }
 }

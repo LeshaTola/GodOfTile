@@ -6,14 +6,14 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.GetTi
     public class LinedGetTilesStrategy : GetTileStrategy
     {
         [SerializeField] private List<Line> steps;
-        
+
         public override List<Vector2Int> GetPositions(Vector2Int center)
         {
             if (steps == null || steps.Count <= 0)
             {
                 return null;
             }
-            
+
             List<Vector2Int> positions = new();
             for (var i = 0; i < steps.Count; i++)
             {
@@ -26,7 +26,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.GetTi
                     {
                         break;
                     }
-                    
+
                     positions.Add(tilePosition);
                     iteration++;
                 }
@@ -34,8 +34,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.GetTi
 
             return positions;
         }
-        
-        
+
+
         private bool IsCompete(Line step, int iteration)
         {
             return step.iterations != -1 && iteration > step.iterations;

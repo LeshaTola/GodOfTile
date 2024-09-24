@@ -2,6 +2,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Resour
 {
     public interface IResourceEarnerService
     {
+        bool Active { get; set; }
+
         void AddResourceEarnerSystem(ResourceEarner resourceEarner);
         void RemoveResourceEarnerSystem(ResourceEarner resourceEarner);
     }

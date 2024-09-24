@@ -21,13 +21,13 @@ namespace App.Scripts.Scenes.Gameplay.Features.Commands.GoToStateCommands
             await stateMachine.ChangeState(StatesIds.BUILDING_STATE);
         }
     }
-    
+
     public class GoToResearchStateCommand : LabeledCommand
     {
         private StateMachine stateMachine;
         private IResearchService researchService;
 
-        public GoToResearchStateCommand(string label, StateMachine stateMachine,IResearchService researchService)
+        public GoToResearchStateCommand(string label, StateMachine stateMachine, IResearchService researchService)
             : base(label)
         {
             this.stateMachine = stateMachine;
@@ -41,6 +41,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Commands.GoToStateCommands
                 Debug.Log("Not Enough Research Systems");
                 return;
             }
+
             await stateMachine.ChangeState(StatesIds.RESEARCH_STATE);
         }
     }

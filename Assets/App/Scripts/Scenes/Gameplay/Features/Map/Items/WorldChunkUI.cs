@@ -13,7 +13,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Map.Items
         public void Initialize()
         {
             buyButton.onClick.RemoveAllListeners();
-            buyButton.onClick.AddListener(()=> OnBuyButtonClicked?.Invoke());
+            buyButton.onClick.AddListener(() => OnBuyButtonClicked?.Invoke());
         }
 
         public void Show()

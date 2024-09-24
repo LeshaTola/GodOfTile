@@ -5,7 +5,8 @@ using App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.TileSystem;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.TileSystemUI;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.TileSystemUIProvider;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Services;
-using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effects.Specific.ChangeResourceEarningEffect.UI.Providers;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effects.Specific.ChangeResourceEarningEffect.UI.
+    Providers;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Views;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Research.UI.Providers;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners;
@@ -20,7 +21,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap.Tile
         [SerializeField] private EffectorArea effectorAreaTemplate;
         [SerializeField] private Transform container;
         [SerializeField] private SystemsUIsDatabase systemsUIsDatabase;
-        
+
         public override void InstallBindings()
         {
             Container.Bind<IPool<EffectorArea>>().To<MonoBehObjectPool<EffectorArea>>().AsSingle()
@@ -33,7 +34,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap.Tile
                 .Bind<ITileSystemUIProvidersFactory>()
                 .To<TileSystemUIProvidersFactory>()
                 .AsSingle();
-            
+
             BindSystemFactory();
             BindSystemUIFactory();
 

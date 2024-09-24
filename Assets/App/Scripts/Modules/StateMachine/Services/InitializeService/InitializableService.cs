@@ -9,7 +9,7 @@ namespace App.Scripts.Modules.StateMachine.Services.InitializeService
             Initializables = initializables;
         }
 
-        public List<IInitializable> Initializables { get; private set; }
+        public List<IInitializable> Initializables { get; }
 
         public void Initialize()
         {

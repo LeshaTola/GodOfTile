@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using App.Scripts.Scenes.Gameplay.Features.Input;
 using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Grid;
-using App.Scripts.Scenes.Gameplay.Features.Popups.Information.Routers;
+using App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.TileInformation.Presenters;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.General;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Views;
 using Cysharp.Threading.Tasks;
@@ -12,7 +12,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Selection
     {
         private IGameInput gameInput;
         private IGridProvider gridProvider;
-        private IInformationPopupRouter informationPopupRouter;
+        private TileInformationPresenter tileInformationPresenter;
         private IEffectorVisualProvider effectorVisualProvider;
 
         private Tile selectedTile;
@@ -20,12 +20,12 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Selection
 
         public TileSelectionProvider(IGameInput gameInput,
             IGridProvider gridProvider,
-            IInformationPopupRouter informationPopupRouter,
+            TileInformationPresenter tileInformationPresenter,
             IEffectorVisualProvider effectorVisualProvider)
         {
             this.gameInput = gameInput;
             this.gridProvider = gridProvider;
-            this.informationPopupRouter = informationPopupRouter;
+            this.tileInformationPresenter = tileInformationPresenter;
             this.effectorVisualProvider = effectorVisualProvider;
         }
 
@@ -49,28 +49,32 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Selection
 
         private async UniTask ShowTileInformation(Tile tile)
         {
+
             if (selectedTile == null)
             {
+                effectorVisualProvider.Setup(tile);
                 cts = new CancellationTokenSource();
 
                 selectedTile = tile;
-                tile.Visual.StartGlow();
+                selectedTile.Visual.StartGlow();
 
-                await informationPopupRouter.ShowPopup(tile.Config,cts.Token);
+                tileInformationPresenter.Setup(tile.Config);
+                await tileInformationPresenter.ShowUntil(cts.Token);
+                
                 Cleanup();
+                effectorVisualProvider.Cleanup();
+                return;
             }
-            else
-            {
-                selectedTile.Visual.StopGlow();
-                selectedTile = tile;
-                tile.Visual.StartGlow();
-
-                informationPopupRouter.UpdatePopup(tile.Config);
-
-            }
-            
             effectorVisualProvider.Cleanup();
+
+            
+            selectedTile.Visual.StopGlow();
+            
+            selectedTile = tile;
+            selectedTile.Visual.StartGlow();
             effectorVisualProvider.Setup(tile);
+
+            tileInformationPresenter.Setup(tile.Config);
         }
 
         public void Cleanup()
@@ -84,7 +88,5 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Selection
             effectorVisualProvider.Cleanup();
             cts?.Cancel();
         }
-
-
     }
 }

@@ -18,8 +18,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
 {
     public class TilesCreationService : ITilesCreationService, ICleanupable
     {
-        public event Action<Vector2Int, Tile>  OnTilePlaced;
-        
+        public event Action<Vector2Int, Tile> OnTilePlaced;
+
         private IGridProvider gridProvider;
         private ITilesFactory tileFactory;
         private IActiveTileProvider activeTileProvider;
@@ -73,7 +73,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
             {
                 return;
             }
-            
+
             effectorVisualProvider.Cleanup();
             Object.Destroy(activeTile.gameObject);
             activeTile = null;

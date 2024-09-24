@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace App.Scripts.Modules.Factories.MonoFactories
 {
-    public class MonoFactory<T>:IFactory<T> where T: MonoBehaviour
+    public class MonoFactory<T> : IFactory<T> where T : MonoBehaviour
     {
         private T template;
         private Transform parent = null;

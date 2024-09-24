@@ -10,7 +10,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Map.Providers.Chunk.Cost
         private ChunkCostConfig config;
         private IChunksProvider chunksProvider;
 
-        public ChunkCostProvider(ChunkCostConfig config,IChunksProvider chunksProvider)
+        public ChunkCostProvider(ChunkCostConfig config, IChunksProvider chunksProvider)
         {
             this.config = config;
             this.chunksProvider = chunksProvider;
@@ -18,9 +18,9 @@ namespace App.Scripts.Scenes.Gameplay.Features.Map.Providers.Chunk.Cost
 
         public List<ResourceCount> GetCost(Vector2Int ChunkId)
         {
-            var nextChunkId = chunksProvider.OpenedChunks.Count-1;
-            
-            if (config.Costs == null || config.Costs.Count <nextChunkId )
+            var nextChunkId = chunksProvider.OpenedChunks.Count - 1;
+
+            if (config.Costs == null || config.Costs.Count < nextChunkId)
             {
                 return null;
             }

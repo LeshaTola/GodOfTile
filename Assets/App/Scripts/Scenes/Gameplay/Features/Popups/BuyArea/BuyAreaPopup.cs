@@ -1,6 +1,6 @@
 using App.Scripts.Features.Popups.Buttons;
 using App.Scripts.Modules.Localization.Localizers;
-using App.Scripts.Modules.PopupLogic.General.Popup;
+using App.Scripts.Modules.PopupAndViews.General.Popup;
 using App.Scripts.Scenes.Gameplay.Features.Popups.BuyArea.ViewModules;
 using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget;
 using UnityEngine;
@@ -9,7 +9,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.BuyArea
 {
     public class BuyAreaPopup : Popup
     {
-        [SerializeField] private TMProLocalizer header;
+        [SerializeField] private TMPLocalizer header;
         [SerializeField] private ItemInformationWidget informationWidget;
         [SerializeField] private PopupButton buyButton;
         [SerializeField] private PopupButton closeButton;

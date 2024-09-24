@@ -8,6 +8,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Researches.Configs
     {
         [HorizontalGroup("")]
         public ResearchConfig ResearchConfig;
+
         [HorizontalGroup("")]
         public bool IsCompleate;
     }

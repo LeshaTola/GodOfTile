@@ -1,14 +1,11 @@
 using System.Collections.Generic;
-using App.Scripts.Modules.StateMachine.Services.CleanupService;
-using App.Scripts.Scenes.Gameplay.Features.Map.Factories;
 using App.Scripts.Scenes.Gameplay.Features.Map.Factories.Chunk;
 using App.Scripts.Scenes.Gameplay.Features.Map.Items;
-using App.Scripts.Scenes.Gameplay.Features.Map.Providers;
 using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Chunk;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Map.Visualizers
 {
-    public class ChunkVisualizer: IChunkVisualizer
+    public class ChunkVisualizer : IChunkVisualizer
     {
         private IChunksProvider chunksProvider;
         private IChunksFactory chunksFactory;
@@ -19,9 +16,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.Map.Visualizers
         {
             this.chunksProvider = chunksProvider;
             this.chunksFactory = chunksFactory;
-            
         }
-        
+
         public void Hide()
         {
             CleanupChunks();
@@ -32,7 +28,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Map.Visualizers
         {
             SetupChunks();
             chunksProvider.OnChunkOpened += UpdateChunks;
-
         }
 
         public void UpdateChunks()
@@ -46,7 +41,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Map.Visualizers
             foreach (var chunk in chunksProvider.ClosedChunks)
             {
                 var worldChunk = chunksFactory.GetChunk(chunk);
-                
+
                 if (chunksProvider.IsOpenedNeighbour(chunk.Id))
                 {
                     worldChunk.ShowUI();

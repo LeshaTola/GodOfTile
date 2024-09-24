@@ -1,7 +1,8 @@
 ﻿using App.Scripts.Modules.StateMachine.Services.UpdateService;
+using App.Scripts.Scenes.Gameplay.Features.CameraLogic;
 using App.Scripts.Scenes.Gameplay.Features.Input;
 using App.Scripts.Scenes.Gameplay.Features.Map.Visualizers;
-using App.Scripts.Scenes.Gameplay.Features.Popups.Shop.Routers;
+using App.Scripts.Scenes.Gameplay.Features.Screens.Shop.Presenters;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCreation;
 using App.Scripts.Scenes.Gameplay.StateMachines.Ids;
 using Cysharp.Threading.Tasks;
@@ -10,11 +11,12 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
 {
     public class BuildState : Modules.StateMachine.States.General.State
     {
-        private IUpdateService updateService;
         private IGameInput gameInput;
-        private ITilesCreationService creationService;
         private IVisualizer gridVisualizer;
-        private IShopPopupRouter shopPopupRouter;
+        private IUpdateService updateService;
+        private ShopScreenPresenter shopScreenPresenter;
+        private ICameraController cameraController;
+        private ITilesCreationService creationService;
 
         public BuildState(
             string id,
@@ -22,7 +24,8 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             IGameInput gameInput,
             ITilesCreationService creationService,
             IVisualizer gridVisualizer,
-            IShopPopupRouter shopPopupRouter
+            ShopScreenPresenter shopScreenPresenter,
+            ICameraController cameraController
         )
             : base(id)
         {
@@ -30,15 +33,19 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             this.gameInput = gameInput;
             this.creationService = creationService;
             this.gridVisualizer = gridVisualizer;
-            this.shopPopupRouter = shopPopupRouter;
+            this.shopScreenPresenter = shopScreenPresenter;
+            this.cameraController = cameraController;
         }
 
         public override async UniTask Enter()
         {
             await base.Enter();
+            cameraController.Active = true;
 
-            await shopPopupRouter.ShowShopPopup();
-            
+            shopScreenPresenter.Initialize();
+            shopScreenPresenter.Setup();
+            await shopScreenPresenter.Show();
+
             gameInput.OnEscape += OnBuild;
             gameInput.OnBuild += OnBuild;
             gameInput.OnRotate += OnRotate;
@@ -52,7 +59,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             await base.Update();
 
             updateService.Update();
-            
+
             creationService.MoveActiveTile(gameInput.GetGridMousePosition());
 
             if (gameInput.IsMouseClicked())
@@ -69,11 +76,13 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             gameInput.OnEscape -= OnBuild;
             gameInput.OnBuild -= OnBuild;
             gameInput.OnRotate -= OnRotate;
-            
+
+            cameraController.Active = false;
             creationService.StopPlacingTile();
             gridVisualizer.Hide();
 
-            await shopPopupRouter.HideShopPopup();
+            shopScreenPresenter.Cleanup();
+            await shopScreenPresenter.Hide();
         }
 
         private async void OnBuild()

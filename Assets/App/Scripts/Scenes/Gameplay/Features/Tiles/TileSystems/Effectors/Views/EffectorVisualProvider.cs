@@ -12,7 +12,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Views
 
         private Effector effector;
         private List<EffectorArea> effectorAreas = new();
-        private List<Tile> validTiles= new();
+        private List<Tile> validTiles = new();
 
         public EffectorVisualProvider(IPool<EffectorArea> areasPool)
         {
@@ -26,6 +26,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Views
             {
                 return;
             }
+
             Setup(tileEffector);
         }
 
@@ -78,8 +79,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Views
             {
                 tile.Visual.StopGlow();
             }
+
             validTiles.Clear();
         }
-
     }
 }

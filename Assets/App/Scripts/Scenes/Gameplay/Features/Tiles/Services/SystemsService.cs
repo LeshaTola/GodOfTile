@@ -14,6 +14,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Services
         public event Action<ITileSystem> OnSystemUpdate;
         public event Action<ITileSystem> OnSystemStop;
 
+        public bool Active { get; set; } = false;
+
         public void StartSystem(ITileSystem tileSystem)
         {
             tileSystem.Start();
@@ -31,6 +33,11 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Services
 
         public void UpdateSystems()
         {
+            if (!Active)
+            {
+                return;
+            }
+
             foreach (var system in Systems)
             {
                 system.Update();

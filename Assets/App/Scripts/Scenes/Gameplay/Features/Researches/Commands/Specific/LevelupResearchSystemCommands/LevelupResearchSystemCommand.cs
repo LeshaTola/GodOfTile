@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Researches.Commands.Specific.LevelupResearchSystemCommands
 {
-    public class LevelupResearchSystemCommand: ResearchCommand
+    public class LevelupResearchSystemCommand : ResearchCommand
     {
         [SerializeField] private ResearchCommandData data;
 
@@ -16,7 +16,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Researches.Commands.Specific.Leve
             this.data = data;
             this.researchService = researchService;
         }
-        
+
         public override void Execute()
         {
             researchService.LevelUp();

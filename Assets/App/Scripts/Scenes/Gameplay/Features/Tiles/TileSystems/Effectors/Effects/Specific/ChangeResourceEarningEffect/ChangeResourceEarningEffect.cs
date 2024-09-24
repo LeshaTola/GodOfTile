@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
-using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effects.Specific.ChangeResourceEarningEffect.UI.Providers;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effects.Specific.ChangeResourceEarningEffect.UI.
+    Providers;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.ValidationStrategies;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.UI;
@@ -20,12 +21,12 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effec
         public Effector Effector => effector;
         public float EarningAmountMultiplier => earningAmountMultiplier;
         public ISystemUIProvider SystemUIProvider => systemUIProvider;
-        
+
         public void Initialize(Effector effector)
         {
             validationStrategy = new WhiteListValidationStrategy(new List<Type>()
             {
-                typeof(ResourceEarner) 
+                typeof(ResourceEarner)
             });
             this.effector = effector;
         }

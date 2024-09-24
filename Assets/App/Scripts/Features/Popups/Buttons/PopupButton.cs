@@ -10,7 +10,7 @@ namespace App.Scripts.Features.Popups.Buttons
     {
         public event Action onButtonClicked;
 
-        [SerializeField] private TMProLocalizer buttonText;
+        [SerializeField] private TMPLocalizer buttonText;
         [SerializeField] private Button button;
 
         public bool Interactable
@@ -37,7 +37,7 @@ namespace App.Scripts.Features.Popups.Buttons
             {
                 return;
             }
-            
+
             buttonText.Key = text;
         }
 

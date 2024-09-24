@@ -25,10 +25,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Map.Factories.Chunk
 
         private void SetupWorldChunk(WorldChunk newChunk, Items.Chunk chunk)
         {
-            newChunk.Initialize(() =>
-            {
-                buyAreaPopupRouter.Show(chunk.Id);
-            });
+            newChunk.Initialize(() => { buyAreaPopupRouter.Show(chunk.Id); });
             var newChunkTransform = newChunk.transform;
             newChunkTransform.localScale
                 = new Vector3(chunk.Size.x, newChunkTransform.localScale.y, chunk.Size.y);

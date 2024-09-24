@@ -11,7 +11,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Research.ViewModels
     public class ResearchPopupViewModule
     {
         public ResearchPopupViewModule(ILocalizationSystem localizationSystem, IResearchService researchService,
-            IFactory<LevelElement> levelsFactory, IFactory<ResearchElement> researchesFactory, IInformationWidgetViewModule informationWidgetViewModule, IInventorySystem inventorySystem)
+            IFactory<LevelElement> levelsFactory, IFactory<ResearchElement> researchesFactory,
+            IInformationWidgetViewModule informationWidgetViewModule, IInventorySystem inventorySystem)
         {
             LocalizationSystem = localizationSystem;
             ResearchService = researchService;

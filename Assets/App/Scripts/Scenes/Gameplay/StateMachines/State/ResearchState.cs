@@ -1,3 +1,4 @@
+using App.Scripts.Modules.StateMachine.Services.UpdateService;
 using App.Scripts.Scenes.Gameplay.Features.Commands.GoToStateCommands;
 using App.Scripts.Scenes.Gameplay.Features.Commands.Provider;
 using App.Scripts.Scenes.Gameplay.Features.Input;
@@ -10,14 +11,19 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
     {
         private IGameInput gameInput;
         private ICommandsProvider commandsProvider;
+        private readonly IUpdateService updateService;
         private ResearchPopupRouter researchPopupRouter;
 
-        public ResearchState(string id, ResearchPopupRouter researchPopupRouter, IGameInput gameInput,
-            ICommandsProvider commandsProvider) : base(id)
+        public ResearchState(string id,
+            IGameInput gameInput,
+            ResearchPopupRouter researchPopupRouter,
+            ICommandsProvider commandsProvider,
+            IUpdateService updateService) : base(id)
         {
             this.researchPopupRouter = researchPopupRouter;
             this.gameInput = gameInput;
             this.commandsProvider = commandsProvider;
+            this.updateService = updateService;
         }
 
         public override async UniTask Enter()
@@ -29,13 +35,20 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             gameInput.OnM += Back;
         }
 
+        public override async UniTask Update()
+        {
+            await base.Update();
+
+            updateService.Update();
+        }
+
         public override async UniTask Exit()
         {
             await base.Exit();
-            
+
             gameInput.OnEscape -= Back;
             gameInput.OnM -= Back;
-            
+
             await researchPopupRouter.HidePopup();
         }
 

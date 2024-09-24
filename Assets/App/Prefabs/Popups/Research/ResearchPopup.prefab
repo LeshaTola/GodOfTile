@@ -457,8 +457,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25e43990710b4bdba712e349a25765dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationConfig:
-    rid: 5190804729696878593
+  popupAnimation:
+    rid: 5190804909244022786
   raycaster: {fileID: 7677129623625394571}
   canvas: {fileID: 3297265027991315483}
   header: {fileID: 8696945881230697326}
@@ -467,12 +467,14 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 5190804729696878593
-      type: {class: PopupAnimationConfig, ns: App.Scripts.Modules.PopupLogic.Animations.Animator,
+    - rid: 5190804909244022786
+      type: {class: ScaleAnimation, ns: App.Scripts.Modules.PopupAndViews.Animations,
         asm: Assembly-CSharp}
       data:
-        ShowAnimationTime: 0.5
-        HideAnimationTime: 0.5
+        showAnimationTime: 0.3
+        showEase: 27
+        hideAnimationTime: 0.3
+        hideEase: 26
 --- !u!1 &2881702145657304672
 GameObject:
   m_ObjectHideFlags: 0
@@ -907,6 +909,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_PixelsPerUnitMultiplier
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936157810536717169, guid: 48c90244b6d8f1b4d908e32fad6c2e4f,
+        type: 3}
+      propertyPath: m_Name
+      value: CostWidget
       objectReference: {fileID: 0}
     - target: {fileID: 5047547738607251814, guid: 48c90244b6d8f1b4d908e32fad6c2e4f,
         type: 3}

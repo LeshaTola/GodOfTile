@@ -1,7 +1,6 @@
-using App.Scripts.Modules.PopupLogic.General.Controllers;
+using App.Scripts.Modules.PopupAndViews.General.Controllers;
 using App.Scripts.Scenes.Gameplay.Features.Commands.General;
 using App.Scripts.Scenes.Gameplay.Features.Inventory.Systems;
-using App.Scripts.Scenes.Gameplay.Features.Map.Providers;
 using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Chunk;
 using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Chunk.Cost;
 using UnityEngine;
