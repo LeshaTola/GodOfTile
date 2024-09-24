@@ -26,7 +26,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: configs
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[Assets.App.Scripts.Scenes.Gameplay.Features.Tiles.Configs.TileConfig,
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[App.Scripts.Scenes.Gameplay.Features.Tiles.Configs.TileConfig,
         Assembly-CSharp]], mscorlib
     - Name: comparer
       Entry: 7
@@ -55,7 +55,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: Field
+      Data: Sand
     - Name: $v
       Entry: 10
       Data: 1

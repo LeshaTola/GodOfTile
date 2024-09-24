@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CameraMovementConfig
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  rotationSpeed: 1
+  rotationSpeed: 180
   focusStep: 2
   focusSpeed: 20
   xCoordinate:

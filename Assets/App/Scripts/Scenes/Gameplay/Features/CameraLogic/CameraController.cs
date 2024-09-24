@@ -48,7 +48,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.CameraLogic
 
         public void Rotate(float value)
         {
-            cameraTarget.transform.Rotate(Vector3.up, value * config.RotationSpeed);
+            cameraTarget.transform.Rotate(Vector3.up, value *timeProvider.DeltaTime * config.RotationSpeed);
         }
 
         public void Move(Vector2 dir)

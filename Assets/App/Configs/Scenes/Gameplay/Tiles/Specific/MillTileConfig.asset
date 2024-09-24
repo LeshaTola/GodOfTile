@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc5af3fe342dd924e9f809bc8e9408aa, type: 3}
+  m_Name: MillTileConfig
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: systems
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.TileSystem,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  id: MillTileConfig
+  size: {x: 1, y: 1}
+  tileTypeDatabase: {fileID: 11400000, guid: 6e8687d462988db44889225b2fec324e, type: 2}
+  building: {fileID: 6363308020260776678, guid: f52afec8cf056184484098cfc0a100af,
+    type: 3}
+  type: grass
+  tileImage: {fileID: 0}
+  tileName: Mill
+  description: "\u0412\u044B\u0440\u0430\u0431\u0430\u0442\u044B\u0432\u0430\u0435\u0442,
+    \u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0440\u0435\u0441\u0443\u0440\u0441\u0430
+    \u0432 \u0437\u0430\u0432\u0438\u0441\u0438\u043C\u043E\u0441\u0442\u0438 \u043E\u0442
+    \u043E\u043A\u0440\u0443\u0436\u0430\u044E\u0449\u0438\u0445 \u0435\u0433\u043E
+    \u043F\u043E\u043B\u0435\u0439"
+  cost:
+  - Resource: {fileID: 11400000, guid: daae69d11c2f7994fad492095660114f, type: 2}
+    Count: 20
+  - Resource: {fileID: 11400000, guid: 7838b25836ffe8e45994e6ed94b3b2c7, type: 2}
+    Count: 10

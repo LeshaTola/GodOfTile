@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc5af3fe342dd924e9f809bc8e9408aa, type: 3}
-  m_Name: ForestTileConfig
+  m_Name: FieldTileConfig
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 11400000, guid: daae69d11c2f7994fad492095660114f, type: 2}
+    - {fileID: 11400000, guid: d1457a3ec05187d4e828a5f43be2b55a, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -49,7 +49,7 @@ MonoBehaviour:
       Data: 0
     - Name: amountPerSecond
       Entry: 4
-      Data: 1
+      Data: 0.2
     - Name: 
       Entry: 8
       Data: 
@@ -62,20 +62,19 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  id: ForestTileConfig
+  id: FieldTileConfig
   size: {x: 1, y: 1}
   tileTypeDatabase: {fileID: 11400000, guid: 6e8687d462988db44889225b2fec324e, type: 2}
-  building: {fileID: 1244113167826116937, guid: 035b6050f1b6c434fabc1a191f43e8a7,
+  building: {fileID: 8754865067491827286, guid: 871422b44cbd8fd48b7ae5caae9e0581,
     type: 3}
   type: grass
-  tileImage: {fileID: 21300000, guid: 4521a563718fa8648966f184dc4b3786, type: 3}
-  tileName: Forest
-  description: "Give only food and wood. \u0427\u0435\u043C \u0434\u0430\u043B\u044C\u0448\u0435
-    \u0432 \u043B\u0435\u0441 \u0442\u0435\u043C \u0431\u043E\u043B\u044C\u0448\u0435
-    \u0441\u043A\u0438\u0431\u0438\u0434\u0438 \u0434\u043E\u0431 \u0434\u043E\u0431
-    \u0435\u0441 \u0435\u0441."
+  tileImage: {fileID: 0}
+  tileName: Field
+  description: "\u0412\u044B\u0440\u0430\u0431\u0430\u0442\u044B\u0432\u0430\u0435\u0442
+    \u043C\u0430\u043B\u043E\u0435, \u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E
+    \u0440\u0435\u0441\u0443\u0440\u0441\u043E\u0432"
   cost:
   - Resource: {fileID: 11400000, guid: daae69d11c2f7994fad492095660114f, type: 2}
-    Count: 10
-  - Resource: {fileID: 11400000, guid: d1457a3ec05187d4e828a5f43be2b55a, type: 2}
     Count: 5
+  - Resource: {fileID: 11400000, guid: d1457a3ec05187d4e828a5f43be2b55a, type: 2}
+    Count: 10
