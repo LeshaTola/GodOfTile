@@ -61,6 +61,10 @@ namespace App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.TileInformation
         {
             foreach (var systemUI in systemUIs)
             {
+                if (systemUI == null)
+                {
+                    continue;
+                }
                 systemUI.transform.SetParent(tileSystemsContainer, false);
                 systemUI.Setup();
             }

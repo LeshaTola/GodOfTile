@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using App.Scripts.Scenes.Gameplay.Features.Inventory.DTO;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs.Plate;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.UI;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -35,9 +37,9 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Configs
         private string description;
 
         [SerializeField] private List<ResourceCount> cost;
-        [SerializeField] private List<TileSystems.TileSystem> systems;
+        [SerializeField] private List<TileSystem> systems;
 
-        private List<TileSystems.TileSystem> activeSystems;
+        private List<TileSystem> activeSystems;
 
         public Vector2Int Size => size;
         public string Type => type;
@@ -48,7 +50,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Configs
         public string Name => tileName;
         public string Id => id;
         public List<ResourceCount> Cost => cost;
-        public List<TileSystems.TileSystem> Systems => systems;
+        public List<TileSystem> Systems => systems;
 
         public List<TileSystem> ActiveSystems
         {
@@ -69,6 +71,12 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Configs
             }
 
             return new List<string>(tileTypeDatabase.Types.Keys);
+        }
+
+        public T GetSystem<T>() where T: TileSystem
+        {
+            var type = typeof(T);
+            return (T)activeSystems.FirstOrDefault(x => x.GetType().Equals(type));
         }
     }
 }

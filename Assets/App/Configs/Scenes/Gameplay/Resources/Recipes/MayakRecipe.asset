@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: MayakRecipe
   m_EditorClassIdentifier: 
   <RequiredTiles>k__BackingField:
-  - {fileID: 11400000, guid: fb29e5d365a8393459263e8f32fbb418, type: 2}
-  - {fileID: 11400000, guid: fb29e5d365a8393459263e8f32fbb418, type: 2}
+  - {fileID: 11400000, guid: b9d3057a355968740a72a7ef1fd8d269, type: 2}
+  - {fileID: 11400000, guid: b9d3057a355968740a72a7ef1fd8d269, type: 2}
   - {fileID: 11400000, guid: b9d3057a355968740a72a7ef1fd8d269, type: 2}
   <Original>k__BackingField: {fileID: 11400000, guid: fb29e5d365a8393459263e8f32fbb418,
     type: 2}

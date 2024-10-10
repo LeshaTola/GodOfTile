@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.General;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.ValidationStrategies
@@ -6,6 +7,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Valid
     public interface IValidationStrategy
     {
         List<Tile> ValidateTiles(List<Tile> tiles);
-        List<TileSystem> GetValidSystems(List<Tile> tiles);
+        List<TileSystem> ValidateSystems(List<Tile> tiles);
     }
 }

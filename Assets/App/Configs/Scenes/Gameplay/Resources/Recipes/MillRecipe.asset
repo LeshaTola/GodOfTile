@@ -16,6 +16,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 71f6d0ca6c6943c46bd84dd5250d00eb, type: 2}
   - {fileID: 11400000, guid: 71f6d0ca6c6943c46bd84dd5250d00eb, type: 2}
   - {fileID: 11400000, guid: 71f6d0ca6c6943c46bd84dd5250d00eb, type: 2}
+  - {fileID: 11400000, guid: 71f6d0ca6c6943c46bd84dd5250d00eb, type: 2}
+  - {fileID: 11400000, guid: 71f6d0ca6c6943c46bd84dd5250d00eb, type: 2}
   <Original>k__BackingField: {fileID: 11400000, guid: 71f6d0ca6c6943c46bd84dd5250d00eb,
     type: 2}
   <Result>k__BackingField: {fileID: 11400000, guid: cf3a8385f615d5c4b9b7d329a6992db9,

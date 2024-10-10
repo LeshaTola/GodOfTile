@@ -15,6 +15,10 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.TileSystemUIProvi
 
         public ISystemUIProvider GetSystemUIProvider(ISystemUIProvider provider)
         {
+            if (provider == null)
+            {
+                return null;
+            }
             return GetSystemUIProvider(provider.GetType());
         }
 

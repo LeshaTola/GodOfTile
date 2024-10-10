@@ -1,20 +1,25 @@
 using System.Collections.Generic;
-using System.Linq;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.General;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.ValidationStrategies
 {
-    public class NoValidationStrategy : IValidationStrategy
+    public class OwnerValidationStrategy : IValidationStrategy
     {
+        private Tile owner;
+
+        public OwnerValidationStrategy(Tile owner)
+        {
+            this.owner = owner;
+        }
+
         public List<Tile> ValidateTiles(List<Tile> tiles)
         {
-            return tiles;
+            return new() {owner};
         }
 
         public List<TileSystem> ValidateSystems(List<Tile> tiles)
         {
-            return tiles.SelectMany(tile => tile.Config.ActiveSystems).ToList();
-            ;
+            return owner.Config.ActiveSystems;
         }
     }
 }

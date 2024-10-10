@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effects.Specific.ChangeResourceEarningEffect.UI.
     Providers;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.ValidationStrategies;
@@ -9,36 +10,39 @@ using UnityEngine;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effects.Specific.ChangeResourceEarningEffect
 {
-    public class ChangeResourceEarningEffect : IEffect
+    public class CollectTilesAroundEffect : IEffect
     {
-        [SerializeField] private float earningAmountMultiplier;
-        [SerializeField] private ChangeResourceEarningEffectorUIProvider systemUIProvider;
-        
+        [SerializeField] private float earningAmountPerValidTile;
+        //[SerializeField] private ChangeResourceEarningEffectorUIProvider systemUIProvider;
+        [SerializeField] private List<TileConfig> whiteList;
+
+        private IResourceEarnerService resourceEarnerService;
+
         private Effector effector;
         private IValidationStrategy validationStrategy;
 
         public IValidationStrategy ValidationStrategy => validationStrategy;
         public Effector Effector => effector;
-        public float EarningAmountMultiplier => earningAmountMultiplier;
-        public ISystemUIProvider SystemUIProvider => systemUIProvider;
+        public float EarningAmountMultiplier => earningAmountPerValidTile;
+        public ISystemUIProvider SystemUIProvider => null; //systemUIProvider;
 
         public void Initialize(Effector effector)
         {
-            validationStrategy = new SystemsValidationStrategy(new List<Type>()
-            {
-                typeof(ResourceEarner)
-            });
+            //validationStrategy = new OwnerValidationStrategy(effector.ParentTile);
+            validationStrategy = new TilesValidationStrategy(whiteList);
             this.effector = effector;
         }
 
         public void AddEffect(TileSystemData tileSystemData)
         {
-            ((ResourceEarnerSystemData) tileSystemData).AmountPerSecond *= EarningAmountMultiplier;
+            ((ResourceEarnerSystemData)effector.ParentTile.Config.
+                GetSystem<ResourceEarner>().Data).AmountPerSecond += earningAmountPerValidTile;
         }
 
         public void RemoveEffect(TileSystemData tileSystemData)
         {
-            ((ResourceEarnerSystemData) tileSystemData).AmountPerSecond /= EarningAmountMultiplier;
+            ((ResourceEarnerSystemData)effector.ParentTile.Config.
+                GetSystem<ResourceEarner>().Data).AmountPerSecond -= earningAmountPerValidTile;
         }
     }
 }

@@ -15,7 +15,9 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 71f6d0ca6c6943c46bd84dd5250d00eb, type: 2}
+    - {fileID: 11400000, guid: d1457a3ec05187d4e828a5f43be2b55a, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -27,7 +29,91 @@ MonoBehaviour:
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 1|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effector,
+        Assembly-CSharp
+    - Name: data
+      Entry: 7
+      Data: 2|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.EffectorData,
+        Assembly-CSharp
+    - Name: getTilesStrategy
+      Entry: 7
+      Data: 3|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.GetTilesStrategies.Radius.RadiusGetTileStrategy,
+        Assembly-CSharp
+    - Name: radius
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: effect
+      Entry: 7
+      Data: 4|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effects.Specific.ChangeResourceEarningEffect.CollectTilesAroundEffect,
+        Assembly-CSharp
+    - Name: earningAmountPerValidTile
+      Entry: 4
+      Data: 0.5
+    - Name: systemUIProvider
+      Entry: 7
+      Data: 5|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effects.Specific.ChangeResourceEarningEffect.UI.Providers.ChangeResourceEarningEffectorUIProvider,
+        Assembly-CSharp
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: whiteList
+      Entry: 7
+      Data: 6|System.Collections.Generic.List`1[[App.Scripts.Scenes.Gameplay.Features.Tiles.Configs.TileConfig,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 10
       Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 7|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners.ResourceEarner,
+        Assembly-CSharp
+    - Name: data
+      Entry: 7
+      Data: 8|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners.ResourceEarnerSystemData,
+        Assembly-CSharp
+    - Name: systemUIProvider
+      Entry: 7
+      Data: 9|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners.UI.Providers.ResourceEarnerUIProvider,
+        Assembly-CSharp
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: resource
+      Entry: 10
+      Data: 1
+    - Name: amountPerSecond
+      Entry: 4
+      Data: 2.5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 13
       Data: 
