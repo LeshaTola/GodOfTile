@@ -56,8 +56,10 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.Update
                 var result = UpdateTile(position);
                 if (result != null)
                 {
+
+                    var cloneResult = Object.Instantiate(result);
                     tilesForUpdate.Add(
-                        new TileToUpdate() {Position = position, NewConfig = result}
+                        new TileToUpdate() {Position = position, NewConfig = cloneResult}
                     );
                 }
             }
