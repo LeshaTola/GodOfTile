@@ -55,16 +55,9 @@ MonoBehaviour:
     - Name: earningAmountPerValidTile
       Entry: 4
       Data: 0.5
-    - Name: systemUIProvider
-      Entry: 7
-      Data: 5|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effects.Specific.ChangeResourceEarningEffect.UI.Providers.ChangeResourceEarningEffectorUIProvider,
-        Assembly-CSharp
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: whiteList
       Entry: 7
-      Data: 6|System.Collections.Generic.List`1[[App.Scripts.Scenes.Gameplay.Features.Tiles.Configs.TileConfig,
+      Data: 5|System.Collections.Generic.List`1[[App.Scripts.Scenes.Gameplay.Features.Tiles.Configs.TileConfig,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -89,15 +82,15 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 7|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners.ResourceEarner,
+      Data: 6|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners.ResourceEarner,
         Assembly-CSharp
     - Name: data
       Entry: 7
-      Data: 8|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners.ResourceEarnerSystemData,
+      Data: 7|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners.ResourceEarnerSystemData,
         Assembly-CSharp
     - Name: systemUIProvider
       Entry: 7
-      Data: 9|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners.UI.Providers.ResourceEarnerUIProvider,
+      Data: 8|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners.UI.Providers.ResourceEarnerUIProvider,
         Assembly-CSharp
     - Name: 
       Entry: 8
@@ -126,7 +119,7 @@ MonoBehaviour:
   building: {fileID: 6363308020260776678, guid: f52afec8cf056184484098cfc0a100af,
     type: 3}
   type: grass
-  tileImage: {fileID: 0}
+  tileImage: {fileID: 21300000, guid: ff422ad5cc7b98245bb1e0d83c3eb902, type: 3}
   tileName: Mill
   description: "\u0412\u044B\u0440\u0430\u0431\u0430\u0442\u044B\u0432\u0430\u0435\u0442,
     \u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0440\u0435\u0441\u0443\u0440\u0441\u0430
