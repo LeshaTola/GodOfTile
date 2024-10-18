@@ -1,4 +1,5 @@
 ﻿using System;
+using App.Scripts.Modules.Sounds;
 using App.Scripts.Modules.StateMachine.Services.CleanupService;
 using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Grid;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Configs;
@@ -27,6 +28,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
         private ITileCreationEffectsProvider effectsService;
         private ITilesUpdateService updateService;
         private ISystemsService systemsService;
+        private readonly ISoundProvider soundProvider;
         private IEffectorVisualProvider effectorVisualProvider;
         private TilesCreationConfig config;
 
@@ -40,6 +42,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
             ITileCreationEffectsProvider effectsService,
             ITilesUpdateService updateService,
             ISystemsService systemsService,
+            ISoundProvider soundProvider,
             IEffectorVisualProvider effectorVisualProvider,
             TilesCreationConfig config
         )
@@ -51,6 +54,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
             this.effectsService = effectsService;
             this.updateService = updateService;
             this.systemsService = systemsService;
+            this.soundProvider = soundProvider;
             this.effectorVisualProvider = effectorVisualProvider;
             this.config = config;
 
@@ -144,6 +148,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
         {
             tile.Visual.SetState(TileState.Default);
             effectsService.PlayParticle(config.CreationParticleKey, tile.transform.position);
+            soundProvider.PlaySound(config.CreateSoundKey);
             await tile.Visual.PlayCreation();
         }
 

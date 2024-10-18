@@ -1,3 +1,4 @@
+using App.Scripts.Modules.Sounds;
 using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget;
 using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget.Presenters;
 using App.Scripts.Scenes.Gameplay.Features.Shop.Systems;
@@ -12,15 +13,18 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Shop.Item
         private ShopItemView shopItemView;
         private CostWidgetPresenter costWidgetPresenter;
         private TileConfig tileConfig;
+        private readonly ISoundProvider soundProvider;
         private IShopSystem shopSystem;
 
         public ShopItemPresenter(
             ShopItemView shopItemView,
             TileConfig tileConfig,
+            ISoundProvider soundProvider,
             IShopSystem shopSystem)
         {
             this.shopItemView = shopItemView;
             this.tileConfig = tileConfig;
+            this.soundProvider = soundProvider;
             this.shopSystem = shopSystem;
         }
 
@@ -77,6 +81,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Shop.Item
             }
 
             shopSystem.BuyTile(tileConfig);
+            soundProvider.PlaySound(shopItemView.ButtonSoundKey);
         }
     }
 }

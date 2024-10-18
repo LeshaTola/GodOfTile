@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using App.Scripts.Modules.ObjectPool.KeyPools.Configs;
+using App.Scripts.Modules.Sounds;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -25,6 +26,26 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Configs
         [ShowIf("@particlesDatabase != null")]
         [ValueDropdown(nameof(GetParticleKeys))]
         private string updateParticleKey;
+        
+        [Header("Audio")]
+        [SerializeField] private AudioDatabase audioDatabase;
+        [field: ValueDropdown(nameof(GetKeys))]
+        [field: SerializeField] public string CreateSoundKey { get; private set; }
+
+        [field: ValueDropdown(nameof(GetKeys))]
+        [field: SerializeField] public string UpdateSoundKey { get; private set; }
+        
+        [field: ValueDropdown(nameof(GetKeys))]
+        [field: SerializeField] public string DestroySoundKey { get; private set; }
+        
+        public List<string> GetKeys()
+        {
+            if (audioDatabase == null)
+            {
+                return null;
+            }
+            return audioDatabase.GetKeys();
+        }
 
         public string DestroyParticleKey => destroyParticleKey;
         public string UpdateParticleKey => updateParticleKey;

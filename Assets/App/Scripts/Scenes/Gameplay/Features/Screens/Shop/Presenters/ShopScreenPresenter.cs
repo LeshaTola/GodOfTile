@@ -1,3 +1,4 @@
+using App.Scripts.Modules.Sounds;
 using App.Scripts.Modules.StateMachine.Services.CleanupService;
 using App.Scripts.Modules.StateMachine.Services.InitializeService;
 using App.Scripts.Scenes.Gameplay.Features.Screens.Shop.Views.ShopViews.Presenter;
@@ -12,7 +13,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.Screens.Shop.Presenters
 
         public ShopScreenPresenter(
             ShopScreen shopScreen, 
-            ShopViewPresenter shopViewPresenter)
+            ShopViewPresenter shopViewPresenter,
+                ISoundProvider soundProvider)
         {
             this.shopScreen = shopScreen;
             this.shopViewPresenter = shopViewPresenter;

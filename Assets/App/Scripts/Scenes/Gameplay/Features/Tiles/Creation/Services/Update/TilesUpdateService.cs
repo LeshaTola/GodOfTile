@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using App.Scripts.Modules.Sounds;
 using App.Scripts.Scenes.Gameplay.Features.CraftSystem.Providers;
 using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Grid;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
@@ -19,6 +20,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.Update
         private TilesCreationConfig config;
         private ISystemsService systemsService;
         private ISystemsFactory systemsFactory;
+        private readonly ISoundProvider soundProvider;
         private readonly ITileCollectionProvider tileCollectionProvider;
 
         public TilesUpdateService(
@@ -28,6 +30,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.Update
             TilesCreationConfig config,
             ISystemsService systemsService,
             ISystemsFactory systemsFactory,
+            ISoundProvider soundProvider,
             ITileCollectionProvider tileCollectionProvider
         )
         {
@@ -37,6 +40,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.Update
             this.config = config;
             this.systemsService = systemsService;
             this.systemsFactory = systemsFactory;
+            this.soundProvider = soundProvider;
             this.tileCollectionProvider = tileCollectionProvider;
         }
 
@@ -74,6 +78,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.Update
         {
             var tile = gridProvider.Grid[position.x, position.y];
             effectsService.PlayParticle(config.UpdateParticleKey, tile.transform.position);
+            soundProvider.PlaySound(config.UpdateSoundKey);
 
             systemsService.StopSystems(tile.Config);
 

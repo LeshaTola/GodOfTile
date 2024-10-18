@@ -33,7 +33,6 @@ RectTransform:
   m_Children:
   - {fileID: 4645845729050534590}
   m_Father: {fileID: 3795772654174623986}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -123,7 +122,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8685504243461299762}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -201,7 +199,6 @@ RectTransform:
   - {fileID: 7035470343680246930}
   - {fileID: 8685504243461299762}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -293,6 +290,8 @@ MonoBehaviour:
       Data: 
   image: {fileID: 1837915338787598581}
   button: {fileID: 7713519706597347886}
+  audioDatabase: {fileID: 11400000, guid: 2d7974d028292e343a2eeeff1eaecc97, type: 2}
+  <ButtonSoundKey>k__BackingField: Shop
 --- !u!1 &2717891383152589785
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,7 +323,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3795772654174623986}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
