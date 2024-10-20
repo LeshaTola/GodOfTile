@@ -3,6 +3,7 @@ using App.Scripts.Scenes.Gameplay.Features.CameraLogic;
 using App.Scripts.Scenes.Gameplay.Features.Input;
 using App.Scripts.Scenes.Gameplay.Features.Map.Visualizers;
 using App.Scripts.Scenes.Gameplay.Features.Screens.Shop.Presenters;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.PlacementCost;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCreation;
 using App.Scripts.Scenes.Gameplay.StateMachines.Ids;
 using Cysharp.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
         private IUpdateService updateService;
         private ShopScreenPresenter shopScreenPresenter;
         private ICameraController cameraController;
+        private readonly IPlacementCostService placementCostService;
         private ITilesCreationService creationService;
 
         public BuildState(
@@ -25,7 +27,8 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             ITilesCreationService creationService,
             IVisualizer gridVisualizer,
             ShopScreenPresenter shopScreenPresenter,
-            ICameraController cameraController
+            ICameraController cameraController,            
+            IPlacementCostService placementCostService
         )
             : base(id)
         {
@@ -35,6 +38,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             this.gridVisualizer = gridVisualizer;
             this.shopScreenPresenter = shopScreenPresenter;
             this.cameraController = cameraController;
+            this.placementCostService = placementCostService;
         }
 
         public override async UniTask Enter()
@@ -65,6 +69,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             if (gameInput.IsMouseClicked())
             {
                 creationService.PlaceActiveTile();
+                placementCostService.ProcessPlacementCost();
                 creationService.StartPlacingTile();
             }
         }

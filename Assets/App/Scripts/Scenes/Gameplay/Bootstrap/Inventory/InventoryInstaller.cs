@@ -4,6 +4,7 @@ using App.Scripts.Scenes.Gameplay.Features.Inventory.Factories;
 using App.Scripts.Scenes.Gameplay.Features.Inventory.Systems;
 using App.Scripts.Scenes.Gameplay.Features.Inventory.UI.Inventory;
 using App.Scripts.Scenes.Gameplay.Features.Inventory.UI.Resource;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.PlacementCost;
 using UnityEngine;
 using Zenject;
 
@@ -31,8 +32,14 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap.Inventory
             BindInventoryUI();
             BindInventorySystem();
             BindInventoryController();
+            BindPlacementCostService();
         }
 
+        private void BindPlacementCostService()
+        {
+            Container.Bind<IPlacementCostService>().To<PlacementCostService>().AsSingle();
+        }
+        
         private void BindInventoryController()
         {
             Container.Bind<IInventoryController>().To<InventoryController>().AsSingle().NonLazy();

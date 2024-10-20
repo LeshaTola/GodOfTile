@@ -24,7 +24,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
         private IGridProvider gridProvider;
         private ITilesFactory tileFactory;
         private IActiveTileProvider activeTileProvider;
-        private IPlacementCostService placementCostService;
         private ITileCreationEffectsProvider effectsService;
         private ITilesUpdateService updateService;
         private ISystemsService systemsService;
@@ -38,7 +37,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
             IGridProvider gridProvider,
             ITilesFactory tileFactory,
             IActiveTileProvider activeTileProvider,
-            IPlacementCostService placementCostService,
             ITileCreationEffectsProvider effectsService,
             ITilesUpdateService updateService,
             ISystemsService systemsService,
@@ -50,7 +48,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
             this.gridProvider = gridProvider;
             this.tileFactory = tileFactory;
             this.activeTileProvider = activeTileProvider;
-            this.placementCostService = placementCostService;
             this.effectsService = effectsService;
             this.updateService = updateService;
             this.systemsService = systemsService;
@@ -105,7 +102,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
             activeTile = null;
 
             PlayCreationVFX(tileBuffer).Forget();
-            placementCostService.ProcessPlacementCost(tileBuffer.Config);
             systemsService.StartSystems(tileBuffer.Config);
             OnTilePlaced?.Invoke(tileBuffer.Position, tileBuffer);
         }

@@ -5,12 +5,7 @@ using App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.TileSystem;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.TileSystemUI;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.TileSystemUIProvider;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Services;
-using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effects.Specific.ChangeResourceEarningEffect.UI.
-    Providers;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Views;
-using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Research.UI.Providers;
-using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners;
-using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners.UI.Providers;
 using UnityEngine;
 using Zenject;
 
@@ -39,22 +34,6 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap.Tile
             BindSystemUIFactory();
 
             BindSystemService();
-
-            Container.BindInterfacesTo<ResourceEarnerService>().AsSingle();
-
-            BindSpeedupResourceEarningEffectorUIProvider();
-            BindResourceEarnerUIProvider();
-            Container.Bind<ResearchSystemUIProvider>().AsSingle();
-        }
-
-        private void BindSpeedupResourceEarningEffectorUIProvider()
-        {
-            Container.Bind<ChangeResourceEarningEffectorUIProvider>().AsSingle();
-        }
-
-        private void BindResourceEarnerUIProvider()
-        {
-            Container.Bind<ResourceEarnerUIProvider>().AsSingle();
         }
 
         private void BindSystemService()

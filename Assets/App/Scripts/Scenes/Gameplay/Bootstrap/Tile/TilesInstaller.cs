@@ -29,9 +29,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap.Tile
         {
             BindTilesFactory();
 
-
             BindCreationService();
-            BindPlacementCostService();
             BindTileCreationEffectsProviders();
             BindRecipeProvider();
             BindTileUpdateService();
@@ -41,11 +39,6 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap.Tile
             BindTileSelectionProvider();
             BindTileCollectionProvider();
             BindActiveTileProvider();
-        }
-
-        private void BindPlacementCostService()
-        {
-            Container.Bind<IPlacementCostService>().To<PlacementCostService>().AsSingle();
         }
 
         private void BindTileCreationEffectsProviders()

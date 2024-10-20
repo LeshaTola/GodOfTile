@@ -466,6 +466,50 @@ MonoBehaviour:
     type: 2}
   tilesDatabase: {fileID: 11400000, guid: 7c3c0a8e8578a184586ed869e564fa10, type: 2}
   collectionConfig: {fileID: 11400000, guid: e45c51dee4f6bf04fa04681a5a6bb83f, type: 2}
+--- !u!1 &296391602
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 296391604}
+  - component: {fileID: 296391603}
+  m_Layer: 0
+  m_Name: TileChtoto
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &296391603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296391602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8c0fa7d31f64009b0ce239187435f32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &296391604
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296391602}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2091665396}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &306612120
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,8 +641,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.43534443, y: 1e-45, z: -1e-45, w: 0.90026397}
-  m_LocalPosition: {x: 75, y: 6.311693, z: 47}
+  m_LocalRotation: {x: 0.46626016, y: -0.000000021526573, z: 0.0000000113457395, w: 0.88464767}
+  m_LocalPosition: {x: 75, y: 7.297838, z: 47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1160,7 +1204,7 @@ PrefabInstance:
     - target: {fileID: 7201103059448223976, guid: 7ee8b6d89cbe6a54f963a581a6e399e1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 500
+      value: 499.99994
       objectReference: {fileID: 0}
     - target: {fileID: 7203212624595012750, guid: 7ee8b6d89cbe6a54f963a581a6e399e1,
         type: 3}
@@ -1660,6 +1704,7 @@ MonoBehaviour:
   - {fileID: 306612122}
   - {fileID: 459143238}
   - {fileID: 1019071001}
+  - {fileID: 296391603}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -2339,7 +2384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 6.311693, z: -5}
+  m_FollowOffset: {x: 0, y: 7.297838, z: -5}
   m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0
@@ -2709,6 +2754,7 @@ Transform:
   m_Children:
   - {fileID: 293527054}
   - {fileID: 400820134}
+  - {fileID: 296391604}
   m_Father: {fileID: 726502974}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2121318285
@@ -2824,8 +2870,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2128820150}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.43534443, y: 1e-45, z: -1e-45, w: 0.90026397}
-  m_LocalPosition: {x: 75, y: 6.311693, z: 47}
+  m_LocalRotation: {x: 0.46626016, y: -0.000000021526573, z: 0.0000000113457395, w: 0.88464767}
+  m_LocalPosition: {x: 75, y: 7.297838, z: 47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

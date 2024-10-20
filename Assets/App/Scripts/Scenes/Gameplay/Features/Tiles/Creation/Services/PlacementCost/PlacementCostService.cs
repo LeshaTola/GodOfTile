@@ -27,6 +27,11 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.Placement
             }
         }
 
+        public void ProcessPlacementCost()
+        {
+            ProcessPlacementCost(activeTileProvider.ActiveTileConfig);
+        }
+
         private void ReduceResources(TileConfig tileConfig)
         {
             foreach (var resourceCount in tileConfig.Cost)

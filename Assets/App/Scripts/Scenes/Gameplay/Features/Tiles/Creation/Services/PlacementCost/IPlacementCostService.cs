@@ -5,5 +5,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.Placement
     public interface IPlacementCostService
     {
         void ProcessPlacementCost(TileConfig tileConfig);
+        void ProcessPlacementCost();
     }
 }

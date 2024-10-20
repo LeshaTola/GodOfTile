@@ -7,6 +7,7 @@ using App.Scripts.Scenes.Gameplay.Features.Screens.Shop.Presenters;
 using App.Scripts.Scenes.Gameplay.Features.Screens.Shop.Views.ShopViews;
 using App.Scripts.Scenes.Gameplay.Features.Screens.Shop.Views.ShopViews.Presenter;
 using App.Scripts.Scenes.Gameplay.Features.Shop.Systems;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.PlacementCost;
 using UnityEngine;
 using Zenject;
 
@@ -40,6 +41,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap.Shop
             Container.Bind<Modules.Factories.IFactory<CostUI>>()
                 .To<Modules.Factories.MonoFactories.MonoFactory<CostUI>>()
                 .AsSingle().WithArguments(costUITemplate);
+            
         }
     }
 }

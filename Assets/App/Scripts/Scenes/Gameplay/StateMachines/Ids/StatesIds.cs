@@ -7,5 +7,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.Ids
         public const string BUILDING_STATE = "BuildingState";
         public const string BUY_AREA_STATE = "BuyAreaState";
         public const string RESEARCH_STATE = "ResearchState";
+        
+        
     }
 }
