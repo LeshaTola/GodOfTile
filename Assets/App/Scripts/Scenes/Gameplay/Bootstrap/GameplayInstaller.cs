@@ -52,9 +52,6 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
         [SerializeField] private Transform particlesContainer;
         [SerializeField] private WaterMaterialConfig waterMaterialConfig;
 
-        [Header("Audio")]
-        [SerializeField] private SoundProvider soundProvider;
-
 
         public override void InstallBindings()
         {
@@ -75,8 +72,6 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
             BindCameraController();
 
             BindParticlesKeyPool();
-            
-            Container.Bind<ISoundProvider>().FromInstance(soundProvider).AsSingle();
 
             Container.Bind<IChunksFactory>().To<ChunksFactory>().AsSingle();
             Container.Bind<ICameraSwitcher>().To<CameraSwitcher>().AsSingle().WithArguments(camerasDatabase);

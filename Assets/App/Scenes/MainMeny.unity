@@ -1382,7 +1382,6 @@ MonoBehaviour:
   virtualCamera: {fileID: 2128820151}
   particlesDatabase: {fileID: 11400000, guid: 13002dfbdf96f694d8fe598fefe4c7fd, type: 2}
   particlesContainer: {fileID: 431442152}
-  soundProvider: {fileID: 1910324323}
 --- !u!114 &767586257 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4474165546829587333, guid: 155168d545f479f489318ba773f92935,

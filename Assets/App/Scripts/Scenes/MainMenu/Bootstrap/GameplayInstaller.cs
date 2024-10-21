@@ -35,15 +35,10 @@ namespace App.Scripts.Scenes.MainMenu.Bootstrap
         [SerializeField] private ParticlesDatabase particlesDatabase;
         [SerializeField] private Transform particlesContainer;
 
-        [Header("Audio")]
-        [SerializeField] private SoundProvider soundProvider;
-
-
         public override void InstallBindings()
         {
             CommandInstaller.Install(Container);
             MenuTileSystemUIProviders.Install(Container);
-            
             
             Container.Bind<IUpdateService>().To<UpdateService>().AsSingle();
             Container.Bind<IInitializeService>().To<InitializeService>().AsSingle();
@@ -63,10 +58,8 @@ namespace App.Scripts.Scenes.MainMenu.Bootstrap
             Container.Bind<TileInformationView>().FromInstance(tileInformationView);
 
             BindParticlesKeyPool();
-            Container.Bind<ISoundProvider>().FromInstance(soundProvider).AsSingle();
         }
         
-
         private void BindParticlesKeyPool()
         {
             Container

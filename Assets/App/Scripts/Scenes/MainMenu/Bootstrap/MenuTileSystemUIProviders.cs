@@ -8,6 +8,7 @@ namespace App.Scripts.Scenes.MainMenu.Bootstrap
         public override void InstallBindings()
         {
             Container.Bind<ExitSystemUIProvider>().AsSingle();
+            Container.Bind<SettingsSystemUIProvider>().AsSingle();
             Container.Bind<PlaySystemUIProvider>().AsSingle();
         }
     }

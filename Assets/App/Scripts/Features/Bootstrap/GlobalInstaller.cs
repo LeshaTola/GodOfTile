@@ -5,21 +5,26 @@ using App.Scripts.Modules.Localization.Configs;
 using App.Scripts.Modules.Localization.Data;
 using App.Scripts.Modules.Localization.Keys;
 using App.Scripts.Modules.Localization.Parsers;
+using App.Scripts.Modules.Resolutions;
 using App.Scripts.Modules.Saves;
+using App.Scripts.Modules.Sounds;
+using App.Scripts.Modules.Sounds.Services;
 using App.Scripts.Modules.StateMachine.States.General;
 using UnityEngine;
+using UnityEngine.Audio;
 using Zenject;
 
 namespace App.Scripts.Features.Bootstrap
 {
     public class GlobalInstaller : MonoInstaller
     {
-        [SerializeField]
-        private LocalizationDatabase localizationDatabase;
-
-        [SerializeField]
-        private string language;
-
+        [SerializeField] private LocalizationDatabase localizationDatabase;
+        [SerializeField] private string language;
+        
+        [Header("Audio")]
+        [SerializeField] private SoundProvider soundProvider;
+        [SerializeField] private AudioMixer audioMixer;
+        
         public override void InstallBindings()
         {
             BindGlobalInitialState();
@@ -29,6 +34,10 @@ namespace App.Scripts.Features.Bootstrap
             BindParser();
             BindLocalizationDataProvider();
             BindLocalizationSystem();
+            
+            Container.Bind<ISoundProvider>().FromInstance(soundProvider).AsSingle();
+            Container.Bind<IAudioService>().To<AudioService>().AsSingle().WithArguments(audioMixer);
+            Container.Bind<IScreenService>().To<ScreenService>().AsSingle();
         }
 
         private void BindLocalizationSystem()
