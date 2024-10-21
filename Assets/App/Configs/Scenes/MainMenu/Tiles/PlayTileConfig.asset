@@ -27,7 +27,30 @@ MonoBehaviour:
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
-      Data: 0
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 1|App.Scripts.Scenes.MainMenu.Tiles.Systems.ExitSystem.PlaySystem, Assembly-CSharp
+    - Name: data
+      Entry: 7
+      Data: 2|App.Scripts.Scenes.MainMenu.Tiles.Systems.ExitSystem.PlaySystemData,
+        Assembly-CSharp
+    - Name: systemUIProvider
+      Entry: 7
+      Data: 3|App.Scripts.Scenes.MainMenu.Tiles.Systems.ExitSystem.PlaySystemUIProvider,
+        Assembly-CSharp
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: <HeaderKey>k__BackingField
+      Entry: 1
+      Data: play
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 13
       Data: 

@@ -8,13 +8,13 @@ using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.UI;
 
 namespace App.Scripts.Scenes.MainMenu.Tiles.Systems.ExitSystem
 {
-    public class ExitSystemUIProvider : ISystemUIProvider
+    public class PlaySystemUIProvider : ISystemUIProvider
     {
         private readonly ISystemUIFactory systemUIFactory;
         private readonly ILocalizationSystem localizationSystem;
         private readonly ICommandsProvider commandsProvider;
 
-        public ExitSystemUIProvider(
+        public PlaySystemUIProvider(
             ISystemUIFactory systemUIFactory,
             ILocalizationSystem localizationSystem,
             ICommandsProvider commandsProvider)
@@ -26,9 +26,9 @@ namespace App.Scripts.Scenes.MainMenu.Tiles.Systems.ExitSystem
         public SystemUI GetSystemUI(TileSystem tileSystem)
         {
             var systemUI = systemUIFactory.GetSystemUI<TwoButtonsSystemUI>();
-            var data = (ExitSystemData)tileSystem.Data;
-            var yesCommand = commandsProvider.GetCommand<ExitGameCommand>();
-            var noCommand = commandsProvider.GetCommand<CleanupSelectedTilesCommand>();
+            var data = (PlaySystemData)tileSystem.Data;
+            var yesCommand = commandsProvider.GetCommand<ContinueGameCommand>();
+            var noCommand = commandsProvider.GetCommand<NewGameCommand>();
             var viewModule = new TwoButtonsSystemUIViewModule(
                 data.HeaderKey,
                 yesCommand,

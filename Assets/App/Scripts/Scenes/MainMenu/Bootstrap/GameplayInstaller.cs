@@ -15,9 +15,6 @@ using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Chunk;
 using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Grid;
 using App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.TileInformation;
 using App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.TileInformation.Presenters;
-using App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.TileSystemUIProvider;
-using App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Selection;
-using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Views;
 using Cinemachine;
 using UnityEngine;
 using Zenject;
@@ -26,9 +23,6 @@ namespace App.Scripts.Scenes.MainMenu.Bootstrap
 {
     public class GameplayInstaller : MonoInstaller
     {
-        [SerializeField] private EffectorArea effectorAreaTemplate;
-        [SerializeField] private Transform container;
-        
         [SerializeField] private GridConfig gridConfig;
         [SerializeField] private TileInformationView tileInformationView;
         
@@ -48,7 +42,9 @@ namespace App.Scripts.Scenes.MainMenu.Bootstrap
         public override void InstallBindings()
         {
             CommandInstaller.Install(Container);
-
+            MenuTileSystemUIProviders.Install(Container);
+            
+            
             Container.Bind<IUpdateService>().To<UpdateService>().AsSingle();
             Container.Bind<IInitializeService>().To<InitializeService>().AsSingle();
             Container.Bind<ICleanupService>().To<CleanupService>().AsSingle();
@@ -59,15 +55,6 @@ namespace App.Scripts.Scenes.MainMenu.Bootstrap
             BindVirtualCamera();
             Container.Bind<ICameraSwitcher>().To<CameraSwitcher>().AsSingle().WithArguments(camerasDatabase);
 
-            /*Container.Bind<IPool<EffectorArea>>().To<MonoBehObjectPool<EffectorArea>>().AsSingle()
-                .WithArguments(effectorAreaTemplate, 10, container);
-            Container
-                .Bind<IEffectorVisualProvider>()
-                .To<EffectorVisualProvider>()
-                .AsSingle();
-            Container.Bind<ITileSystemUIProvidersFactory>().To<TileSystemUIProvidersFactory>().AsSingle();
-            */
-            
             Container.Bind<IGridProvider>().To<GridProvider>().AsSingle().WithArguments(gridConfig);
             Container.Bind<IChunksProvider>().To<ChunksProvider>().AsSingle().WithArguments(gridConfig);
             

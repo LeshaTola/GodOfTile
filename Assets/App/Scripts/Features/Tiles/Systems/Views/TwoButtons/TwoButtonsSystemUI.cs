@@ -19,6 +19,7 @@ namespace App.Scripts.Features.Tiles.Systems.Views
         {
             Cleanup();
             this.viewModule = viewModule;
+            
             text.Initialize(viewModule.LocalizationSystem);
             yesButton.Initialize(viewModule.LocalizationSystem);
             noButton.Initialize(viewModule.LocalizationSystem);
@@ -45,6 +46,11 @@ namespace App.Scripts.Features.Tiles.Systems.Views
 
         public override void Cleanup()
         {
+            if (viewModule == null)
+            {
+                return;
+            }
+            
             viewModule = null;
             yesButton.Cleanup();
             noButton.Cleanup();

@@ -1375,9 +1375,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3e212f13a334e299894d23fcd7c04a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectorAreaTemplate: {fileID: 2514115004416437351, guid: bea4f7417e9e5b649bcaee4b69d6be8a,
-    type: 3}
-  container: {fileID: 1252246207}
   gridConfig: {fileID: 11400000, guid: 0961930954e4b8c45977dddd99071446, type: 2}
   tileInformationView: {fileID: 767586257}
   mainCamera: {fileID: 330585545}

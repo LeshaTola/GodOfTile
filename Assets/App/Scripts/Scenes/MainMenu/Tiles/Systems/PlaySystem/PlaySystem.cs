@@ -6,20 +6,20 @@ using UnityEngine;
 
 namespace App.Scripts.Scenes.MainMenu.Tiles.Systems.ExitSystem
 {
-    public class ExitSystemData : TileSystemData
+    public class PlaySystemData : TileSystemData
     {
-        [SerializeField] private ExitSystemUIProvider systemUIProvider;
+        [SerializeField] private PlaySystemUIProvider systemUIProvider;
         
         [field:SerializeField] public string HeaderKey { get; private set; }
         
         public override ISystemUIProvider SystemUIProvider => systemUIProvider;
     }
     
-    public class ExitSystem:TileSystem
+    public class PlaySystem:TileSystem
     {
-        [SerializeField] private ExitSystemData data;
+        [SerializeField] private PlaySystemData data;
         
-        public ExitSystem(Tile parentTile, ExitSystemData data) : base(parentTile)
+        public PlaySystem(Tile parentTile, PlaySystemData data) : base(parentTile)
         {
             this.data = data;
         }

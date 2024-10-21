@@ -28,7 +28,10 @@ namespace App.Scripts.Scenes.MainMenu.Bootstrap
                 .AsSingle()
                 .WithArguments("exit");
             
-            
+            Container
+                .Bind<CleanupSelectedTilesCommand>()
+                .AsSingle()
+                .WithArguments("cancel");
         }
 
         
