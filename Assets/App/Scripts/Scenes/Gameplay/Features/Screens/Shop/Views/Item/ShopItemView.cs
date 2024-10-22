@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using App.Scripts.Modules.PopupAndViews.Views;
 using App.Scripts.Modules.Sounds;
-using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget;
-using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Popups.Shop.Item
+namespace App.Scripts.Scenes.Gameplay.Features.Screens.Shop.Views.Item
 {
     public class ShopItemView : AnimatedView, IPointerEnterHandler, IPointerExitHandler
     {

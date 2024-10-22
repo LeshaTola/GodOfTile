@@ -1,8 +1,7 @@
 using App.Scripts.Scenes.Gameplay.Features.Commands.General;
-using App.Scripts.Scenes.Gameplay.StateMachines.Ids;
 using UnityEngine;
 
-namespace App.Scripts.Features.Commands
+namespace App.Scripts.Scenes.MainMenu.Commands
 {
     public class ExitGameCommand:LabeledCommand
     {

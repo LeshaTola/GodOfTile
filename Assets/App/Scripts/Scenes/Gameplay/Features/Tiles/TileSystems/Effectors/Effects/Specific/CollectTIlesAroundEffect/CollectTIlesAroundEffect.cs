@@ -1,14 +1,11 @@
-using System;
 using System.Collections.Generic;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
-using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effects.Specific.ChangeResourceEarningEffect.UI.
-    Providers;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.ValidationStrategies;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.UI;
 using UnityEngine;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effects.Specific.ChangeResourceEarningEffect
+namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effects.Specific.CollectTIlesAroundEffect
 {
     public class CollectTilesAroundEffect : IEffect
     {

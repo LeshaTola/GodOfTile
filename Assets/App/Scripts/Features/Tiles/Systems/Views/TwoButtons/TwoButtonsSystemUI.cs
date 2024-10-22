@@ -2,10 +2,8 @@ using App.Scripts.Modules.Localization.Elements.Buttons;
 using App.Scripts.Modules.Localization.Localizers;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.UI;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
-namespace App.Scripts.Features.Tiles.Systems.Views
+namespace App.Scripts.Features.Tiles.Systems.Views.TwoButtons
 {
     public class TwoButtonsSystemUI :SystemUI
     {

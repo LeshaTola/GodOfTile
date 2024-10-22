@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using App.Scripts.Modules.Sounds;
+using App.Scripts.Modules.Sounds.Providers;
 using App.Scripts.Scenes.Gameplay.Features.CraftSystem.Providers;
 using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Grid;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;

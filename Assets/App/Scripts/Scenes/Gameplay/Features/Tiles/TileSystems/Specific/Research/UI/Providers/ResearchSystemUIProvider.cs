@@ -1,7 +1,6 @@
+using App.Scripts.Features.Tiles.Systems.Views.OnlyText;
 using App.Scripts.Modules.Localization;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.TileSystemUI;
-using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.OnlyTextSystem.UI;
-using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.OnlyTextSystem.UI.ViewModels;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.UI;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Research.UI.Providers

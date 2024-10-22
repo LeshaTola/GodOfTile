@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget.Cost
+namespace App.Scripts.Scenes.Gameplay.Features.Screens.CostWidget.Cost
 {
     public class CostUI : MonoBehaviour
     {

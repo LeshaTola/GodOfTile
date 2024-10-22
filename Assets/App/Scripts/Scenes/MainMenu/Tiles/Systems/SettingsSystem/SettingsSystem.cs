@@ -1,10 +1,9 @@
-using System;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.General;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.UI;
 using UnityEngine;
 
-namespace App.Scripts.Scenes.MainMenu.Tiles.Systems.ExitSystem
+namespace App.Scripts.Scenes.MainMenu.Tiles.Systems.SettingsSystem
 {
     public class SettingsSystemData : TileSystemData
     {

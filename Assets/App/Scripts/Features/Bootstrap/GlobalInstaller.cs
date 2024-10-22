@@ -9,6 +9,7 @@ using App.Scripts.Modules.Localization.Parsers;
 using App.Scripts.Modules.Resolutions;
 using App.Scripts.Modules.Saves;
 using App.Scripts.Modules.Sounds;
+using App.Scripts.Modules.Sounds.Providers;
 using App.Scripts.Modules.Sounds.Services;
 using App.Scripts.Modules.StateMachine.States.General;
 using UnityEngine;

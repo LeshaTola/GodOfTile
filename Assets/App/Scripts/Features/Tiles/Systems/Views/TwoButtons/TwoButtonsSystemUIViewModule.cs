@@ -1,8 +1,7 @@
-using System;
 using App.Scripts.Modules.Localization;
 using App.Scripts.Scenes.Gameplay.Features.Commands.General;
 
-namespace App.Scripts.Features.Tiles.Systems.Views
+namespace App.Scripts.Features.Tiles.Systems.Views.TwoButtons
 {
     public class TwoButtonsSystemUIViewModule
     {

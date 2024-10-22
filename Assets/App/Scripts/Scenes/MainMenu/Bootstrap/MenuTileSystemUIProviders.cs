@@ -1,4 +1,6 @@
 using App.Scripts.Scenes.MainMenu.Tiles.Systems.ExitSystem;
+using App.Scripts.Scenes.MainMenu.Tiles.Systems.PlaySystem;
+using App.Scripts.Scenes.MainMenu.Tiles.Systems.SettingsSystem;
 using Zenject;
 
 namespace App.Scripts.Scenes.MainMenu.Bootstrap

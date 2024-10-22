@@ -1,6 +1,6 @@
 using App.Scripts.Modules.Localization;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.OnlyTextSystem.UI.ViewModels
+namespace App.Scripts.Features.Tiles.Systems.Views.OnlyText
 {
     public class OnlyTextSystemSystemViewModel
     {

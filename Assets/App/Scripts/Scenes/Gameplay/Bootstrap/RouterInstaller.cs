@@ -1,6 +1,6 @@
 ﻿using App.Scripts.Scenes.Gameplay.Features.Popups.BuyArea.Routers;
-using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget.ViewModels;
 using App.Scripts.Scenes.Gameplay.Features.Popups.Research.Routers;
+using App.Scripts.Scenes.Gameplay.Features.Screens.CostWidget.ViewModels;
 using Zenject;
 
 namespace App.Scripts.Scenes.Gameplay.Bootstrap

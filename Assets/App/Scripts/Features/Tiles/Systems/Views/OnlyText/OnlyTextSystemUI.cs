@@ -1,9 +1,8 @@
 using App.Scripts.Modules.Localization.Localizers;
-using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.OnlyTextSystem.UI.ViewModels;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.UI;
 using UnityEngine;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.OnlyTextSystem.UI
+namespace App.Scripts.Features.Tiles.Systems.Views.OnlyText
 {
     public class OnlyTextSystemSystemUI : SystemUI
     {

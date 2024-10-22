@@ -1,7 +1,7 @@
 using App.Scripts.Scenes.Gameplay.Features.Commands.General;
 using UnityEngine;
 
-namespace App.Scripts.Features.Commands
+namespace App.Scripts.Scenes.MainMenu.Commands
 {
     public class NewGameCommand : LabeledCommand
     {

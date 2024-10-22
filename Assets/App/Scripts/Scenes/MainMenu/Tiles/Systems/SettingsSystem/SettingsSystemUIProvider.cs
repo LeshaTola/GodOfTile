@@ -1,16 +1,13 @@
-using App.Scripts.Features.Commands;
 using App.Scripts.Features.Settings.Saves;
-using App.Scripts.Features.Tiles.Systems.Views;
 using App.Scripts.Features.Tiles.Systems.Views.Settings;
 using App.Scripts.Modules.Localization;
 using App.Scripts.Modules.Resolutions;
 using App.Scripts.Modules.Sounds.Services;
-using App.Scripts.Scenes.Gameplay.Features.Commands.Provider;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.TileSystemUI;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.UI;
 
-namespace App.Scripts.Scenes.MainMenu.Tiles.Systems.ExitSystem
+namespace App.Scripts.Scenes.MainMenu.Tiles.Systems.SettingsSystem
 {
     public class SettingsSystemUIProvider : ISystemUIProvider
     {

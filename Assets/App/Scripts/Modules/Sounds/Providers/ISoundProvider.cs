@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace App.Scripts.Modules.Sounds
+namespace App.Scripts.Modules.Sounds.Providers
 {
     public interface ISoundProvider
     {

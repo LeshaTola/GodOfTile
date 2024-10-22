@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using App.Scripts.Modules.Localization.Localizers;
 using App.Scripts.Scenes.Gameplay.Features.Inventory.DTO;
-using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget.Cost;
-using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget.ViewModels;
-using App.Scripts.Scenes.Gameplay.Features.Popups.Shop.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Screens.CostWidget.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Screens.CostWidget.Cost;
+using App.Scripts.Scenes.Gameplay.Features.Screens.CostWidget.ViewModels;
 using UnityEngine;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget
+namespace App.Scripts.Scenes.Gameplay.Features.Screens.CostWidget
 {
     public class ItemInformationWidget : MonoBehaviour
     {

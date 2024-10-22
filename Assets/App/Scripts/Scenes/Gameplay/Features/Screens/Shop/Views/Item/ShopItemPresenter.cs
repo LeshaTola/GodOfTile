@@ -1,12 +1,10 @@
-using App.Scripts.Modules.Sounds;
-using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget;
-using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget.Presenters;
+using App.Scripts.Modules.Sounds.Providers;
+using App.Scripts.Scenes.Gameplay.Features.Screens.CostWidget.Presenters;
 using App.Scripts.Scenes.Gameplay.Features.Shop.Systems;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using Cysharp.Threading.Tasks;
-using UnityEngine;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Popups.Shop.Item
+namespace App.Scripts.Scenes.Gameplay.Features.Screens.Shop.Views.Item
 {
     public class ShopItemPresenter
     {

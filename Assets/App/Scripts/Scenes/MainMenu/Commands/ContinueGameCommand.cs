@@ -1,7 +1,7 @@
 using App.Scripts.Modules.StateMachine;
 using App.Scripts.Scenes.Gameplay.Features.Commands.General;
 
-namespace App.Scripts.Features.Commands
+namespace App.Scripts.Scenes.MainMenu.Commands
 {
     public class ContinueGameCommand : LabeledCommand
     {

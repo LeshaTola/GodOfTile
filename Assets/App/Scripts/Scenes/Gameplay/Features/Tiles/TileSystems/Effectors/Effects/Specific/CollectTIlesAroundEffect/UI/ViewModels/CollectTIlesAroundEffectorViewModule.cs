@@ -1,7 +1,6 @@
 using App.Scripts.Modules.Localization;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effects.Specific.ChangeResourceEarningEffect.
-    UI.ViewModels
+namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effects.Specific.CollectTIlesAroundEffect.UI.ViewModels
 {
     public class CollectTilesAroundEffectorViewModule
     {

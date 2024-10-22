@@ -3,6 +3,7 @@ using App.Scripts.Scenes.Gameplay.Features.Commands;
 using App.Scripts.Scenes.Gameplay.Features.Commands.BuyAreaCommand;
 using App.Scripts.Scenes.Gameplay.Features.Commands.GoToStateCommands;
 using App.Scripts.Scenes.Gameplay.Features.Commands.Provider;
+using App.Scripts.Scenes.MainMenu.Commands;
 using Zenject;
 
 namespace App.Scripts.Scenes.MainMenu.Bootstrap

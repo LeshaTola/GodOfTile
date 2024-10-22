@@ -1,11 +1,10 @@
-﻿using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget;
-using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget.Cost;
-using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget.Presenters;
-using App.Scripts.Scenes.Gameplay.Features.Popups.Shop.Item;
+﻿using App.Scripts.Scenes.Gameplay.Features.Screens.CostWidget;
+using App.Scripts.Scenes.Gameplay.Features.Screens.CostWidget.Cost;
+using App.Scripts.Scenes.Gameplay.Features.Screens.CostWidget.Presenters;
 using App.Scripts.Scenes.Gameplay.Features.Screens.Shop;
 using App.Scripts.Scenes.Gameplay.Features.Screens.Shop.Presenters;
+using App.Scripts.Scenes.Gameplay.Features.Screens.Shop.Views.Item;
 using App.Scripts.Scenes.Gameplay.Features.Screens.Shop.Views.ShopViews;
-using App.Scripts.Scenes.Gameplay.Features.Screens.Shop.Views.ShopViews.Presenter;
 using App.Scripts.Scenes.Gameplay.Features.Shop.Systems;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.PlacementCost;
 using UnityEngine;

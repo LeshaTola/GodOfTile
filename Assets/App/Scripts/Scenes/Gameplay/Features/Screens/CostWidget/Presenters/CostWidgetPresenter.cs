@@ -3,10 +3,10 @@ using App.Scripts.Modules.Factories;
 using App.Scripts.Modules.Localization;
 using App.Scripts.Scenes.Gameplay.Features.Inventory.DTO;
 using App.Scripts.Scenes.Gameplay.Features.Inventory.Systems;
-using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget.Cost;
+using App.Scripts.Scenes.Gameplay.Features.Screens.CostWidget.Cost;
 using UnityEngine;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget.Presenters
+namespace App.Scripts.Scenes.Gameplay.Features.Screens.CostWidget.Presenters
 {
     public class CostWidgetPresenter
     {
