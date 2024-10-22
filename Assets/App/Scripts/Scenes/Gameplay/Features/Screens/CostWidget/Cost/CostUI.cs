@@ -1,7 +1,5 @@
 ﻿using App.Scripts.Scenes.Gameplay.Features.Popups.Configs;
-using Sirenix.OdinInspector;
 using TMPro;
-using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.UI;
 

@@ -1,3 +1,5 @@
+using App.Scripts.Features.Settings.Saves;
+using App.Scripts.Modules.Saves;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -12,19 +14,38 @@ namespace App.Scripts.Modules.Sounds.Services
             this.audioMixer = audioMixer;
         }
 
-        public void ChangeMasterVolume(float volume)
+        private float masterVolume;
+        private float musicVolume;
+        private float effectsVolume;
+
+        public float MasterVolume
         {
-            audioMixer.SetFloat("MasterVolume", ConvertVolume(volume));
+            get => masterVolume;
+            set
+            {
+                masterVolume = value;
+                audioMixer.SetFloat("MasterVolume", ConvertVolume(masterVolume));
+            }
         }
 
-        public void ChangeMusicVolume(float volume)
+        public float MusicVolume
         {
-            audioMixer.SetFloat("MusicVolume", ConvertVolume(volume));
+            get => musicVolume;
+            set
+            {
+                musicVolume = value;
+                audioMixer.SetFloat("MusicVolume", ConvertVolume(musicVolume));
+            }
         }
 
-        public void ChangeEffectsVolume(float volume)
+        public float EffectsVolume
         {
-            audioMixer.SetFloat("EffectsVolume", ConvertVolume(volume));
+            get => effectsVolume;
+            set
+            {
+                effectsVolume = value;
+                audioMixer.SetFloat("EffectsVolume", ConvertVolume(effectsVolume));
+            }
         }
 
         private float ConvertVolume(float value)

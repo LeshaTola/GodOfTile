@@ -2,8 +2,8 @@ namespace App.Scripts.Modules.Sounds.Services
 {
     public interface IAudioService
     {
-        public void ChangeMasterVolume(float volume);
-        public void ChangeMusicVolume(float volume);
-        public void ChangeEffectsVolume(float volume);
+        float MasterVolume { get; set; }
+        float MusicVolume { get; set; }
+        float EffectsVolume { get; set; }
     }
 }

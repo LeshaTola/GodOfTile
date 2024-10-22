@@ -52,32 +52,35 @@ namespace App.Scripts.Features.Tiles.Systems.Views.Settings
             resolutionsDropdown.ClearOptions();
             resolutionsDropdown.AddOptions(viewModule.ScreenService.GetStringResolutions());
 
+            resolutionsDropdown.value = viewModule.ScreenService.ResolutionIndex;
+            resolutionsDropdown.RefreshShownValue();
             resolutionsDropdown.onValueChanged.AddListener(value =>
             {
-                var texts = resolutionsDropdown.options[value].text.Split("x");
-                var width = Int32.Parse(texts[0]);
-                var height = Int32.Parse(texts[1]);
-                viewModule.ScreenService.SetResolution(width, height);
+                viewModule.ScreenService.ResolutionIndex = value;
             });
 
+            fullScreenToggle.isOn = viewModule.ScreenService.IsFullScreen;
             fullScreenToggle.onValueChanged.AddListener(value =>
             {
-                viewModule.ScreenService.ChangeFullScreen(value);
+                viewModule.ScreenService.IsFullScreen = value;
             });
 
+            masterVolumeSlider.value = viewModule.AudioService.MasterVolume;
             masterVolumeSlider.onValueChanged.AddListener(value =>
             {
-                viewModule.AudioService.ChangeMasterVolume(value);
+                viewModule.AudioService.MasterVolume = value;
             });
 
+            musicVolumeSlider.value = viewModule.AudioService.MusicVolume;
             musicVolumeSlider.onValueChanged.AddListener(value =>
             {
-                viewModule.AudioService.ChangeMusicVolume(value);
+                viewModule.AudioService.MusicVolume= value;
             });
 
+            effectsVolumeSlider.value = viewModule.AudioService.EffectsVolume;
             effectsVolumeSlider.onValueChanged.AddListener(value =>
             {
-                viewModule.AudioService.ChangeEffectsVolume(value);
+                viewModule.AudioService.EffectsVolume= value;
             });
         }
 
@@ -87,6 +90,9 @@ namespace App.Scripts.Features.Tiles.Systems.Views.Settings
             {
                 return;
             }
+            viewModule.SavesProvider.SaveState();
+
+            viewModule = null;
         }
     }
 }

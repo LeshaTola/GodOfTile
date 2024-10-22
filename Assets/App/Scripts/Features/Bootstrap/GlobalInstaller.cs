@@ -1,4 +1,5 @@
-﻿using App.Scripts.Features.StateMachines.States;
+﻿using App.Scripts.Features.Settings.Saves;
+using App.Scripts.Features.StateMachines.States;
 using App.Scripts.Modules.FileProvider;
 using App.Scripts.Modules.Localization;
 using App.Scripts.Modules.Localization.Configs;
@@ -38,6 +39,14 @@ namespace App.Scripts.Features.Bootstrap
             Container.Bind<ISoundProvider>().FromInstance(soundProvider).AsSingle();
             Container.Bind<IAudioService>().To<AudioService>().AsSingle().WithArguments(audioMixer);
             Container.Bind<IScreenService>().To<ScreenService>().AsSingle();
+
+            Container
+                .Bind<IDataProvider<SettingsData>>()
+                .To<DataProvider<SettingsData>>()
+                .AsSingle()
+                .WithArguments("settingsSaves");
+            
+            Container.BindInterfacesAndSelfTo<SettingsSavesProvider>().AsSingle();
         }
 
         private void BindLocalizationSystem()

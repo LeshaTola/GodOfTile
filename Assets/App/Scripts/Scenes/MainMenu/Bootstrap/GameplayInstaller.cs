@@ -1,14 +1,12 @@
-﻿using App.Scripts.Modules.CameraSwitchers;
+﻿using App.Scripts.Features.Settings.Saves;
+using App.Scripts.Modules.CameraSwitchers;
 using App.Scripts.Modules.ObjectPool.KeyPools;
 using App.Scripts.Modules.ObjectPool.KeyPools.Configs;
-using App.Scripts.Modules.ObjectPool.MonoObjectPools;
 using App.Scripts.Modules.ObjectPool.PooledObjects;
-using App.Scripts.Modules.ObjectPool.Pools;
-using App.Scripts.Modules.Sounds;
+using App.Scripts.Modules.Saves;
 using App.Scripts.Modules.StateMachine.Services.CleanupService;
 using App.Scripts.Modules.StateMachine.Services.InitializeService;
 using App.Scripts.Modules.StateMachine.Services.UpdateService;
-using App.Scripts.Scenes.Gameplay.Bootstrap;
 using App.Scripts.Scenes.Gameplay.Features.Input;
 using App.Scripts.Scenes.Gameplay.Features.Map.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Chunk;
@@ -52,7 +50,6 @@ namespace App.Scripts.Scenes.MainMenu.Bootstrap
 
             Container.Bind<IGridProvider>().To<GridProvider>().AsSingle().WithArguments(gridConfig);
             Container.Bind<IChunksProvider>().To<ChunksProvider>().AsSingle().WithArguments(gridConfig);
-            
             
             Container.Bind<TileInformationPresenter>().AsSingle();
             Container.Bind<TileInformationView>().FromInstance(tileInformationView);

@@ -1,4 +1,5 @@
 using App.Scripts.Features.Commands;
+using App.Scripts.Features.Settings.Saves;
 using App.Scripts.Features.Tiles.Systems.Views;
 using App.Scripts.Features.Tiles.Systems.Views.Settings;
 using App.Scripts.Modules.Localization;
@@ -15,22 +16,22 @@ namespace App.Scripts.Scenes.MainMenu.Tiles.Systems.ExitSystem
     {
         private readonly ISystemUIFactory systemUIFactory;
         private readonly ILocalizationSystem localizationSystem;
-        private readonly ICommandsProvider commandsProvider;
         private readonly IAudioService audioService;
         private readonly IScreenService screenService;
+        private readonly SettingsSavesProvider savesProvider;
 
         public SettingsSystemUIProvider(
             ISystemUIFactory systemUIFactory,
             ILocalizationSystem localizationSystem,
-            ICommandsProvider commandsProvider,
             IAudioService audioService,
-            IScreenService screenService)
+            IScreenService screenService,
+            SettingsSavesProvider savesProvider)
         {
             this.systemUIFactory = systemUIFactory;
             this.localizationSystem = localizationSystem;
-            this.commandsProvider = commandsProvider;
             this.audioService = audioService;
             this.screenService = screenService;
+            this.savesProvider = savesProvider;
         }
         public SystemUI GetSystemUI(TileSystem tileSystem)
         {
@@ -38,7 +39,8 @@ namespace App.Scripts.Scenes.MainMenu.Tiles.Systems.ExitSystem
             var viewModule = new SettingsViewModule(
                 audioService,
                 localizationSystem,
-                screenService);
+                screenService,
+                savesProvider);
             
             systemUI.Initialize(viewModule);
             return systemUI;

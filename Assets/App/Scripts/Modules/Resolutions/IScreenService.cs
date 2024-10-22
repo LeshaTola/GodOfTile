@@ -7,7 +7,8 @@ namespace App.Scripts.Modules.Resolutions
     {
         List<Resolution> GetResolutions();
         List<string> GetStringResolutions();
-        void SetResolution(int width, int height);
-        void ChangeFullScreen(bool isFull);
+
+        int ResolutionIndex { get; set; }
+        bool IsFullScreen { get; set; }
     }
 }
