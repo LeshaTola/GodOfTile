@@ -1814,7 +1814,6 @@ MonoBehaviour:
   particlesContainer: {fileID: 431442152}
   waterMaterialConfig: {fileID: 11400000, guid: e4bd15389ede31843b411f5d8d7a9867,
     type: 2}
-  soundProvider: {fileID: 530211547}
 --- !u!1 &797033557
 GameObject:
   m_ObjectHideFlags: 0

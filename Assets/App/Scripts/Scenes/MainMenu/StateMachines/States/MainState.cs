@@ -79,5 +79,11 @@ namespace App.Scripts.Scenes.MainMenu.StateMachines.States
                 tileSelectionProvider.SelectTile(tile);
             }
         }
+
+        public override async UniTask Exit()
+        {
+            await base.Exit();
+            tileSelectionProvider.Cleanup();
+        }
     }
 }

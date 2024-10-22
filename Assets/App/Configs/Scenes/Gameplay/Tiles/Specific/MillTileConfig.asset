@@ -50,7 +50,7 @@ MonoBehaviour:
       Data: 
     - Name: effect
       Entry: 7
-      Data: 4|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effects.Specific.ChangeResourceEarningEffect.CollectTilesAroundEffect,
+      Data: 4|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effects.Specific.CollectTIlesAroundEffect.CollectTilesAroundEffect,
         Assembly-CSharp
     - Name: earningAmountPerValidTile
       Entry: 4

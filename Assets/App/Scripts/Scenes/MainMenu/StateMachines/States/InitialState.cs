@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using App.Scripts.Features.SceneTransitions;
 using App.Scripts.Modules.CameraSwitchers;
 using App.Scripts.Modules.Localization;
 using App.Scripts.Modules.Saves;
@@ -17,9 +18,16 @@ namespace App.Scripts.Scenes.MainMenu.StateMachines.States
         private string cameraId;
         private readonly TileInformationPresenter tileInformationPresenter;
         private readonly List<ISavable> savables;
+        private readonly ISceneTransition sceneTransition;
 
-        public InitialState(string id, IInitializeService initializeService, ICameraSwitcher cameraSwitcher,
-            string cameraId, TileInformationPresenter tileInformationPresenter, List<ISavable> savables)
+        public InitialState(
+            TileInformationPresenter tileInformationPresenter,
+            IInitializeService initializeService,
+            ISceneTransition sceneTransition,
+            ICameraSwitcher cameraSwitcher,
+            List<ISavable> savables, 
+            string cameraId,
+            string id)
             : base(id)
         {
             this.initializeService = initializeService;
@@ -27,6 +35,7 @@ namespace App.Scripts.Scenes.MainMenu.StateMachines.States
             this.cameraId = cameraId;
             this.tileInformationPresenter = tileInformationPresenter;
             this.savables = savables;
+            this.sceneTransition = sceneTransition;
         }
 
         public override async UniTask Enter()
@@ -42,6 +51,12 @@ namespace App.Scripts.Scenes.MainMenu.StateMachines.States
             
             await StateMachine.ChangeState(StatesIds.MAIN_STATE);
             tileInformationPresenter.Initialize();
+        }
+
+        public override async UniTask Exit()
+        {
+            await base.Exit();
+            await sceneTransition.PlayOffAsync();
         }
     }
 }

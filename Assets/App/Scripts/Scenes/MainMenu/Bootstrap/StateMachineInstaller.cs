@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using App.Scripts.Features.StateMachines.States;
 using App.Scripts.Modules.CameraSwitchers;
 using App.Scripts.Modules.StateMachine;
 using App.Scripts.Modules.StateMachine.Factories.States;
@@ -14,12 +15,12 @@ namespace App.Scripts.Scenes.MainMenu.Bootstrap
 {
     public class StateMachineInstaller : MonoInstaller
     {
-        [SerializeField] private CamerasDatabase camerasDatabase;
         [SerializeField] private CollectionConfig startTiles;
+        [SerializeField] private string sceneName = "GamePlay";
 
+        [SerializeField] private CamerasDatabase camerasDatabase;
         [ValueDropdown(nameof(GetCamerasIds))]
         [SerializeField] private string mainCameraId;
-
         [ValueDropdown(nameof(GetCamerasIds))]
         [SerializeField] private string InfoCameraId;
 
@@ -31,12 +32,14 @@ namespace App.Scripts.Scenes.MainMenu.Bootstrap
             BindInitialState();
             Container.Bind<State>().To<MainState>().AsSingle()
                 .WithArguments(StatesIds.MAIN_STATE, startTiles);
+            Container.Bind<State>().To<LoadSceneState>().AsSingle()
+                .WithArguments(StatesIds.LOAD_SCENE_STATE, sceneName);
         }
 
         private void BindInitialState()
         {
             Container.Bind<State>().To<InitialState>().AsSingle()
-                .WithArguments(StatesIds.INITIAL_STATE, mainCameraId);
+                .WithArguments(mainCameraId, StatesIds.INITIAL_STATE);
         }
 
         private void BindStateMachine()

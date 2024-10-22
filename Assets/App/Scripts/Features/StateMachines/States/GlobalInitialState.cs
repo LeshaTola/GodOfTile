@@ -18,6 +18,7 @@ namespace App.Scripts.Features.StateMachines.States
         {
             if (!isValid)
             {
+                await StateMachine.ChangeState(NextStateId);
                 return;
             }
 

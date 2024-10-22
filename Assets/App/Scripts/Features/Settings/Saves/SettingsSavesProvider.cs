@@ -37,7 +37,6 @@ namespace App.Scripts.Features.Settings.Saves
         {
             if (!dataProvider.HasData())
             {
-                return;
                 CreateState();
             }
 

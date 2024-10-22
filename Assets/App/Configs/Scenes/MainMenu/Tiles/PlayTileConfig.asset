@@ -30,14 +30,14 @@ MonoBehaviour:
       Data: 1
     - Name: 
       Entry: 7
-      Data: 1|App.Scripts.Scenes.MainMenu.Tiles.Systems.ExitSystem.PlaySystem, Assembly-CSharp
+      Data: 1|App.Scripts.Scenes.MainMenu.Tiles.Systems.PlaySystem.PlaySystem, Assembly-CSharp
     - Name: data
       Entry: 7
-      Data: 2|App.Scripts.Scenes.MainMenu.Tiles.Systems.ExitSystem.PlaySystemData,
+      Data: 2|App.Scripts.Scenes.MainMenu.Tiles.Systems.PlaySystem.PlaySystemData,
         Assembly-CSharp
     - Name: systemUIProvider
       Entry: 7
-      Data: 3|App.Scripts.Scenes.MainMenu.Tiles.Systems.ExitSystem.PlaySystemUIProvider,
+      Data: 3|App.Scripts.Scenes.MainMenu.Tiles.Systems.PlaySystem.PlaySystemUIProvider,
         Assembly-CSharp
     - Name: 
       Entry: 8
