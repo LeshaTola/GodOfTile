@@ -23,7 +23,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.StateTransfer
         [field: ValueDropdown(nameof(GetKeys))]
         [field: SerializeField] public string ButtonSoundKey { get; private set; }
 
-        public List<string> GetKeys()
+        private List<string> GetKeys()
         {
             if (audioDatabase == null)
             {

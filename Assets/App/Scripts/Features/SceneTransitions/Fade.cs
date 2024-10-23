@@ -16,7 +16,7 @@ namespace App.Scripts.Features.SceneTransitions
 
             gameObject.SetActive(true);
             transform.localScale = Vector3.zero;
-            tween = transform.DOScale(1f, fadeTime).SetUpdate(true);
+            tween = transform.DOScale(1f, fadeTime);
 
             await tween.AsyncWaitForCompletion();
         }
@@ -28,7 +28,7 @@ namespace App.Scripts.Features.SceneTransitions
             gameObject.SetActive(true);
             transform.localScale = Vector3.one;
 
-            tween = transform.DOScale(0f, fadeTime).SetUpdate(true);
+            tween = transform.DOScale(0f, fadeTime);
             tween.onComplete += () => { gameObject.SetActive(false); };
 
             await tween.AsyncWaitForCompletion();

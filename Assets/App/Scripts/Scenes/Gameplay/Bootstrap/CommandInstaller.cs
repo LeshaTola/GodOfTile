@@ -16,6 +16,15 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
             BindGoToBuyAreaStateCommand();
             BindGoToBuildingStateCommand();
             BindGoToResearchStateCommand();
+            Container
+                .Bind<GoToLoadSceneState>()
+                .AsSingle()
+                .WithArguments("exit");
+            
+            Container
+                .Bind<GoToPauseState>()
+                .AsSingle()
+                .WithArguments("pause");
 
             BindBuyAreaCommand();
             Container

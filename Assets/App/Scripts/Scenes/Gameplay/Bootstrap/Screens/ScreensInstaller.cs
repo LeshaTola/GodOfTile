@@ -4,6 +4,7 @@ using App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.StateTransfer;
 using App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.StateTransfer.Presenters;
 using App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.TileInformation;
 using App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.TileInformation.Presenters;
+using App.Scripts.Scenes.Gameplay.Features.Screens.Pause;
 using App.Scripts.Scenes.Gameplay.Features.Time.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Time.Presenters;
 using App.Scripts.Scenes.Gameplay.Features.Time.UI;
@@ -22,12 +23,20 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap.Screens
         [Header("Time")]
         [SerializeField] private TimeControllerView timeControllerView;
         [SerializeField] private TimeSpeedConfig timeSpeedConfig;
+        
+        [Header("Pause")]
+        [SerializeField] private PauseView pauseView;
 
         public override void InstallBindings()
         {
             BindGameplayScreen();
             BindTimeControllerView();
             BindStateTransferView();
+            
+            Container.Bind<PauseView>().FromInstance(pauseView).AsSingle();
+            Container.Bind<PausePresenter>().AsSingle();
+
+            
             Container.Bind<TileInformationView>().FromInstance(tileInformationView).AsSingle();
             Container.Bind<TileInformationPresenter>().AsSingle();
         }
