@@ -1,21 +1,35 @@
-﻿using App.Scripts.Scenes.Gameplay.Features.Inventory.Systems;
+﻿using App.Scripts.Modules.StateMachine.Services.CleanupService;
+using App.Scripts.Scenes.Gameplay.Features.Inventory.Systems;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Providers;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCreation;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.General;
+using UnityEngine;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.PlacementCost
 {
-    public class PlacementCostService : IPlacementCostService
+    public class PlacementCostService : IPlacementCostService, ICleanupable
     {
         private IActiveTileProvider activeTileProvider;
+        private ITilesCreationService tilesCreationService;
         private IInventorySystem inventorySystem;
 
         public PlacementCostService(
             IActiveTileProvider activeTileProvider,
-            IInventorySystem inventorySystem
+            IInventorySystem inventorySystem,
+            ITilesCreationService tilesCreationService
         )
         {
             this.activeTileProvider = activeTileProvider;
             this.inventorySystem = inventorySystem;
+            this.tilesCreationService = tilesCreationService;
+            
+            tilesCreationService.OnTilePlaced += OnTilePlaced;
+        }
+
+        private void OnTilePlaced(Vector2Int position, Tile tile)
+        {
+            ProcessPlacementCost(tile.Config);
         }
 
         public void ProcessPlacementCost(TileConfig tileConfig)
@@ -41,6 +55,11 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.Placement
                     -resourceCount.Count
                 );
             }
+        }
+
+        public void Cleanup()
+        {
+            tilesCreationService.OnTilePlaced -= OnTilePlaced;
         }
     }
 }

@@ -37,7 +37,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap.Inventory
 
         private void BindPlacementCostService()
         {
-            Container.Bind<IPlacementCostService>().To<PlacementCostService>().AsSingle();
+            Container.BindInterfacesTo<PlacementCostService>().AsSingle().NonLazy();
         }
         
         private void BindInventoryController()

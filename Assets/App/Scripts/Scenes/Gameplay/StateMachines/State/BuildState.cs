@@ -17,7 +17,6 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
         private IUpdateService updateService;
         private ShopScreenPresenter shopScreenPresenter;
         private ICameraController cameraController;
-        private readonly IPlacementCostService placementCostService;
         private ITilesCreationService creationService;
 
         public BuildState(
@@ -27,8 +26,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             ITilesCreationService creationService,
             IVisualizer gridVisualizer,
             ShopScreenPresenter shopScreenPresenter,
-            ICameraController cameraController,            
-            IPlacementCostService placementCostService
+            ICameraController cameraController
         )
             : base(id)
         {
@@ -38,7 +36,6 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             this.gridVisualizer = gridVisualizer;
             this.shopScreenPresenter = shopScreenPresenter;
             this.cameraController = cameraController;
-            this.placementCostService = placementCostService;
         }
 
         public override async UniTask Enter()
@@ -69,7 +66,6 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             if (gameInput.IsMouseClicked())
             {
                 creationService.PlaceActiveTile();
-                placementCostService.ProcessPlacementCost();
                 creationService.StartPlacingTile();
             }
         }

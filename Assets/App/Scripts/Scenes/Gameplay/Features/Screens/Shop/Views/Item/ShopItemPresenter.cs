@@ -73,12 +73,11 @@ namespace App.Scripts.Scenes.Gameplay.Features.Screens.Shop.Views.Item
 
         private void OnBuyButtonClicked()
         {
-            if (!shopSystem.IsEnough(tileConfig))
+            if (!shopSystem.TryBuyTile(tileConfig))
             {
                 return;
             }
-
-            shopSystem.BuyTile(tileConfig);
+            
             soundProvider.PlaySound(shopItemView.ButtonSoundKey);
         }
     }

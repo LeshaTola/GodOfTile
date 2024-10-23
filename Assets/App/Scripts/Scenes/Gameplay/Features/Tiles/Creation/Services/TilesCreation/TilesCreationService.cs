@@ -88,23 +88,23 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
                 return;
             }
 
-            for (var x = 0; x < activeTile.Config.Size.x; x++)
+            var tileBuffer = activeTile;
+            activeTile = null;
+            systemsService.StartSystems(tileBuffer.Config);
+
+            PlayCreationVFX(tileBuffer).Forget();
+            OnTilePlaced?.Invoke(tileBuffer.Position, tileBuffer);
+            
+            for (var x = 0; x < tileBuffer.Config.Size.x; x++)
             {
-                for (var y = 0; y < activeTile.Config.Size.y; y++)
+                for (var y = 0; y < tileBuffer.Config.Size.y; y++)
                 {
                     Vector2Int tileCoordinate =
-                        new(activeTile.Position.x + x, activeTile.Position.y + y);
-                    gridProvider.Grid[tileCoordinate.x, tileCoordinate.y] = activeTile;
+                        new(tileBuffer.Position.x + x, tileBuffer.Position.y + y);
+                    gridProvider.Grid[tileCoordinate.x, tileCoordinate.y] = tileBuffer;
                     updateService.UpdateConnectedTiles(tileCoordinate);
                 }
             }
-
-            var tileBuffer = activeTile;
-            activeTile = null;
-
-            PlayCreationVFX(tileBuffer).Forget();
-            systemsService.StartSystems(tileBuffer.Config);
-            OnTilePlaced?.Invoke(tileBuffer.Position, tileBuffer);
         }
 
         public void MoveActiveTile(Vector2Int gridPosition)
