@@ -66,6 +66,11 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors
 
         private void OnTilePlaced(Vector2Int position, Tile tile)
         {
+            if (!data.GetTilesStrategy.IsValid(ParentTile.Position, position))
+            {
+                return;
+            }
+            
             UpdateBoostedTiles();
         }
 

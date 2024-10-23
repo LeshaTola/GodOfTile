@@ -7,6 +7,7 @@ using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Providers;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCreation;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Selection;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 namespace App.Scripts.Scenes.MainMenu.StateMachines.States
 {
@@ -70,7 +71,8 @@ namespace App.Scripts.Scenes.MainMenu.StateMachines.States
             if (gameInput.IsMouseClicked())
             {
                 var tile = tileSelectionProvider.GetTileAtMousePosition();
-
+                
+                
                 if (tile == null)
                 {
                     return;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using App.Scripts.Scenes.Gameplay.Features.Shop.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
+using Object = UnityEngine.Object;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Collection
 {
@@ -35,7 +36,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Collection
             if (Collection
                     .FirstOrDefault(x => x.Id.Equals(tileConfig.Id)) == null)
             {
-                AddTile(tileConfig);
+                AddTile(Object.Instantiate(tileConfig));
             }
         }
     }

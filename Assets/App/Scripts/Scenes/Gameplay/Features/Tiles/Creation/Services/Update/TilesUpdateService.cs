@@ -59,18 +59,19 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.Update
                 }
 
                 var result = UpdateTile(position);
-                if (result != null)
+                if (result == null)
                 {
-
-                    var cloneResult = Object.Instantiate(result);
-                    tilesForUpdate.Add(
-                        new TileToUpdate() {Position = position, NewConfig = cloneResult}
-                    );
+                    continue;
                 }
+                var cloneResult = Object.Instantiate(result);
+                tilesForUpdate.Add(
+                    new TileToUpdate() {Position = position, NewConfig = cloneResult}
+                );
             }
 
             foreach (var tile in tilesForUpdate)
             {
+                tileCollectionProvider.AddIfNotContains(tile.NewConfig);
                 Replace(tile.NewConfig, tile.Position);
             }
         }
@@ -88,7 +89,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.Update
             tile.Initialize(newTileConfig);
 
             systemsService.StartSystems(tile.Config);
-            tileCollectionProvider.AddIfNotContains(newTileConfig);
         }
 
         private TileConfig UpdateTile(Vector2Int tilePosition)

@@ -10,7 +10,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effec
     public class CollectTilesAroundEffect : IEffect
     {
         [SerializeField] private float earningAmountPerValidTile;
-        //[SerializeField] private ChangeResourceEarningEffectorUIProvider systemUIProvider;
         [SerializeField] private List<TileConfig> whiteList;
 
         private IResourceEarnerService resourceEarnerService;
@@ -21,11 +20,10 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effec
         public IValidationStrategy ValidationStrategy => validationStrategy;
         public Effector Effector => effector;
         public float EarningAmountMultiplier => earningAmountPerValidTile;
-        public ISystemUIProvider SystemUIProvider => null; //systemUIProvider;
-
+        public ISystemUIProvider SystemUIProvider => null; 
+        
         public void Initialize(Effector effector)
         {
-            //validationStrategy = new OwnerValidationStrategy(effector.ParentTile);
             validationStrategy = new TilesValidationStrategy(whiteList);
             this.effector = effector;
         }
