@@ -31,7 +31,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2302328244455557492}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -107,7 +106,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4838403346749432142}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -184,7 +182,6 @@ RectTransform:
   - {fileID: 2334257915462842269}
   - {fileID: 2302328244455557492}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -255,6 +252,8 @@ MonoBehaviour:
       Entry: 8
       Data: 
   selectorImage: {fileID: 448333618975694740}
+  audioDatabase: {fileID: 11400000, guid: 2d7974d028292e343a2eeeff1eaecc97, type: 2}
+  <ButtonSoundKey>k__BackingField: Button
   <PauseButton>k__BackingField: {fileID: 4213799318421677055}
   <Speed1Button>k__BackingField: {fileID: 331083502223595518}
   <Speed2Button>k__BackingField: {fileID: 7499746965828263403}
@@ -293,7 +292,6 @@ RectTransform:
   - {fileID: 1658403866640524610}
   - {fileID: 4168464339231777827}
   m_Father: {fileID: 4838403346749432142}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

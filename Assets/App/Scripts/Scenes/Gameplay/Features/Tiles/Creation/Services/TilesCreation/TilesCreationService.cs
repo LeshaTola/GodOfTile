@@ -1,4 +1,6 @@
 ﻿using System;
+using App.Scripts.Modules.Sounds;
+using App.Scripts.Modules.Sounds.Providers;
 using App.Scripts.Modules.StateMachine.Services.CleanupService;
 using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Grid;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Configs;
@@ -23,10 +25,10 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
         private IGridProvider gridProvider;
         private ITilesFactory tileFactory;
         private IActiveTileProvider activeTileProvider;
-        private IPlacementCostService placementCostService;
         private ITileCreationEffectsProvider effectsService;
         private ITilesUpdateService updateService;
         private ISystemsService systemsService;
+        private readonly ISoundProvider soundProvider;
         private IEffectorVisualProvider effectorVisualProvider;
         private TilesCreationConfig config;
 
@@ -36,10 +38,10 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
             IGridProvider gridProvider,
             ITilesFactory tileFactory,
             IActiveTileProvider activeTileProvider,
-            IPlacementCostService placementCostService,
             ITileCreationEffectsProvider effectsService,
             ITilesUpdateService updateService,
             ISystemsService systemsService,
+            ISoundProvider soundProvider,
             IEffectorVisualProvider effectorVisualProvider,
             TilesCreationConfig config
         )
@@ -47,10 +49,10 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
             this.gridProvider = gridProvider;
             this.tileFactory = tileFactory;
             this.activeTileProvider = activeTileProvider;
-            this.placementCostService = placementCostService;
             this.effectsService = effectsService;
             this.updateService = updateService;
             this.systemsService = systemsService;
+            this.soundProvider = soundProvider;
             this.effectorVisualProvider = effectorVisualProvider;
             this.config = config;
 
@@ -86,24 +88,23 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
                 return;
             }
 
-            for (var x = 0; x < activeTile.Config.Size.x; x++)
+            var tileBuffer = activeTile;
+            activeTile = null;
+            systemsService.StartSystems(tileBuffer.Config);
+
+            PlayCreationVFX(tileBuffer).Forget();
+            OnTilePlaced?.Invoke(tileBuffer.Position, tileBuffer);
+            
+            for (var x = 0; x < tileBuffer.Config.Size.x; x++)
             {
-                for (var y = 0; y < activeTile.Config.Size.y; y++)
+                for (var y = 0; y < tileBuffer.Config.Size.y; y++)
                 {
                     Vector2Int tileCoordinate =
-                        new(activeTile.Position.x + x, activeTile.Position.y + y);
-                    gridProvider.Grid[tileCoordinate.x, tileCoordinate.y] = activeTile;
+                        new(tileBuffer.Position.x + x, tileBuffer.Position.y + y);
+                    gridProvider.Grid[tileCoordinate.x, tileCoordinate.y] = tileBuffer;
                     updateService.UpdateConnectedTiles(tileCoordinate);
                 }
             }
-
-            var tileBuffer = activeTile;
-            activeTile = null;
-
-            PlayCreationVFX(tileBuffer).Forget();
-            placementCostService.ProcessPlacementCost(tileBuffer.Config);
-            systemsService.StartSystems(tileBuffer.Config);
-            OnTilePlaced?.Invoke(tileBuffer.Position, tileBuffer);
         }
 
         public void MoveActiveTile(Vector2Int gridPosition)
@@ -144,6 +145,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
         {
             tile.Visual.SetState(TileState.Default);
             effectsService.PlayParticle(config.CreationParticleKey, tile.transform.position);
+            soundProvider.PlaySound(config.CreateSoundKey);
             await tile.Visual.PlayCreation();
         }
 

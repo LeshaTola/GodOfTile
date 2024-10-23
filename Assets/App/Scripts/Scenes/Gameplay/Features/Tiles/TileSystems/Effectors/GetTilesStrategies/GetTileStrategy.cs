@@ -36,6 +36,10 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.GetTi
         }
 
         public abstract List<Vector2Int> GetPositions(Vector2Int center);
+        public bool IsValid(Vector2Int center, Vector2Int position)
+        {
+            return GetPositions(center).FindIndex(x=> x.Equals(position)) != -1;
+        }
 
         protected bool IsValidPosition(Vector2Int position)
         {

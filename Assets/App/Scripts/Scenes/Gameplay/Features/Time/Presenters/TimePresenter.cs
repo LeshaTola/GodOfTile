@@ -1,3 +1,5 @@
+using App.Scripts.Modules.Sounds;
+using App.Scripts.Modules.Sounds.Providers;
 using App.Scripts.Modules.StateMachine.Services.CleanupService;
 using App.Scripts.Modules.StateMachine.Services.InitializeService;
 using App.Scripts.Scenes.Gameplay.Features.Input;
@@ -12,84 +14,91 @@ namespace App.Scripts.Scenes.Gameplay.Features.Time.Presenters
     {
         private IGameInput gameInput;
         private ITimeService timeService;
-        private TimeControllerView timeControllerView;
+        private TimeControllerView view;
+        private readonly ISoundProvider soundProvider;
         private TimeSpeedConfig config;
 
         public TimePresenter(IGameInput gameInput,
             ITimeService timeService,
-            TimeControllerView timeControllerView,
+            TimeControllerView view,
+            ISoundProvider soundProvider,
             TimeSpeedConfig config)
         {
             this.gameInput = gameInput;
             this.timeService = timeService;
-            this.timeControllerView = timeControllerView;
+            this.view = view;
+            this.soundProvider = soundProvider;
             this.config = config;
         }
 
         public void Initialize()
         {
-            timeControllerView.Initialize();
+            view.Initialize();
 
             gameInput.OnPause += SetPause;
             gameInput.OnSpeed1 += SetSpeed1;
             gameInput.OnSpeed2 += SetSpeed2;
             gameInput.OnSpeed3 += SetSpeed3;
 
-            timeControllerView.OnPauseButtonClicked += SetPause;
-            timeControllerView.OnSpeed1ButtonClicked += SetSpeed1;
-            timeControllerView.OnSpeed2ButtonClicked += SetSpeed2;
-            timeControllerView.OnSpeed3ButtonClicked += SetSpeed3;
+            view.OnPauseButtonClicked += SetPause;
+            view.OnSpeed1ButtonClicked += SetSpeed1;
+            view.OnSpeed2ButtonClicked += SetSpeed2;
+            view.OnSpeed3ButtonClicked += SetSpeed3;
 
             SetSpeed1();
         }
 
         public void Cleanup()
         {
-            timeControllerView.Cleanup();
+            view.Cleanup();
 
             gameInput.OnPause -= SetPause;
             gameInput.OnSpeed1 -= SetSpeed1;
             gameInput.OnSpeed2 -= SetSpeed2;
             gameInput.OnSpeed3 -= SetSpeed3;
 
-            timeControllerView.OnPauseButtonClicked -= SetPause;
-            timeControllerView.OnSpeed1ButtonClicked -= SetSpeed1;
-            timeControllerView.OnSpeed2ButtonClicked -= SetSpeed2;
-            timeControllerView.OnSpeed3ButtonClicked -= SetSpeed3;
+            view.OnPauseButtonClicked -= SetPause;
+            view.OnSpeed1ButtonClicked -= SetSpeed1;
+            view.OnSpeed2ButtonClicked -= SetSpeed2;
+            view.OnSpeed3ButtonClicked -= SetSpeed3;
         }
 
         private void SetPause()
         {
             timeService.SetPause();
-            timeControllerView.SetSelector(timeControllerView.PauseButton);
+            view.SetSelector(view.PauseButton);
+            soundProvider.PlaySound(view.ButtonSoundKey);
         }
 
         private void SetSpeed1()
         {
             timeService.SetSpeed(config.Speed1);
-            timeControllerView.SetSelector(timeControllerView.Speed1Button);
+            view.SetSelector(view.Speed1Button);
+            soundProvider.PlaySound(view.ButtonSoundKey);
         }
 
         private void SetSpeed2()
         {
             timeService.SetSpeed(config.Speed2);
-            timeControllerView.SetSelector(timeControllerView.Speed2Button);
+            view.SetSelector(view.Speed2Button);
+            soundProvider.PlaySound(view.ButtonSoundKey);
         }
 
         private void SetSpeed3()
         {
             timeService.SetSpeed(config.Speed3);
-            timeControllerView.SetSelector(timeControllerView.Speed3Button);
+            view.SetSelector(view.Speed3Button);
+            soundProvider.PlaySound(view.ButtonSoundKey);
         }
 
         public async UniTask Show()
         {
-            await timeControllerView.Show();
+            await view.Show();
         }
 
         public async UniTask Hide()
         {
-            await timeControllerView.Hide();
+            await view.Hide();
         }
     }
 }

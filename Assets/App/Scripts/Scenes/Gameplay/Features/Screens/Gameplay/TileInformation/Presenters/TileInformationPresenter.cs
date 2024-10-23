@@ -47,7 +47,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.TileInformation.
                         system => 
                             tileSystemUIProvidersFactory
                                 .GetSystemUIProvider(system.Data.SystemUIProvider)
-                                .GetSystemUI(system)
+                                ?.GetSystemUI(system)
                             ).ToList() ;
 
             view.CleanupSystems();

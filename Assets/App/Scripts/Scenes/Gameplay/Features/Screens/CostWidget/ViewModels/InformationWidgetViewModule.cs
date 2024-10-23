@@ -1,9 +1,9 @@
 ﻿using App.Scripts.Modules.Factories;
 using App.Scripts.Modules.Localization;
 using App.Scripts.Scenes.Gameplay.Features.Inventory.Systems;
-using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget.Cost;
+using App.Scripts.Scenes.Gameplay.Features.Screens.CostWidget.Cost;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget.ViewModels
+namespace App.Scripts.Scenes.Gameplay.Features.Screens.CostWidget.ViewModels
 {
     public class InformationWidgetViewModule : IInformationWidgetViewModule
     {

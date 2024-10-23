@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using App.Scripts.Features.StateMachines.States;
 using App.Scripts.Modules.CameraSwitchers;
 using App.Scripts.Modules.StateMachine;
 using App.Scripts.Modules.StateMachine.Factories.States;
@@ -14,6 +15,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
     public class GameplayStateMachineInstaller : MonoInstaller
     {
         [SerializeField] private CamerasDatabase camerasDatabase;
+        [SerializeField] private string sceneName = "MainMenu";
 
         [ValueDropdown(nameof(GetCamerasIds))]
         [SerializeField] private string mainCameraId;
@@ -31,6 +33,9 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
             BindBuildState();
             BindBuyAreaState();
             BindState<ResearchState>(StatesIds.RESEARCH_STATE);
+            BindState<PauseState>(StatesIds.PAUSE_STATE);
+            Container.Bind<State>().To<LoadSceneState>().AsSingle()
+                .WithArguments(StatesIds.LOAD_SCENE_STATE, sceneName);
         }
 
         private void BindBuildState()

@@ -2,7 +2,7 @@ using App.Scripts.Features.Popups.Buttons;
 using App.Scripts.Modules.Localization.Localizers;
 using App.Scripts.Modules.PopupAndViews.General.Popup;
 using App.Scripts.Scenes.Gameplay.Features.Popups.BuyArea.ViewModules;
-using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget;
+using App.Scripts.Scenes.Gameplay.Features.Screens.CostWidget;
 using UnityEngine;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Popups.BuyArea

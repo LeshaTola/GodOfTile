@@ -6,6 +6,11 @@ namespace App.Scripts.Modules.StateMachine.Services.CleanupService
     {
         public List<ICleanupable> Cleanupables { get; private set; }
 
+        public CleanupService(List<ICleanupable> cleanupables)
+        {
+            Cleanupables = cleanupables;
+        }
+
         public void Cleanup()
         {
             foreach (var cleanupable in Cleanupables)

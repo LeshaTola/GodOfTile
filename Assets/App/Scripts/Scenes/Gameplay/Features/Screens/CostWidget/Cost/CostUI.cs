@@ -1,11 +1,9 @@
 ﻿using App.Scripts.Scenes.Gameplay.Features.Popups.Configs;
-using Sirenix.OdinInspector;
 using TMPro;
-using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget.Cost
+namespace App.Scripts.Scenes.Gameplay.Features.Screens.CostWidget.Cost
 {
     public class CostUI : MonoBehaviour
     {

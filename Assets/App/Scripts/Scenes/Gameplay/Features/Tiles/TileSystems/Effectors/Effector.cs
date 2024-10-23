@@ -55,7 +55,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors
         {
             return data.GetTilesStrategy.GetPositions(ParentTile.Position);
         }
-
+        
         public List<Tile> GetValidTiles()
         {
             return data
@@ -66,6 +66,11 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors
 
         private void OnTilePlaced(Vector2Int position, Tile tile)
         {
+            if (!data.GetTilesStrategy.IsValid(ParentTile.Position, position))
+            {
+                return;
+            }
+            
             UpdateBoostedTiles();
         }
 
@@ -78,7 +83,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors
         private void BoostTiles()
         {
             boostedSystems
-                = data.Effect.ValidationStrategy.GetValidSystems(data.GetTilesStrategy.GetTiles(ParentTile.Position));
+                = data.Effect.ValidationStrategy.ValidateSystems(data.GetTilesStrategy.GetTiles(ParentTile.Position));
             foreach (var boostedSystem in boostedSystems)
             {
                 boostedSystem.AddEffect(data.Effect);

@@ -2,9 +2,8 @@ using System.Collections.Generic;
 using App.Scripts.Modules.Localization;
 using App.Scripts.Modules.Localization.Localizers;
 using App.Scripts.Modules.PopupAndViews.Views;
-using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget;
-using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget.ViewModels;
-using App.Scripts.Scenes.Gameplay.Features.Popups.Shop.Item;
+using App.Scripts.Scenes.Gameplay.Features.Screens.CostWidget.ViewModels;
+using App.Scripts.Scenes.Gameplay.Features.Screens.Shop.Views.Item;
 using UnityEngine;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Screens.Shop.Views.ShopViews

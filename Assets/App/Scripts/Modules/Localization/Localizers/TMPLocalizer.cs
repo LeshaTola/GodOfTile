@@ -5,12 +5,9 @@ namespace App.Scripts.Modules.Localization.Localizers
 {
     public class TMPLocalizer : MonoBehaviour, ITextLocalizer
     {
-        [SerializeField]
-        private TextMeshProUGUI text;
-
-        [SerializeField]
+        [SerializeField] private TextMeshProUGUI text;
+        
         private ILocalizationSystem localizationSystem;
-
         private string key = "";
 
         public string Key

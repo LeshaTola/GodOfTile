@@ -13,7 +13,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effec
     {
         [SerializeField] private float earningAmountMultiplier;
         [SerializeField] private ChangeResourceEarningEffectorUIProvider systemUIProvider;
-
+        
         private Effector effector;
         private IValidationStrategy validationStrategy;
 
@@ -24,7 +24,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effec
 
         public void Initialize(Effector effector)
         {
-            validationStrategy = new WhiteListValidationStrategy(new List<Type>()
+            validationStrategy = new SystemsValidationStrategy(new List<Type>()
             {
                 typeof(ResourceEarner)
             });

@@ -6,6 +6,7 @@ using App.Scripts.Scenes.Gameplay.Features.Input;
 using App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.Presenters;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Selection;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 namespace App.Scripts.Scenes.Gameplay.StateMachines.State
 {
@@ -45,6 +46,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             gameplayScreenPresenter.Initialize();
             await gameplayScreenPresenter.Show();
 
+            gameInput.OnEscape += OnEscape;
             gameInput.OnBuild += OnBuild;
             gameInput.OnI += OnI;
             gameInput.OnM += OnM;
@@ -63,7 +65,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
                 {
                     return;
                 }
-
+                
                 tileSelectionProvider.SelectTile(tile);
             }
         }
@@ -72,6 +74,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
         {
             await base.Exit();
 
+            gameInput.OnEscape -= OnEscape;
             gameInput.OnBuild -= OnBuild;
             gameInput.OnI -= OnI;
             gameInput.OnM -= OnM;
@@ -81,6 +84,11 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
 
             await gameplayScreenPresenter.Hide();
             cameraController.Active = false;
+        }
+
+        private void OnEscape()
+        {
+            commandsProvider.GetCommand<GoToPauseState>().Execute();
         }
 
         private void OnBuild()

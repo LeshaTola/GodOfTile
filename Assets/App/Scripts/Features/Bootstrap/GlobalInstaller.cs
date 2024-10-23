@@ -1,25 +1,36 @@
-﻿using App.Scripts.Features.StateMachines.States;
+﻿using App.Scripts.Features.SceneTransitions;
+using App.Scripts.Features.Settings.Saves;
+using App.Scripts.Features.StateMachines.States;
 using App.Scripts.Modules.FileProvider;
 using App.Scripts.Modules.Localization;
 using App.Scripts.Modules.Localization.Configs;
 using App.Scripts.Modules.Localization.Data;
 using App.Scripts.Modules.Localization.Keys;
 using App.Scripts.Modules.Localization.Parsers;
+using App.Scripts.Modules.Resolutions;
 using App.Scripts.Modules.Saves;
+using App.Scripts.Modules.Sounds;
+using App.Scripts.Modules.Sounds.Providers;
+using App.Scripts.Modules.Sounds.Services;
 using App.Scripts.Modules.StateMachine.States.General;
+using TNRD;
 using UnityEngine;
+using UnityEngine.Audio;
 using Zenject;
 
 namespace App.Scripts.Features.Bootstrap
 {
     public class GlobalInstaller : MonoInstaller
     {
-        [SerializeField]
-        private LocalizationDatabase localizationDatabase;
+        [SerializeField] private LocalizationDatabase localizationDatabase;
+        [SerializeField] private string language;
 
-        [SerializeField]
-        private string language;
-
+        [SerializeField] private SerializableInterface<ISceneTransition> sceneTransition;
+        
+        [Header("Audio")]
+        [SerializeField] private SoundProvider soundProvider;
+        [SerializeField] private AudioMixer audioMixer;
+        
         public override void InstallBindings()
         {
             BindGlobalInitialState();
@@ -29,6 +40,21 @@ namespace App.Scripts.Features.Bootstrap
             BindParser();
             BindLocalizationDataProvider();
             BindLocalizationSystem();
+            
+            Container.Bind<ISoundProvider>().FromInstance(soundProvider).AsSingle();
+            Container.Bind<IAudioService>().To<AudioService>().AsSingle().WithArguments(audioMixer);
+            Container.Bind<IScreenService>().To<ScreenService>().AsSingle();
+            
+            Container.Bind<ISceneTransition>().FromInstance(sceneTransition.Value);
+            
+
+            Container
+                .Bind<IDataProvider<SettingsData>>()
+                .To<DataProvider<SettingsData>>()
+                .AsSingle()
+                .WithArguments("settingsSaves");
+            
+            Container.BindInterfacesAndSelfTo<SettingsSavesProvider>().AsSingle();
         }
 
         private void BindLocalizationSystem()

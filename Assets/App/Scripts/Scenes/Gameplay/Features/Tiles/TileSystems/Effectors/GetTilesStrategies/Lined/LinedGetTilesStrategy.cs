@@ -22,7 +22,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.GetTi
                 {
                     var tilePosition = center + steps[i].Direction * iteration;
 
-                    if (!IsValidPosition(tilePosition) || IsCompete(steps[i], iteration))
+                    if (!IsValidPosition(tilePosition) || IsComplete(steps[i], iteration))
                     {
                         break;
                     }
@@ -36,7 +36,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.GetTi
         }
 
 
-        private bool IsCompete(Line step, int iteration)
+        private bool IsComplete(Line step, int iteration)
         {
             return step.iterations != -1 && iteration > step.iterations;
         }

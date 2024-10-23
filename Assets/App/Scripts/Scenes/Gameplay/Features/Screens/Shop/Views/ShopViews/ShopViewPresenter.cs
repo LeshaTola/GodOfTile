@@ -1,14 +1,15 @@
 using System.Collections.Generic;
 using App.Scripts.Modules.Factories;
 using App.Scripts.Modules.Localization;
-using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget.Presenters;
-using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget.ViewModels;
-using App.Scripts.Scenes.Gameplay.Features.Popups.Shop.Item;
+using App.Scripts.Modules.Sounds.Providers;
+using App.Scripts.Scenes.Gameplay.Features.Screens.CostWidget.Presenters;
+using App.Scripts.Scenes.Gameplay.Features.Screens.CostWidget.ViewModels;
+using App.Scripts.Scenes.Gameplay.Features.Screens.Shop.Views.Item;
 using App.Scripts.Scenes.Gameplay.Features.Shop.Systems;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using Cysharp.Threading.Tasks;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Screens.Shop.Views.ShopViews.Presenter
+namespace App.Scripts.Scenes.Gameplay.Features.Screens.Shop.Views.ShopViews
 {
     public class ShopViewPresenter
     {
@@ -19,20 +20,24 @@ namespace App.Scripts.Scenes.Gameplay.Features.Screens.Shop.Views.ShopViews.Pres
         private IFactory<ShopItemView> itemViewsFactory;
         private ShopItemPresenterFactory itemsPresenterFactory;
         private IInformationWidgetViewModule informationWidgetViewModule;
+        private readonly ISoundProvider soundProvider;
+
 
         private Dictionary<TileConfig, ShopItemPresenter> items = new();
 
         public ShopViewPresenter(
             ShopView shopView,
             IShopSystem shopSystem,
-            IFactory<ShopItemView> itemViewsFactory,
+            ISoundProvider soundProvider,
             ILocalizationSystem localizationSystem,
+            IFactory<ShopItemView> itemViewsFactory,
             CostWidgetPresenter costWidgetPresenter,
             ShopItemPresenterFactory itemsPresenterFactory,
             IInformationWidgetViewModule informationWidgetViewModule)
         {
             this.shopView = shopView;
             this.shopSystem = shopSystem;
+            this.soundProvider = soundProvider;
             this.itemViewsFactory = itemViewsFactory;
             this.localizationSystem = localizationSystem;
             this.costWidgetPresenter = costWidgetPresenter;

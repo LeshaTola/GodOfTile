@@ -1,26 +1,28 @@
-using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget;
-using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget.Presenters;
+using App.Scripts.Modules.Sounds.Providers;
+using App.Scripts.Scenes.Gameplay.Features.Screens.CostWidget.Presenters;
 using App.Scripts.Scenes.Gameplay.Features.Shop.Systems;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using Cysharp.Threading.Tasks;
-using UnityEngine;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Popups.Shop.Item
+namespace App.Scripts.Scenes.Gameplay.Features.Screens.Shop.Views.Item
 {
     public class ShopItemPresenter
     {
         private ShopItemView shopItemView;
         private CostWidgetPresenter costWidgetPresenter;
         private TileConfig tileConfig;
+        private readonly ISoundProvider soundProvider;
         private IShopSystem shopSystem;
 
         public ShopItemPresenter(
             ShopItemView shopItemView,
             TileConfig tileConfig,
+            ISoundProvider soundProvider,
             IShopSystem shopSystem)
         {
             this.shopItemView = shopItemView;
             this.tileConfig = tileConfig;
+            this.soundProvider = soundProvider;
             this.shopSystem = shopSystem;
         }
 
@@ -71,12 +73,12 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Shop.Item
 
         private void OnBuyButtonClicked()
         {
-            if (!shopSystem.IsEnough(tileConfig))
+            if (!shopSystem.TryBuyTile(tileConfig))
             {
                 return;
             }
-
-            shopSystem.BuyTile(tileConfig);
+            
+            soundProvider.PlaySound(shopItemView.ButtonSoundKey);
         }
     }
 }

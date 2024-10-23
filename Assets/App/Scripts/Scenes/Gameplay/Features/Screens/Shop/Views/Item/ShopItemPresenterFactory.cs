@@ -1,7 +1,7 @@
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using Zenject;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Popups.Shop.Item
+namespace App.Scripts.Scenes.Gameplay.Features.Screens.Shop.Views.Item
 {
     public class ShopItemPresenterFactory
     {

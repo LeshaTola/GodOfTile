@@ -1,5 +1,8 @@
 using System;
+using System.Collections.Generic;
 using App.Scripts.Modules.PopupAndViews.Views;
+using App.Scripts.Modules.Sounds;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +16,21 @@ namespace App.Scripts.Scenes.Gameplay.Features.Time.UI
         public event Action OnSpeed3ButtonClicked;
 
         [SerializeField] private Image selectorImage;
+        
+        [SerializeField] private AudioDatabase audioDatabase;
+
+        [field: ValueDropdown(nameof(GetKeys))]
+        [field: SerializeField] public string ButtonSoundKey { get; private set; }
+
+        public List<string> GetKeys()
+        {
+            if (audioDatabase == null)
+            {
+                return null;
+            }
+            return audioDatabase.GetKeys();
+        }
+        
 
         [field: SerializeField] public Button PauseButton { get; private set; }
         [field: SerializeField] public Button Speed1Button { get; private set; }

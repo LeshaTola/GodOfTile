@@ -1,4 +1,6 @@
 using App.Scripts.Modules.Localization;
+using App.Scripts.Modules.Sounds;
+using App.Scripts.Modules.Sounds.Providers;
 using App.Scripts.Modules.StateMachine.Services.CleanupService;
 using App.Scripts.Modules.StateMachine.Services.InitializeService;
 using App.Scripts.Scenes.Gameplay.Features.Commands.GoToStateCommands;
@@ -14,17 +16,20 @@ namespace App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.StateTransfer.Pr
         private ICommandsProvider commandsProvider;
         private ILocalizationSystem localizationSystem;
         private readonly IResearchService researchService;
+        private readonly ISoundProvider soundProvider;
 
         public StateTransferPresenter(
             StateTransferView view,
             ICommandsProvider commandsProvider,
             ILocalizationSystem localizationSystem,
-            IResearchService researchService)
+            IResearchService researchService,
+            ISoundProvider soundProvider)
         {
             this.view = view;
             this.commandsProvider = commandsProvider;
             this.localizationSystem = localizationSystem;
             this.researchService = researchService;
+            this.soundProvider = soundProvider;
         }
 
         public void Initialize()
@@ -53,16 +58,19 @@ namespace App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.StateTransfer.Pr
         private void OnBuildingStateButtonClicked()
         {
             commandsProvider?.GetCommand<GoToBuildingStateCommand>().Execute();
+            soundProvider.PlaySound(view.ButtonSoundKey);
         }
 
         private void OnBuyAreaStateButtonClicked()
         {
             commandsProvider?.GetCommand<GoToBuyAreaStateCommand>().Execute();
+            soundProvider.PlaySound(view.ButtonSoundKey);
         }
 
         private void OnResearchStateButtonClicked()
         {
             commandsProvider?.GetCommand<GoToResearchStateCommand>().Execute();
+            soundProvider.PlaySound(view.ButtonSoundKey);
         }
 
         private void OnResearchSystemsCountChanged()

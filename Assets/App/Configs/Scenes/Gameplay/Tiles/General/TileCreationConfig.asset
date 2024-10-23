@@ -16,3 +16,7 @@ MonoBehaviour:
   creationParticleKey: Explosion
   destroyParticleKey: Explosion
   updateParticleKey: Explosion
+  audioDatabase: {fileID: 11400000, guid: 2d7974d028292e343a2eeeff1eaecc97, type: 2}
+  <CreateSoundKey>k__BackingField: Build
+  <UpdateSoundKey>k__BackingField: Build
+  <DestroySoundKey>k__BackingField: Build

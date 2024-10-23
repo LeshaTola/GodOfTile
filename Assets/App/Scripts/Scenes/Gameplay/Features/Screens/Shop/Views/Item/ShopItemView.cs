@@ -1,12 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using App.Scripts.Modules.PopupAndViews.Views;
-using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget;
-using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
+using App.Scripts.Modules.Sounds;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Popups.Shop.Item
+namespace App.Scripts.Scenes.Gameplay.Features.Screens.Shop.Views.Item
 {
     public class ShopItemView : AnimatedView, IPointerEnterHandler, IPointerExitHandler
     {
@@ -16,6 +17,19 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Shop.Item
 
         [SerializeField] private Image image;
         [SerializeField] private Button button;
+        
+        [SerializeField] private AudioDatabase audioDatabase;
+        [field: ValueDropdown(nameof(GetKeys))]
+        [field: SerializeField] public string ButtonSoundKey { get; private set; }
+
+        public List<string> GetKeys()
+        {
+            if (audioDatabase == null)
+            {
+                return null;
+            }
+            return audioDatabase.GetKeys();
+        }
 
         public void Initialize()
         {

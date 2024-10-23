@@ -11,7 +11,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Valid
             return tiles;
         }
 
-        public List<TileSystem> GetValidSystems(List<Tile> tiles)
+        public List<TileSystem> ValidateSystems(List<Tile> tiles)
         {
             return tiles.SelectMany(tile => tile.Config.ActiveSystems).ToList();
             ;

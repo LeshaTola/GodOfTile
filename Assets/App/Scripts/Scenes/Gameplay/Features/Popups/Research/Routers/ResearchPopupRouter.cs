@@ -2,11 +2,11 @@ using App.Scripts.Modules.Factories;
 using App.Scripts.Modules.Localization;
 using App.Scripts.Modules.PopupAndViews.General.Controllers;
 using App.Scripts.Scenes.Gameplay.Features.Inventory.Systems;
-using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget.ViewModels;
 using App.Scripts.Scenes.Gameplay.Features.Popups.Research.Elements.Level;
 using App.Scripts.Scenes.Gameplay.Features.Popups.Research.Elements.Research;
 using App.Scripts.Scenes.Gameplay.Features.Popups.Research.ViewModels;
 using App.Scripts.Scenes.Gameplay.Features.Researches.Services;
+using App.Scripts.Scenes.Gameplay.Features.Screens.CostWidget.ViewModels;
 using Cysharp.Threading.Tasks;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Popups.Research.Routers

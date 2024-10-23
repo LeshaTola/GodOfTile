@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using App.Scripts.Modules.Localization;
 using App.Scripts.Modules.Localization.Localizers;
-using App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget.Cost;
-using App.Scripts.Scenes.Gameplay.Features.Popups.Shop.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Screens.CostWidget.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Screens.CostWidget.Cost;
 using UnityEngine;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Popups.InformationWidget
+namespace App.Scripts.Scenes.Gameplay.Features.Screens.CostWidget
 {
     public class CostWidget : MonoBehaviour
     {

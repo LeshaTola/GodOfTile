@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using App.Scripts.Modules.Sounds;
+using App.Scripts.Modules.Sounds.Providers;
 using App.Scripts.Scenes.Gameplay.Features.CraftSystem.Providers;
 using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Grid;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
@@ -19,6 +21,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.Update
         private TilesCreationConfig config;
         private ISystemsService systemsService;
         private ISystemsFactory systemsFactory;
+        private readonly ISoundProvider soundProvider;
         private readonly ITileCollectionProvider tileCollectionProvider;
 
         public TilesUpdateService(
@@ -28,6 +31,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.Update
             TilesCreationConfig config,
             ISystemsService systemsService,
             ISystemsFactory systemsFactory,
+            ISoundProvider soundProvider,
             ITileCollectionProvider tileCollectionProvider
         )
         {
@@ -37,6 +41,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.Update
             this.config = config;
             this.systemsService = systemsService;
             this.systemsFactory = systemsFactory;
+            this.soundProvider = soundProvider;
             this.tileCollectionProvider = tileCollectionProvider;
         }
 
@@ -54,16 +59,19 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.Update
                 }
 
                 var result = UpdateTile(position);
-                if (result != null)
+                if (result == null)
                 {
-                    tilesForUpdate.Add(
-                        new TileToUpdate() {Position = position, NewConfig = result}
-                    );
+                    continue;
                 }
+                var cloneResult = Object.Instantiate(result);
+                tilesForUpdate.Add(
+                    new TileToUpdate() {Position = position, NewConfig = cloneResult}
+                );
             }
 
             foreach (var tile in tilesForUpdate)
             {
+                tileCollectionProvider.AddIfNotContains(tile.NewConfig);
                 Replace(tile.NewConfig, tile.Position);
             }
         }
@@ -72,6 +80,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.Update
         {
             var tile = gridProvider.Grid[position.x, position.y];
             effectsService.PlayParticle(config.UpdateParticleKey, tile.transform.position);
+            soundProvider.PlaySound(config.UpdateSoundKey);
 
             systemsService.StopSystems(tile.Config);
 
@@ -80,7 +89,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.Update
             tile.Initialize(newTileConfig);
 
             systemsService.StartSystems(tile.Config);
-            tileCollectionProvider.AddIfNotContains(newTileConfig);
         }
 
         private TileConfig UpdateTile(Vector2Int tilePosition)

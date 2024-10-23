@@ -8,8 +8,7 @@ namespace App.Scripts.Modules.ObjectPool.KeyPools.Configs
     [CreateAssetMenu(fileName = "ParticlesDatabase", menuName = "Databases/Particles")]
     public class ParticlesDatabase : SerializedScriptableObject
     {
-        [SerializeField]
-        Dictionary<string, PoolObject<PoolableParticle>> particles;
+        [SerializeField] Dictionary<string, PoolObject<PoolableParticle>> particles;
 
         public Dictionary<string, PoolObject<PoolableParticle>> Particles => particles;
 
