@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6aece65d2408e44694dc9c0a1b4faa0, type: 3}
+  m_Name: MagicMineShaftRecipe
+  m_EditorClassIdentifier: 
+  <RequiredTiles>k__BackingField:
+  - {fileID: 11400000, guid: e59218972fe3019498fd28090b349649, type: 2}
+  <Original>k__BackingField: {fileID: 11400000, guid: eb41d95455783a946881fa95f0ed5b36,
+    type: 2}
+  <Result>k__BackingField: {fileID: 11400000, guid: 0ef9fe91f26f9d04fbe139c311b6b32c,
+    type: 2}

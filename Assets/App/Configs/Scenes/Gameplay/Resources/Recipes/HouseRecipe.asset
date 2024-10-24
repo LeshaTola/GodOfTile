@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6aece65d2408e44694dc9c0a1b4faa0, type: 3}
+  m_Name: HouseRecipe
+  m_EditorClassIdentifier: 
+  <RequiredTiles>k__BackingField:
+  - {fileID: 11400000, guid: be046f4a10b783f46b16aa57dfb8d6af, type: 2}
+  - {fileID: 11400000, guid: be046f4a10b783f46b16aa57dfb8d6af, type: 2}
+  - {fileID: 11400000, guid: be046f4a10b783f46b16aa57dfb8d6af, type: 2}
+  <Original>k__BackingField: {fileID: 11400000, guid: 71f6d0ca6c6943c46bd84dd5250d00eb,
+    type: 2}
+  <Result>k__BackingField: {fileID: 11400000, guid: e59218972fe3019498fd28090b349649,
+    type: 2}
