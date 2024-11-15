@@ -1,9 +1,13 @@
 using System;
+using System.Linq;
+using App.Scripts.Modules.Localization;
 using App.Scripts.Modules.Localization.Localizers;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.UI;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.UIElements;
+using Slider = UnityEngine.UI.Slider;
+using Toggle = UnityEngine.UI.Toggle;
 
 namespace App.Scripts.Features.Tiles.Systems.Views.Settings
 {
@@ -11,6 +15,9 @@ namespace App.Scripts.Features.Tiles.Systems.Views.Settings
     {
         [SerializeField] private TMPLocalizer header;
 
+        [SerializeField] private TMPLocalizer localizationText;
+        [SerializeField] private TMP_Dropdown localizationDropdown;
+        
         [SerializeField] private TMPLocalizer resolutionText;
         [SerializeField] private TMP_Dropdown resolutionsDropdown;
 
@@ -35,6 +42,7 @@ namespace App.Scripts.Features.Tiles.Systems.Views.Settings
             this.viewModule = viewModule;
 
             header.Initialize(viewModule.LocalizationSystem);
+            localizationText.Initialize(viewModule.LocalizationSystem);
             resolutionText.Initialize(viewModule.LocalizationSystem);
             fullScreenText.Initialize(viewModule.LocalizationSystem);
             masterVolumeText.Initialize(viewModule.LocalizationSystem);
@@ -48,6 +56,18 @@ namespace App.Scripts.Features.Tiles.Systems.Views.Settings
             {
                 return;
             }
+            
+            localizationDropdown.ClearOptions();
+            localizationDropdown.AddOptions(viewModule.LocalizationDatabase.Languages.Keys.ToList());
+            var localizationIndex = localizationDropdown.options
+                .FindIndex(x => x.text.Equals(viewModule.LocalizationSystem.Language));
+            localizationDropdown.value = localizationIndex;
+
+            localizationDropdown.RefreshShownValue();
+            localizationDropdown.onValueChanged.AddListener(value =>
+            {
+                viewModule.LocalizationSystem.ChangeLanguage(localizationDropdown.options[value].text);
+            });
 
             resolutionsDropdown.ClearOptions();
             resolutionsDropdown.AddOptions(viewModule.ScreenService.GetStringResolutions());
@@ -82,6 +102,14 @@ namespace App.Scripts.Features.Tiles.Systems.Views.Settings
             {
                 viewModule.AudioService.EffectsVolume= value;
             });
+            
+            header.Translate();
+            localizationText.Translate();
+            resolutionText.Translate();
+            fullScreenText.Translate();
+            masterVolumeText.Translate();
+            musicVolumeText.Translate();
+            effectsVolumeText.Translate();
         }
 
         public override void Cleanup()

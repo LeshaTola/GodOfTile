@@ -38,7 +38,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
             Container
                 .Bind<GoToGamePlayStateCommand>()
                 .AsSingle()
-                .WithArguments("close");
+                .WithArguments("Close");
         }
 
         private void BindBuyAreaCommand()
@@ -46,7 +46,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
             Container
                 .Bind<BuyAreaCommand>()
                 .AsSingle()
-                .WithArguments("buy");
+                .WithArguments("Buy");
         }
 
         private void BindGoToBuyAreaStateCommand()
@@ -54,7 +54,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
             Container
                 .Bind<GoToBuyAreaStateCommand>()
                 .AsSingle()
-                .WithArguments("buy area");
+                .WithArguments("Buy area");
         }
 
         private void BindGoToResearchStateCommand()
@@ -62,7 +62,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
             Container
                 .Bind<GoToResearchStateCommand>()
                 .AsSingle()
-                .WithArguments("research");
+                .WithArguments("Research");
         }
 
         private void BindGoToBuildingStateCommand()
@@ -70,7 +70,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
             Container
                 .Bind<GoToBuildingStateCommand>()
                 .AsSingle()
-                .WithArguments("build");
+                .WithArguments("Build");
         }
     }
 }

@@ -59,11 +59,13 @@ namespace App.Scripts.Features.Bootstrap
 
         private void BindLocalizationSystem()
         {
+
+            Container.Bind<LocalizationDatabase>().FromInstance(localizationDatabase);
             Container
                 .Bind<ILocalizationSystem>()
                 .To<LocalizationSystem>()
                 .AsSingle()
-                .WithArguments(localizationDatabase, language);
+                .WithArguments(language);
         }
 
         private void BindLocalizationDataProvider()

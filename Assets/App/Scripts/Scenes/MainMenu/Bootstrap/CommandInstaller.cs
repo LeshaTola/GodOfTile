@@ -17,22 +17,22 @@ namespace App.Scripts.Scenes.MainMenu.Bootstrap
             Container
                 .Bind<NewGameCommand>()
                 .AsSingle()
-                .WithArguments("new game");
+                .WithArguments("New game");
             
             Container
                 .Bind<ContinueGameCommand>()
                 .AsSingle()
-                .WithArguments("continue");
+                .WithArguments("Continue");
             
             Container
                 .Bind<ExitGameCommand>()
                 .AsSingle()
-                .WithArguments("exit");
+                .WithArguments("Exit");
             
             Container
                 .Bind<CleanupSelectedTilesCommand>()
                 .AsSingle()
-                .WithArguments("cancel");
+                .WithArguments("Cancel");
         }
 
         

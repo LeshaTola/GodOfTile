@@ -130,7 +130,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Research
             }
 
             viewModule.ResearchService.OnTimerChanged -= SetButtonTimer;
-            moreInfoTab.UpdateButton("buy", () => { ResearchAction(runtimeResearch); });
+            moreInfoTab.UpdateButton("Buy", () => { ResearchAction(runtimeResearch); });
         }
 
         private void ResearchAction(RuntimeResearch runtimeResearch)

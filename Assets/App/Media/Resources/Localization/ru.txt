@@ -1,0 +1,28 @@
+key,ru
+close,Закрыть
+Exit?,Вы действительно хотите выйти?
+Continue,Продолжить
+New game,Новая игра
+Settings,Настройки
+Exit,Выход
+Play,Играть
+Description,Описание
+Localization:,Язык:
+Resolution:,Разрешение:
+Full Screen:,Полный экран:
+Master Volume:,Общая громкость:
+Music Volume:,Громкость музыки:
+Effects Volume:,Громкость эффектов:
+Cancel,Отмена
+Exit,Выход
+Information,Информация
+Shop,Магазин
+Resources,Ресурсы
+Buy area,Купить территорию
+Buy,Купить
+Researches,Исследования
+Building,Строительство
+More Info,Подробнее
+Is free,Бесплатно
+Pause,Пауза
+Level,Уровень

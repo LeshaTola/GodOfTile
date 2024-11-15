@@ -1,0 +1,28 @@
+key,en
+close,close
+Exit?,do you really want to exit?
+Continue,continue
+New game,new game
+Settings,Settings
+Exit,Exit
+Play,Play
+Description,Description
+Localization:,Language:
+Resolution:,Resolution:
+Full Screen:,Full Screen:
+Master Volume:,Master Volume:
+Music Volume:,Music Volume:
+Effects Volume:,Effects Volume:
+Cancel,Cancel
+Exit,Exit
+Information,Information
+Shop,Shop
+Resources,Resources
+Buy area,Buy area
+Buy,Buy
+Researches,Researches
+Building,Building
+More Info,More Info
+Is free,Is free
+Pause,Pause
+Level,Level
