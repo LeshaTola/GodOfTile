@@ -67,7 +67,8 @@ MonoBehaviour:
   tileTypeDatabase: {fileID: 11400000, guid: 6e8687d462988db44889225b2fec324e, type: 2}
   building: {fileID: 37434629594634322, guid: f412138a2abb6134b9a2a8dea605879c, type: 3}
   type: stone
-  tileImage: {fileID: 0}
+  tileImage: {fileID: 21300000, guid: 1e72d6604c24b044bbf1c3ff3027d517, type: 3}
   tileName: Mountains
-  description: 
+  description: The mountains, the wind blows quite strongly on their tops, and it
+    is VERY cold
   cost: []

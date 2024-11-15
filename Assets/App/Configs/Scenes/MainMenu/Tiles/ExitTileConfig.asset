@@ -63,7 +63,7 @@ MonoBehaviour:
   building: {fileID: 6009295038385910138, guid: 73ee56c446c054643accc0b7ed95dbc9,
     type: 3}
   type: grass
-  tileImage: {fileID: 0}
+  tileImage: {fileID: 21300000, guid: e81aca32f119c194eb57c9a2079d8222, type: 3}
   tileName: Exit
-  description: exit
+  description: Exit
   cost: []

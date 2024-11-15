@@ -68,7 +68,10 @@ MonoBehaviour:
   building: {fileID: 6169772289148007004, guid: 33a0003783d947e4186ed2372d6b8075,
     type: 3}
   type: grass
-  tileImage: {fileID: 0}
+  tileImage: {fileID: 21300000, guid: 0a760f3d7ce567247a3361ec1815e15a, type: 3}
   tileName: House
-  description: 
+  description: The building on this enchanting island is a cozy, quaint wooden house
+    that exudes charm and warmth. The exterior walls are painted a soft, muted green,
+    blending harmoniously with the natural surroundings. The roof, a striking red
+    tiled structure, stands out vividly against the backdrop of the serene blue waters
   cost: []

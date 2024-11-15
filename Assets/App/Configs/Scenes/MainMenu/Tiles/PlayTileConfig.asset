@@ -44,7 +44,7 @@ MonoBehaviour:
       Data: 
     - Name: <HeaderKey>k__BackingField
       Entry: 1
-      Data: play
+      Data: Play
     - Name: 
       Entry: 8
       Data: 
@@ -63,7 +63,7 @@ MonoBehaviour:
   building: {fileID: 4171725320945029990, guid: afb5d016cb1e8ec4a8220e69b6de33cb,
     type: 3}
   type: grass
-  tileImage: {fileID: 0}
+  tileImage: {fileID: 21300000, guid: f5ca3dc457de8064297b49a6563adc21, type: 3}
   tileName: Play
   description: Play
   cost: []

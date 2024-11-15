@@ -61,7 +61,7 @@ MonoBehaviour:
   building: {fileID: 2098865580880083543, guid: c634ab9ed887212408730dabba32fa5a,
     type: 3}
   type: stone
-  tileImage: {fileID: 0}
+  tileImage: {fileID: 21300000, guid: 518b8770790e4944695c6b0983a04b1d, type: 3}
   tileName: Settings
   description: Settings
   cost: []
