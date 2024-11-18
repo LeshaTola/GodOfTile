@@ -13,7 +13,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Screens.Shop.Views.ShopViews
         [SerializeField] private TMPLocalizer header;
         [SerializeField] private RectTransform container;
         
-        public void Initialize(ILocalizationSystem localizationSystem, IInformationWidgetViewModule viewModule)
+        public void Initialize(ILocalizationSystem localizationSystem)
         {
             header.Initialize(localizationSystem);
         }
@@ -21,6 +21,11 @@ namespace App.Scripts.Scenes.Gameplay.Features.Screens.Shop.Views.ShopViews
         public void Cleanup()
         {
             header.Cleanup();
+        }
+
+        public void Translate()
+        {
+            header.Translate();
         }
 
         public void AddItemView(ShopItemView shopItemView)

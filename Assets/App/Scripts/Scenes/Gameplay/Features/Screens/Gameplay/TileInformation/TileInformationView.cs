@@ -30,6 +30,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.TileInformation
         [SerializeField] private Button closeButton;
         [SerializeField] private RectTransform tileSystemsContainer;
         
+        private List<SystemUI> systems = new ();
+        
         public void Initialize(ILocalizationSystem localizationSystem)
         {
             header.Initialize(localizationSystem);
@@ -47,6 +49,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.TileInformation
             tileName.Key = tileConfig.Name;
             description.Key = tileConfig.Description;
 
+            systems.AddRange(systemUIs);
             SetupSystems(systemUIs);
             Translate();
         }
@@ -72,6 +75,12 @@ namespace App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.TileInformation
 
         public void CleanupSystems()
         {
+            foreach (var systemUI in systems)
+            {
+                systemUI.Cleanup();
+            }
+            systems.Clear();
+            
             foreach (RectTransform child in tileSystemsContainer)
             {
                 Destroy(child.gameObject);

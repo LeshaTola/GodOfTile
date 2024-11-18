@@ -9,19 +9,12 @@ namespace App.Scripts.Scenes.Gameplay.Features.Screens.CostWidget.Configs
     )]
     public class InformationWidgetConfig : ScriptableObject
     {
-        [SerializeField]
-        private TextColorConfig textColorConfig;
-
-        [SerializeField]
-        private string defaultText = "resources";
-
-        [SerializeField]
-        private string noCostText = "is free!";
-
+        [SerializeField] private TextColorConfig textColorConfig;
+        [SerializeField] private string defaultText = "Resources";
+        [SerializeField] private string noCostText = "Is free";
+        
         public TextColorConfig TextColorConfig => textColorConfig;
-
         public string DefaultText => defaultText;
-
         public string NoCostText => noCostText;
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using App.Scripts.Modules.Localization;
 using App.Scripts.Modules.ObjectPool.PooledObjects;
 using App.Scripts.Modules.ObjectPool.Pools;
 using UnityEngine;
@@ -12,7 +13,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Map.Items
         private Action buyAction;
         private IPool<WorldChunk> pool;
 
-        public void Initialize(Action action)
+        public void Initialize(Action action, ILocalizationSystem localizationSystem)
         {
             if (buyAction != null)
             {
@@ -20,7 +21,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Map.Items
             }
             else
             {
-                UI.Initialize();
+                UI.Initialize(localizationSystem);
             }
 
             buyAction = action;

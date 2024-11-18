@@ -1,0 +1,28 @@
+key,en,ru
+close,close,Закрыть
+Exit?,do you really want to exit?,Вы действительно хотите выйти?
+Continue,continue,Продолжить
+New game,new game,Новая игра
+Settings,Settings,Настройки
+Exit,Exit,Выход
+Play,Play,Играть
+Description,Description,Описание
+Localization:,Language:,Язык:
+Resolution:,Resolution:,Разрешение:
+Full Screen:,Full Screen:,Полный экран:
+Master Volume:,Master Volume:,Общая громкость:
+Music Volume:,Music Volume:,Громкость музыки:
+Effects Volume:,Effects Volume:,Громкость эффектов:
+Cancel,Cancel,Отмена
+Exit,Exit,Выход
+Information,Information,Информация
+Shop,Shop,Магазин
+Resources,Resources,Ресурсы
+Buy area,Buy area,Купить территорию
+Buy,Buy,Купить
+Researches,Researches,Исследования
+Building,Building,Строительство
+More Info,More Info,Подробнее
+Is free,Is free,Бесплатно
+Pause,Pause,Пауза
+Level,Level,Уровень

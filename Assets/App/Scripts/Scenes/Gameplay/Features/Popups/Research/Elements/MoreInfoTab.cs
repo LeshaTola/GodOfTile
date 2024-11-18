@@ -56,7 +56,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Research.Elements
         public void UpdateButton(string text, Action action = null)
         {
             researchButton.UpdateText(text);
-            Translate();
+            researchButton.Translate();
 
             if (action == null)
             {
@@ -77,7 +77,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.Research.Elements
 
             descriptionHeader.Translate();
             description.Translate();
-            researchButton.Translate();
+            informationWidget.Translate();
         }
     }
 }

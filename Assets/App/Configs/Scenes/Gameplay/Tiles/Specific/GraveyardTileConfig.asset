@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc5af3fe342dd924e9f809bc8e9408aa, type: 3}
+  m_Name: GraveyardTileConfig
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 12ea320e25139914cb79e34fc96f3d46, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: systems
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.TileSystem,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 1|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners.ResourceEarner,
+        Assembly-CSharp
+    - Name: data
+      Entry: 7
+      Data: 2|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners.ResourceEarnerSystemData,
+        Assembly-CSharp
+    - Name: systemUIProvider
+      Entry: 7
+      Data: 3|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners.UI.Providers.ResourceEarnerUIProvider,
+        Assembly-CSharp
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: resource
+      Entry: 10
+      Data: 0
+    - Name: amountPerSecond
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  id: GraveyardTileConfig
+  size: {x: 1, y: 1}
+  tileTypeDatabase: {fileID: 11400000, guid: 6e8687d462988db44889225b2fec324e, type: 2}
+  building: {fileID: 3404707271130128558, guid: 1341939a45ffe7745ad60c65e083598f,
+    type: 3}
+  type: pink
+  tileImage: {fileID: 0}
+  tileName: Graveyard
+  description: 
+  cost: []

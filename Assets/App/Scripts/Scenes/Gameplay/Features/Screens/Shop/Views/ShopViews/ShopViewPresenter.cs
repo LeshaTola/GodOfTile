@@ -47,7 +47,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Screens.Shop.Views.ShopViews
 
         public void Initialize()
         {
-            shopView.Initialize(localizationSystem,informationWidgetViewModule);
+            shopView.Initialize(localizationSystem);
             costWidgetPresenter.Initialize();
             InitializeItems();
             shopSystem.OnNewTileAdd += OnNewTileAdd;
@@ -68,6 +68,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.Screens.Shop.Views.ShopViews
             {
                 AddTile(availableTile);
             }
+
+            shopView.Translate();
         }
 
         public async UniTask Show()

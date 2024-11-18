@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: InformationWidgetConfig
   m_EditorClassIdentifier: 
   textColorConfig: {fileID: 11400000, guid: 8d341f884b812e8448592aa78f489db8, type: 2}
-  defaultText: resources
-  noCostText: is free!
+  defaultText: Resources
+  noCostText: Is free

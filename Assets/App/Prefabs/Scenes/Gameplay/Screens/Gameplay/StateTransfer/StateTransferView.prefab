@@ -37,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 120, y: 100}
+  m_SizeDelta: {x: 145.8019, y: 100}
   m_Pivot: {x: 1, y: 0}
 --- !u!222 &8953725046756656178
 CanvasRenderer:
@@ -434,7 +434,7 @@ PrefabInstance:
     - target: {fileID: 4336387569988925451, guid: 02043311dff33504a8adcdabfc2a7ea9,
         type: 3}
       propertyPath: m_text
-      value: buy area
+      value: Buy area
       objectReference: {fileID: 0}
     - target: {fileID: 4336387569988925451, guid: 02043311dff33504a8adcdabfc2a7ea9,
         type: 3}
@@ -595,12 +595,12 @@ PrefabInstance:
     - target: {fileID: 4336387569988925451, guid: 02043311dff33504a8adcdabfc2a7ea9,
         type: 3}
       propertyPath: m_text
-      value: building
+      value: Building
       objectReference: {fileID: 0}
     - target: {fileID: 4336387569988925451, guid: 02043311dff33504a8adcdabfc2a7ea9,
         type: 3}
       propertyPath: m_fontSize
-      value: 23.55
+      value: 22.95
       objectReference: {fileID: 0}
     - target: {fileID: 7821554744714066051, guid: 02043311dff33504a8adcdabfc2a7ea9,
         type: 3}
@@ -756,12 +756,12 @@ PrefabInstance:
     - target: {fileID: 4336387569988925451, guid: 02043311dff33504a8adcdabfc2a7ea9,
         type: 3}
       propertyPath: m_text
-      value: research
+      value: Researches
       objectReference: {fileID: 0}
     - target: {fileID: 4336387569988925451, guid: 02043311dff33504a8adcdabfc2a7ea9,
         type: 3}
       propertyPath: m_fontSize
-      value: 19.1
+      value: 18.35
       objectReference: {fileID: 0}
     - target: {fileID: 7821554744714066051, guid: 02043311dff33504a8adcdabfc2a7ea9,
         type: 3}

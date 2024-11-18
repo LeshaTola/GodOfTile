@@ -7,7 +7,6 @@ namespace App.Scripts.Modules.Localization.Parsers
     {
         private char lineSeparator = '\n';
 
-
         public Dictionary<string, string> Parse(string localizationFile)
         {
             var lines = localizationFile.Split(lineSeparator);
@@ -28,7 +27,7 @@ namespace App.Scripts.Modules.Localization.Parsers
                 var fields = regex.Split(line);
                 for (var j = 0; j < fields.Length; j++)
                 {
-                    fields[j] = removeQuotes(fields[j]);
+                    fields[j] = RemoveQuotes(fields[j]);
                 }
 
                 var key = fields[0];
@@ -44,10 +43,11 @@ namespace App.Scripts.Modules.Localization.Parsers
             return parsedLanguage;
         }
 
-        string removeQuotes(string field)
+        string RemoveQuotes(string field)
         {
             field = field.Replace("\r", "");
-            field = field.Substring(1, field.Length - 2);
+            if(field[0].Equals('\"'))
+                field = field.Substring(1, field.Length - 2);
             field = field.Replace("\"\"", "\"");
             return field;
         }
