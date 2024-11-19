@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -25,8 +26,6 @@ namespace App.Scripts.Modules.Localization.Importers
             fullPath = Application.dataPath + savePath;
         }
         
-        
-
         [Button]
         private async UniTaskVoid Dowload()
         {
@@ -99,6 +98,5 @@ namespace App.Scripts.Modules.Localization.Importers
             GetWindow<GoogleSheetsImporter>().Show();
         }
     }
-    
-
 }
+#endif

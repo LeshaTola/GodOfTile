@@ -21,6 +21,7 @@ using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Grid;
 using App.Scripts.Scenes.Gameplay.Features.Map.Visualizers;
 using App.Scripts.Scenes.Gameplay.Features.Map.WaterMaterialController;
 using App.Scripts.Scenes.Gameplay.Features.Map.WaterMaterialController.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Saves;
 using Cinemachine;
 using UnityEngine;
 using Zenject;
@@ -62,6 +63,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
             Container.Bind<IUpdateService>().To<UpdateService>().AsSingle();
             Container.Bind<IInitializeService>().To<InitializeService>().AsSingle();
             Container.Bind<ICleanupService>().To<CleanupService>().AsSingle();
+            Container.Bind<GameplaySavesController>().AsSingle();
 
             Container.Bind<IWaterMaterialController>().To<WaterMaterialController>().AsSingle()
                 .WithArguments(waterMaterialConfig);

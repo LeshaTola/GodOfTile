@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using App.Scripts.Scenes.Gameplay.Features.Shop.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
+using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Collection
@@ -10,10 +11,14 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Collection
     public class TileCollectionProvider : ITileCollectionProvider
     {
         private CollectionConfig config;
+        private TilesDatabase tilesDatabase;
 
-        public TileCollectionProvider(CollectionConfig config)
+        public TileCollectionProvider(
+            CollectionConfig config,
+            TilesDatabase tilesDatabase)
         {
             this.config = config;
+            this.tilesDatabase = tilesDatabase;
 
             foreach (var tile in config.StartTiles)
             {
@@ -39,5 +44,17 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Collection
                 AddTile(Object.Instantiate(tileConfig));
             }
         }
+
+        public void AddIfNotContainsById(string id)
+        {
+            if (tilesDatabase.Configs.ContainsKey(id))
+            {
+                Collection.Add(tilesDatabase.Configs[id]);
+                return;
+            }
+            Debug.LogWarning($"Can't add tile with id: {id}");
+        }
     }
+    
+    
 }

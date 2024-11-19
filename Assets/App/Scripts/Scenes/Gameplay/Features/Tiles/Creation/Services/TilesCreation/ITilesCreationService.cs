@@ -14,5 +14,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
         void PlaceActiveTile();
         void StartPlacingTile();
         void StopPlacingTile();
+        MapState GetState();
+        void SetState(MapState state);
     }
 }

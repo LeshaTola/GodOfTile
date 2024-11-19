@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using App.Scripts.Modules.Saves.Structs;
 using App.Scripts.Modules.Sounds;
 using App.Scripts.Modules.Sounds.Providers;
 using App.Scripts.Modules.StateMachine.Services.CleanupService;
@@ -166,5 +168,66 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
             StopPlacingTile();
             StartPlacingTile();
         }
+     
+        public MapState GetState()
+        {
+            Dictionary<JsonVector2Int, string> gridDictionary = new();
+
+            foreach (var tile in gridProvider.Grid)
+            {
+                if (tile == null)
+                {
+                    continue;
+                }
+                
+                JsonVector2Int jsonPos = new(tile.Position);
+                if ( gridDictionary.ContainsKey(jsonPos))
+                {
+                    continue;
+                }
+                gridDictionary.Add(jsonPos, tile.Config.Id);
+            }
+
+            var grid = new List<KeyValuePair>();
+            foreach (var item in gridDictionary)
+            {
+                grid.Add(new KeyValuePair()
+                {
+                    Position = item.Key,
+                    Id = item.Value
+                });
+            }
+            
+            return new()
+            {
+                Grid = grid
+            };
+        }
+
+        public void SetState(MapState state)
+        {
+            StartPlacingTile();
+            
+            foreach (var item in state.Grid)
+            {
+                activeTileProvider.SetActiveTileByID(item.Id);
+                MoveActiveTile(new(item.Position.X,item.Position.Y));
+                PlaceActiveTile();
+            }
+            
+            StopPlacingTile();
+        }
+    }
+
+    public class MapState
+    {
+        //position/id
+        public List<KeyValuePair> Grid;
+    }
+
+    public class KeyValuePair
+    {
+        public JsonVector2Int Position;
+        public string Id;
     }
 }

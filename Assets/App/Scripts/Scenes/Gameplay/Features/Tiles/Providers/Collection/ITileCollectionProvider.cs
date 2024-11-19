@@ -10,5 +10,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Collection
 
         event Action<TileConfig> OnNewTileAdd;
         void AddIfNotContains(TileConfig tileConfig);
+        void AddIfNotContainsById(string id);
     }
 }

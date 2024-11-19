@@ -13,6 +13,7 @@ using App.Scripts.Modules.Sounds;
 using App.Scripts.Modules.Sounds.Providers;
 using App.Scripts.Modules.Sounds.Services;
 using App.Scripts.Modules.StateMachine.States.General;
+using App.Scripts.Scenes.Gameplay.Features.Saves;
 using TNRD;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -53,6 +54,12 @@ namespace App.Scripts.Features.Bootstrap
                 .To<DataProvider<SettingsData>>()
                 .AsSingle()
                 .WithArguments("settingsSaves");
+            
+            Container
+                .Bind<IDataProvider<GamePlaySavesData>>()
+                .To<DataProvider<GamePlaySavesData>>()
+                .AsSingle()
+                .WithArguments("gameplaySaves");
             
             Container.BindInterfacesAndSelfTo<SettingsSavesProvider>().AsSingle();
         }

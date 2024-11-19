@@ -7,5 +7,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Providers
     {
         event Action OnActiveTileChanged;
         TileConfig ActiveTileConfig { get; set; }
+
+        void SetActiveTileByID(string id);
     }
 }
