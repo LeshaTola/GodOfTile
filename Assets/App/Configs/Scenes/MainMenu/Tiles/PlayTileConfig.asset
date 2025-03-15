@@ -65,5 +65,5 @@ MonoBehaviour:
   type: grass
   tileImage: {fileID: 21300000, guid: f5ca3dc457de8064297b49a6563adc21, type: 3}
   tileName: Play
-  description: Play
+  description: Start the game
   cost: []

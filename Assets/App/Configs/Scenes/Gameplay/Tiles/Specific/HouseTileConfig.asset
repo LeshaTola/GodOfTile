@@ -15,8 +15,7 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 11400000, guid: 9b66e0a0043809f4d92a82253c029e50, type: 2}
+    ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -31,25 +30,25 @@ MonoBehaviour:
       Data: 1
     - Name: 
       Entry: 7
-      Data: 1|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners.ResourceEarner,
+      Data: 1|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effector,
         Assembly-CSharp
     - Name: data
       Entry: 7
-      Data: 2|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners.ResourceEarnerSystemData,
+      Data: 2|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.EffectorData,
         Assembly-CSharp
-    - Name: systemUIProvider
+    - Name: getTilesStrategy
       Entry: 7
-      Data: 3|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners.UI.Providers.ResourceEarnerUIProvider,
+      Data: 3|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.GetTilesStrategies.Radius.RadiusGetTileStrategy,
         Assembly-CSharp
+    - Name: radius
+      Entry: 3
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
-    - Name: resource
-      Entry: 10
-      Data: 0
-    - Name: amountPerSecond
-      Entry: 4
-      Data: 1
+    - Name: effect
+      Entry: 6
+      Data: 
     - Name: 
       Entry: 8
       Data: 

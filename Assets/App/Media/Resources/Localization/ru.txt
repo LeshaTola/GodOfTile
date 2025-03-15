@@ -26,3 +26,36 @@ More Info,Подробнее
 Is free,Бесплатно
 Pause,Пауза
 Level,Уровень
+Cactuses,Кактусы
+CACTUSES,КАКТУСЫ
+Field,Поле
+Generates a small amount of resources,"Вырабатывает малое, количество ресурсов"
+"The further into the forest, the more skibidi gets the EU.",Чем дальше в лес тем больше скибиди доб доб ес ес.
+Forest,Лес
+House,Дом
+"The building on this enchanting island is a cozy, quaint wooden house that exudes charm and warmth. The exterior walls are painted a soft, muted green, blending harmoniously with the natural surroundings. The roof, a striking red tiled structure, stands out vividly against the backdrop of the serene blue waters","Здание на этом очаровательном острове представляет собой уютный, причудливый деревянный дом, который излучает очарование и тепло. Наружные стены окрашены в мягкий, приглушенный зеленый цвет, гармонично сочетающийся с окружающей природой. Крыша, покрытая яркой красной черепицей, ярко выделяется на фоне безмятежных голубых вод"
+MagicMineShaft,Магическая шахта
+"This mystical island is a true gem in the magical realm, created from violet-colored magical stone that glistens under the sun. At its heart lies a robust mining operation, with tunnels that delve deep into the island, extracting precious ores imbued with mystical properties. Surrounded by tranquil waters, the island stands as a testament to the blending of natural beauty and arcane craftsmanship, all captured in the charming style of old anime. The island is a haven for explorers and adventurers, drawn to its enchanting glow and the promise of untold treasures hidden within its rocky core.","Этот мистический остров - настоящая жемчужина в волшебном царстве, созданный из магического камня фиолетового цвета, который блестит на солнце. В его основе лежит мощная горнодобывающая промышленность с туннелями, уходящими вглубь острова, где добываются драгоценные руды, обладающие мистическими свойствами. Окруженный спокойными водами, остров является свидетельством сочетания природной красоты и тайного мастерства, и все это запечатлено в очаровательном стиле старого аниме. Остров является убежищем для исследователей и искателей приключений, которых привлекает его чарующее сияние и обещание несметных сокровищ, скрытых в его скалистой сердцевине."
+Mill,Мельница
+Generates the amount of a resource depending on the fields surrounding it,"Вырабатывает, количество ресурса в зависимости от окружающих его полей"
+MineShaft,Шахта
+"A typical mining shaft is an industrial enterprise designed for the extraction of valuable resources such as coal, ore, or precious gems. These mines often encompass an array of surface equipment, like ventilation and hoisting systems, as well as extensive underground workings, including shafts, drifts, and stopes. Inside the mine, miners engage in arduous and perilous labor to excavate, transport, and process minerals.","Типичная шахтная шахта - это промышленное предприятие, предназначенное для добычи ценных ресурсов, таких как уголь, руда или драгоценные камни. Эти линии часто включают в себя множество наземного оборудования, такого как вентиляционные и подъемные системы, а также обширные подземные выработки, включая стволы, штреки и очистные забои. Внутри шахты шахтеры занимаются тяжелым и опасным трудом по добыче, транспортировке и переработке полезных ископаемых."
+Mountains,Горы
+"The mountains, the wind blows quite strongly on their tops, and it is VERY cold","Это горы, на их вершинах довольно сильно дует ветер, и там ОЧЕНЬ холодно"
+Pyramid,Пирамида
+"The pyramid, one of the wonders of the world, but not ours","Пирамида - одно из чудес света, но не наше"
+Vulcano,Вулкан
+"A volcano, its heat generates energy perfectly","Вулкан, его тепло прекрасно вырабатывает энергию"
+Grass,Трава
+"Starting grass tile, a good start","Стартовая плитка травы, хорошее начало"
+Magic,Магическая шахта
+The starting magic tile gives you the opportunity to explore,"Стартовая магическая плитка, дает возможность исследований"
+Sand,Песок
+"The starting tile of sand, what will it grow into? Maybe to the beach, or maybe to the desert?","Стартовая плитка песка, во что она перерастет? Может в пляж, а может в пустыню?"
+Stone,Камень
+The starting stone tile. It's pretty strong.,Стартовая плитка камня. Она довольно крепкое.
+Water,Вода
+Water on water? what?,Вода на воде? ЧТО?
+"Exit tile, allows you to leave the game","Плитка выхода, позволяет покинуть игру"
+Start the game,Начинай игру
+Here you can customize the game for yourself,Здесь ты можешь настроить игру под себя

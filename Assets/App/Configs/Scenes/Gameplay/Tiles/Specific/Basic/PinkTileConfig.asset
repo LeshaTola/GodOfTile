@@ -64,6 +64,6 @@ MonoBehaviour:
   building: {fileID: 0}
   type: pink
   tileImage: {fileID: 21300000, guid: c1eecb070fba6c247b8e1d35b37193bc, type: 3}
-  tileName: Pink
-  description: Pink
+  tileName: Magic
+  description: The starting magic tile gives you the opportunity to explore
   cost: []
