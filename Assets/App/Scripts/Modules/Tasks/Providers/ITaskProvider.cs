@@ -10,7 +10,7 @@ namespace App.Scripts.Modules.Tasks.Providers
 
     public class TasksProvider
     {
-        public event Action<TasksContainer> OnTasksUpdated;
+        public event Action<List<TasksContainer>> OnTasksUpdated;
         
         private readonly TaskProviderConfig config;
         private readonly TasksContainerFactory factory;
@@ -48,7 +48,7 @@ namespace App.Scripts.Modules.Tasks.Providers
             var tasksContainer = factory.GetTaskContainer(config.TasksPool.Tasks[id]);
             
             RegisterTask(tasksContainer);
-            OnTasksUpdated?.Invoke(tasksContainer);
+            OnTasksUpdated?.Invoke(ActiveTasks);
         }
 
         private void RegisterTask(TasksContainer task)

@@ -28,5 +28,11 @@ namespace App.Scripts.Features.UI.PairedTexts
             header.Translate();
             value.Translate();
         }
+
+        public void Cleanup()
+        {
+            header.Cleanup();
+            value.Cleanup();
+        }
     }
 }
