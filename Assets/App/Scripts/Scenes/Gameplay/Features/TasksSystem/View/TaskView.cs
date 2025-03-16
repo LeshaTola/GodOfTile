@@ -1,3 +1,4 @@
+using System.Globalization;
 using App.Scripts.Features.UI.PairedTexts;
 using App.Scripts.Modules.Localization;
 using App.Scripts.Modules.Localization.Localizers;
@@ -5,7 +6,7 @@ using App.Scripts.Modules.Tasks.Configs;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace App.Scripts.Scenes.Gameplay.Features.Tasks.View
+namespace App.Scripts.Scenes.Gameplay.Features.TasksSystem.View
 {
     public class TaskView : MonoBehaviour
     {
@@ -45,15 +46,17 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tasks.View
         public void Setup(TaskConfig config)
         {
             Default();
-            UpdateProgress(0);
             //SetupRewards
             
             SetupTexts(config);
+            UpdateProgress(0);
         }
 
         public void UpdateProgress(float progress)
         {
-            progressSlider.value = Mathf.Clamp01(progress);
+            progress = Mathf.Clamp01(progress);
+            progressText.Value.Text.text = $"{Mathf.RoundToInt(progress* 100)}%";
+            progressSlider.value =progress;
         }
 
         private void SetupTexts(TaskConfig config)

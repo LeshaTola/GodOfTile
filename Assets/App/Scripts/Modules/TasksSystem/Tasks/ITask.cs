@@ -2,13 +2,12 @@ using System;
 
 namespace App.Scripts.Modules.Tasks.Tasks
 {
-    public abstract class Task : ITask
+    public interface ITask
     {
         public event Action<ITask> OnTaskCompleted;
         public event Action<float> OnProgressChanged;
-
-        public float Progress { get; private set; }
         
-        public abstract void Import(Task original);
+        public float Progress { get;}
+        public void Complete();
     }
 }

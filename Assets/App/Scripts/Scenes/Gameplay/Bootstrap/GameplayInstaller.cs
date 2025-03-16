@@ -1,14 +1,15 @@
-﻿using App.Scripts.Features.Settings.Saves;
-using App.Scripts.Modules.CameraSwitchers;
+﻿using App.Scripts.Modules.CameraSwitchers;
 using App.Scripts.Modules.ObjectPool.KeyPools;
 using App.Scripts.Modules.ObjectPool.KeyPools.Configs;
 using App.Scripts.Modules.ObjectPool.MonoObjectPools;
 using App.Scripts.Modules.ObjectPool.PooledObjects;
 using App.Scripts.Modules.ObjectPool.Pools;
-using App.Scripts.Modules.Saves;
 using App.Scripts.Modules.StateMachine.Services.CleanupService;
 using App.Scripts.Modules.StateMachine.Services.InitializeService;
 using App.Scripts.Modules.StateMachine.Services.UpdateService;
+using App.Scripts.Modules.Tasks.Configs;
+using App.Scripts.Modules.Tasks.Factories;
+using App.Scripts.Modules.Tasks.Providers;
 using App.Scripts.Scenes.Gameplay.Features.CameraLogic;
 using App.Scripts.Scenes.Gameplay.Features.CameraLogic.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Input;
@@ -24,12 +25,17 @@ using App.Scripts.Scenes.Gameplay.Features.Map.WaterMaterialController.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Saves;
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace App.Scripts.Scenes.Gameplay.Bootstrap
 {
     public class GameplayInstaller : MonoInstaller
     {
+        [Header("Tasks")]
+        [SerializeField] private TaskProviderConfig taskProviderConfig;
+        
+        
         [Header("Grid")]
         [SerializeField] private GridConfig gridConfig;
 
@@ -57,12 +63,14 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
 
         public override void InstallBindings()
         {
+            BindTaskService();
+            
+            
             CommandInstaller.Install(Container);
             RouterInstaller.Install(Container);
 
-            Container.Bind<IUpdateService>().To<UpdateService>().AsSingle();
-            Container.Bind<IInitializeService>().To<InitializeService>().AsSingle();
-            Container.Bind<ICleanupService>().To<CleanupService>().AsSingle();
+            BindCycleServices();
+
             Container.Bind<GameplaySavesController>().AsSingle();
 
             Container.Bind<IWaterMaterialController>().To<WaterMaterialController>().AsSingle()
@@ -80,6 +88,21 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
             Container.Bind<ICameraSwitcher>().To<CameraSwitcher>().AsSingle().WithArguments(camerasDatabase);
             BindMapProviders();
             BindMapVisualizers();
+        }
+
+        private void BindTaskService()
+        {
+            Container.Bind<TasksContainerFactory>().AsSingle();
+            Container.Bind<CompleteActionFactory>().AsSingle();
+            Container.Bind<TaskFactory>().AsSingle();
+            Container.Bind<TasksProvider>().AsSingle().WithArguments(taskProviderConfig);
+        }
+
+        private void BindCycleServices()
+        {
+            Container.Bind<IUpdateService>().To<UpdateService>().AsSingle();
+            Container.Bind<IInitializeService>().To<InitializeService>().AsSingle();
+            Container.Bind<ICleanupService>().To<CleanupService>().AsSingle();
         }
 
         private void BindMapVisualizers()

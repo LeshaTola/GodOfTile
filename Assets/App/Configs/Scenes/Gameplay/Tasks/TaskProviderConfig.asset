@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89353da068e84aaab11d10e7280e78cd, type: 3}
+  m_Name: TaskProviderConfig
+  m_EditorClassIdentifier: 
+  <TasksPool>k__BackingField: {fileID: 11400000, guid: c3f541e027dfd93438da4c55d7dc7773,
+    type: 2}
+  <MaxTasksCount>k__BackingField: 1
+  <IsRandom>k__BackingField: 0

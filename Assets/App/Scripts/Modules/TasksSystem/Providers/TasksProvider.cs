@@ -7,19 +7,19 @@ using Random = UnityEngine.Random;
 
 namespace App.Scripts.Modules.Tasks.Providers
 {
-
     public class TasksProvider
     {
         public event Action<List<TasksContainer>> OnTasksUpdated;
-        
+
         private readonly TaskProviderConfig config;
         private readonly TasksContainerFactory factory;
-        
+
         private int lastCompletedTaskId;
 
         public List<TasksContainer> ActiveTasks { get; } = new();
 
-        public TasksProvider(TaskProviderConfig config, TasksContainerFactory factory)
+        public TasksProvider(TaskProviderConfig config, 
+            TasksContainerFactory factory)
         {
             this.config = config;
             this.factory = factory;
@@ -39,14 +39,19 @@ namespace App.Scripts.Modules.Tasks.Providers
             {
                 UnregisterTask(task);
             }
+
             ActiveTasks.Clear();
         }
-        
+
         private void NextTask()
         {
-            var id = config.IsRandom ? Random.Range(0, config.TasksPool.Tasks.Count) : lastCompletedTaskId ++;
+            var id = config.IsRandom ? Random.Range(0, config.TasksPool.Tasks.Count) : lastCompletedTaskId++;
+            if (id >= config.TasksPool.Tasks.Count)
+            {
+                id = config.TasksPool.Tasks.Count - 1;
+            }
+
             var tasksContainer = factory.GetTaskContainer(config.TasksPool.Tasks[id]);
-            
             RegisterTask(tasksContainer);
             OnTasksUpdated?.Invoke(ActiveTasks);
         }
@@ -56,7 +61,7 @@ namespace App.Scripts.Modules.Tasks.Providers
             task.OnTaskCompleted += OnTaskCompleted;
             ActiveTasks.Add(task);
         }
-        
+
         private void UnregisterTask(TasksContainer task)
         {
             task.OnTaskCompleted -= OnTaskCompleted;
