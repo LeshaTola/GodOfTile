@@ -24,16 +24,24 @@ namespace App.Scripts.Modules.Tasks.Tasks
 
                 if (progress >= 1f)
                 {
+                    Complete();
                 }
             }
         }
 
+        public virtual void Start()
+        {
+        }
+        
         public virtual void Complete()
         {
             OnTaskCompleted?.Invoke(this);
         }
 
-        public abstract void Import(Task original);
+        public virtual void Import(Task original)
+        {
+            
+        }
     }
 
 }

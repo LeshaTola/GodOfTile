@@ -16,7 +16,11 @@ namespace App.Scripts.Scenes.Gameplay.Features.TasksSystem.Tasks
         public PlaceTilesTask(ITilesCreationService tilesCreationService)
         {
             this.tilesCreationService = tilesCreationService;
-            this.tilesCreationService.OnTilePlaced += OnTilePlaced;
+        }
+
+        public override void Start()
+        {
+            tilesCreationService.OnTilePlaced += OnTilePlaced;
         }
 
         public override void Complete()

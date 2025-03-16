@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using App.Scripts.Modules.Tasks.Configs;
+using UnityEngine;
 
 namespace App.Scripts.Modules.Tasks.Tasks
 {
@@ -24,6 +25,14 @@ namespace App.Scripts.Modules.Tasks.Tasks
             }
         }
 
+        public void StartTask()
+        {
+            foreach (var task in Config.Tasks)
+            {
+                task.Start();
+            }
+        }
+        
         public void CompleteTask()
         {
             foreach (var configTask in Config.CompleteActions)
@@ -43,7 +52,7 @@ namespace App.Scripts.Modules.Tasks.Tasks
     
             Progress = Config.Tasks.Average(task => task.Progress);
             OnProgressChanged?.Invoke(Progress);
-            if (progress.Equals(1))
+                if (progress >= 1)
             {
                 CompleteTask();
             }

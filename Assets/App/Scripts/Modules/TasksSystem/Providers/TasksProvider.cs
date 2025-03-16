@@ -45,19 +45,27 @@ namespace App.Scripts.Modules.Tasks.Providers
 
         private void NextTask()
         {
-            var id = config.IsRandom ? Random.Range(0, config.TasksPool.Tasks.Count) : lastCompletedTaskId++;
-            if (id >= config.TasksPool.Tasks.Count)
-            {
-                id = config.TasksPool.Tasks.Count - 1;
-            }
+            var id = GetConfigId();
 
             var tasksContainer = factory.GetTaskContainer(config.TasksPool.Tasks[id]);
             RegisterTask(tasksContainer);
             OnTasksUpdated?.Invoke(ActiveTasks);
         }
 
+        private int GetConfigId()
+        {
+            var id = config.IsRandom ? Random.Range(0, config.TasksPool.Tasks.Count) : lastCompletedTaskId++;
+            if (id >= config.TasksPool.Tasks.Count)
+            {
+                id = 0;
+                lastCompletedTaskId = 0;
+            }
+            return id;
+        }
+
         private void RegisterTask(TasksContainer task)
         {
+            task.StartTask();
             task.OnTaskCompleted += OnTaskCompleted;
             ActiveTasks.Add(task);
         }

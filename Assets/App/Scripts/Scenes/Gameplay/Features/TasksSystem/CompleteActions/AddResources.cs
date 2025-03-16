@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using App.Scripts.Modules.Tasks.CompleteActions;
 using App.Scripts.Scenes.Gameplay.Features.Inventory.DTO;
 using App.Scripts.Scenes.Gameplay.Features.Inventory.Systems;
@@ -29,6 +30,15 @@ namespace App.Scripts.Scenes.Gameplay.Features.TasksSystem.CompleteActions
         {
             var concrete =(AddResources) original;
             rewardResources = concrete.rewardResources;
+        }
+
+        public override List<RewardData> GetRewardData()
+        {
+            return rewardResources.Select(x => new RewardData
+            {
+                Sprite = x.Resource.Sprite,
+                Text = x.Count.ToString()
+            }).ToList();
         }
     }
 }
