@@ -23,6 +23,7 @@ using App.Scripts.Scenes.Gameplay.Features.Map.Visualizers;
 using App.Scripts.Scenes.Gameplay.Features.Map.WaterMaterialController;
 using App.Scripts.Scenes.Gameplay.Features.Map.WaterMaterialController.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Saves;
+using App.Scripts.Scenes.Gameplay.Features.Сataclysms.Providers;
 using Cinemachine;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -35,6 +36,8 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
         [Header("Tasks")]
         [SerializeField] private TaskProviderConfig taskProviderConfig;
         
+        [Header("Cataclysms")]
+        [SerializeField] private CataclysmsProviderConfig cataclysmsProviderConfig;
         
         [Header("Grid")]
         [SerializeField] private GridConfig gridConfig;
@@ -81,6 +84,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
             BindMainCamera();
             BindVirtualCamera();
             BindCameraController();
+            BindCataclysms();
 
             BindParticlesKeyPool();
 
@@ -88,6 +92,13 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
             Container.Bind<ICameraSwitcher>().To<CameraSwitcher>().AsSingle().WithArguments(camerasDatabase);
             BindMapProviders();
             BindMapVisualizers();
+        }
+
+        private void BindCataclysms()
+        {
+            Container.Bind<CatoclysmFactory>().AsSingle();
+            Container.BindInterfacesTo<CataclysmsProvider>().AsSingle().WithArguments(cataclysmsProviderConfig);
+            
         }
 
         private void BindTaskService()

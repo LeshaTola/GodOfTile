@@ -66,7 +66,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.General
 
         public async UniTask PlayDestroying()
         {
-            await animator.PlayActiveAnimation(this);
+            await animator.PlayDestroyAnimation(this);
         }
 
         public void SetState(TileState state)
