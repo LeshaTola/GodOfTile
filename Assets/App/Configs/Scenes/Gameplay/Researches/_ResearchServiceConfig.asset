@@ -25,3 +25,5 @@ MonoBehaviour:
     IsCompleate: 0
   - ResearchConfig: {fileID: 11400000, guid: 4a5317a9cd08af845a4a4a2173aedbb4, type: 2}
     IsCompleate: 0
+  - ResearchConfig: {fileID: 11400000, guid: 699155e35fde9274da676d327e5dc86f, type: 2}
+    IsCompleate: 0

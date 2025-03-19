@@ -2,11 +2,11 @@ using Zenject;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Сataclysms.Providers
 {
-    public class CatoclysmFactory
+    public class CataclysmFactory
     {
         private readonly DiContainer diContainer;
 
-        public CatoclysmFactory(DiContainer diContainer)
+        public CataclysmFactory(DiContainer diContainer)
         {
             this.diContainer = diContainer;
         }

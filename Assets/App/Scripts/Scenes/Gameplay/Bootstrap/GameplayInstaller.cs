@@ -24,6 +24,7 @@ using App.Scripts.Scenes.Gameplay.Features.Map.WaterMaterialController;
 using App.Scripts.Scenes.Gameplay.Features.Map.WaterMaterialController.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Saves;
 using App.Scripts.Scenes.Gameplay.Features.Сataclysms.Providers;
+using App.Scripts.Scenes.Gameplay.Features.Сataclysms.UI;
 using Cinemachine;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -38,6 +39,8 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
         
         [Header("Cataclysms")]
         [SerializeField] private CataclysmsProviderConfig cataclysmsProviderConfig;
+        [SerializeField] private CataclysmView cataclysmView;
+        
         
         [Header("Grid")]
         [SerializeField] private GridConfig gridConfig;
@@ -96,9 +99,11 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
 
         private void BindCataclysms()
         {
-            Container.Bind<CatoclysmFactory>().AsSingle();
-            Container.BindInterfacesTo<CataclysmsProvider>().AsSingle().WithArguments(cataclysmsProviderConfig);
-            
+            Container.Bind<CataclysmFactory>().AsSingle();
+            Container.BindInterfacesAndSelfTo<CataclysmsProvider>().AsSingle().WithArguments(cataclysmsProviderConfig);
+
+            Container.BindInstance(cataclysmView).AsSingle();
+            Container.BindInterfacesAndSelfTo<CataclysmViewPresenter>().AsSingle();
         }
 
         private void BindTaskService()

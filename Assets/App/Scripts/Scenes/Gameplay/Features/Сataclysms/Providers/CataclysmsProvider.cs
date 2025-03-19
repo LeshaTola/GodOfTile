@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using App.Scripts.Modules.StateMachine.Services.CleanupService;
@@ -12,17 +13,20 @@ namespace App.Scripts.Scenes.Gameplay.Features.Сataclysms.Providers
 {
     public class CataclysmsProvider : IUpdatable, IInitializable, ICleanupable
     {
-        private readonly CatoclysmFactory catoclysmFactory;
+        public event Action<float> OnTimerChanged;
+        public event Action<CataclysmConfig> OnCataclysmChanged;
+        
+        private readonly CataclysmFactory cataclysmFactory;
         private readonly CataclysmsProviderConfig config;
         private readonly IGridProvider gridProvider;
         private readonly ITimeProvider timeProvider;
 
         private float timer;
 
-        public CataclysmsProvider(CatoclysmFactory catoclysmFactory, CataclysmsProviderConfig config,
+        public CataclysmsProvider(CataclysmFactory cataclysmFactory, CataclysmsProviderConfig config,
             IGridProvider gridProvider, ITimeProvider timeProvider)
         {
-            this.catoclysmFactory = catoclysmFactory;
+            this.cataclysmFactory = cataclysmFactory;
             this.config = config;
             this.gridProvider = gridProvider;
             this.timeProvider = timeProvider;
@@ -41,6 +45,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Сataclysms.Providers
                 ResetTimer();
                 ApplyCataclism();
             }
+            OnTimerChanged?.Invoke(timer);
         }
 
         public void Cleanup()
@@ -54,8 +59,10 @@ namespace App.Scripts.Scenes.Gameplay.Features.Сataclysms.Providers
             {
                 return;
             }
-            
-            var catoclism = catoclysmFactory.Get(config.Cataclysms[Random.Range(0, config.Cataclysms.Count)]);
+
+            var configCataclysm = config.Cataclysms[Random.Range(0, config.Cataclysms.Count)];
+            var catoclism = cataclysmFactory.Get(configCataclysm);
+            OnCataclysmChanged?.Invoke(configCataclysm);
             catoclism.Attack(targetTilePosition);
         }
 

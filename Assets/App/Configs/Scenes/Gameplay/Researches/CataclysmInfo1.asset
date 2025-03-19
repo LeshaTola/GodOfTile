@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab27c13d5f4348409edc2f9b281e4bfe, type: 3}
+  m_Name: CataclysmInfo1
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: <Command>k__BackingField
+      Entry: 7
+      Data: 0|App.Scripts.Scenes.Gameplay.Features.Researches.Commands.Specific.Catalysms.OpenCataclysmViewCommand,
+        Assembly-CSharp
+    - Name: data
+      Entry: 7
+      Data: 1|App.Scripts.Scenes.Gameplay.Features.Researches.Commands.ResearchCommandData,
+        Assembly-CSharp
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  <Sprite>k__BackingField: {fileID: 21300000, guid: 793db032f1b47cb4598b5d46c020e47b,
+    type: 3}
+  <Name>k__BackingField: Cataclysm info 1
+  <Description>k__BackingField: Show time until next catalysm
+  <Level>k__BackingField: 2
+  <ResearchTime>k__BackingField: 20
+  <Cost>k__BackingField:
+  - Resource: {fileID: 11400000, guid: daae69d11c2f7994fad492095660114f, type: 2}
+    Count: 50
