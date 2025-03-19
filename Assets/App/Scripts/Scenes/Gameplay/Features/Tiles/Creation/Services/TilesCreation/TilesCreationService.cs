@@ -227,7 +227,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
 
         public void PlaceTile(Vector2Int gridPosition, TileConfig tile)
         {
-            PlayDestroyVFX(activeTile);
+            PlayDestroyVFX(activeTile).Forget();
         }
 
         public async void DestroyTile(Vector2Int gridPosition)
