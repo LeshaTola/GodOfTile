@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 876779e764294c0db6f0ef67b99a118d, type: 3}
   m_Name: CataclysmsProviderConfig
   m_EditorClassIdentifier: 
-  <Cooldown>k__BackingField: 10
+  <Cooldown>k__BackingField: 600
   <Cataclysms>k__BackingField:
   - {fileID: 11400000, guid: 9135aea955f2cef4299b06d03edc85ae, type: 2}

@@ -241,7 +241,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
 
     public class MapState
     {
-        //position/id
         public List<KeyValuePair> Grid;
     }
 

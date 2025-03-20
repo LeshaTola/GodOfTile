@@ -9,7 +9,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Map.Providers.Chunk
 {
     public class ChunksProvider : IChunksProvider
     {
-        public event Action OnChunkOpened;
+        public event Action<Vector2Int> OnChunkOpened;
 
         private GridConfig config;
 
@@ -39,7 +39,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Map.Providers.Chunk
             }
 
             OpenChunk(chunk);
-            OnChunkOpened?.Invoke();
+            OnChunkOpened?.Invoke(chunkId);
         }
 
         public void OpenChunk(Items.Chunk chunk)

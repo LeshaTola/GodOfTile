@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using App.Scripts.Scenes.Gameplay.Features.Map.Factories.Chunk;
 using App.Scripts.Scenes.Gameplay.Features.Map.Items;
 using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Chunk;
+using UnityEngine;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Map.Visualizers
 {
@@ -30,7 +31,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Map.Visualizers
             chunksProvider.OnChunkOpened += UpdateChunks;
         }
 
-        public void UpdateChunks()
+        public void UpdateChunks(Vector2Int vector2Int)
         {
             CleanupChunks();
             SetupChunks();

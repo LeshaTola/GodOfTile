@@ -77,6 +77,10 @@ namespace App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.TileInformation
         {
             foreach (var systemUI in systems)
             {
+                if (systemUI == null)
+                {
+                    continue;
+                }
                 systemUI.Cleanup();
             }
             systems.Clear();
