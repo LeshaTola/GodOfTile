@@ -82,7 +82,7 @@ MonoBehaviour:
   type: stone
   tileImage: {fileID: 21300000, guid: f45b6c2e28a521b42b9c0d869ad6e506, type: 3}
   tileName: Stone
-  description: Stone
+  description: The starting stone tile. It's pretty strong.
   cost:
   - Resource: {fileID: 11400000, guid: 7838b25836ffe8e45994e6ed94b3b2c7, type: 2}
     Count: 1

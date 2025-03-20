@@ -17,11 +17,11 @@ MonoBehaviour:
   <Researches>k__BackingField:
   - ResearchConfig: {fileID: 11400000, guid: 9b98bb9c5660acf4f98ec0b4ccf165cf, type: 2}
     IsCompleate: 0
-  - ResearchConfig: {fileID: 11400000, guid: 9a90f0fb3687d3b468b3e9dddb30b7f7, type: 2}
-    IsCompleate: 0
   - ResearchConfig: {fileID: 11400000, guid: eaec95d80757f37428f619f65e6568e6, type: 2}
     IsCompleate: 0
   - ResearchConfig: {fileID: 11400000, guid: a69769ddf0b1f0e4fbcabe37bc4797ff, type: 2}
     IsCompleate: 0
   - ResearchConfig: {fileID: 11400000, guid: 4a5317a9cd08af845a4a4a2173aedbb4, type: 2}
+    IsCompleate: 0
+  - ResearchConfig: {fileID: 11400000, guid: 699155e35fde9274da676d327e5dc86f, type: 2}
     IsCompleate: 0

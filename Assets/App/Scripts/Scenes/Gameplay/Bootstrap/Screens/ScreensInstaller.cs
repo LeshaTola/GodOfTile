@@ -5,6 +5,7 @@ using App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.StateTransfer.Presen
 using App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.TileInformation;
 using App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.TileInformation.Presenters;
 using App.Scripts.Scenes.Gameplay.Features.Screens.Pause;
+using App.Scripts.Scenes.Gameplay.Features.TasksSystem.View;
 using App.Scripts.Scenes.Gameplay.Features.Time.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Time.Presenters;
 using App.Scripts.Scenes.Gameplay.Features.Time.UI;
@@ -19,6 +20,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap.Screens
         [SerializeField] private GameplayScreen gameplayScreen;
         [SerializeField] private StateTransferView stateTransferView;
         [SerializeField] private TileInformationView tileInformationView;
+        [SerializeField] private TaskView taskView;
 
         [Header("Time")]
         [SerializeField] private TimeControllerView timeControllerView;
@@ -32,6 +34,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap.Screens
             BindGameplayScreen();
             BindTimeControllerView();
             BindStateTransferView();
+            BindTaskView();
             
             Container.Bind<PauseView>().FromInstance(pauseView).AsSingle();
             Container.Bind<PausePresenter>().AsSingle();
@@ -39,6 +42,13 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap.Screens
             
             Container.Bind<TileInformationView>().FromInstance(tileInformationView).AsSingle();
             Container.Bind<TileInformationPresenter>().AsSingle();
+        }
+
+        private void BindTaskView()
+        {
+            
+            Container.BindInstance(taskView).AsSingle();
+            Container.BindInterfacesAndSelfTo<TaskViewPresenter>().AsSingle();
         }
 
         private void BindGameplayScreen()

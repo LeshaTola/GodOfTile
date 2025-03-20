@@ -9,14 +9,9 @@ namespace App.Scripts.Features.Bootstrap
 {
     public class PopupInstaller : MonoInstaller
     {
-        [SerializeField]
-        private Image screenBlocker;
-
-        [SerializeField]
-        private PopupDatabase popupDatabase;
-
-        [SerializeField]
-        private Transform container;
+        [SerializeField] private Image screenBlocker;
+        [SerializeField] private PopupDatabase popupDatabase;
+        [SerializeField] private Transform container;
 
         public override void InstallBindings()
         {

@@ -41,5 +41,5 @@ MonoBehaviour:
   type: blue
   tileImage: {fileID: 21300000, guid: 21d4c537e15c4dc4782214b436f83952, type: 3}
   tileName: Water
-  description: Water
+  description: Water on water? what?
   cost: []

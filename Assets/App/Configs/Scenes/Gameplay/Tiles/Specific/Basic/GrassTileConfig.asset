@@ -41,5 +41,5 @@ MonoBehaviour:
   type: grass
   tileImage: {fileID: 21300000, guid: 28d8c6141333d714c9ceb400e93f7868, type: 3}
   tileName: Grass
-  description: Grass...
+  description: Starting grass tile, a good start
   cost: []

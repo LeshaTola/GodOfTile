@@ -26,3 +26,36 @@ More Info,More Info
 Is free,Is free
 Pause,Pause
 Level,Level
+Cactuses,Cactusуes
+CACTUSES,CACTUSES
+Field,Field
+Generates a small amount of resources,"Вырабатывает малое, количество ресурсов"
+"The further into the forest, the more skibidi gets the EU.","The further into the forest, the more skibidi gets the EU."
+Forest,Forest
+House,House
+"The building on this enchanting island is a cozy, quaint wooden house that exudes charm and warmth. The exterior walls are painted a soft, muted green, blending harmoniously with the natural surroundings. The roof, a striking red tiled structure, stands out vividly against the backdrop of the serene blue waters","The building on this enchanting island is a cozy, quaint wooden house that exudes charm and warmth. The exterior walls are painted a soft, muted green, blending harmoniously with the natural surroundings. The roof, a striking red tiled structure, stands out vividly against the backdrop of the serene blue waters"
+MagicMineShaft,Magic Mineshaft
+"This mystical island is a true gem in the magical realm, created from violet-colored magical stone that glistens under the sun. At its heart lies a robust mining operation, with tunnels that delve deep into the island, extracting precious ores imbued with mystical properties. Surrounded by tranquil waters, the island stands as a testament to the blending of natural beauty and arcane craftsmanship, all captured in the charming style of old anime. The island is a haven for explorers and adventurers, drawn to its enchanting glow and the promise of untold treasures hidden within its rocky core.","This mystical island is a true gem in the magical realm, created from violet-colored magical stone that glistens under the sun. At its heart lies a robust mining operation, with tunnels that delve deep into the island, extracting precious ores imbued with mystical properties. Surrounded by tranquil waters, the island stands as a testament to the blending of natural beauty and arcane craftsmanship, all captured in the charming style of old anime. The island is a haven for explorers and adventurers, drawn to its enchanting glow and the promise of untold treasures hidden within its rocky core."
+Mill,Mill
+Generates the amount of a resource depending on the fields surrounding it,Generates the amount of a resource depending on the fields surrounding it
+MineShaft,MineShaft
+"A typical mining shaft is an industrial enterprise designed for the extraction of valuable resources such as coal, ore, or precious gems. These mines often encompass an array of surface equipment, like ventilation and hoisting systems, as well as extensive underground workings, including shafts, drifts, and stopes. Inside the mine, miners engage in arduous and perilous labor to excavate, transport, and process minerals.","A typical mining shaft is an industrial enterprise designed for the extraction of valuable resources such as coal, ore, or precious gems. These mines often encompass an array of surface equipment, like ventilation and hoisting systems, as well as extensive underground workings, including shafts, drifts, and stopes. Inside the mine, miners engage in arduous and perilous labor to excavate, transport, and process minerals."
+Mountains,Mountains
+"The mountains, the wind blows quite strongly on their tops, and it is VERY cold","The mountains, the wind blows quite strongly on their tops, and it is VERY cold"
+Pyramid,Pyramid
+"The pyramid, one of the wonders of the world, but not ours","The pyramid, one of the wonders of the world, but not ours"
+Vulcano,Vulcano
+"A volcano, its heat generates energy perfectly","A volcano, its heat generates energy perfectly"
+Grass,Grass
+"Starting grass tile, a good start","Starting grass tile, a good start"
+Magic,Magic
+The starting magic tile gives you the opportunity to explore,The starting magic tile gives you the opportunity to explore
+Sand,Sand
+"The starting tile of sand, what will it grow into? Maybe to the beach, or maybe to the desert?","The starting tile of sand, what will it grow into? Maybe to the beach, or maybe to the desert?"
+Stone,Stone
+The starting stone tile. It's pretty strong.,The starting stone tile. It's pretty strong.
+Water,Water
+Water on water? what?,Water on water? what?
+"Exit tile, allows you to leave the game","Exit tile, allows you to leave the game"
+Start the game,Start the game
+Here you can customize the game for yourself,Here you can customize the game for yourself

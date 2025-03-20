@@ -69,5 +69,6 @@ MonoBehaviour:
   type: sand
   tileImage: {fileID: 21300000, guid: 4beb2aa3565b29245aa3ab4df92d829b, type: 3}
   tileName: Sand
-  description: Sand
+  description: The starting tile of sand, what will it grow into? Maybe to the beach,
+    or maybe to the desert?
   cost: []

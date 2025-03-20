@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26f686e82bce4d0184c4201b862674d0, type: 3}
+  m_Name: TasksPool
+  m_EditorClassIdentifier: 
+  <Tasks>k__BackingField:
+  - {fileID: 11400000, guid: 0126a2239ef783e4187dcee06e406cec, type: 2}
+  - {fileID: 11400000, guid: 5c6df5366ee0e444f98ec245cebbddb1, type: 2}
+  - {fileID: 11400000, guid: 030ac4fc27558df46be8657a3f6fcc50, type: 2}
+  - {fileID: 11400000, guid: 8b935d0c1d5cec74fa937d889213e306, type: 2}
+  - {fileID: 11400000, guid: c2740bae1d266d343bcbb976e009c657, type: 2}
+  - {fileID: 11400000, guid: 0ed518a55ce9e724498fd242e27d5bbc, type: 2}
+  - {fileID: 11400000, guid: 7b2a4abb583e7de48b78a9debe707d16, type: 2}
+  - {fileID: 11400000, guid: 7d7ba0e49047911459d19bd6c0d7ef3d, type: 2}

@@ -65,5 +65,5 @@ MonoBehaviour:
   type: grass
   tileImage: {fileID: 21300000, guid: e81aca32f119c194eb57c9a2079d8222, type: 3}
   tileName: Exit
-  description: Exit
+  description: Exit tile, allows you to leave the game
   cost: []

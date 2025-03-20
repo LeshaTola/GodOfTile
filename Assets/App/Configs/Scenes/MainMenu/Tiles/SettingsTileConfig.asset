@@ -63,5 +63,5 @@ MonoBehaviour:
   type: stone
   tileImage: {fileID: 21300000, guid: 518b8770790e4944695c6b0983a04b1d, type: 3}
   tileName: Settings
-  description: Settings
+  description: Here you can customize the game for yourself
   cost: []

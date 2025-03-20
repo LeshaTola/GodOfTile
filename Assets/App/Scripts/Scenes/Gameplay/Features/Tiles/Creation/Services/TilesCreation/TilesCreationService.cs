@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using App.Scripts.Modules.Saves.Structs;
 using App.Scripts.Modules.Sounds;
 using App.Scripts.Modules.Sounds.Providers;
 using App.Scripts.Modules.StateMachine.Services.CleanupService;
 using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Grid;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Providers;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Providers.Effects;
@@ -148,6 +151,12 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
             soundProvider.PlaySound(config.CreateSoundKey);
             await tile.Visual.PlayCreation();
         }
+        private async UniTask PlayDestroyVFX(Tile tile)
+        {
+            effectsService.PlayParticle(config.DestroyParticleKey, tile.transform.position);
+            soundProvider.PlaySound(config.DestroySoundKey);
+            await tile.Visual.PlayDestroying();
+        }
 
         private void ChangeState()
         {
@@ -166,5 +175,78 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
             StopPlacingTile();
             StartPlacingTile();
         }
+     
+        public MapState GetState()
+        {
+            Dictionary<JsonVector2Int, string> gridDictionary = new();
+
+            foreach (var tile in gridProvider.Grid)
+            {
+                if (tile == null)
+                {
+                    continue;
+                }
+                
+                JsonVector2Int jsonPos = new(tile.Position);
+                if ( gridDictionary.ContainsKey(jsonPos))
+                {
+                    continue;
+                }
+                gridDictionary.Add(jsonPos, tile.Config.Id);
+            }
+
+            var grid = new List<KeyValuePair>();
+            foreach (var item in gridDictionary)
+            {
+                grid.Add(new KeyValuePair()
+                {
+                    Position = item.Key,
+                    Id = item.Value
+                });
+            }
+            
+            return new()
+            {
+                Grid = grid
+            };
+        }
+
+        public void SetState(MapState state)
+        {
+            StartPlacingTile();
+            
+            foreach (var item in state.Grid)
+            {
+                activeTileProvider.SetActiveTileByID(item.Id);
+                MoveActiveTile(new(item.Position.X,item.Position.Y));
+                PlaceActiveTile();
+            }
+            
+            StopPlacingTile();
+        }
+
+        public void PlaceTile(Vector2Int gridPosition, TileConfig tile)
+        {
+            PlayDestroyVFX(activeTile).Forget();
+        }
+
+        public async void DestroyTile(Vector2Int gridPosition)
+        {
+            var tile = gridProvider.Grid[gridPosition.x, gridPosition.y];
+            await PlayDestroyVFX(tile);
+            Object.Destroy(tile.gameObject);
+            gridProvider.Grid[gridPosition.x, gridPosition.y] = null;
+        }
+    }
+
+    public class MapState
+    {
+        public List<KeyValuePair> Grid;
+    }
+
+    public class KeyValuePair
+    {
+        public JsonVector2Int Position;
+        public string Id;
     }
 }

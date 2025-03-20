@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace App.Scripts.Modules.Saves.Structs
 {
+    [Serializable]
     public struct JsonVector2Int
     {
         public int X, Y;

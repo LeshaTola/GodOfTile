@@ -5,7 +5,6 @@ using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Providers;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Providers.Effects;
-using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.PlacementCost;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCreation;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.Update;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.Tiles;
@@ -64,12 +63,15 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap.Tile
                 .Bind<ITileCollectionProvider>()
                 .To<TileCollectionProvider>()
                 .AsSingle()
-                .WithArguments(collectionConfig);
+                .WithArguments(collectionConfig, tilesDatabase);
         }
 
         private void BindActiveTileProvider()
         {
-            Container.Bind<IActiveTileProvider>().To<ActiveTileProvider>().AsSingle();
+            Container.Bind<IActiveTileProvider>()
+                .To<ActiveTileProvider>()
+                .AsSingle()
+                .WithArguments(tilesDatabase);
         }
 
         private void BindTileSelectionProvider()

@@ -15,5 +15,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.Inventory.Systems
         bool IsEnough(string resourceName, float amount);
         bool IsEnough(List<ResourceCount> resourcesCounts);
         bool IsEnough(ResourceCount resourceCount);
+
+        InventoryState GetState();
+        void SetState(InventoryState state);
     }
 }

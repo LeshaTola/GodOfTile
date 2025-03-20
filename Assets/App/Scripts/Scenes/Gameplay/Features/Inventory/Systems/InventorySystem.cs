@@ -50,6 +50,22 @@ namespace App.Scripts.Scenes.Gameplay.Features.Inventory.Systems
             return IsEnough(resourceCount.Resource.ResourceName, resourceCount.Count);
         }
 
+        public InventoryState GetState()
+        {
+            return new()
+            {
+                Resources = Resources
+            };
+        }
+
+        public void SetState(InventoryState state)
+        {
+            foreach (var resource in state.Resources)
+            {
+                Resources[resource.Key] = resource.Value;
+            }
+        }
+
         public bool IsEnough(string resourceName, float amount)
         {
             if (!Resources.ContainsKey(resourceName))
@@ -70,5 +86,10 @@ namespace App.Scripts.Scenes.Gameplay.Features.Inventory.Systems
                 OnRecourseAmountChanged?.Invoke(resource.ResourceName, resource.StartAmount);
             }
         }
+    }
+
+    public class InventoryState
+    {
+        public Dictionary<string, float> Resources;
     }
 }
