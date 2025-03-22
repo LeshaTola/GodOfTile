@@ -7,7 +7,7 @@ using UnityEngine;
 namespace App.Scripts.Scenes.Gameplay.Features.CraftSystem.Configs
 {
     [CreateAssetMenu(fileName = "Recipe", menuName = "Configs/CraftingSystem/Recipe")]
-    internal class RecipeSO : ScriptableObject
+    public class RecipeSO : ScriptableObject
     {
         [field: SerializeField] public List<TileConfig> RequiredTiles { get; private set; }
 

@@ -8,11 +8,11 @@ namespace App.Scripts.Scenes.Gameplay.Features.CraftSystem.Providers
 {
     public class RecipeProvider : IRecipeProvider
     {
-        public TileConfig GetRecipe(List<TileConfig> neighbors, TileConfig tile)
+        public TileConfig GetRecipeResult(List<TileConfig> neighbors, TileConfig tile)
         {
-            var recipes = Resources.LoadAll<RecipeSO>("Recipes");
+            var recipes = GetAllRecipes();
 
-            var recipesForOrigin = recipes.Where(r => r.Original.Id.Equals(tile.Id)).ToList();
+            var recipesForOrigin = GetRecipesByOriginal(tile, recipes);
             recipesForOrigin.Sort((x, y) => y.RequiredTiles.Count.CompareTo(x.RequiredTiles.Count));
             foreach (var recipe in recipesForOrigin)
             {
@@ -29,6 +29,23 @@ namespace App.Scripts.Scenes.Gameplay.Features.CraftSystem.Providers
             }
 
             return null;
+        }
+
+        public RecipeSO GetRecipe(TileConfig tile)
+        {
+            var recipes = GetAllRecipes();
+            return recipes.FirstOrDefault(x=>x.Result.Id.Equals(tile.Id));
+        }
+
+        private static RecipeSO[] GetAllRecipes()
+        {
+            var recipes = Resources.LoadAll<RecipeSO>("Recipes");
+            return recipes;
+        }
+
+        private static List<RecipeSO> GetRecipesByOriginal(TileConfig tile, RecipeSO[] recipes)
+        {
+            return recipes.Where(r => r.Original.Id.Equals(tile.Id)).ToList();
         }
     }
 }

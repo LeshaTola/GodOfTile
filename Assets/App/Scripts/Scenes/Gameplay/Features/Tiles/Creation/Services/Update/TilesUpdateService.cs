@@ -103,7 +103,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.Update
                     allConfigs.Add(tile.Config);
             }
 
-            return recipeProvider.GetRecipe(
+            return recipeProvider.GetRecipeResult(
                 allConfigs,
                 gridProvider.Grid[tilePosition.x, tilePosition.y].Config
             );
