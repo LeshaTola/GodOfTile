@@ -1,4 +1,7 @@
-﻿using App.Scripts.Scenes.Gameplay.Features.Screens.CostWidget;
+﻿using App.Scripts.Modules.ObjectPool.MonoObjectPools;
+using App.Scripts.Modules.ObjectPool.Pools;
+using App.Scripts.Scenes.Gameplay.Features.Bestiary.UI;
+using App.Scripts.Scenes.Gameplay.Features.Screens.CostWidget;
 using App.Scripts.Scenes.Gameplay.Features.Screens.CostWidget.Cost;
 using App.Scripts.Scenes.Gameplay.Features.Screens.CostWidget.Presenters;
 using App.Scripts.Scenes.Gameplay.Features.Screens.Shop;
@@ -19,6 +22,11 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap.Shop
         [SerializeField] private ShopView shopView;
         [SerializeField] private ShopScreen shopScreen;
         [SerializeField] private CostWidget costWidget;
+        
+        [Header("Bestiary")]
+        [SerializeField] private BestiaryScreen bestiaryScreen;
+        [SerializeField] private BestiaryElement bestiaryElement;
+        [SerializeField] private RectTransform elementsContainer;
 
         public override void InstallBindings()
         {
@@ -30,7 +38,9 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap.Shop
             
             Container.Bind<ShopViewPresenter>().AsSingle();
             Container.Bind<ShopView>().FromInstance(shopView).AsSingle();
-            
+
+            BindBestiary();
+
             Container.Bind<CostWidgetPresenter>().AsSingle().WithArguments(costWidget);
 
             Container.Bind<Modules.Factories.IFactory<ShopItemView>>()
@@ -41,6 +51,16 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap.Shop
                 .To<Modules.Factories.MonoFactories.MonoFactory<CostUI>>()
                 .AsSingle().WithArguments(costUITemplate);
             
+        }
+
+        private void BindBestiary()
+        {
+            Container.BindInstance(bestiaryScreen).AsSingle();
+            Container.BindInterfacesAndSelfTo<BestiaryScreenPresenter>().AsSingle();
+            Container.Bind<IPool<BestiaryElement>>()
+                .To<MonoBehObjectPool<BestiaryElement>>()
+                .AsSingle()
+                .WithArguments(bestiaryElement, 20, elementsContainer);
         }
     }
 }

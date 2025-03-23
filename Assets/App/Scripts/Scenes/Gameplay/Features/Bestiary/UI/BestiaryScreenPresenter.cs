@@ -14,26 +14,24 @@ namespace App.Scripts.Scenes.Gameplay.Features.Bestiary.UI
 {
     public class BestiaryScreenPresenter : IInitializable, ICleanupable
     {
-        private readonly BestiaryScreen bestiaryScreen;
         private TilesDatabase tilesDatabase;
-        private readonly ITileCollectionProvider tileCollectionProvider;
+        private readonly BestiaryScreen bestiaryScreen;
         private readonly IRecipeProvider recipeProvider;
         private readonly ILocalizationSystem localizationSystem;
-        private readonly ITileSystemUIProvidersFactory tileSystemUIProvidersFactory;
         private readonly IPool<BestiaryElement> bestiaryElementPool;
+        private readonly ITileCollectionProvider tileCollectionProvider;
+        private readonly ITileSystemUIProvidersFactory tileSystemUIProvidersFactory;
 
         private BestiaryElement selectedBestiaryElement;
 
         public BestiaryScreenPresenter(BestiaryScreen bestiaryScreen,
-            TilesDatabase tilesDatabase,
-            ITileCollectionProvider tileCollectionProvider,
             IRecipeProvider recipeProvider,
             ILocalizationSystem localizationSystem,
+            ITileCollectionProvider tileCollectionProvider,
             ITileSystemUIProvidersFactory tileSystemUIProvidersFactory,
             IPool<BestiaryElement> bestiaryElementPool)
         {
             this.bestiaryScreen = bestiaryScreen;
-            this.tilesDatabase = tilesDatabase;
             this.tileCollectionProvider = tileCollectionProvider;
             this.recipeProvider = recipeProvider;
             this.localizationSystem = localizationSystem;
@@ -43,21 +41,27 @@ namespace App.Scripts.Scenes.Gameplay.Features.Bestiary.UI
 
         public void Initialize()
         {
+            tileCollectionProvider.OnNewTileAdd += OnNewTileAdd;
+            
             bestiaryScreen.Initialize(localizationSystem);
+            bestiaryScreen.OnCloseButtonClicked += Close;
             SetupElements();
         }
 
         public void Cleanup()
         {
+            tileCollectionProvider.OnNewTileAdd -= OnNewTileAdd;
+            
+            bestiaryScreen.OnCloseButtonClicked -= Close;
             bestiaryScreen.Cleanup();
         }
 
-        public async UniTaskVoid Show()
+        public async UniTask Show()
         {
             await bestiaryScreen.Show();
         }
 
-        public async UniTaskVoid Hide()
+        public async UniTask Hide()
         {
             await bestiaryScreen.Hide();
         }
@@ -72,7 +76,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Bestiary.UI
                 element.OnElementClicked += OnElementClicked;
             }
 
-            SelectElement(bestiaryElementPool.Active.First());
+            SetupScreen(tileCollectionProvider.Collection.First(), null);
         }
 
         private void CleanupElements()
@@ -92,7 +96,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Bestiary.UI
                         tileSystemUIProvidersFactory
                             .GetSystemUIProvider(system.Data.SystemUIProvider)
                             ?.GetSystemUI(system)
-                ).ToList() ;
+                ).ToList();
             
             bestiaryScreen.SetupTileInformation(tileConfig, systemUIs);
             bestiaryScreen.SetupRecipe(recipeSo);
@@ -114,6 +118,16 @@ namespace App.Scripts.Scenes.Gameplay.Features.Bestiary.UI
 
             selectedBestiaryElement = bestiaryElement;
             selectedBestiaryElement.SetSelected(true);
+        }
+
+        private void OnNewTileAdd(TileConfig obj)
+        {
+            SetupElements();
+        }
+        
+        private void Close()
+        {
+            Hide().Forget();
         }
     }
 }

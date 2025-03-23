@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using App.Scripts.Modules.Factories;
 using App.Scripts.Modules.Localization;
 using App.Scripts.Modules.Sounds.Providers;
+using App.Scripts.Scenes.Gameplay.Features.Bestiary.UI;
 using App.Scripts.Scenes.Gameplay.Features.Screens.CostWidget.Presenters;
 using App.Scripts.Scenes.Gameplay.Features.Screens.CostWidget.ViewModels;
 using App.Scripts.Scenes.Gameplay.Features.Screens.Shop.Views.Item;
@@ -19,6 +20,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Screens.Shop.Views.ShopViews
         private CostWidgetPresenter costWidgetPresenter;
         private IFactory<ShopItemView> itemViewsFactory;
         private ShopItemPresenterFactory itemsPresenterFactory;
+        private readonly BestiaryScreenPresenter bestiaryScreenPresenter;
         private IInformationWidgetViewModule informationWidgetViewModule;
         private readonly ISoundProvider soundProvider;
 
@@ -33,6 +35,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Screens.Shop.Views.ShopViews
             IFactory<ShopItemView> itemViewsFactory,
             CostWidgetPresenter costWidgetPresenter,
             ShopItemPresenterFactory itemsPresenterFactory,
+            BestiaryScreenPresenter bestiaryScreenPresenter,
             IInformationWidgetViewModule informationWidgetViewModule)
         {
             this.shopView = shopView;
@@ -42,12 +45,15 @@ namespace App.Scripts.Scenes.Gameplay.Features.Screens.Shop.Views.ShopViews
             this.localizationSystem = localizationSystem;
             this.costWidgetPresenter = costWidgetPresenter;
             this.itemsPresenterFactory = itemsPresenterFactory;
+            this.bestiaryScreenPresenter = bestiaryScreenPresenter;
             this.informationWidgetViewModule = informationWidgetViewModule;
         }
 
         public void Initialize()
         {
             shopView.Initialize(localizationSystem);
+            shopView.OnInfoButtonClicked += OnInfoButtonClicked;
+            
             costWidgetPresenter.Initialize();
             InitializeItems();
             shopSystem.OnNewTileAdd += OnNewTileAdd;
@@ -56,6 +62,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.Screens.Shop.Views.ShopViews
         public void Cleanup()
         {
             shopView.Cleanup();
+            shopView.OnInfoButtonClicked -= OnInfoButtonClicked;
+            
             costWidgetPresenter.Cleanup();
             CleanupItems();
 
@@ -79,9 +87,10 @@ namespace App.Scripts.Scenes.Gameplay.Features.Screens.Shop.Views.ShopViews
 
         public async UniTask Hide()
         {
+            await bestiaryScreenPresenter.Hide();
             await shopView.Hide();
         }
-        
+
         private void OnNewTileAdd(TileConfig tileConfig)
         {
             AddTile(tileConfig);
@@ -115,6 +124,11 @@ namespace App.Scripts.Scenes.Gameplay.Features.Screens.Shop.Views.ShopViews
             {
                 item.Value.Cleanup();
             }
+        }
+
+        private void OnInfoButtonClicked()
+        {
+            bestiaryScreenPresenter.Show().Forget();
         }
     }
 }
