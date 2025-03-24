@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using App.Scripts.Features.UI.PairedTexts;
 using App.Scripts.Modules.Localization;
@@ -20,6 +19,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.TasksSystem.View
         [SerializeField] private PairedText progressText;
         [SerializeField] private Slider progressSlider;
 
+        [Header("Rewards")]
+        [SerializeField] private GameObject rewardsPanel;
         [SerializeField] private int maxRewards = 3;
         [SerializeField] private TMPLocalizer rewardsText;
         [SerializeField] private RewardElement rewardElementPrefab;
@@ -58,6 +59,12 @@ namespace App.Scripts.Scenes.Gameplay.Features.TasksSystem.View
         {
             Default();
             var rewards = GetRewardsData(config);
+            if (rewards.Count <= 0)
+            {
+                return;
+            }
+            
+            rewardsPanel.SetActive(true);
             foreach (var reward in rewards)
             {
                 var element = Instantiate(rewardElementPrefab, rewardElementContainer);
@@ -89,6 +96,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.TasksSystem.View
 
         private void Default()
         {
+            rewardsPanel.SetActive(false);
             foreach (Transform child in rewardElementContainer)
             {
                 Destroy(child.gameObject);

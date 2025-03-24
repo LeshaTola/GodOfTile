@@ -38,9 +38,9 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
         public override async UniTask Enter()
         {
             await base.Enter();
-            initializeService.Initialize();
             cameraSwitcher.SwitchCamera(cameraId);
             savesController.Load();
+            initializeService.Initialize();
             tasksProvider.FillTasks();
             await StateMachine.ChangeState(StatesIds.GAMEPLAY_STATE);
         }

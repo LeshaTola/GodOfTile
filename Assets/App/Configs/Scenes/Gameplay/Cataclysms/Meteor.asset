@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70d460fbe2574973a4b1c3a4e1a486f5, type: 3}
   m_Name: Meteor
   m_EditorClassIdentifier: 
+  <Sprite>k__BackingField: {fileID: 21300000, guid: 6d4eedf9d764c2d4d9570c5c67a8dd94,
+    type: 3}
   <Prefab>k__BackingField: {fileID: 2165904132656122635, guid: 7e34a6cd4d4be3445983184b9cf4308e,
     type: 3}

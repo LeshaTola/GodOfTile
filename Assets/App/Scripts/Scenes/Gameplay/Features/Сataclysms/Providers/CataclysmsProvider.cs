@@ -21,6 +21,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Сataclysms.Providers
         private readonly IGridProvider gridProvider;
         private readonly ITimeProvider timeProvider;
 
+        private CataclysmData cataclysmData;
         private float timer;
 
         public CataclysmsProvider(CataclysmFactory cataclysmFactory, CataclysmsProviderConfig config,
@@ -34,6 +35,10 @@ namespace App.Scripts.Scenes.Gameplay.Features.Сataclysms.Providers
 
         public void Initialize()
         {
+            if (cataclysmData == null)
+            {
+                GetCataclysm();
+            }
             ResetTimer();
         }
 
@@ -43,6 +48,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Сataclysms.Providers
             if (timer <= 0)
             {
                 ResetTimer();
+                GetCataclysm();
                 ApplyCataclism();
             }
             OnTimerChanged?.Invoke(timer);
@@ -54,16 +60,23 @@ namespace App.Scripts.Scenes.Gameplay.Features.Сataclysms.Providers
 
         private void ApplyCataclism()
         {
-            var targetTilePosition = GetTargetTilePosition();
-            if (targetTilePosition == default)
+            if (cataclysmData.TargetPosition == default)
             {
                 return;
             }
+            var catoclism = cataclysmFactory.Get(cataclysmData.Cataclysm);
+            catoclism.Attack(cataclysmData.TargetPosition);
+        }
 
+        private void GetCataclysm()
+        {
             var configCataclysm = config.Cataclysms[Random.Range(0, config.Cataclysms.Count)];
-            var catoclism = cataclysmFactory.Get(configCataclysm);
             OnCataclysmChanged?.Invoke(configCataclysm);
-            catoclism.Attack(targetTilePosition);
+            cataclysmData = new()
+            {
+                Cataclysm = configCataclysm,
+                TargetPosition = GetTargetTilePosition()
+            };
         }
 
         private Vector2Int GetTargetTilePosition()
@@ -85,5 +98,12 @@ namespace App.Scripts.Scenes.Gameplay.Features.Сataclysms.Providers
         {
             timer = config.Cooldown;
         }
+    }
+
+    public class CataclysmData
+    {
+        public CataclysmConfig Cataclysm;
+        public Vector2Int TargetPosition;
+        
     }
 }

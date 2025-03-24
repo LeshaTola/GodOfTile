@@ -22,7 +22,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Collection
 
             foreach (var tile in config.StartTiles)
             {
-                Collection.Add(tile);
+                AddIfNotContains(tile);
             }
         }
 
@@ -30,29 +30,29 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Collection
 
         public event Action<TileConfig> OnNewTileAdd;
 
-        public void AddTile(TileConfig tileConfig)
-        {
-            Collection.Add(tileConfig);
-            OnNewTileAdd?.Invoke(tileConfig);
-        }
-
         public void AddIfNotContains(TileConfig tileConfig)
         {
             if (Collection
                     .FirstOrDefault(x => x.Id.Equals(tileConfig.Id)) == null)
             {
-                AddTile(Object.Instantiate(tileConfig));
+                AddTile(tileConfig);
             }
         }
 
         public void AddIfNotContainsById(string id)
         {
-            if (tilesDatabase.Configs.ContainsKey(id))
+            if (tilesDatabase.Configs.TryGetValue(id, out var tileConfig))
             {
-                Collection.Add(tilesDatabase.Configs[id]);
+                AddIfNotContains(tileConfig);
                 return;
             }
             Debug.LogWarning($"Can't add tile with id: {id}");
+        }
+
+        private void AddTile(TileConfig tileConfig)
+        {
+            Collection.Add(Object.Instantiate(tileConfig));
+            OnNewTileAdd?.Invoke(tileConfig);
         }
     }
     

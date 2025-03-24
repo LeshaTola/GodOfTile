@@ -57,7 +57,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Shop.Systems
             tileCollectionProvider.OnNewTileAdd -= NewTileAdded;
         }
 
-
         private void NewTileAdded(TileConfig tileConfig)
         {
             OnNewTileAdd?.Invoke(tileConfig);
