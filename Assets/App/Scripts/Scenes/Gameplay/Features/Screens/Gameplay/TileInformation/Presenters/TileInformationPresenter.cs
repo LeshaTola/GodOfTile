@@ -4,7 +4,9 @@ using App.Scripts.Modules.Localization;
 using App.Scripts.Modules.StateMachine.Services.CleanupService;
 using App.Scripts.Modules.StateMachine.Services.InitializeService;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCreation;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.TileSystemUIProvider;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.General;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -12,36 +14,45 @@ namespace App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.TileInformation.
 {
     public class TileInformationPresenter: IInitializable, ICleanupable
     {
-        private TileInformationView view;
-        private ILocalizationSystem localizationSystem;
-        private ITileSystemUIProvidersFactory tileSystemUIProvidersFactory;
+        private readonly TileInformationView view;
+        private readonly ILocalizationSystem localizationSystem;
+        private readonly ITileSystemUIProvidersFactory tileSystemUIProvidersFactory;
+        private readonly ITilesCreationService tilesCreationService;
         
         private CancellationTokenSource cts;
+        private Tile tile;
 
-        public TileInformationPresenter(
-            TileInformationView view,
+        public TileInformationPresenter(TileInformationView view,
             ILocalizationSystem localizationSystem,
-            ITileSystemUIProvidersFactory tileSystemUIProvidersFactory)
+            ITileSystemUIProvidersFactory tileSystemUIProvidersFactory,
+            ITilesCreationService tilesCreationService)
         {
             this.view = view;
             this.localizationSystem = localizationSystem;
             this.tileSystemUIProvidersFactory = tileSystemUIProvidersFactory;
+            this.tilesCreationService = tilesCreationService;
         }
 
         public void Initialize()
         {
             view.Initialize(localizationSystem);
+            
             view.OnCloseButtonClicked += Cancel;
+            view.OnDeleteButtonClicked += DestroyTile;
         }
 
         public void Cleanup()
         {
             view.Cleanup();
+            
             view.OnCloseButtonClicked -= Cancel;
+            view.OnDeleteButtonClicked -= DestroyTile;
         }
         
-        public void Setup(TileConfig tileConfig)
+        public void Setup(Tile tile)
         {
+            this.tile = tile;
+            var tileConfig = this.tile.Config;
             var systemUIs 
                 = tileConfig.ActiveSystems.Select(
                         system => 
@@ -81,6 +92,12 @@ namespace App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.TileInformation.
             }
             
             cts.Cancel();
+        }
+
+        private void DestroyTile()
+        {
+            tilesCreationService.DestroyTile(tile.Position);
+            Cancel();
         }
         
         private async UniTask WaitForButtonPress(CancellationToken token)

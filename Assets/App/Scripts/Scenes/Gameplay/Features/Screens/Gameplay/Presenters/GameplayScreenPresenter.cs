@@ -41,12 +41,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.Presenters
             stateTransferPresenter.Cleanup();
             tileInformationPresenter.Cleanup();
         }
-
-        public async UniTask ShowTileInformation(TileConfig tileConfig)
-        {
-            tileInformationPresenter.Setup(tileConfig);
-            await tileInformationPresenter.Show();
-        }
         
         public async UniTask Show()
         {

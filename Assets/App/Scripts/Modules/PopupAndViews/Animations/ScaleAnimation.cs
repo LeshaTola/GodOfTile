@@ -9,18 +9,18 @@ namespace App.Scripts.Modules.PopupAndViews.Animations
     public class ScaleAnimation: IAnimation
     {
         [FoldoutGroup("Show")]
-        [SerializeField] private float showAnimationTime = 0.3f;
+        [SerializeField] protected float showAnimationTime = 0.3f;
         
         [FoldoutGroup("Show")]
-        [SerializeField] private Ease showEase = Ease.OutBack;
+        [SerializeField] protected Ease showEase = Ease.OutBack;
 
         [FoldoutGroup("Hide")]
-        [SerializeField] private float hideAnimationTime= 0.3f;
+        [SerializeField] protected float hideAnimationTime= 0.3f;
 
         [FoldoutGroup("Hide")]
-        [SerializeField] private Ease hideEase = Ease.InBack;
+        [SerializeField] protected Ease hideEase = Ease.InBack;
 
-        public async UniTask PlayShowAnimation(GameObject target, CancellationToken cancellationToken)
+        public virtual async UniTask PlayShowAnimation(GameObject target, CancellationToken cancellationToken)
         {
             target.transform.localScale = Vector3.zero;
             Tween tween = target.transform.DOScale(1, showAnimationTime);
@@ -28,7 +28,7 @@ namespace App.Scripts.Modules.PopupAndViews.Animations
             await tween.SetEase(showEase).ToUniTask(cancellationToken: cancellationToken);
         }
 
-        public async UniTask PlayHideAnimation(GameObject target, CancellationToken cancellationToken)
+        public virtual async UniTask PlayHideAnimation(GameObject target, CancellationToken cancellationToken)
         {
             target.transform.localScale = Vector3.one;
             Tween tween = target.transform.DOScale(0, hideAnimationTime);

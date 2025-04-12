@@ -58,7 +58,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Selection
                 selectedTile = tile;
                 selectedTile.Visual.StartGlow();
 
-                tileInformationPresenter.Setup(tile.Config);
+                tileInformationPresenter.Setup(tile);
                 await tileInformationPresenter.ShowUntil(cts.Token);
                 
                 Cleanup();
@@ -74,7 +74,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Selection
             selectedTile.Visual.StartGlow();
             effectorVisualProvider.Setup(tile);
 
-            tileInformationPresenter.Setup(tile.Config);
+            tileInformationPresenter.Setup(tile);
         }
 
         public void Cleanup()

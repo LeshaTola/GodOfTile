@@ -126,10 +126,13 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
         public async void DestroyTile(Vector2Int gridPosition)
         {
             var tile = gridProvider.Grid[gridPosition.x, gridPosition.y];
-            systemsService.StopSystems(tile.Config);
-            await PlayDestroyVFX(tile);
-            Object.Destroy(tile.gameObject);
-            gridProvider.Grid[gridPosition.x, gridPosition.y] = null;
+            if (tile)
+            {
+                systemsService.StopSystems(tile.Config);
+                await PlayDestroyVFX(tile);
+                Object.Destroy(tile.gameObject);
+                gridProvider.Grid[gridPosition.x, gridPosition.y] = null;
+            }
         }
 
         public async UniTask RotateActiveTile()

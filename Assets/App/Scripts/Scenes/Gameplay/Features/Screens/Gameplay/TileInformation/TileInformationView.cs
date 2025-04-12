@@ -14,6 +14,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.TileInformation
     public class TileInformationView:AnimatedView
     {
         public event Action OnCloseButtonClicked; 
+        public event Action OnDeleteButtonClicked; 
         
         [SerializeField] private TMPLocalizer header;
         [SerializeField] private Image tileImage;
@@ -28,6 +29,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.TileInformation
         private TMPLocalizer description;
 
         [SerializeField] private Button closeButton;
+        [SerializeField] private Button destroyButton;
         [SerializeField] private RectTransform tileSystemsContainer;
         
         private List<SystemUI> systems = new ();
@@ -41,6 +43,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Screens.Gameplay.TileInformation
             description.Initialize(localizationSystem);
 
             closeButton.onClick.AddListener(()=>OnCloseButtonClicked?.Invoke());
+            destroyButton.onClick.AddListener(()=>OnDeleteButtonClicked?.Invoke());
         }
         
         public void Setup(TileConfig tileConfig, List<SystemUI> systemUIs)
