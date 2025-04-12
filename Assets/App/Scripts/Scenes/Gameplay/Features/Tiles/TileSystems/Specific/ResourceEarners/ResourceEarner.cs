@@ -26,9 +26,9 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Resour
 
     public class ResourceEarner : TileSystem
     {
-        [SerializeField] private ResourceEarnerSystemData data;
+        [SerializeField] private readonly ResourceEarnerSystemData data;
 
-        private IResourceEarnerService resourceEarnerService;
+        private readonly IResourceEarnerService resourceEarnerService;
 
         public ResourceEarner(Tile parentTile, ResourceEarnerSystemData data,
             IResourceEarnerService resourceEarnerService) : base(parentTile)

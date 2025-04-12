@@ -33,6 +33,9 @@ MonoBehaviour:
     - {fileID: 11400000, guid: ef2308b458e8225429088f21bec26b48, type: 2}
     - {fileID: 11400000, guid: d8d0e6c09e09a3a47a856d670661c4cb, type: 2}
     - {fileID: 11400000, guid: 77cef3527a87a0440a8cf51f2ea33185, type: 2}
+    - {fileID: 11400000, guid: 607803b04fbf7724ea6a29c044534396, type: 2}
+    - {fileID: 11400000, guid: 78b8213c5d21532439e6dfaab446c0a4, type: 2}
+    - {fileID: 11400000, guid: c2cf288c151c068438a59441b64e45e2, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -51,7 +54,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 17
+      Data: 20
     - Name: 
       Entry: 7
       Data: 
@@ -257,6 +260,42 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: ExitTileConfig
+    - Name: $v
+      Entry: 10
+      Data: 17
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: PlayTileConfig
+    - Name: $v
+      Entry: 10
+      Data: 18
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: SettingsTileConfig
+    - Name: $v
+      Entry: 10
+      Data: 19
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
       Entry: 13
       Data: 
     - Name: 
@@ -280,3 +319,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ef2308b458e8225429088f21bec26b48, type: 2}
   - {fileID: 11400000, guid: d8d0e6c09e09a3a47a856d670661c4cb, type: 2}
   - {fileID: 11400000, guid: 77cef3527a87a0440a8cf51f2ea33185, type: 2}
+  - {fileID: 11400000, guid: 607803b04fbf7724ea6a29c044534396, type: 2}
+  - {fileID: 11400000, guid: 78b8213c5d21532439e6dfaab446c0a4, type: 2}
+  - {fileID: 11400000, guid: c2cf288c151c068438a59441b64e45e2, type: 2}

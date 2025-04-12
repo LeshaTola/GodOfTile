@@ -24,7 +24,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Resour
                 return;
             }
 
-            var info = viewModule.SystemData.AmountPerSecond.ToString() + postInfoText;
+            var info = viewModule.SystemData.AmountPerSecond.ToString("0.00") + postInfoText;
             resourceInfoUI.Setup(viewModule.SystemData.Resource, info);
             resourceInfoUI.Translate();
         }

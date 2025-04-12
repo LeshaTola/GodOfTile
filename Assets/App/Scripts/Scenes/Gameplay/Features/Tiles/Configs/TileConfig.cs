@@ -39,7 +39,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Configs
         [SerializeField] private List<ResourceCount> cost;
         [SerializeField] private List<TileSystem> systems;
 
-        private List<TileSystem> activeSystems;
+        private List<TileSystem> activeSystems = new();
 
         public Vector2Int Size => size;
         public string Type => type;

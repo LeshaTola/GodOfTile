@@ -29,17 +29,20 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.Tiles
             this.systemsFactory = systemsFactory;
         }
 
-        public Tile GetTile(string id)
+        public Tile GetTile(string id, bool isActive = true)
         {
-            return GetTile(database.Configs[id]);
+            return GetTile(database.Configs[id],isActive);
         }
 
-        public Tile GetTile(TileConfig tileConfig)
+        public Tile GetTile(TileConfig tileConfig, bool isActive = true)
         {
             var tile = diContainer.InstantiatePrefabForComponent<Tile>(tilePrefab, container);
             var config = Object.Instantiate(tileConfig);
-            var systems = systemsFactory.GetSystems(config.Systems, tile);
-            config.ActiveSystems = systems;
+            if (isActive)
+            {
+                var systems = systemsFactory.GetSystems(config.Systems, tile);
+                config.ActiveSystems = systems;
+            }
             tile.Initialize(config);
             return tile;
         }

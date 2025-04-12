@@ -12,12 +12,12 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
 
         void MoveActiveTile(Vector2Int gridPosition);
         UniTask RotateActiveTile();
-        void PlaceActiveTile();
+        void PlaceActiveTile(bool isActive = true, bool withUpdate = false);
         void StartPlacingTile();
         void StopPlacingTile();
         MapState GetState();
         void SetState(MapState state);
-        void PlaceTile(Vector2Int gridPosition, TileConfig tile);
+        void PlaceTile(Vector2Int gridPosition, TileConfig tile, bool isActive, bool withUpdate);
         void DestroyTile(Vector2Int gridPosition);
     }
 }

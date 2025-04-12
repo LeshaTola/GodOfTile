@@ -5,6 +5,7 @@ using App.Scripts.Modules.StateMachine;
 using App.Scripts.Modules.StateMachine.Factories.States;
 using App.Scripts.Modules.StateMachine.States.General;
 using App.Scripts.Scenes.Gameplay.Features.Shop.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Configs;
 using App.Scripts.Scenes.MainMenu.StateMachines.Ids;
 using App.Scripts.Scenes.MainMenu.StateMachines.States;
 using Sirenix.OdinInspector;
@@ -15,7 +16,7 @@ namespace App.Scripts.Scenes.MainMenu.Bootstrap
 {
     public class StateMachineInstaller : MonoInstaller
     {
-        [SerializeField] private CollectionConfig startTiles;
+        [SerializeField] private ChunkFilling startTiles;
         [SerializeField] private string sceneName = "GamePlay";
 
         [SerializeField] private CamerasDatabase camerasDatabase;

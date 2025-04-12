@@ -5,7 +5,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.Tiles
 {
     public interface ITilesFactory
     {
-        public Tile GetTile(string id);
-        public Tile GetTile(TileConfig tileConfig);
+        public Tile GetTile(string id, bool isActive = true);
+        public Tile GetTile(TileConfig tileConfig, bool isActive = true);
     }
 }

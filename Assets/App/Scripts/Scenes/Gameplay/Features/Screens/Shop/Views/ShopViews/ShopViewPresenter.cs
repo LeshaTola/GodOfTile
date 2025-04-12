@@ -25,7 +25,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Screens.Shop.Views.ShopViews
         private readonly ISoundProvider soundProvider;
 
 
-        private Dictionary<TileConfig, ShopItemPresenter> items = new();
+        private Dictionary<string, ShopItemPresenter> items = new();
 
         public ShopViewPresenter(
             ShopView shopView,
@@ -98,7 +98,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Screens.Shop.Views.ShopViews
 
         private void AddTile(TileConfig tileConfig)
         {
-            if (items.ContainsKey(tileConfig))
+            if (items.ContainsKey(tileConfig.Id))
             {
                 return;
             }
@@ -106,7 +106,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Screens.Shop.Views.ShopViews
             var itemPresenter = itemsPresenterFactory.GetPresenter(view, tileConfig);
             itemPresenter.Initialize(costWidgetPresenter);
             itemPresenter.Setup();
-            items.Add(tileConfig, itemPresenter);
+            items.Add(tileConfig.Id, itemPresenter);
             shopView.AddItemView(view);
         }
 

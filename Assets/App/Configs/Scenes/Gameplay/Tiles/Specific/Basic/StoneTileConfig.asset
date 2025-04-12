@@ -52,7 +52,7 @@ MonoBehaviour:
         Assembly-CSharp
     - Name: earningAmountMultiplier
       Entry: 4
-      Data: 1.2
+      Data: 1.1
     - Name: systemUIProvider
       Entry: 7
       Data: 5|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effects.Specific.ChangeResourceEarningEffect.UI.Providers.ChangeResourceEarningEffectorUIProvider,

@@ -5,6 +5,7 @@ using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Providers;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Providers.Effects;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.ChunkFilling;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCreation;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.Update;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.Tiles;
@@ -38,6 +39,9 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap.Tile
             BindTileSelectionProvider();
             BindTileCollectionProvider();
             BindActiveTileProvider();
+            
+            Container.Bind<ChunkFillingService>().AsSingle();
+            Container.BindInstance(tilesDatabase).AsSingle();
         }
 
         private void BindTileCreationEffectsProviders()

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using App.Scripts.Modules.ObjectPool.KeyPools.Configs;
 using App.Scripts.Modules.Sounds;
 using Sirenix.OdinInspector;
@@ -26,24 +27,26 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Configs
         [ShowIf("@particlesDatabase != null")]
         [ValueDropdown(nameof(GetParticleKeys))]
         private string updateParticleKey;
-        
+
         [Header("Audio")]
         [SerializeField] private AudioDatabase audioDatabase;
+
         [field: ValueDropdown(nameof(GetKeys))]
         [field: SerializeField] public string CreateSoundKey { get; private set; }
 
         [field: ValueDropdown(nameof(GetKeys))]
         [field: SerializeField] public string UpdateSoundKey { get; private set; }
-        
+
         [field: ValueDropdown(nameof(GetKeys))]
         [field: SerializeField] public string DestroySoundKey { get; private set; }
-        
+
         public List<string> GetKeys()
         {
             if (audioDatabase == null)
             {
                 return null;
             }
+
             return audioDatabase.GetKeys();
         }
 
@@ -62,4 +65,13 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Configs
             return new List<string>(particlesDatabase.Particles.Keys);
         }
     }
+
+    [Serializable]
+    public class TileWithPosition
+    {
+        public string TileId;
+        public Vector2Int Position;
+        public bool IsActive = true;
+    }
+
 }

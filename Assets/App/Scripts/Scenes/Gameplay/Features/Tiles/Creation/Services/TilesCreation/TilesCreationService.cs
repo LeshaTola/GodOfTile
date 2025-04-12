@@ -25,15 +25,15 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
     {
         public event Action<Vector2Int, Tile> OnTilePlaced;
 
-        private IGridProvider gridProvider;
-        private ITilesFactory tileFactory;
-        private IActiveTileProvider activeTileProvider;
-        private ITileCreationEffectsProvider effectsService;
-        private ITilesUpdateService updateService;
-        private ISystemsService systemsService;
+        private readonly IGridProvider gridProvider;
+        private readonly ITilesFactory tileFactory;
+        private readonly IActiveTileProvider activeTileProvider;
+        private readonly ITileCreationEffectsProvider effectsService;
+        private readonly ITilesUpdateService updateService;
+        private readonly ISystemsService systemsService;
         private readonly ISoundProvider soundProvider;
-        private IEffectorVisualProvider effectorVisualProvider;
-        private TilesCreationConfig config;
+        private readonly IEffectorVisualProvider effectorVisualProvider;
+        private readonly TilesCreationConfig config;
 
         private Tile activeTile;
 
@@ -64,12 +64,12 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
 
         public void StartPlacingTile()
         {
-            if (activeTile != null || activeTileProvider.ActiveTileConfig == null)
+            if (activeTile || !activeTileProvider.ActiveTileConfig)
             {
                 return;
             }
 
-            activeTile = tileFactory.GetTile(activeTileProvider.ActiveTileConfig);
+            SetActiveTile(activeTileProvider.ActiveTileConfig);
         }
 
         public void StopPlacingTile()
@@ -84,30 +84,16 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
             activeTile = null;
         }
 
-        public void PlaceActiveTile()
+        public void PlaceActiveTile(bool isActive = true, bool withUpdate = true)
         {
-            if (activeTile == null || !gridProvider.IsValid(activeTile))
+            if (!activeTile || !gridProvider.IsValid(activeTile))
             {
                 return;
             }
 
             var tileBuffer = activeTile;
             activeTile = null;
-            systemsService.StartSystems(tileBuffer.Config);
-
-            PlayCreationVFX(tileBuffer).Forget();
-            OnTilePlaced?.Invoke(tileBuffer.Position, tileBuffer);
-            
-            for (var x = 0; x < tileBuffer.Config.Size.x; x++)
-            {
-                for (var y = 0; y < tileBuffer.Config.Size.y; y++)
-                {
-                    Vector2Int tileCoordinate =
-                        new(tileBuffer.Position.x + x, tileBuffer.Position.y + y);
-                    gridProvider.Grid[tileCoordinate.x, tileCoordinate.y] = tileBuffer;
-                    updateService.UpdateConnectedTiles(tileCoordinate);
-                }
-            }
+            PlaceTile(tileBuffer, isActive,withUpdate);
         }
 
         public void MoveActiveTile(Vector2Int gridPosition)
@@ -129,6 +115,23 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
             effectorVisualProvider.Setup(activeTile);
         }
 
+        public void PlaceTile(Vector2Int gridPosition, TileConfig tile, bool isActive, bool withUpdate)
+        {
+            SetActiveTile(tile, isActive);
+            MoveActiveTile(gridPosition);
+            PlaceActiveTile(isActive,  withUpdate);
+            StopPlacingTile();
+        }
+
+        public async void DestroyTile(Vector2Int gridPosition)
+        {
+            var tile = gridProvider.Grid[gridPosition.x, gridPosition.y];
+            systemsService.StopSystems(tile.Config);
+            await PlayDestroyVFX(tile);
+            Object.Destroy(tile.gameObject);
+            gridProvider.Grid[gridPosition.x, gridPosition.y] = null;
+        }
+
         public async UniTask RotateActiveTile()
         {
             if (activeTile == null)
@@ -142,6 +145,36 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
         public void Cleanup()
         {
             activeTileProvider.OnActiveTileChanged -= OnActiveTileChanged;
+        }
+
+        private void PlaceTile(Tile tileBuffer, bool isActive = true, bool withUpdate = true)
+        {
+            if (isActive)
+            {
+                systemsService.StartSystems(tileBuffer.Config);
+            }
+
+            PlayCreationVFX(tileBuffer).Forget();
+            OnTilePlaced?.Invoke(tileBuffer.Position, tileBuffer);
+            
+            OcupiedPosition(tileBuffer,withUpdate);
+        }
+
+        private void OcupiedPosition(Tile tileBuffer, bool withUpdate)
+        {
+            for (var x = 0; x < tileBuffer.Config.Size.x; x++)
+            {
+                for (var y = 0; y < tileBuffer.Config.Size.y; y++)
+                {
+                    Vector2Int tileCoordinate =
+                        new(tileBuffer.Position.x + x, tileBuffer.Position.y + y);
+                    gridProvider.Grid[tileCoordinate.x, tileCoordinate.y] = tileBuffer;
+                    if (withUpdate)
+                    {
+                        updateService.UpdateConnectedTiles(tileCoordinate);
+                    }
+                }
+            }
         }
 
         private async UniTask PlayCreationVFX(Tile tile)
@@ -160,14 +193,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
 
         private void ChangeState()
         {
-            if (gridProvider.IsValid(activeTile))
-            {
-                activeTile.Visual.SetState(TileState.Correct);
-            }
-            else
-            {
-                activeTile.Visual.SetState(TileState.Wrong);
-            }
+            activeTile.Visual.SetState(gridProvider.IsValid(activeTile) ? TileState.Correct : TileState.Wrong);
         }
 
         private void OnActiveTileChanged()
@@ -225,17 +251,9 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
             StopPlacingTile();
         }
 
-        public void PlaceTile(Vector2Int gridPosition, TileConfig tile)
+        private void SetActiveTile(TileConfig activeTileConfig, bool isActive = true)
         {
-            PlayDestroyVFX(activeTile).Forget();
-        }
-
-        public async void DestroyTile(Vector2Int gridPosition)
-        {
-            var tile = gridProvider.Grid[gridPosition.x, gridPosition.y];
-            await PlayDestroyVFX(tile);
-            Object.Destroy(tile.gameObject);
-            gridProvider.Grid[gridPosition.x, gridPosition.y] = null;
+            activeTile = tileFactory.GetTile(activeTileConfig, isActive);
         }
     }
 
