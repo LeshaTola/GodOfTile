@@ -73,6 +73,18 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Configs
             return new List<string>(tileTypeDatabase.Types.Keys);
         }
 
+        public void Setup(TileTypeDatabase tileTypeDatabase, GameObject building, string type, Sprite tileImage, string tileName, string description, List<ResourceCount> cost, List<TileSystem> systems)
+        {
+            this.tileTypeDatabase = tileTypeDatabase;
+            this.building = building;
+            this.type = type;
+            this.tileImage = tileImage;
+            this.tileName = tileName;
+            this.description = description;
+            this.cost = cost;
+            this.systems = systems;
+        }
+
         public T GetSystem<T>() where T: TileSystem
         {
             var type = typeof(T);
