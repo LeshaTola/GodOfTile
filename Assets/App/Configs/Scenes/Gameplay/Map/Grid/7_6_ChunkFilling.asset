@@ -1,0 +1,145 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4db3bb73f0841608a2426424a4ab395, type: 3}
+  m_Name: 7_6_ChunkFilling
+  m_EditorClassIdentifier: 
+  <ChunkId>k__BackingField: {x: 7, y: 6}
+  <Tiles>k__BackingField:
+  - TileId: GrassTileConfig
+    Position: {x: 9, y: 9}
+    IsActive: 1
+  - TileId: FieldTileConfig
+    Position: {x: 9, y: 8}
+    IsActive: 1
+  - TileId: FieldTileConfig
+    Position: {x: 9, y: 7}
+    IsActive: 1
+  - TileId: FieldTileConfig
+    Position: {x: 9, y: 6}
+    IsActive: 1
+  - TileId: GrassTileConfig
+    Position: {x: 9, y: 5}
+    IsActive: 1
+  - TileId: SandTileConfig
+    Position: {x: 9, y: 2}
+    IsActive: 1
+  - TileId: SandTileConfig
+    Position: {x: 9, y: 1}
+    IsActive: 1
+  - TileId: PyramidConfig
+    Position: {x: 9, y: 0}
+    IsActive: 1
+  - TileId: GrassTileConfig
+    Position: {x: 8, y: 9}
+    IsActive: 1
+  - TileId: FieldTileConfig
+    Position: {x: 8, y: 8}
+    IsActive: 1
+  - TileId: MillTileConfig
+    Position: {x: 8, y: 7}
+    IsActive: 1
+  - TileId: FieldTileConfig
+    Position: {x: 8, y: 6}
+    IsActive: 1
+  - TileId: SandTileConfig
+    Position: {x: 8, y: 1}
+    IsActive: 1
+  - TileId: SandTileConfig
+    Position: {x: 8, y: 0}
+    IsActive: 1
+  - TileId: GrassTileConfig
+    Position: {x: 7, y: 9}
+    IsActive: 1
+  - TileId: FieldTileConfig
+    Position: {x: 7, y: 8}
+    IsActive: 1
+  - TileId: FieldTileConfig
+    Position: {x: 7, y: 7}
+    IsActive: 1
+  - TileId: FieldTileConfig
+    Position: {x: 7, y: 6}
+    IsActive: 1
+  - TileId: SandTileConfig
+    Position: {x: 7, y: 0}
+    IsActive: 1
+  - TileId: GrassTileConfig
+    Position: {x: 6, y: 9}
+    IsActive: 1
+  - TileId: GrassTileConfig
+    Position: {x: 6, y: 8}
+    IsActive: 1
+  - TileId: GrassTileConfig
+    Position: {x: 5, y: 9}
+    IsActive: 1
+  - TileId: StoneTileConfig
+    Position: {x: 4, y: 0}
+    IsActive: 1
+  - TileId: StoneTileConfig
+    Position: {x: 3, y: 1}
+    IsActive: 1
+  - TileId: StoneTileConfig
+    Position: {x: 3, y: 0}
+    IsActive: 1
+  - TileId: ForestTileConfig
+    Position: {x: 2, y: 9}
+    IsActive: 1
+  - TileId: StoneTileConfig
+    Position: {x: 2, y: 2}
+    IsActive: 1
+  - TileId: StoneTileConfig
+    Position: {x: 2, y: 1}
+    IsActive: 1
+  - TileId: StoneTileConfig
+    Position: {x: 2, y: 0}
+    IsActive: 1
+  - TileId: ForestTileConfig
+    Position: {x: 1, y: 9}
+    IsActive: 1
+  - TileId: ForestTileConfig
+    Position: {x: 1, y: 8}
+    IsActive: 1
+  - TileId: StoneTileConfig
+    Position: {x: 1, y: 3}
+    IsActive: 1
+  - TileId: StoneTileConfig
+    Position: {x: 1, y: 2}
+    IsActive: 1
+  - TileId: VulcanoConfig
+    Position: {x: 1, y: 1}
+    IsActive: 1
+  - TileId: MountainsConfig
+    Position: {x: 1, y: 0}
+    IsActive: 1
+  - TileId: ForestTileConfig
+    Position: {x: 0, y: 9}
+    IsActive: 1
+  - TileId: ForestTileConfig
+    Position: {x: 0, y: 8}
+    IsActive: 1
+  - TileId: ForestTileConfig
+    Position: {x: 0, y: 7}
+    IsActive: 1
+  - TileId: StoneTileConfig
+    Position: {x: 0, y: 4}
+    IsActive: 1
+  - TileId: StoneTileConfig
+    Position: {x: 0, y: 3}
+    IsActive: 1
+  - TileId: StoneTileConfig
+    Position: {x: 0, y: 2}
+    IsActive: 1
+  - TileId: MountainsConfig
+    Position: {x: 0, y: 1}
+    IsActive: 1
+  - TileId: MountainsConfig
+    Position: {x: 0, y: 0}
+    IsActive: 1

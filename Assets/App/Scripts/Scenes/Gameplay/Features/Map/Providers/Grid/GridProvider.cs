@@ -10,19 +10,19 @@ namespace App.Scripts.Scenes.Gameplay.Features.Map.Providers.Grid
 {
     public class GridProvider : IGridProvider
     {
-        private GridConfig config;
         private IChunksProvider chunksProvider;
+
+        public GridConfig Config { get; }
+        public Vector2Int GridSize { get; }
+        public Tile[,] Grid { get; }
 
         public GridProvider(GridConfig config, IChunksProvider chunksProvider)
         {
-            this.config = config;
+            this.Config = config;
             this.chunksProvider = chunksProvider;
             GridSize = config.ChunkSize * config.ChunksCount;
             Grid = new Tile[GridSize.x, GridSize.y];
         }
-
-        public Vector2Int GridSize { get; }
-        public Tile[,] Grid { get; }
 
         public List<Vector2Int> GetCoveringTiles(Vector2Int tile)
         {

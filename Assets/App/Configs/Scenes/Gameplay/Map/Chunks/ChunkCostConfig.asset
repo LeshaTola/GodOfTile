@@ -32,17 +32,30 @@ MonoBehaviour:
         Assembly-CSharp]], mscorlib]], mscorlib
     - Name: 
       Entry: 12
-      Data: 5
+      Data: 6
     - Name: 
       Entry: 7
       Data: 1|System.Collections.Generic.List`1[[App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 2|System.Collections.Generic.List`1[[App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
       Data: 5
     - Name: 
       Entry: 7
-      Data: 2|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount, Assembly-CSharp
+      Data: 3|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount, Assembly-CSharp
     - Name: Resource
       Entry: 10
       Data: 0
@@ -54,7 +67,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 3|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount, Assembly-CSharp
+      Data: 4|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount, Assembly-CSharp
     - Name: Resource
       Entry: 10
       Data: 1
@@ -66,7 +79,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 4|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount, Assembly-CSharp
+      Data: 5|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount, Assembly-CSharp
     - Name: Resource
       Entry: 10
       Data: 2
@@ -78,7 +91,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 5|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount, Assembly-CSharp
+      Data: 6|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount, Assembly-CSharp
     - Name: Resource
       Entry: 10
       Data: 3
@@ -90,7 +103,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 6|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount, Assembly-CSharp
+      Data: 7|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount, Assembly-CSharp
     - Name: Resource
       Entry: 10
       Data: 4
@@ -108,29 +121,17 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 7|System.Collections.Generic.List`1[[App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+      Data: 8|System.Collections.Generic.List`1[[App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
       Data: 5
     - Name: 
       Entry: 7
-      Data: 8|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount, Assembly-CSharp
-    - Name: Resource
-      Entry: 10
-      Data: 0
-    - Name: Count
-      Entry: 3
-      Data: 182
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
       Data: 9|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount, Assembly-CSharp
     - Name: Resource
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: Count
       Entry: 3
       Data: 182
@@ -143,6 +144,19 @@ MonoBehaviour:
         Assembly-CSharp
     - Name: Resource
       Entry: 10
+      Data: 1
+    - Name: Count
+      Entry: 3
+      Data: 182
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 11|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+        Assembly-CSharp
+    - Name: Resource
+      Entry: 10
       Data: 2
     - Name: Count
       Entry: 3
@@ -152,7 +166,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 11|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+      Data: 12|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
         Assembly-CSharp
     - Name: Resource
       Entry: 10
@@ -165,7 +179,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 12|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+      Data: 13|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
         Assembly-CSharp
     - Name: Resource
       Entry: 10
@@ -184,14 +198,14 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 13|System.Collections.Generic.List`1[[App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+      Data: 14|System.Collections.Generic.List`1[[App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
       Data: 5
     - Name: 
       Entry: 7
-      Data: 14|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+      Data: 15|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
         Assembly-CSharp
     - Name: Resource
       Entry: 10
@@ -204,7 +218,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 15|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+      Data: 16|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
         Assembly-CSharp
     - Name: Resource
       Entry: 10
@@ -217,7 +231,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 16|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+      Data: 17|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
         Assembly-CSharp
     - Name: Resource
       Entry: 10
@@ -230,7 +244,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 17|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+      Data: 18|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
         Assembly-CSharp
     - Name: Resource
       Entry: 10
@@ -243,7 +257,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 18|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+      Data: 19|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
         Assembly-CSharp
     - Name: Resource
       Entry: 10
@@ -262,14 +276,14 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 19|System.Collections.Generic.List`1[[App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+      Data: 20|System.Collections.Generic.List`1[[App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
       Data: 5
     - Name: 
       Entry: 7
-      Data: 20|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+      Data: 21|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
         Assembly-CSharp
     - Name: Resource
       Entry: 10
@@ -282,7 +296,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 21|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+      Data: 22|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
         Assembly-CSharp
     - Name: Resource
       Entry: 10
@@ -295,7 +309,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 22|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+      Data: 23|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
         Assembly-CSharp
     - Name: Resource
       Entry: 10
@@ -308,7 +322,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 23|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+      Data: 24|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
         Assembly-CSharp
     - Name: Resource
       Entry: 10
@@ -321,7 +335,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 24|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+      Data: 25|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
         Assembly-CSharp
     - Name: Resource
       Entry: 10
@@ -340,14 +354,14 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 25|System.Collections.Generic.List`1[[App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+      Data: 26|System.Collections.Generic.List`1[[App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
       Data: 5
     - Name: 
       Entry: 7
-      Data: 26|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+      Data: 27|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
         Assembly-CSharp
     - Name: Resource
       Entry: 10
@@ -360,7 +374,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 27|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+      Data: 28|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
         Assembly-CSharp
     - Name: Resource
       Entry: 10
@@ -373,7 +387,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 28|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+      Data: 29|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
         Assembly-CSharp
     - Name: Resource
       Entry: 10
@@ -386,7 +400,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 29|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+      Data: 30|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
         Assembly-CSharp
     - Name: Resource
       Entry: 10
@@ -399,7 +413,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 30|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+      Data: 31|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
         Assembly-CSharp
     - Name: Resource
       Entry: 10

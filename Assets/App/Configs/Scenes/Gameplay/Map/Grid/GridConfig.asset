@@ -15,3 +15,5 @@ MonoBehaviour:
   <ChunkSize>k__BackingField: {x: 10, y: 10}
   <StartChunk>k__BackingField: {x: 7, y: 5}
   <ChunksCount>k__BackingField: {x: 15, y: 11}
+  <ChunksFillings>k__BackingField:
+  - {fileID: 11400000, guid: 8350fe08dbe90664b9a95acc5570a564, type: 2}

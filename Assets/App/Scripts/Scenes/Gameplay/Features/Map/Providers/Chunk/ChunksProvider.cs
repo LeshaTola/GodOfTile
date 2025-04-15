@@ -2,7 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using App.Scripts.Scenes.Gameplay.Features.Map.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Configs;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.ChunkFilling;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.General;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Map.Providers.Chunk
@@ -11,9 +14,9 @@ namespace App.Scripts.Scenes.Gameplay.Features.Map.Providers.Chunk
     {
         public event Action<Vector2Int> OnChunkOpened;
 
-        private GridConfig config;
+        private readonly GridConfig config;
 
-        private List<Vector2Int> neigboursDirection = new()
+        private readonly List<Vector2Int> neigboursDirection = new()
         {
             new Vector2Int(1, 0),
             new Vector2Int(-1, 0),

@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Configs;
+using UnityEngine;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Map.Configs
 {
@@ -8,5 +10,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Map.Configs
         [field: SerializeField] public Vector2Int ChunkSize { get; private set; }
         [field: SerializeField] public Vector2Int StartChunk { get; private set; }
         [field: SerializeField] public Vector2Int ChunksCount { get; private set; }
+        [field: SerializeField] public List<ChunkFilling> ChunksFillings { get; private set; }
     }
 }

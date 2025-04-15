@@ -158,9 +158,13 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
             }
 
             PlayCreationVFX(tileBuffer).Forget();
-            OnTilePlaced?.Invoke(tileBuffer.Position, tileBuffer);
             
             OcupiedPosition(tileBuffer,withUpdate);
+            
+            if (withUpdate)
+            {
+                OnTilePlaced?.Invoke(tileBuffer.Position, tileBuffer);
+            }
         }
 
         private void OcupiedPosition(Tile tileBuffer, bool withUpdate)

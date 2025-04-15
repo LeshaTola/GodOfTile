@@ -36,13 +36,39 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.ChunkFill
         
         public async UniTask GenerateChankAsync(Configs.ChunkFilling chunkFilling)
         {
-            var startPos = gridProvider.GridSize * chunkFilling.ChunkId;
+            var startPos = gridProvider.Config.ChunkSize * chunkFilling.ChunkId;
             
             foreach (var tile in chunkFilling.Tiles)
             {
                 await UniTask.Delay(millisecondsDelay);
                 PlaceTile(tile, startPos);
             }
+        }
+        
+        public async UniTask GenerateChankAsync(Vector2Int chunkId)
+        {
+            var filling = GetFillingConfig(chunkId);
+            if (filling == null)
+            {
+                return;
+            }
+            await GenerateChankAsync(filling);
+        }
+
+        private Configs.ChunkFilling GetFillingConfig(Vector2Int chunkId)
+        {
+            var config = gridProvider.Config;
+            Configs.ChunkFilling filling = null;
+            foreach (var chunkFilling in config.ChunksFillings)
+            {
+                if (chunkFilling.ChunkId == chunkId)
+                {
+                    filling = chunkFilling;
+                    break;
+                }
+            }
+
+            return filling;
         }
 
         private void PlaceTile(TileWithPosition tile, Vector2Int startPos)
