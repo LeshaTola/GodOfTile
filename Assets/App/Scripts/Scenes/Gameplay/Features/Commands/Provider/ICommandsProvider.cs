@@ -5,5 +5,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Commands.Provider
     public interface ICommandsProvider
     {
         T GetCommand<T>() where T : ICommand;
+        ICommand GetCommand(ICommand command);
     }
 }

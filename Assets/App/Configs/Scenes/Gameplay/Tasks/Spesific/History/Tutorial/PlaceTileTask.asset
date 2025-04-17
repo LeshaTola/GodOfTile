@@ -16,7 +16,9 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 11400000, guid: d1457a3ec05187d4e828a5f43be2b55a, type: 2}
+    - {fileID: 11400000, guid: fb29e5d365a8393459263e8f32fbb418, type: 2}
+    - {fileID: 21300000, guid: 73b6abcd0792fbe4ba6d395abaa08259, type: 3}
+    - {fileID: 11400000, guid: 64bb573203a686f499673ebb13716ecf, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -51,32 +53,103 @@ MonoBehaviour:
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 2
     - Name: 
       Entry: 7
-      Data: 3|App.Scripts.Scenes.Gameplay.Features.TasksSystem.CompleteActions.AddResources,
+      Data: 3|App.Scripts.Scenes.Gameplay.Features.TasksSystem.CompleteActions.OpenTileAction,
         Assembly-CSharp
     - Name: rewardResources
       Entry: 7
-      Data: 4|System.Collections.Generic.List`1[[App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount,
+      Data: 4|System.Collections.Generic.List`1[[App.Scripts.Scenes.Gameplay.Features.Tiles.Configs.TileConfig,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
-      Entry: 7
-      Data: 5|App.Scripts.Scenes.Gameplay.Features.Inventory.DTO.ResourceCount, Assembly-CSharp
-    - Name: Resource
       Entry: 10
       Data: 0
-    - Name: Count
-      Entry: 3
-      Data: 5
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 5|App.Scripts.Scenes.Gameplay.Features.TasksSystem.CompleteActions.ShowTutorialAction,
+        Assembly-CSharp
+    - Name: tutorialData
+      Entry: 7
+      Data: 6|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialPopupData,
+        Assembly-CSharp
+    - Name: Header
+      Entry: 1
+      Data: Alchemy
+    - Name: Tutorials
+      Entry: 7
+      Data: 7|System.Collections.Generic.List`1[[App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 8|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData, Assembly-CSharp
+    - Name: Image
+      Entry: 10
+      Data: 1
+    - Name: Gif
+      Entry: 6
+      Data: 
+    - Name: Mesage
+      Entry: 1
+      Data: The central tile has 8 neighbors.
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 9|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData, Assembly-CSharp
+    - Name: Image
+      Entry: 6
+      Data: 
+    - Name: Gif
+      Entry: 6
+      Data: 
+    - Name: Mesage
+      Entry: 1
+      Data: Based on these neighbors, the central tile can be transformed into another
+        one.
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 10|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData, Assembly-CSharp
+    - Name: Image
+      Entry: 6
+      Data: 
+    - Name: Gif
+      Entry: 10
+      Data: 2
+    - Name: Mesage
+      Entry: 1
+      Data: The location of the neighbors is not important. It's important how many
+        of them there are and what they are.
     - Name: 
       Entry: 8
       Data: 
     - Name: 
       Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Command
+      Entry: 6
       Data: 
     - Name: 
       Entry: 8

@@ -10,9 +10,9 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.Placement
 {
     public class PlacementCostService : IPlacementCostService, ICleanupable
     {
-        private IActiveTileProvider activeTileProvider;
-        private ITilesCreationService tilesCreationService;
-        private IInventorySystem inventorySystem;
+        private readonly IActiveTileProvider activeTileProvider;
+        private readonly ITilesCreationService tilesCreationService;
+        private readonly IInventorySystem inventorySystem;
 
         public PlacementCostService(
             IActiveTileProvider activeTileProvider,

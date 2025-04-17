@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using App.Scripts.Features;
 using App.Scripts.Features.Commands;
 using App.Scripts.Modules.Localization;

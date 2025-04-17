@@ -58,7 +58,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Screens.CostWidget
             for (var i = 0; i < resourcesCounts.Count; i++)
             {
                 var resourceCount = resourcesCounts[i];
-                costUIs[i].UpdateUI(resourceCount.Resource.Sprite, resourceCount.Count, viewModule.InventorySystem.IsEnough(resourceCount));
+                costUIs[i].UpdateUI(resourceCount.Resource.Sprite, (int)resourceCount.Count, viewModule.InventorySystem.IsEnough(resourceCount));
                 costUIs[i].Show();
             }
         }

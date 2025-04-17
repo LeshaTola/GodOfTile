@@ -48,7 +48,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Screens.CostWidget.Presenters
                 
                 var costUI = costsFactory.GetItem();
                 bool isEnough = inventorySystem.IsEnough(resourceCount);
-                costUI.UpdateUI(resourceCount.Resource.Sprite, resourceCount.Count,isEnough);
+                costUI.UpdateUI(resourceCount.Resource.Sprite, (int) resourceCount.Count,isEnough);
                 costs.Add(costUI);
             } 
             

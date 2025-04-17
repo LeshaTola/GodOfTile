@@ -13,7 +13,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.TasksSystem.Tasks.Tutorial
         
         private IResourceEarnerService resourceEarnerService;
         
-        private int progressCount = 0;
+        private float progressCount = 0;
 
         public EarnResourcTask(IResourceEarnerService resourceEarnerService)
         {
@@ -48,7 +48,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.TasksSystem.Tasks.Tutorial
             }
             
             progressCount += erncedResource.Count;
-            Progress = ((float)progressCount)/resourceCount.Count;
+            Progress = progressCount/resourceCount.Count;
         }
     }
 }

@@ -15,12 +15,12 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.Update
 {
     public class TilesUpdateService : ITilesUpdateService
     {
-        private IGridProvider gridProvider;
-        private IRecipeProvider recipeProvider;
-        private ITileCreationEffectsProvider effectsService;
-        private TilesCreationConfig config;
-        private ISystemsService systemsService;
-        private ISystemsFactory systemsFactory;
+        private readonly IGridProvider gridProvider;
+        private readonly IRecipeProvider recipeProvider;
+        private readonly ITileCreationEffectsProvider effectsService;
+        private readonly TilesCreationConfig config;
+        private readonly ISystemsService systemsService;
+        private readonly ISystemsFactory systemsFactory;
         private readonly ISoundProvider soundProvider;
         private readonly ITileCollectionProvider tileCollectionProvider;
 

@@ -9,7 +9,7 @@ namespace App.Scripts.Modules.PopupAndViews.Popups.Info
 {
     public class InfoPopup : Popup
     {
-        [ValueDropdown(@"GetAudioKeys")] [SerializeField] private string _closeSound;
+        // [ValueDropdown(@"GetAudioKeys")] [SerializeField] private string _closeSound;
         
         [SerializeField] private TMPLocalizer _header;
         [SerializeField] private TMPLocalizer _info;
@@ -46,7 +46,7 @@ namespace App.Scripts.Modules.PopupAndViews.Popups.Info
             _okButton.UpdateText(_vm.Data.Command.Label);
             _okButton.UpdateAction(() =>
             {
-                _vm.SoundProvider.PlaySound(_closeSound);
+                // _vm.SoundProvider.PlaySound(_closeSound);
                 _vm.Data.Command.Execute();
             });
         }

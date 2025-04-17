@@ -12,12 +12,12 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.BuyArea.Routers
 {
     public class BuyAreaPopupRouter : IBuyAreaPopupRouter
     {
-        private ILocalizationSystem localizationSystem;
-        private IPopupController popupController;
-        private IInformationWidgetViewModule informationWidgetViewModule;
-        private IChunkCostProvider chunkCostProvider;
-        private ClosePopupCommand closeCommand;
-        private BuyAreaCommand buyCommand;
+        private readonly ILocalizationSystem localizationSystem;
+        private readonly IPopupController popupController;
+        private readonly IInformationWidgetViewModule informationWidgetViewModule;
+        private readonly IChunkCostProvider chunkCostProvider;
+        private readonly ClosePopupCommand closeCommand;
+        private readonly BuyAreaCommand buyCommand;
 
         private BuyAreaPopup popup;
 

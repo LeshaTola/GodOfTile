@@ -15,7 +15,10 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 21300000, guid: e38d258d2507b8941aa510ba21890bec, type: 3}
+    - {fileID: 11400000, guid: 2bebe24c0dec0aa44ac5f9b16043ebd9, type: 2}
+    - {fileID: 11400000, guid: ac62118c3b31e254aafe7cf9604060c7, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -46,7 +49,100 @@ MonoBehaviour:
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 3|App.Scripts.Scenes.Gameplay.Features.TasksSystem.CompleteActions.ShowTutorialAction,
+        Assembly-CSharp
+    - Name: tutorialData
+      Entry: 7
+      Data: 4|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialPopupData,
+        Assembly-CSharp
+    - Name: Header
+      Entry: 1
+      Data: Building
+    - Name: Tutorials
+      Entry: 7
+      Data: 5|System.Collections.Generic.List`1[[App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 6|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData, Assembly-CSharp
+    - Name: Image
+      Entry: 10
       Data: 0
+    - Name: Gif
+      Entry: 6
+      Data: 
+    - Name: Mesage
+      Entry: 1
+      Data: Press B or button in down-left corner to open shop
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 7|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData, Assembly-CSharp
+    - Name: Image
+      Entry: 6
+      Data: 
+    - Name: Gif
+      Entry: 6
+      Data: 
+    - Name: Mesage
+      Entry: 1
+      Data: Select any tile you want to build
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 8|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData, Assembly-CSharp
+    - Name: Image
+      Entry: 6
+      Data: 
+    - Name: Gif
+      Entry: 10
+      Data: 1
+    - Name: Mesage
+      Entry: 1
+      Data: Choose position in available area and place tile
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 9|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData, Assembly-CSharp
+    - Name: Image
+      Entry: 6
+      Data: 
+    - Name: Gif
+      Entry: 10
+      Data: 2
+    - Name: Mesage
+      Entry: 1
+      Data: You can rotate tile using R
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Command
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 13
       Data: 

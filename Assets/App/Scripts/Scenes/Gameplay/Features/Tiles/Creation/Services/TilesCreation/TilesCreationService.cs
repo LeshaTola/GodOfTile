@@ -158,12 +158,29 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
             }
 
             PlayCreationVFX(tileBuffer).Forget();
-            
             OcupiedPosition(tileBuffer,withUpdate);
             
             if (withUpdate)
             {
                 OnTilePlaced?.Invoke(tileBuffer.Position, tileBuffer);
+            }
+
+            UpdateTiles(tileBuffer,withUpdate);
+        }
+
+        private void UpdateTiles(Tile tileBuffer, bool withUpdate)
+        {
+            if (withUpdate)
+            {
+                for (var x = 0; x < tileBuffer.Config.Size.x; x++)
+                {
+                    for (var y = 0; y < tileBuffer.Config.Size.y; y++)
+                    {
+                        Vector2Int tileCoordinate =
+                            new(tileBuffer.Position.x + x, tileBuffer.Position.y + y);
+                        updateService.UpdateConnectedTiles(tileCoordinate);
+                    }
+                }
             }
         }
 
@@ -176,10 +193,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
                     Vector2Int tileCoordinate =
                         new(tileBuffer.Position.x + x, tileBuffer.Position.y + y);
                     gridProvider.Grid[tileCoordinate.x, tileCoordinate.y] = tileBuffer;
-                    if (withUpdate)
-                    {
-                        updateService.UpdateConnectedTiles(tileCoordinate);
-                    }
+
                 }
             }
         }

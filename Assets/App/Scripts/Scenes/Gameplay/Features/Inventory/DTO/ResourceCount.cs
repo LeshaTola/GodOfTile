@@ -9,6 +9,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Inventory.DTO
     public class ResourceCount
     {
         public ResourceConfig Resource;
-        public int Count;
+        public float Count;
     }
 }

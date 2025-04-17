@@ -1,4 +1,5 @@
-﻿using App.Scripts.Scenes.Gameplay.Features.Popups.BuyArea.Routers;
+﻿using App.Scripts.Modules.PopupAndViews.Popups.Tutorial;
+using App.Scripts.Scenes.Gameplay.Features.Popups.BuyArea.Routers;
 using App.Scripts.Scenes.Gameplay.Features.Popups.Research.Routers;
 using App.Scripts.Scenes.Gameplay.Features.Screens.CostWidget.ViewModels;
 using Zenject;
@@ -13,6 +14,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
             
             BindBuyAreaPopupRouter();
             Container.Bind<ResearchPopupRouter>().AsSingle();
+            Container.Bind<TutorialPopupRouter>().AsSingle();
         }
 
         private void BindBuyAreaPopupRouter()

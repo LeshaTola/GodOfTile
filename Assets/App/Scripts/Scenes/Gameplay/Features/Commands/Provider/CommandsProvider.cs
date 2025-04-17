@@ -12,6 +12,11 @@ namespace App.Scripts.Scenes.Gameplay.Features.Commands.Provider
             this.diContainer = diContainer;
         }
 
+        public ICommand GetCommand(ICommand command) 
+        {
+            return (ICommand) diContainer.Resolve(command.GetType());
+        }
+        
         public T GetCommand<T>() where T : ICommand
         {
             return (T) diContainer.Resolve(typeof(T));

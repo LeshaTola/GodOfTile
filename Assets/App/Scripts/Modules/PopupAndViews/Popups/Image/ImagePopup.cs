@@ -9,17 +9,17 @@ namespace App.Scripts.Modules.PopupAndViews.Popups.Image
 {
     public class ImagePopup : Popup
     {
-        [ValueDropdown(@"GetAudioKeys")] [SerializeField] private string _closeSound;
+        // [ValueDropdown(@"GetAudioKeys")] [SerializeField] private string _closeSound;
         
         [SerializeField] private TMPLocalizer _header;
         [SerializeField] private UnityEngine.UI.Image _image;
         [SerializeField] private TMPLocalizedButton _okButton;
 
-        private ImagePopupVM _vm;
+        private ImagePopupVM vm;
 
         public void Setup(ImagePopupVM vm)
         {
-            _vm = vm;
+            this.vm = vm;
             
             Initialize();
             LocalSetup();
@@ -40,20 +40,20 @@ namespace App.Scripts.Modules.PopupAndViews.Popups.Image
 
         private void LocalSetup()
         {
-            _header.Key = _vm.Data.Header;
-            _image.sprite = _vm.Data.Image;
-            _okButton.UpdateText(_vm.Data.Command.Label);
+            _header.Key = vm.Data.Header;
+            _image.sprite = vm.Data.Image;
+            _okButton.UpdateText(vm.Data.Command.Label);
             _okButton.UpdateAction(()=>
             {
-                _vm.SoundProvider.PlaySound(_closeSound);
-                _vm.Data.Command.Execute();
+                // _vm.SoundProvider.PlaySound(_closeSound);
+                vm.Data.Command.Execute();
             });
         }
 
         private void Initialize()
         {
-            _header.Initialize(_vm.LocalizationSystem);
-            _okButton.Initialize(_vm.LocalizationSystem);
+            _header.Initialize(vm.LocalizationSystem);
+            _okButton.Initialize(vm.LocalizationSystem);
         }
 
         private void Translate()
