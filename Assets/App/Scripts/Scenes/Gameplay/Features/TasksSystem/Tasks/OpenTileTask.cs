@@ -9,6 +9,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.TasksSystem.Tasks
     public class OpenTileTask : Task
     {
         [SerializeField] private TileConfig tileConfig;
+        [SerializeField] private int count = -1 ;
         
         private readonly ITileCollectionProvider tileCollectionProvider;
 
@@ -19,13 +20,20 @@ namespace App.Scripts.Scenes.Gameplay.Features.TasksSystem.Tasks
 
         public override void Start()
         {
-            var tile = tileCollectionProvider.Collection.FirstOrDefault(x=>x.Id.Equals(tileConfig.Id));
-            if (tile != null)
+            if (tileConfig != null)
             {
-                Progress = 1;
+                var tile = tileCollectionProvider.Collection.FirstOrDefault(x=>x.Id.Equals(tileConfig.Id));
+                if (tile != null)
+                {
+                    Progress = 1;
+                    return;
+                }
+                tileCollectionProvider.OnNewTileAdd += OnNewTileAdd;
                 return;
             }
+            
             tileCollectionProvider.OnNewTileAdd += OnNewTileAdd;
+            UpdateProgress();
         }
 
         public override void Complete()
@@ -39,14 +47,26 @@ namespace App.Scripts.Scenes.Gameplay.Features.TasksSystem.Tasks
         {
             var concreteTask = (OpenTileTask) original;
             tileConfig = concreteTask.tileConfig;
+            count = concreteTask.count;
         }
 
         private void OnNewTileAdd(TileConfig addedTile)
         {
-            if (addedTile.Id.Equals(tileConfig.Id))
+            if (tileConfig != null)
             {
-                Progress = 1;
+                if (addedTile.Id.Equals(tileConfig.Id))
+                {
+                    Progress = 1;
+                }
+                return;
             }
+
+            UpdateProgress();
+        }
+
+        private void UpdateProgress()
+        {
+            Progress = (float)tileCollectionProvider.Collection.Count / count;
         }
     }
 }

@@ -62,14 +62,14 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Resour
                 var existingResource = resourceCounts.Find(rc => rc.Resource == data.Resource);
                 if (existingResource != null)
                 {
-                    existingResource.Count += Mathf.RoundToInt(data.AmountPerSecond);
+                    existingResource.Count += data.AmountPerSecond;
                 }
                 else
                 {
                     resourceCounts.Add(new ResourceCount
                     {
                         Resource = data.Resource,
-                        Count = Mathf.RoundToInt(data.AmountPerSecond)
+                        Count = data.AmountPerSecond
                     });
                 }
             }

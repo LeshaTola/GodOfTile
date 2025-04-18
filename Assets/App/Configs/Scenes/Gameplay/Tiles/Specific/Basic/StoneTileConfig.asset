@@ -15,7 +15,8 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 7838b25836ffe8e45994e6ed94b3b2c7, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -30,39 +31,25 @@ MonoBehaviour:
       Data: 1
     - Name: 
       Entry: 7
-      Data: 1|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effector,
+      Data: 1|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners.ResourceEarner,
         Assembly-CSharp
     - Name: data
       Entry: 7
-      Data: 2|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.EffectorData,
+      Data: 2|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners.ResourceEarnerSystemData,
         Assembly-CSharp
-    - Name: getTilesStrategy
-      Entry: 7
-      Data: 3|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.GetTilesStrategies.Radius.RadiusGetTileStrategy,
-        Assembly-CSharp
-    - Name: radius
-      Entry: 3
-      Data: 2
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: effect
-      Entry: 7
-      Data: 4|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effects.Specific.ChangeResourceEarningEffect.ChangeResourceEarningEffect,
-        Assembly-CSharp
-    - Name: earningAmountMultiplier
-      Entry: 4
-      Data: 1.1
     - Name: systemUIProvider
       Entry: 7
-      Data: 5|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effects.Specific.ChangeResourceEarningEffect.UI.Providers.ChangeResourceEarningEffectorUIProvider,
+      Data: 3|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners.UI.Providers.ResourceEarnerUIProvider,
         Assembly-CSharp
     - Name: 
       Entry: 8
       Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+    - Name: resource
+      Entry: 10
+      Data: 0
+    - Name: amountPerSecond
+      Entry: 4
+      Data: 0.2
     - Name: 
       Entry: 8
       Data: 
@@ -83,6 +70,4 @@ MonoBehaviour:
   tileImage: {fileID: 21300000, guid: f45b6c2e28a521b42b9c0d869ad6e506, type: 3}
   tileName: Stone
   description: The starting stone tile. It's pretty strong.
-  cost:
-  - Resource: {fileID: 11400000, guid: 7838b25836ffe8e45994e6ed94b3b2c7, type: 2}
-    Count: 1
+  cost: []

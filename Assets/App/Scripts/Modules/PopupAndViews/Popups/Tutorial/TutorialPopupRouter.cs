@@ -22,15 +22,10 @@ namespace App.Scripts.Modules.PopupAndViews.Popups.Tutorial
             this.localizationSystem = localizationSystem;
             this.soundProvider = soundProvider;
         }
-        
-        private TutorialPopup popup;
 
         public async UniTask ShowPopup(TutorialPopupData popupData)
         {
-            if (popup == null)
-            {
-                popup = popupController.GetPopup<TutorialPopup>();
-            }
+            var popup = popupController.GetPopup<TutorialPopup>();
 
             SetupCommand(popupData);
             var viewModule = new TutorialPopupVM(localizationSystem, popupData, soundProvider);
@@ -47,30 +42,14 @@ namespace App.Scripts.Modules.PopupAndViews.Popups.Tutorial
                 Tutorials = tutorials,
                 Command = new CustomCommand(ConstStrings.CONFIRM, async () =>
                 {
-                    await HidePopup();
+                    await popupController.HideLastPopup();
                 })
             });
         }
 
-        public async UniTask HidePopup()
-        {
-            if (popup == null)
-            {
-                return;
-            }
-
-            await popup.Hide();
-            popup = null;
-        }
-
-        private async void Hide()
-        {
-            await HidePopup();
-        }
-
         private void SetupCommand(TutorialPopupData popupData)
         {
-            popupData.Command ??= new CustomCommand(ConstStrings.CONFIRM, async () => { await HidePopup(); });
+            popupData.Command ??= new CustomCommand(ConstStrings.CONFIRM, async () => { await popupController.HideLastPopup(); });
         }
     }
 }

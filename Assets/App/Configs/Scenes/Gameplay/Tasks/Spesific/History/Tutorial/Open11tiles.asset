@@ -1,0 +1,204 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed231cca58fb436699f0848c77f04020, type: 3}
+  m_Name: Open11tiles
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: <Tasks>k__BackingField
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[App.Scripts.Modules.Tasks.Tasks.Task,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 1|App.Scripts.Scenes.Gameplay.Features.TasksSystem.Tasks.OpenTileTask,
+        Assembly-CSharp
+    - Name: tileConfig
+      Entry: 6
+      Data: 
+    - Name: count
+      Entry: 3
+      Data: 11
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: <CompleteActions>k__BackingField
+      Entry: 7
+      Data: 2|System.Collections.Generic.List`1[[App.Scripts.Modules.Tasks.CompleteActions.CompleteAction,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 3|App.Scripts.Scenes.Gameplay.Features.TasksSystem.CompleteActions.ShowTutorialAction,
+        Assembly-CSharp
+    - Name: tutorialData
+      Entry: 7
+      Data: 4|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialPopupData,
+        Assembly-CSharp
+    - Name: Header
+      Entry: 1
+      Data: TileSystems
+    - Name: Tutorials
+      Entry: 7
+      Data: 5|System.Collections.Generic.List`1[[App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 7
+    - Name: 
+      Entry: 7
+      Data: 6|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData, Assembly-CSharp
+    - Name: Image
+      Entry: 6
+      Data: 
+    - Name: Gif
+      Entry: 6
+      Data: 
+    - Name: Mesage
+      Entry: 1
+      Data: Press M To move into chunk buy state.
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 7|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData, Assembly-CSharp
+    - Name: Image
+      Entry: 6
+      Data: 
+    - Name: Gif
+      Entry: 6
+      Data: 
+    - Name: Mesage
+      Entry: 1
+      Data: Select a chunk from the available ones.
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 8|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData, Assembly-CSharp
+    - Name: Image
+      Entry: 6
+      Data: 
+    - Name: Gif
+      Entry: 6
+      Data: 
+    - Name: Mesage
+      Entry: 1
+      Data: When you click on the "Buy" button, a window will open in which the cost
+        of the area will be indicated.
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 9|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData, Assembly-CSharp
+    - Name: Image
+      Entry: 6
+      Data: 
+    - Name: Gif
+      Entry: 6
+      Data: 
+    - Name: Mesage
+      Entry: 1
+      Data: After the purchase, a new area for construction will be opened.
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 10|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData, Assembly-CSharp
+    - Name: Image
+      Entry: 6
+      Data: 
+    - Name: Gif
+      Entry: 6
+      Data: 
+    - Name: Mesage
+      Entry: 1
+      Data: New tiles appear on purchased files and are added.
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 11|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData, Assembly-CSharp
+    - Name: Image
+      Entry: 6
+      Data: 
+    - Name: Gif
+      Entry: 6
+      Data: 
+    - Name: Mesage
+      Entry: 1
+      Data: Take a closer look at them. They may contain hints.
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 12|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData, Assembly-CSharp
+    - Name: Image
+      Entry: 6
+      Data: 
+    - Name: Gif
+      Entry: 6
+      Data: 
+    - Name: Mesage
+      Entry: 1
+      Data: There may also be unique tiles that cannot be set independently.
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Command
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  <Id>k__BackingField: Open11tiles
+  <Name>k__BackingField: Open 11 tiles
+  <Description>k__BackingField: Use tiles from shop to open new ones
