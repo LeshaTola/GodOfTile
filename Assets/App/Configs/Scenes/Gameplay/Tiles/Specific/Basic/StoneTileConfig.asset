@@ -49,7 +49,7 @@ MonoBehaviour:
       Data: 0
     - Name: amountPerSecond
       Entry: 4
-      Data: 0.2
+      Data: 0.05
     - Name: 
       Entry: 8
       Data: 

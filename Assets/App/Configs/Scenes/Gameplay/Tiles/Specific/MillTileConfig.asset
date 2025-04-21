@@ -81,7 +81,7 @@ MonoBehaviour:
         Assembly-CSharp
     - Name: earningAmountPerValidTile
       Entry: 4
-      Data: 0.5
+      Data: 0.05
     - Name: whiteList
       Entry: 7
       Data: 8|System.Collections.Generic.List`1[[App.Scripts.Scenes.Gameplay.Features.Tiles.Configs.TileConfig,

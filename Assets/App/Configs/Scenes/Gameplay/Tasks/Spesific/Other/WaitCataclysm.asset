@@ -1,0 +1,120 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed231cca58fb436699f0848c77f04020, type: 3}
+  m_Name: WaitCataclysm
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: <Tasks>k__BackingField
+      Entry: 6
+      Data: 
+    - Name: <CompleteActions>k__BackingField
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[App.Scripts.Modules.Tasks.CompleteActions.CompleteAction,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 1|App.Scripts.Scenes.Gameplay.Features.TasksSystem.CompleteActions.ShowTutorialAction,
+        Assembly-CSharp
+    - Name: tutorialData
+      Entry: 7
+      Data: 2|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialPopupData,
+        Assembly-CSharp
+    - Name: Header
+      Entry: 1
+      Data: Defence
+    - Name: Tutorials
+      Entry: 7
+      Data: 3|System.Collections.Generic.List`1[[App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 4|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData, Assembly-CSharp
+    - Name: Image
+      Entry: 6
+      Data: 
+    - Name: Gif
+      Entry: 6
+      Data: 
+    - Name: Mesage
+      Entry: 1
+      Data: To defence form cataclysm you should place defence tiles
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 5|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData, Assembly-CSharp
+    - Name: Image
+      Entry: 6
+      Data: 
+    - Name: Gif
+      Entry: 6
+      Data: 
+    - Name: Mesage
+      Entry: 1
+      Data: It can be opened by ALCHEMY or in researches
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 6|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData, Assembly-CSharp
+    - Name: Image
+      Entry: 6
+      Data: 
+    - Name: Gif
+      Entry: 6
+      Data: 
+    - Name: Mesage
+      Entry: 1
+      Data: 'Blue area around. it is defence shield. '
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Command
+      Entry: 6
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  <Id>k__BackingField: TaskConfig
+  <Name>k__BackingField: Wait
+  <Description>k__BackingField: Wait before cataclysm

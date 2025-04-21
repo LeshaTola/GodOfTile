@@ -15,7 +15,8 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 12ea320e25139914cb79e34fc96f3d46, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -30,22 +31,25 @@ MonoBehaviour:
       Data: 1
     - Name: 
       Entry: 7
-      Data: 1|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Research.ResearchSystem,
+      Data: 1|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners.ResourceEarner,
         Assembly-CSharp
     - Name: data
       Entry: 7
-      Data: 2|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Research.ResearchSystemData,
+      Data: 2|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners.ResourceEarnerSystemData,
         Assembly-CSharp
-    - Name: uiProvider
+    - Name: systemUIProvider
       Entry: 7
-      Data: 3|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Research.UI.Providers.ResearchSystemUIProvider,
+      Data: 3|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners.UI.Providers.ResourceEarnerUIProvider,
         Assembly-CSharp
     - Name: 
       Entry: 8
       Data: 
-    - Name: <Description>k__BackingField
-      Entry: 1
-      Data: "Opens up the possibility of research.  \nThe speed of research is Accelerating"
+    - Name: resource
+      Entry: 10
+      Data: 0
+    - Name: amountPerSecond
+      Entry: 4
+      Data: 0.05
     - Name: 
       Entry: 8
       Data: 

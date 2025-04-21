@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed231cca58fb436699f0848c77f04020, type: 3}
-  m_Name: Open11tiles
+  m_Name: OpenCharchTile
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: cbb8a897fcdebf248b4dc9dc27ea3f73, type: 2}
+    - {fileID: 21300000, guid: 73b6abcd0792fbe4ba6d395abaa08259, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -33,11 +35,11 @@ MonoBehaviour:
       Data: 1|App.Scripts.Scenes.Gameplay.Features.TasksSystem.Tasks.OpenTileTask,
         Assembly-CSharp
     - Name: tileConfig
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 0
     - Name: count
       Entry: 3
-      Data: 11
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
@@ -64,7 +66,7 @@ MonoBehaviour:
         Assembly-CSharp
     - Name: Header
       Entry: 1
-      Data: TileSystems
+      Data: Researches
     - Name: Tutorials
       Entry: 7
       Data: 5|System.Collections.Generic.List`1[[App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData,
@@ -83,7 +85,10 @@ MonoBehaviour:
       Data: 
     - Name: Mesage
       Entry: 1
-      Data: Press M To move into chunk buy state.
+      Data: "\u0412 \u043F\u0440\u0430\u0432\u043E\u043C \u043D\u0438\u0436\u043D\u0435\u043C
+        \u0443\u0433\u043B\u0443 \u043F\u043E\u044F\u0432\u043B\u044F\u0435\u0442\u0441\u044F
+        \u0434\u043E\u043F\u043E\u043B\u043D\u0438\u0442\u0435\u043B\u044C\u043D\u0430\u044F
+        \u043A\u043D\u043E\u043F\u043A\u0430, \u0434\u043B\u044F \u0438\u0437\u0443\u0447\u0435\u043D\u0438\u0439."
     - Name: 
       Entry: 8
       Data: 
@@ -98,7 +103,10 @@ MonoBehaviour:
       Data: 
     - Name: Mesage
       Entry: 1
-      Data: Select a chunk from the available ones.
+      Data: "\u0422\u0430\u043A \u0436\u0435 \u0447\u0442\u043E\u0431\u044B \u043F\u0435\u0440\u0435\u0439\u0442\u0438
+        \u0432 \u0440\u0435\u0436\u0438\u043C \u0438\u0437\u0443\u0447\u0435\u043D\u0438\u0439,
+        \u043C\u043E\u0436\u043D\u043E \u043D\u0430\u0436\u0430\u0442\u044C \u043A\u043B\u0430\u0432\u0438\u0448\u0443
+        I"
     - Name: 
       Entry: 8
       Data: 
@@ -106,15 +114,17 @@ MonoBehaviour:
       Entry: 7
       Data: 8|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData, Assembly-CSharp
     - Name: Image
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 1
     - Name: Gif
       Entry: 6
       Data: 
     - Name: Mesage
       Entry: 1
-      Data: When you click on the "Buy" button, a window will open in which the cost
-        of the area will be indicated.
+      Data: "\u041E\u0442\u043A\u0440\u044B\u0432 \u043F\u0430\u043D\u0435\u043B\u044C
+        \u0438\u0437\u0443\u0447\u0435\u043D\u0438\u0439 \u0432\u044B \u043E\u0431\u043B\u0430\u0441\u0442\u044C,
+        \u0440\u0430\u0437\u0434\u0435\u043B\u0435\u043D\u043D\u0443\u044E \u043D\u0430
+        \u0447\u0430\u0441\u0442\u0438."
     - Name: 
       Entry: 8
       Data: 
@@ -129,7 +139,10 @@ MonoBehaviour:
       Data: 
     - Name: Mesage
       Entry: 1
-      Data: After the purchase, a new area for construction will be opened.
+      Data: "\u042D\u0442\u043E \u0443\u0440\u043E\u0432\u043D\u0438 \u0438\u0437\u0443\u0447\u0435\u043D\u0438\u0439.
+        \u0418\u0445 \u043C\u043E\u0436\u043D\u043E \u043E\u0442\u043A\u0440\u044B\u0442\u044C,
+        \u0438\u0437\u0443\u0447\u0438\u0432 \u0441\u043E\u043E\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u044E\u0449\u0435\u0435
+        \u0438\u0441\u0441\u043B\u0435\u0434\u043E\u0432\u0430\u043D\u0438\u0435."
     - Name: 
       Entry: 8
       Data: 
@@ -144,7 +157,9 @@ MonoBehaviour:
       Data: 
     - Name: Mesage
       Entry: 1
-      Data: New tiles appear on purchased files and are added.
+      Data: "\u0421\u043F\u0440\u0430\u0432\u0430 \u0432\u0438\u0434\u043D\u0430
+        \u0432\u0441\u044F \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F
+        \u043E\u0431 \u0432\u044B\u0431\u0440\u0430\u043D\u043D\u043E\u043C \u0438\u0437\u0443\u0447\u0435\u043D\u0438\u0438."
     - Name: 
       Entry: 8
       Data: 
@@ -159,7 +174,9 @@ MonoBehaviour:
       Data: 
     - Name: Mesage
       Entry: 1
-      Data: Take a closer look at them. They may contain hints.
+      Data: "\u0427\u0442\u043E\u0431\u044B \u0432\u044B\u0431\u0440\u0430\u0442\u044C
+        \u0438\u0437\u0443\u0447\u0435\u043D\u0438\u0435, \u043D\u0443\u0436\u043D\u043E
+        \u043A\u043B\u0438\u043A\u043D\u0443\u0442\u044C \u043F\u043E \u043D\u0435\u043C\u0443."
     - Name: 
       Entry: 8
       Data: 
@@ -174,7 +191,8 @@ MonoBehaviour:
       Data: 
     - Name: Mesage
       Entry: 1
-      Data: There may also be unique tiles that cannot be set independently.
+      Data: "\u0418\u0437\u0443\u0447\u0435\u043D\u0438\u044F \u0442\u0440\u0435\u0431\u0443\u044E\u0442
+        \u0432\u0440\u0435\u043C\u0435\u043D\u0438 \u043D\u0430 \u0438\u0445 \u043E\u0442\u043A\u0440\u044B\u0442\u0438\u0435."
     - Name: 
       Entry: 8
       Data: 
@@ -199,6 +217,6 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  <Id>k__BackingField: Open11tiles
-  <Name>k__BackingField: Open 11 tiles
-  <Description>k__BackingField: Use tiles from shop to open new ones
+  <Id>k__BackingField: OpenCharchTile
+  <Name>k__BackingField: Open cactus tile
+  <Description>k__BackingField: Place tiles of sand near each other
