@@ -1,4 +1,4 @@
-using App.Scripts.Modules.Tasks.Tasks;
+using App.Scripts.Modules.TasksSystem.Tasks;
 using App.Scripts.Modules.TimeProvider;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -10,9 +10,9 @@ namespace App.Scripts.Scenes.Gameplay.Features.TasksSystem.Tasks
         [SerializeField] private float seconds;
 
         private float timer;
-        
+
         private readonly ITimeProvider timeProvider;
-        
+
         public WaitTask(ITimeProvider timeProvider)
         {
             this.timeProvider = timeProvider;
@@ -21,6 +21,20 @@ namespace App.Scripts.Scenes.Gameplay.Features.TasksSystem.Tasks
         public override void Start()
         {
             Update().Forget();
+        }
+        
+        public override ProgressPair GetProgress()
+        {
+            return new ProgressPair()
+            {
+                Progress = (int) timer,
+                Target = (int) seconds
+            };
+        }
+
+        public override void SetProgress(ProgressPair progress)
+        {
+            timer = progress.Progress;
         }
 
         private async UniTaskVoid Update()
@@ -32,7 +46,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.TasksSystem.Tasks
                 Progress = timer / seconds;
             }
         }
-        
+
         public override void Import(Task original)
         {
             var concreteTask = (WaitTask) original;

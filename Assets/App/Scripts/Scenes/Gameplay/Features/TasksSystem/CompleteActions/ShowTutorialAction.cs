@@ -1,8 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using App.Scripts.Modules.PopupAndViews.Popups.Tutorial;
-using App.Scripts.Modules.Tasks.CompleteActions;
-using App.Scripts.Scenes.Gameplay.Features.Commands.General;
+using App.Scripts.Modules.TasksSystem.CompleteActions;
 using App.Scripts.Scenes.Gameplay.Features.Commands.Provider;
 using App.Scripts.Scenes.Gameplay.Features.Time.Services.TimeServices;
 using Cysharp.Threading.Tasks;
@@ -47,7 +46,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.TasksSystem.CompleteActions
 
         public override List<RewardData> GetRewardData()
         {
-            return new();
+            return new List<RewardData>();
         }
     }
 }

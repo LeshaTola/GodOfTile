@@ -1,8 +1,7 @@
 ﻿using App.Scripts.Features.SceneTransitions;
 using App.Scripts.Modules.CameraSwitchers;
-using App.Scripts.Modules.Saves;
 using App.Scripts.Modules.StateMachine.Services.InitializeService;
-using App.Scripts.Modules.Tasks.Providers;
+using App.Scripts.Modules.TasksSystem.Providers;
 using App.Scripts.Scenes.Gameplay.Features.Saves;
 using App.Scripts.Scenes.Gameplay.StateMachines.Ids;
 using Cysharp.Threading.Tasks;
@@ -40,8 +39,8 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             await base.Enter();
             cameraSwitcher.SwitchCamera(cameraId);
             savesController.Load();
+            tasksProvider.LoadState();
             initializeService.Initialize();
-            tasksProvider.FillTasks();
             await StateMachine.ChangeState(StatesIds.GAMEPLAY_STATE);
         }
 

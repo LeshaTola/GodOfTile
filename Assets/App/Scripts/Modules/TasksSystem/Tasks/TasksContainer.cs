@@ -1,9 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
-using App.Scripts.Modules.Tasks.Configs;
-using UnityEngine;
+using App.Scripts.Modules.TasksSystem.Configs;
 
-namespace App.Scripts.Modules.Tasks.Tasks
+namespace App.Scripts.Modules.TasksSystem.Tasks
 {
     public class TasksContainer
     {
@@ -17,7 +17,7 @@ namespace App.Scripts.Modules.Tasks.Tasks
         public TasksContainer(TaskConfig config)
         {
             this.Config = config;
-            
+
             foreach (var configTask in config.Tasks)
             {
                 configTask.OnProgressChanged += OnConfigProgressChanged;
@@ -32,27 +32,55 @@ namespace App.Scripts.Modules.Tasks.Tasks
                 task.Start();
             }
         }
-        
+
         public void CompleteTask()
         {
             foreach (var configTask in Config.CompleteActions)
             {
                 configTask.Execute();
             }
+
             OnTaskCompleted?.Invoke(this);
         }
+
+        public ProgressPair GetProgress()
+        {
+            return Config.Tasks.Count >= 2 ? new (0, 1) : Config.Tasks[0].GetProgress();
+        }
+
+        public void SetState(List<ProgressPair> data)
+        {
+            if (data == null)
+            {
+                return;
+            }
             
-            
+            for (int i = 0; i < Config.Tasks.Count; i++)
+            {
+                Config.Tasks[i].SetProgress(data[i]);
+            }
+        }
+
+        public TaskContainerData GetState()
+        {
+            return new TaskContainerData()
+            {
+                TaskConfig = Config,
+                TaskConfigId = Config.Id,
+                TasksData = Config.Tasks.Select(x => x.GetProgress()).ToList(),
+            };
+        }
+
         private void OnConfigProgressChanged(float progress)
         {
             if (Config == null || Config.Tasks.Count == 0)
             {
                 return;
             }
-    
+
             Progress = Config.Tasks.Average(task => task.Progress);
             OnProgressChanged?.Invoke(Progress);
-                if (progress >= 1)
+            if (progress >= 1)
             {
                 CompleteTask();
             }

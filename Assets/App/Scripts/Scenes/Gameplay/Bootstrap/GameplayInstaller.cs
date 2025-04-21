@@ -4,12 +4,14 @@ using App.Scripts.Modules.ObjectPool.KeyPools.Configs;
 using App.Scripts.Modules.ObjectPool.MonoObjectPools;
 using App.Scripts.Modules.ObjectPool.PooledObjects;
 using App.Scripts.Modules.ObjectPool.Pools;
+using App.Scripts.Modules.Saves;
 using App.Scripts.Modules.StateMachine.Services.CleanupService;
 using App.Scripts.Modules.StateMachine.Services.InitializeService;
 using App.Scripts.Modules.StateMachine.Services.UpdateService;
-using App.Scripts.Modules.Tasks.Configs;
-using App.Scripts.Modules.Tasks.Factories;
-using App.Scripts.Modules.Tasks.Providers;
+using App.Scripts.Modules.TasksSystem.Configs;
+using App.Scripts.Modules.TasksSystem.Factories;
+using App.Scripts.Modules.TasksSystem.Providers;
+using App.Scripts.Modules.TasksSystem.Services;
 using App.Scripts.Scenes.Gameplay.Features.CameraLogic;
 using App.Scripts.Scenes.Gameplay.Features.CameraLogic.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Input;
@@ -112,6 +114,12 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
             Container.Bind<CompleteActionFactory>().AsSingle();
             Container.Bind<TaskFactory>().AsSingle();
             Container.Bind<TasksProvider>().AsSingle().WithArguments(taskProviderConfig);
+            Container.BindInterfacesAndSelfTo<TaskService>().AsSingle();
+            
+            Container.Bind<IDataProvider<TasksData>>()
+                .To<DataProvider<TasksData>>()
+                .AsSingle()
+                .WithArguments("TasksSavesDataKey");
         }
 
         private void BindCycleServices()

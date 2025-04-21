@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using App.Scripts.Modules.Tasks.Tasks;
+using App.Scripts.Modules.TasksSystem.Tasks;
 using App.Scripts.Scenes.Gameplay.Features.Input;
 using Cysharp.Threading.Tasks;
 
@@ -27,7 +27,21 @@ namespace App.Scripts.Scenes.Gameplay.Features.TasksSystem.Tasks
         {
             Update().Forget();
         }
-        
+
+        public override ProgressPair GetProgress()
+        {
+            return new()
+            {
+                Progress = 0,
+                Target = 2
+            };
+        }
+
+        public override void SetProgress(ProgressPair progress)
+        {
+            
+        }
+
         public async UniTaskVoid Update()
         {
             while (Progress < 1)

@@ -1,28 +1,28 @@
 using System;
 
-namespace App.Scripts.Modules.Tasks.Tasks
+namespace App.Scripts.Modules.TasksSystem.Tasks
 {
     public abstract class Task : ITask
     {
         public event Action<ITask> OnTaskCompleted;
         public event Action<float> OnProgressChanged;
 
-        private float progress;
+        private float _progress;
 
         public float Progress
         {
-            get => progress;
+            get => _progress;
             protected set
             {
-                if (progress.Equals(value))
+                if (_progress.Equals(value))
                 {
                     return;
                 }
                 
-                progress = value;
-                OnProgressChanged?.Invoke(progress);
+                _progress = value;
+                OnProgressChanged?.Invoke(_progress);
 
-                if (progress >= 1f)
+                if (_progress >= 1f)
                 {
                     Complete();
                 }
@@ -32,15 +32,18 @@ namespace App.Scripts.Modules.Tasks.Tasks
         public virtual void Start()
         {
         }
-        
+
         public virtual void Complete()
         {
             OnTaskCompleted?.Invoke(this);
         }
 
+        public abstract ProgressPair GetProgress();
+        
+        public abstract void SetProgress(ProgressPair progress);
+
         public virtual void Import(Task original)
         {
-            
         }
     }
 

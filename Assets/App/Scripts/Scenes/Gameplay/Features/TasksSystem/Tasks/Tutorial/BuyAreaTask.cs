@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using App.Scripts.Modules.Tasks.Tasks;
+using App.Scripts.Modules.TasksSystem.Tasks;
 using App.Scripts.Scenes.Gameplay.Features.Inventory.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Chunk;
 using UnityEngine;
@@ -33,6 +33,20 @@ namespace App.Scripts.Scenes.Gameplay.Features.TasksSystem.Tasks.Tutorial
             base.Complete();
 
             chunksProvider.OnChunkOpened -= OnChunkOpened;
+        }
+
+        public override ProgressPair GetProgress()
+        {
+            return new ProgressPair()
+            {
+                Progress = (int) progressCount,
+                Target = (int) count
+            };
+        }
+
+        public override void SetProgress(ProgressPair progress)
+        {
+            progressCount = progress.Progress;
         }
 
         private void OnChunkOpened(Vector2Int id)

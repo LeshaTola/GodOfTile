@@ -1,10 +1,10 @@
 using System.Collections.Generic;
-using App.Scripts.Modules.Tasks.CompleteActions;
-using App.Scripts.Modules.Tasks.Tasks;
+using App.Scripts.Modules.TasksSystem.CompleteActions;
+using App.Scripts.Modules.TasksSystem.Tasks;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace App.Scripts.Modules.Tasks.Configs
+namespace App.Scripts.Modules.TasksSystem.Configs
 {
     [CreateAssetMenu(fileName = "TaskConfig", menuName = "Configs/Tasks/Task")]
     public class TaskConfig : SerializedScriptableObject

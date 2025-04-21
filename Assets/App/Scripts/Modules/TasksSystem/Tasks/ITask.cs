@@ -1,6 +1,6 @@
 using System;
 
-namespace App.Scripts.Modules.Tasks.Tasks
+namespace App.Scripts.Modules.TasksSystem.Tasks
 {
     public interface ITask
     {

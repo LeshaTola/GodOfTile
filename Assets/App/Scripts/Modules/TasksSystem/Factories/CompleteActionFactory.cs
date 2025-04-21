@@ -1,9 +1,8 @@
 using System.Collections.Generic;
-using App.Scripts.Modules.Tasks.CompleteActions;
-using App.Scripts.Modules.Tasks.Tasks;
+using App.Scripts.Modules.TasksSystem.CompleteActions;
 using Zenject;
 
-namespace App.Scripts.Modules.Tasks.Factories
+namespace App.Scripts.Modules.TasksSystem.Factories
 {
     public class CompleteActionFactory
     {

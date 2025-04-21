@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using App.Scripts.Modules.Tasks.CompleteActions;
+using App.Scripts.Modules.TasksSystem.CompleteActions;
 using App.Scripts.Scenes.Gameplay.Features.Inventory.DTO;
 using App.Scripts.Scenes.Gameplay.Features.Inventory.Systems;
 using UnityEngine;
@@ -28,7 +28,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.TasksSystem.CompleteActions
 
         public override void Import(CompleteAction original)
         {
-            var concrete =(AddResources) original;
+            var concrete = (AddResources) original;
             rewardResources = concrete.rewardResources;
         }
 

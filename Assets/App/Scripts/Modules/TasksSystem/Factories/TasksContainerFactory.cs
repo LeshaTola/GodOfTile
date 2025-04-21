@@ -1,8 +1,8 @@
-using App.Scripts.Modules.Tasks.Configs;
-using App.Scripts.Modules.Tasks.Tasks;
+using App.Scripts.Modules.TasksSystem.Configs;
+using App.Scripts.Modules.TasksSystem.Tasks;
 using UnityEngine;
 
-namespace App.Scripts.Modules.Tasks.Factories
+namespace App.Scripts.Modules.TasksSystem.Factories
 {
     public class TasksContainerFactory
     {

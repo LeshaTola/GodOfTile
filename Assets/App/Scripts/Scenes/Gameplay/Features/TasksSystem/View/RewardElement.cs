@@ -1,4 +1,4 @@
-using App.Scripts.Modules.Tasks.CompleteActions;
+using App.Scripts.Modules.TasksSystem.CompleteActions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

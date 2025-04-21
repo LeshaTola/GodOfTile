@@ -1,10 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using App.Scripts.Modules.Tasks.CompleteActions;
-using App.Scripts.Scenes.Gameplay.Features.Inventory.Systems;
+using App.Scripts.Modules.TasksSystem.CompleteActions;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Collection;
-using App.Scripts.Scenes.Gameplay.Features.Time.UI;
 using UnityEngine;
 
 namespace App.Scripts.Scenes.Gameplay.Features.TasksSystem.CompleteActions
@@ -30,7 +28,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.TasksSystem.CompleteActions
 
         public override void Import(CompleteAction original)
         {
-            var concrete =(OpenTileAction) original;
+            var concrete = (OpenTileAction) original;
             rewardResources = concrete.rewardResources;
         }
 

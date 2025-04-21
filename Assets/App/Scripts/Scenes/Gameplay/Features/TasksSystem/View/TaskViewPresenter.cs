@@ -2,33 +2,34 @@ using System.Collections.Generic;
 using App.Scripts.Modules.Localization;
 using App.Scripts.Modules.StateMachine.Services.CleanupService;
 using App.Scripts.Modules.StateMachine.Services.InitializeService;
-using App.Scripts.Modules.Tasks.Providers;
-using App.Scripts.Modules.Tasks.Tasks;
+using App.Scripts.Modules.TasksSystem.Providers;
+using App.Scripts.Modules.TasksSystem.Services;
+using App.Scripts.Modules.TasksSystem.Tasks;
 
 namespace App.Scripts.Scenes.Gameplay.Features.TasksSystem.View
 {
     public class TaskViewPresenter : IInitializable, ICleanupable
     {
         private readonly TaskView view;
-        private readonly TasksProvider tasksProvider;
+        private readonly TaskService taskService;
         private readonly ILocalizationSystem localizationSystem;
 
         private TasksContainer currentTask;
 
         public TaskViewPresenter(TaskView view,
-            TasksProvider tasksProvider, 
+            TaskService taskService,
             ILocalizationSystem localizationSystem)
         {
             this.view = view;
-            this.tasksProvider = tasksProvider;
+            this.taskService = taskService;
             this.localizationSystem = localizationSystem;
         }
 
         public void Initialize()
         {
             view.Initialize(localizationSystem);
-            tasksProvider.OnTasksUpdated += OnTasksUpdated;
-            // Setup(tasksProvider.ActiveTasks[0]);
+            taskService.OnTasksUpdated += OnTasksUpdated;
+            Setup(taskService.ActiveTasks[0]);
         }
 
         public void Cleanup()
@@ -56,10 +57,10 @@ namespace App.Scripts.Scenes.Gameplay.Features.TasksSystem.View
         {
             view.UpdateProgress(progress);
         }
-
-        private void OnTasksUpdated(List<TasksContainer> tasks)
+        
+        private void OnTasksUpdated(List<TasksContainer> tasksContainers)
         {
-            Setup(tasks[0]);
+             Setup(tasksContainers[0]);
         }
     }
 }

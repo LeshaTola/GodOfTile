@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace App.Scripts.Modules.Tasks.CompleteActions
+namespace App.Scripts.Modules.TasksSystem.CompleteActions
 {
     public abstract class CompleteAction
     {

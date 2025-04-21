@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace App.Scripts.Modules.Tasks.Configs
+namespace App.Scripts.Modules.TasksSystem.Configs
 {
     [CreateAssetMenu(fileName = "TasksPool", menuName = "Configs/Tasks/TasksPool")]
     public class TasksPool : ScriptableObject

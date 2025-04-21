@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using App.Scripts.Modules.Tasks.Tasks;
+using App.Scripts.Modules.TasksSystem.Tasks;
 using App.Scripts.Scenes.Gameplay.Features.Inventory.DTO;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners;
 using UnityEngine;
@@ -30,6 +30,20 @@ namespace App.Scripts.Scenes.Gameplay.Features.TasksSystem.Tasks.Tutorial
         {
             base.Complete();
             resourceEarnerService.OnResourceEarned -= OnResourceEarned;
+        }
+
+        public override ProgressPair GetProgress()
+        {
+            return new ProgressPair()
+            {
+                Progress = (int) progressCount,
+                Target = (int) resourceCount.Count
+            };
+        }
+
+        public override void SetProgress(ProgressPair progress)
+        {
+            progressCount = progress.Progress;
         }
 
         public override void Import(Task original)

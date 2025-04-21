@@ -1,5 +1,5 @@
 using System.Linq;
-using App.Scripts.Modules.Tasks.Tasks;
+using App.Scripts.Modules.TasksSystem.Tasks;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Collection;
 using UnityEngine;
@@ -34,6 +34,20 @@ namespace App.Scripts.Scenes.Gameplay.Features.TasksSystem.Tasks
             
             tileCollectionProvider.OnNewTileAdd += OnNewTileAdd;
             UpdateProgress();
+        }
+
+        public override ProgressPair GetProgress()
+        {
+            return new ProgressPair()
+            {
+                Progress = (int) count,
+                Target = (int) count
+            };
+        }
+
+        public override void SetProgress(ProgressPair progress)
+        {
+            count = progress.Progress;
         }
 
         public override void Complete()

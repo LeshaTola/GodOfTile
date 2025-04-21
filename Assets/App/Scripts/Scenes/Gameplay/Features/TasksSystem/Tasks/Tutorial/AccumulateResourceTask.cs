@@ -1,4 +1,4 @@
-using App.Scripts.Modules.Tasks.Tasks;
+using App.Scripts.Modules.TasksSystem.Tasks;
 using App.Scripts.Scenes.Gameplay.Features.Inventory.DTO;
 using App.Scripts.Scenes.Gameplay.Features.Inventory.Systems;
 using UnityEngine;
@@ -20,6 +20,20 @@ namespace App.Scripts.Scenes.Gameplay.Features.TasksSystem.Tasks.Tutorial
         {
             base.Start();
             inventorySystem.OnRecourseAmountChanged += OnRecourseAmountChanged;
+        }
+
+        public override ProgressPair GetProgress()
+        {
+            return new ProgressPair()
+            {
+                Progress = (int) inventorySystem.Resources[resourceCount.Resource.ResourceName],
+                Target = (int) resourceCount.Count
+            };
+        }
+
+        public override void SetProgress(ProgressPair progress)
+        {
+            
         }
 
         public override void Complete()

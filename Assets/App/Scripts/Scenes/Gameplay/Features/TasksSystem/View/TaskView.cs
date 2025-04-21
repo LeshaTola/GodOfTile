@@ -3,8 +3,8 @@ using System.Linq;
 using App.Scripts.Features.UI.PairedTexts;
 using App.Scripts.Modules.Localization;
 using App.Scripts.Modules.Localization.Localizers;
-using App.Scripts.Modules.Tasks.CompleteActions;
-using App.Scripts.Modules.Tasks.Configs;
+using App.Scripts.Modules.TasksSystem.CompleteActions;
+using App.Scripts.Modules.TasksSystem.Configs;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,30 +21,31 @@ namespace App.Scripts.Scenes.Gameplay.Features.TasksSystem.View
 
         [Header("Rewards")]
         [SerializeField] private GameObject rewardsPanel;
+
         [SerializeField] private int maxRewards = 3;
         [SerializeField] private TMPLocalizer rewardsText;
         [SerializeField] private RewardElement rewardElementPrefab;
         [SerializeField] private Transform rewardElementContainer;
-        
+
         public void Initialize(ILocalizationSystem localizationSystem)
         {
             headerText.Initialize(localizationSystem);
-            
+
             nameText.Initialize(localizationSystem);
             descriptionText.Initialize(localizationSystem);
             progressText.Initialize(localizationSystem);
-            
+
             rewardsText.Initialize(localizationSystem);
         }
 
         public void Cleanup()
         {
             headerText.Cleanup();
-            
+
             nameText.Cleanup();
             descriptionText.Cleanup();
             progressText.Cleanup();
-            
+
             rewardsText.Cleanup();
         }
 
@@ -63,7 +64,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.TasksSystem.View
             {
                 return;
             }
-            
+
             rewardsPanel.SetActive(true);
             foreach (var reward in rewards)
             {
@@ -75,15 +76,15 @@ namespace App.Scripts.Scenes.Gameplay.Features.TasksSystem.View
         public void UpdateProgress(float progress)
         {
             progress = Mathf.Clamp01(progress);
-            progressText.Value.Text.text = $"{Mathf.RoundToInt(progress* 100)}%";
-            progressSlider.value =progress;
+            progressText.Value.Text.text = $"{Mathf.RoundToInt(progress * 100)}%";
+            progressSlider.value = progress;
         }
 
-        private  List<RewardData> GetRewardsData(TaskConfig config)
+        private List<RewardData> GetRewardsData(TaskConfig config)
         {
             return config.CompleteActions
                 .SelectMany(x => x.GetRewardData())
-                .Take(maxRewards) 
+                .Take(maxRewards)
                 .ToList();
         }
 
@@ -106,11 +107,11 @@ namespace App.Scripts.Scenes.Gameplay.Features.TasksSystem.View
         private void Translate()
         {
             headerText.Translate();
-            
+
             nameText.Translate();
             descriptionText.Translate();
             progressText.Translate();
-            
+
             rewardsText.Translate();
         }
     }
