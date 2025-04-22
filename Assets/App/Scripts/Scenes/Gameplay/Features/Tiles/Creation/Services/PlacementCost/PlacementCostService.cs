@@ -8,28 +8,18 @@ using UnityEngine;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.PlacementCost
 {
-    public class PlacementCostService : IPlacementCostService, ICleanupable
+    public class PlacementCostService : IPlacementCostService
     {
         private readonly IActiveTileProvider activeTileProvider;
-        private readonly ITilesCreationService tilesCreationService;
         private readonly IInventorySystem inventorySystem;
 
         public PlacementCostService(
             IActiveTileProvider activeTileProvider,
-            IInventorySystem inventorySystem,
-            ITilesCreationService tilesCreationService
+            IInventorySystem inventorySystem
         )
         {
             this.activeTileProvider = activeTileProvider;
             this.inventorySystem = inventorySystem;
-            this.tilesCreationService = tilesCreationService;
-            
-            tilesCreationService.OnTilePlaced += OnTilePlaced;
-        }
-
-        private void OnTilePlaced(Vector2Int position, Tile tile)
-        {
-            ProcessPlacementCost(tile.Config);
         }
 
         public void ProcessPlacementCost(TileConfig tileConfig)
@@ -55,11 +45,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.Placement
                     -resourceCount.Count
                 );
             }
-        }
-
-        public void Cleanup()
-        {
-            tilesCreationService.OnTilePlaced -= OnTilePlaced;
         }
     }
 }

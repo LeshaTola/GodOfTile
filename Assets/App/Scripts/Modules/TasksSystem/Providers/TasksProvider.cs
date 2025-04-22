@@ -75,12 +75,7 @@ namespace App.Scripts.Modules.TasksSystem.Providers
         {
             ActiveTasks.Clear();
             var data = _dataProvider.GetData();
-            if (IsCurrentDay(data.LastUpdateDate))
-            {
-                UpdateTasks();
-                return;
-            }
-            
+            _lastTaskId = data.TaskId;
             foreach (var task in data.Tasks)
             {
                 AddTask(task);
@@ -98,7 +93,7 @@ namespace App.Scripts.Modules.TasksSystem.Providers
         {
             return new TasksData()
             {
-                LastUpdateDate = DateTimeOffset.Now.ToUnixTimeSeconds(),
+                TaskId = _lastTaskId,
                 Tasks = ActiveTasks.Values.ToList()
             };
         }

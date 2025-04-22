@@ -80,7 +80,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.Researches.Services
                 return;
             }
 
-            var speedMultiplier = researchSystems.Count;
+            var speedMultiplier = Mathf.Clamp(researchSystems.Count, 0, config.MaxResearchStation);
+            
             Timer -= timeProvider.DeltaTime * speedMultiplier;
             if (Timer <= 0)
             {

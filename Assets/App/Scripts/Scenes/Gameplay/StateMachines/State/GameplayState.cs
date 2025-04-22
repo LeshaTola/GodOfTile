@@ -12,10 +12,10 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
 {
     public class GameplayState : Modules.StateMachine.States.General.State
     {
-        private IUpdateService updateService;
-        private IGameInput gameInput;
-        private ICommandsProvider commandsProvider;
-        private ITileSelectionProvider tileSelectionProvider;
+        private readonly IUpdateService updateService;
+        private readonly IGameInput gameInput;
+        private readonly ICommandsProvider commandsProvider;
+        private readonly ITileSelectionProvider tileSelectionProvider;
         private readonly GameplayScreenPresenter gameplayScreenPresenter;
         private readonly ICameraController cameraController;
 

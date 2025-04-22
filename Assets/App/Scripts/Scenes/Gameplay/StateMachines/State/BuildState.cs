@@ -12,12 +12,13 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
 {
     public class BuildState : Modules.StateMachine.States.General.State
     {
-        private IGameInput gameInput;
-        private IVisualizer gridVisualizer;
-        private IUpdateService updateService;
-        private ShopScreenPresenter shopScreenPresenter;
-        private ICameraController cameraController;
-        private ITilesCreationService creationService;
+        private readonly IGameInput gameInput;
+        private readonly IVisualizer gridVisualizer;
+        private readonly IUpdateService updateService;
+        private readonly ShopScreenPresenter shopScreenPresenter;
+        private readonly ICameraController cameraController;
+        private readonly ITilesCreationService creationService;
+        private readonly IPlacementCostService placementCostService;
 
         public BuildState(
             string id,
@@ -26,8 +27,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             ITilesCreationService creationService,
             IVisualizer gridVisualizer,
             ShopScreenPresenter shopScreenPresenter,
-            ICameraController cameraController
-        )
+            ICameraController cameraController, IPlacementCostService placementCostService)
             : base(id)
         {
             this.updateService = updateService;
@@ -36,6 +36,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             this.gridVisualizer = gridVisualizer;
             this.shopScreenPresenter = shopScreenPresenter;
             this.cameraController = cameraController;
+            this.placementCostService = placementCostService;
         }
 
         public override async UniTask Enter()
@@ -66,6 +67,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             if (gameInput.IsMouseClicked())
             {
                 creationService.PlaceActiveTile();
+                placementCostService.ProcessPlacementCost();
                 creationService.StartPlacingTile();
             }
         }

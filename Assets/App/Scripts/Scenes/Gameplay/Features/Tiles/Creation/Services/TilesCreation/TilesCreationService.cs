@@ -159,13 +159,12 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
 
             PlayCreationVFX(tileBuffer).Forget();
             OcupiedPosition(tileBuffer,withUpdate);
+            UpdateTiles(tileBuffer,withUpdate);
             
             if (withUpdate)
             {
                 OnTilePlaced?.Invoke(tileBuffer.Position, tileBuffer);
             }
-
-            UpdateTiles(tileBuffer,withUpdate);
         }
 
         private void UpdateTiles(Tile tileBuffer, bool withUpdate)

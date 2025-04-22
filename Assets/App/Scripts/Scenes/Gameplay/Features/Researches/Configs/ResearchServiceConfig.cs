@@ -14,5 +14,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Researches.Configs
         public List<ResearchConfig> OpenedResearches { get; private set; }
 
         [field: SerializeField] public List<RuntimeResearch> Researches { get; private set; }
+        [field: SerializeField] public int MaxResearchStation { get; private set; } = 2;
     }
 }

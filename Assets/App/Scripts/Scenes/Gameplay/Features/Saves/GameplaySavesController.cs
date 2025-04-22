@@ -12,11 +12,12 @@ namespace App.Scripts.Scenes.Gameplay.Features.Saves
 {
     public class GameplaySavesController
     {
-        private IInventorySystem inventorySystem;
-        private ITilesCreationService tilesCreationService;
-        private IChunksProvider chunksProvider;
-        private ITileCollectionProvider tileCollectionProvider;
-        private IDataProvider<GamePlaySavesData> dataProvider;
+        private readonly IInventorySystem inventorySystem;
+        private readonly ITilesCreationService tilesCreationService;
+        private readonly IChunksProvider chunksProvider;
+        private readonly ITileCollectionProvider tileCollectionProvider;
+        
+        private readonly IDataProvider<GamePlaySavesData> dataProvider;
 
         public GameplaySavesController(IInventorySystem inventorySystem,
             ITilesCreationService tilesCreationService,
@@ -53,12 +54,12 @@ namespace App.Scripts.Scenes.Gameplay.Features.Saves
             var loadedData = dataProvider.GetData();
             
             inventorySystem.SetState(loadedData.InventoryState);
-            tilesCreationService.SetState(loadedData.MapState);
-
             foreach (var chunkId in loadedData.OpenedChunk)
             {
                 chunksProvider.OpenChunk(new Vector2Int(chunkId.X, chunkId.Y));
             }
+            tilesCreationService.SetState(loadedData.MapState);
+
 
             foreach (var id in loadedData.Collection)
             {
