@@ -15,43 +15,67 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 6bee8186e9170e54e931eaf1feef4536, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
     - Name: <Tasks>k__BackingField
-      Entry: 6
-      Data: 
-    - Name: <CompleteActions>k__BackingField
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[App.Scripts.Modules.Tasks.CompleteActions.CompleteAction,
+      Data: 0|System.Collections.Generic.List`1[[App.Scripts.Modules.TasksSystem.Tasks.Task,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 1|App.Scripts.Scenes.Gameplay.Features.TasksSystem.CompleteActions.ShowTutorialAction,
+      Data: 1|App.Scripts.Scenes.Gameplay.Features.TasksSystem.Tasks.Tutorial.ResearchTask,
+        Assembly-CSharp
+    - Name: config
+      Entry: 10
+      Data: 0
+    - Name: researchName
+      Entry: 1
+      Data: Cataclysm info 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: <CompleteActions>k__BackingField
+      Entry: 7
+      Data: 2|System.Collections.Generic.List`1[[App.Scripts.Modules.TasksSystem.CompleteActions.CompleteAction,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 3|App.Scripts.Scenes.Gameplay.Features.TasksSystem.CompleteActions.ShowTutorialAction,
         Assembly-CSharp
     - Name: tutorialData
       Entry: 7
-      Data: 2|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialPopupData,
+      Data: 4|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialPopupData,
         Assembly-CSharp
     - Name: Header
       Entry: 1
       Data: Cataclusms
     - Name: Tutorials
       Entry: 7
-      Data: 3|System.Collections.Generic.List`1[[App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData,
+      Data: 5|System.Collections.Generic.List`1[[App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
       Data: 2
     - Name: 
       Entry: 7
-      Data: 4|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData, Assembly-CSharp
+      Data: 6|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData, Assembly-CSharp
     - Name: Image
       Entry: 6
       Data: 
@@ -66,7 +90,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 5|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData, Assembly-CSharp
+      Data: 7|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData, Assembly-CSharp
     - Name: Image
       Entry: 6
       Data: 
@@ -100,6 +124,6 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  <Id>k__BackingField: TaskConfig
+  <Id>k__BackingField: ResearchMeteoriteDetector
   <Name>k__BackingField: First reseatch
   <Description>k__BackingField: Research the cataclysm detector

@@ -17,18 +17,19 @@ namespace App.Scripts.Scenes.Gameplay.Features.Сataclysms.Providers
         public event Action<CataclysmConfig> OnCataclysmChanged;
         
         private readonly CataclysmFactory cataclysmFactory;
-        private readonly CataclysmsProviderConfig config;
         private readonly IGridProvider gridProvider;
         private readonly ITimeProvider timeProvider;
 
         private CataclysmData cataclysmData;
         private float timer;
+        
+        public CataclysmsProviderConfig Config { get; }
 
         public CataclysmsProvider(CataclysmFactory cataclysmFactory, CataclysmsProviderConfig config,
             IGridProvider gridProvider, ITimeProvider timeProvider)
         {
             this.cataclysmFactory = cataclysmFactory;
-            this.config = config;
+            this.Config = config;
             this.gridProvider = gridProvider;
             this.timeProvider = timeProvider;
         }
@@ -70,7 +71,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Сataclysms.Providers
 
         private void GetCataclysm()
         {
-            var configCataclysm = config.Cataclysms[Random.Range(0, config.Cataclysms.Count)];
+            var configCataclysm = Config.Cataclysms[Random.Range(0, Config.Cataclysms.Count)];
             OnCataclysmChanged?.Invoke(configCataclysm);
             cataclysmData = new()
             {
@@ -96,7 +97,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Сataclysms.Providers
 
         private void ResetTimer()
         {
-            timer = config.Cooldown;
+            timer = Config.Cooldown;
         }
     }
 
