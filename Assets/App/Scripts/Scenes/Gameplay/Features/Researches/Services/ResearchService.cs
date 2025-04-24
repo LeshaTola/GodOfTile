@@ -17,7 +17,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Researches.Services
         public event Action<float> OnTimerChanged;
         public event Action<int> OnLevelChanged;
 
-        private ResearchServiceConfig config;
+        public ResearchServiceConfig Config { get; }
         private ITimeProvider timeProvider;
         private IResearchCommandsFactory researchCommandsFactory;
 
@@ -32,10 +32,12 @@ namespace App.Scripts.Scenes.Gameplay.Features.Researches.Services
 
         public bool Active { get; set; } = true;
 
-        public ResearchService(ResearchServiceConfig config, ITimeProvider timeProvider,
+        public ResearchService(
+            ResearchServiceConfig config,
+            ITimeProvider timeProvider,
             IResearchCommandsFactory researchCommandsFactory)
         {
-            this.config = config;
+            Config = config;
             this.timeProvider = timeProvider;
             this.researchCommandsFactory = researchCommandsFactory;
 
@@ -44,14 +46,28 @@ namespace App.Scripts.Scenes.Gameplay.Features.Researches.Services
 
         public void StartResearch(ResearchConfig research)
         {
-            var runtimeResearch
-                = researches.FirstOrDefault(x => x.ResearchConfig.Name.Equals(research.Name));
+            StartResearch(research.Name);
+        }
+        
+        private void StartResearch(string researchName)
+        {
+            if (string.IsNullOrEmpty(researchName))
+            {
+                return;
+            }
+            
+            var runtimeResearch = FindResearchByName(researchName);
             if (runtimeResearch == null)
             {
-                Debug.LogError($"Can't find research with such name {research.Name}");
+                Debug.LogError($"Can't find research with such name {researchName}");
                 return;
             }
 
+            StartResearch(runtimeResearch);
+        }
+
+        private void StartResearch(RuntimeResearch runtimeResearch)
+        {
             Timer = runtimeResearch.ResearchConfig.ResearchTime;
             ActiveResearch = runtimeResearch;
         }
@@ -80,12 +96,12 @@ namespace App.Scripts.Scenes.Gameplay.Features.Researches.Services
                 return;
             }
 
-            var speedMultiplier = Mathf.Clamp(researchSystems.Count, 0, config.MaxResearchStation);
+            var speedMultiplier = Mathf.Clamp(researchSystems.Count, 0, Config.MaxResearchStation);
             
             Timer -= timeProvider.DeltaTime * speedMultiplier;
             if (Timer <= 0)
             {
-                researchCommandsFactory.GetResearch(ActiveResearch.ResearchConfig.Command).Execute();
+                FinishResearch(ActiveResearch);
                 ActiveResearch.IsCompleate = true;
                 var researchBuffer = ActiveResearch;
                 ActiveResearch = null;
@@ -97,12 +113,56 @@ namespace App.Scripts.Scenes.Gameplay.Features.Researches.Services
             OnTimerChanged?.Invoke(Timer);
         }
 
+        public ResearchState GetState()
+        {
+            return new()
+            {
+                Level = Level,
+                CompletedResearches = researches
+                        .Where(x=>x.IsCompleate)
+                        .Select(x=>x.ResearchConfig.Name)
+                        .ToList(),
+                ActiveResearch = ActiveResearch == null ? String.Empty : ActiveResearch.ResearchConfig.Name,
+                ActiveResearchTimer = Timer
+            };
+        }
+
+        public void SetState(ResearchState state)
+        {
+            Level = state.Level;
+            foreach (var researchId in state.CompletedResearches)
+            {
+                var research = FindResearchByName(researchId);
+                if (research == null)
+                {
+                    continue;
+                }
+                
+                research.IsCompleate = true;
+                FinishResearch(research);
+            }
+            StartResearch(state.ActiveResearch);
+            Timer = state.ActiveResearchTimer;
+        }
+
+        private RuntimeResearch FindResearchByName(string researchId)
+        {
+            var research = researches.FirstOrDefault(x =>
+                x.ResearchConfig.Name.Equals(researchId));
+            return research;
+        }
+
+        private void FinishResearch(RuntimeResearch research)
+        {
+            researchCommandsFactory.GetResearch(research.ResearchConfig.Command).Execute();
+        }
+
         private void Initialize()
         {
-            SetLevel(config.StartLevel);
+            SetLevel(Config.StartLevel);
 
             researches = new List<RuntimeResearch>();
-            foreach (var runtimeResearch in config.Researches)
+            foreach (var runtimeResearch in Config.Researches)
             {
                 researches.Add(new RuntimeResearch()
                 {
@@ -123,4 +183,13 @@ namespace App.Scripts.Scenes.Gameplay.Features.Researches.Services
             OnLevelChanged?.Invoke(Level);
         }
     }
+
+    public class ResearchState
+    {
+        public int Level = 1;
+        public List<string> CompletedResearches= new();
+        public string ActiveResearch;
+        public float ActiveResearchTimer;
+    }
+    
 }

@@ -16,6 +16,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.Researches.Services
 
         IReadOnlyCollection<ResearchSystem> ResearchSystems { get; }
         IReadOnlyCollection<RuntimeResearch> Researches { get; }
+        
+        ResearchServiceConfig Config { get; }
 
         RuntimeResearch ActiveResearch { get; }
         float Timer { get; }
@@ -27,5 +29,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Researches.Services
 
         void AddResearchSystem(ResearchSystem researchSystem);
         void RemoveResearchSystem(ResearchSystem researchSystem);
+        ResearchState GetState();
+        void SetState(ResearchState state);
     }
 }

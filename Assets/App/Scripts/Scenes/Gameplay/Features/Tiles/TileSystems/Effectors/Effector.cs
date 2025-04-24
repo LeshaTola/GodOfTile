@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Grid;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCreation;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.Update;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.General;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effects;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.GetTilesStrategies;
@@ -24,15 +25,17 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors
     {
         [SerializeField] private EffectorData data;
 
-        private ITilesCreationService tilesCreationService;
+        private readonly ITilesCreationService tilesCreationService;
+        private readonly ITilesUpdateService tilesUpdateService;
         private List<TileSystem> boostedSystems = new();
 
         public override TileSystemData Data => data;
 
         public Effector(EffectorData data, Tile parentTile, IGridProvider gridProvider,
-            ITilesCreationService tilesCreationService) : base(parentTile)
+            ITilesCreationService tilesCreationService, ITilesUpdateService tilesUpdateService) : base(parentTile)
         {
             this.tilesCreationService = tilesCreationService;
+            this.tilesUpdateService = tilesUpdateService;
             this.data = data;
             data.GetTilesStrategy.Initialize(gridProvider);
             data.Effect.Initialize(this);
@@ -42,12 +45,14 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors
         {
             base.Start();
             tilesCreationService.OnTilePlaced += OnTilePlaced;
+            tilesUpdateService.OnTileUpdated += OnTilePlaced;
             BoostTiles();
         }
 
         public override void Stop()
         {
             tilesCreationService.OnTilePlaced -= OnTilePlaced;
+            tilesUpdateService.OnTileUpdated -= OnTilePlaced;
             UnBoostTiles();
         }
 

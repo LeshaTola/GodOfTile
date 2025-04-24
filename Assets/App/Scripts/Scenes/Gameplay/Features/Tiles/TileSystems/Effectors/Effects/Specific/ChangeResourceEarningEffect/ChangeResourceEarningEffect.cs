@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effects.Specific.ChangeResourceEarningEffect.UI.
     Providers;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.ValidationStrategies;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.ResourceEarners;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.UI;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effects.Specific.ChangeResourceEarningEffect
@@ -13,7 +15,9 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effec
     {
         [SerializeField] private float earningAmountMultiplier;
         [SerializeField] private ChangeResourceEarningEffectorUIProvider systemUIProvider;
-        
+        [SerializeField] private bool isWiteList = false;
+        [SerializeField, ShowIf(@"isWiteList")] private List<TileConfig> whiteList;
+
         private Effector effector;
         private IValidationStrategy validationStrategy;
 
@@ -24,10 +28,18 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effec
 
         public void Initialize(Effector effector)
         {
-            validationStrategy = new SystemsValidationStrategy(new List<Type>()
+            if (isWiteList)
             {
-                typeof(ResourceEarner)
-            });
+                validationStrategy = new TilesValidationStrategy(whiteList);
+            }
+            else
+            {
+                validationStrategy = new SystemsValidationStrategy(new List<Type>()
+                {
+                    typeof(ResourceEarner)
+                });
+            }
+            
             this.effector = effector;
         }
 

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using App.Scripts.Modules.Sounds;
 using App.Scripts.Modules.Sounds.Providers;
 using App.Scripts.Scenes.Gameplay.Features.CraftSystem.Providers;
@@ -7,14 +8,18 @@ using App.Scripts.Scenes.Gameplay.Features.Tiles.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Providers.Effects;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Factories.TileSystem;
+using App.Scripts.Scenes.Gameplay.Features.Tiles.General;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Providers.Collection;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Services;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.Update
 {
     public class TilesUpdateService : ITilesUpdateService
     {
+        public event Action<Vector2Int, Tile> OnTileUpdated;
+        
         private readonly IGridProvider gridProvider;
         private readonly IRecipeProvider recipeProvider;
         private readonly ITileCreationEffectsProvider effectsService;
@@ -23,6 +28,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.Update
         private readonly ISystemsFactory systemsFactory;
         private readonly ISoundProvider soundProvider;
         private readonly ITileCollectionProvider tileCollectionProvider;
+
 
         public TilesUpdateService(
             IGridProvider gridProvider,
@@ -89,6 +95,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.Update
             tile.Initialize(newTileConfig);
 
             systemsService.StartSystems(tile.Config);
+            
+            OnTileUpdated?.Invoke(position, tile);
         }
 
         private TileConfig UpdateTile(Vector2Int tilePosition)

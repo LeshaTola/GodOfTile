@@ -13,6 +13,7 @@ using App.Scripts.Modules.Sounds;
 using App.Scripts.Modules.Sounds.Providers;
 using App.Scripts.Modules.Sounds.Services;
 using App.Scripts.Modules.StateMachine.States.General;
+using App.Scripts.Modules.TasksSystem.Providers;
 using App.Scripts.Scenes.Gameplay.Features.Saves;
 using TNRD;
 using UnityEngine;
@@ -60,6 +61,11 @@ namespace App.Scripts.Features.Bootstrap
                 .To<DataProvider<GamePlaySavesData>>()
                 .AsSingle()
                 .WithArguments("gameplaySaves");
+            
+            Container.Bind<IDataProvider<TasksData>>()
+                .To<DataProvider<TasksData>>()
+                .AsSingle()
+                .WithArguments("TasksSavesDataKey");
             
             Container.BindInterfacesAndSelfTo<SettingsSavesProvider>().AsSingle();
         }

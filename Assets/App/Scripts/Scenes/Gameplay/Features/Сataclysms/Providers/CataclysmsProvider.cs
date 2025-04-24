@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using App.Scripts.Modules.Saves;
 using App.Scripts.Modules.StateMachine.Services.CleanupService;
+using App.Scripts.Modules.StateMachine.Services.InitializeService;
 using App.Scripts.Modules.StateMachine.Services.UpdateService;
 using App.Scripts.Modules.TimeProvider;
 using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Grid;
 using UnityEngine;
-using IInitializable = App.Scripts.Modules.StateMachine.Services.InitializeService.IInitializable;
 using Random = UnityEngine.Random;
 
 namespace App.Scripts.Scenes.Gameplay.Features.Сataclysms.Providers
@@ -21,15 +22,18 @@ namespace App.Scripts.Scenes.Gameplay.Features.Сataclysms.Providers
         private readonly ITimeProvider timeProvider;
 
         private CataclysmData cataclysmData;
-        private float timer;
         
+        public float Timer { get; set; }
+
         public CataclysmsProviderConfig Config { get; }
 
-        public CataclysmsProvider(CataclysmFactory cataclysmFactory, CataclysmsProviderConfig config,
-            IGridProvider gridProvider, ITimeProvider timeProvider)
+        public CataclysmsProvider(CataclysmFactory cataclysmFactory,
+            CataclysmsProviderConfig config,
+            IGridProvider gridProvider,
+            ITimeProvider timeProvider)
         {
             this.cataclysmFactory = cataclysmFactory;
-            this.Config = config;
+            Config = config;
             this.gridProvider = gridProvider;
             this.timeProvider = timeProvider;
         }
@@ -40,19 +44,18 @@ namespace App.Scripts.Scenes.Gameplay.Features.Сataclysms.Providers
             {
                 GetCataclysm();
             }
-            ResetTimer();
         }
 
         public void Update()
         {
-            timer -= timeProvider.DeltaTime;
-            if (timer <= 0)
+            Timer -= timeProvider.DeltaTime;
+            if (Timer <= 0)
             {
                 ResetTimer();
                 GetCataclysm();
                 ApplyCataclism();
             }
-            OnTimerChanged?.Invoke(timer);
+            OnTimerChanged?.Invoke(Timer);
         }
 
         public void Cleanup()
@@ -97,7 +100,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Сataclysms.Providers
 
         private void ResetTimer()
         {
-            timer = Config.Cooldown;
+            Timer = Config.Cooldown;
         }
     }
 

@@ -1,4 +1,6 @@
-﻿namespace App.Scripts.Modules.StateMachine.Services.UpdateService
+﻿using App.Scripts.Scenes.Gameplay.Features.Researches.Configs;
+
+namespace App.Scripts.Modules.StateMachine.Services.UpdateService
 {
     public interface IUpdatable
     {

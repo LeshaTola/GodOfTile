@@ -115,11 +115,6 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
             Container.Bind<TaskFactory>().AsSingle();
             Container.Bind<TasksProvider>().AsSingle().WithArguments(taskProviderConfig);
             Container.BindInterfacesAndSelfTo<TaskService>().AsSingle();
-            
-            Container.Bind<IDataProvider<TasksData>>()
-                .To<DataProvider<TasksData>>()
-                .AsSingle()
-                .WithArguments("TasksSavesDataKey");
         }
 
         private void BindCycleServices()

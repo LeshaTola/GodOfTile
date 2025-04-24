@@ -64,9 +64,9 @@ namespace App.Scripts.Modules.TasksSystem.Services
         
         private void RegisterTask(TasksContainer task)
         {
-            task.StartTask();
             task.OnTaskCompleted += UnregisterTask;
             task.OnProgressChanged += (progress) => OnProgressChanged(task);
+            task.StartTask();
         }
 
         private void OnProgressChanged(TasksContainer task)
