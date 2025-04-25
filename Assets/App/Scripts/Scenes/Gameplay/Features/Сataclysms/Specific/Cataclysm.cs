@@ -9,5 +9,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Сataclysms.Providers
 
         public abstract void Attack(Vector2Int position);
         public abstract void Update();
+        public abstract void Kill();
     }
 }

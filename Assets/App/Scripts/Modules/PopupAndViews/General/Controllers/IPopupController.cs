@@ -5,6 +5,7 @@ namespace App.Scripts.Modules.PopupAndViews.General.Controllers
     public interface IPopupController
     {
         UniTask HideLastPopup();
+        UniTask HidePopup<T>()where T : Popup.Popup;
         T GetPopup<T>() where T : Popup.Popup;
         void AddActivePopup(Popup.Popup popup);
         void RemoveActivePopup(Popup.Popup popup);

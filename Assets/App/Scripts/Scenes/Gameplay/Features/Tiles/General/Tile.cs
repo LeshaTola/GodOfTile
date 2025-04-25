@@ -11,11 +11,19 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.General
         public TileVisual Visual => visual;
         public TileConfig Config => config;
         public Vector2Int Position { get; set; }
+        public bool IsDefence { get; private set; }
+
 
         public void Initialize(TileConfig config)
         {
             this.config = config;
             Visual.Initialize(config.Size, config.TypeMaterial, config.Building);
+        }
+
+        public void SetDefence(bool isDefence)
+        {
+            IsDefence = isDefence;
+            Visual.SetActiveDefenceGlow(isDefence);
         }
     }
 }

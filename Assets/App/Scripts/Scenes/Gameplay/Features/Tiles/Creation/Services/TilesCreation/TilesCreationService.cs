@@ -24,6 +24,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
     public class TilesCreationService : ITilesCreationService, ICleanupable
     {
         public event Action<Vector2Int, Tile> OnTilePlaced;
+        public event Action<Vector2Int, Tile> OnTileDestoyed;
 
         private readonly IGridProvider gridProvider;
         private readonly ITilesFactory tileFactory;
@@ -128,6 +129,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
             var tile = gridProvider.Grid[gridPosition.x, gridPosition.y];
             if (tile)
             {
+                OnTileDestoyed?.Invoke(gridPosition, tile);
                 systemsService.StopSystems(tile.Config);
                 await PlayDestroyVFX(tile);
                 Object.Destroy(tile.gameObject);

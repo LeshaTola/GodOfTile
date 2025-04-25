@@ -43,14 +43,14 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effec
             this.effector = effector;
         }
 
-        public void AddEffect(TileSystemData tileSystemData)
+        public void AddEffect(TileSystem tileSystemData)
         {
-            ((ResourceEarnerSystemData) tileSystemData).AmountPerSecond *= EarningAmountMultiplier;
+            ((ResourceEarnerSystemData) tileSystemData.Data).AmountPerSecond *= EarningAmountMultiplier;
         }
 
-        public void RemoveEffect(TileSystemData tileSystemData)
+        public void RemoveEffect(TileSystem tileSystemData)
         {
-            ((ResourceEarnerSystemData) tileSystemData).AmountPerSecond /= EarningAmountMultiplier;
+            ((ResourceEarnerSystemData) tileSystemData.Data).AmountPerSecond /= EarningAmountMultiplier;
         }
     }
 }

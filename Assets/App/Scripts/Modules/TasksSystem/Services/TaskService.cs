@@ -58,8 +58,8 @@ namespace App.Scripts.Modules.TasksSystem.Services
             
             var tasksContainer = _factory.GetTaskContainer(taskConfig);
             tasksContainer.SetState(taskData.TasksData);
-            RegisterTask(tasksContainer);
             ActiveTasks.Add(tasksContainer);
+            RegisterTask(tasksContainer);
         }
         
         private void RegisterTask(TasksContainer task)

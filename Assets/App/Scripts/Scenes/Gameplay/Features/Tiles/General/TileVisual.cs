@@ -10,6 +10,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.General
     {
         [SerializeField] private TileVisualConfig config;
         [SerializeField] private GameObject glow;
+        [SerializeField] private GameObject defenceGlow;
         [SerializeField] private Transform buildingPosition;
 
         [Header("Renderer")]
@@ -39,6 +40,16 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.General
             }
         }
 
+        public void SetActiveDefenceGlow(bool active)
+        {
+            if (!defenceGlow)
+            {
+                return;
+            }
+            
+            defenceGlow.SetActive(active);
+        }
+        
         public void StartGlow()
         {
             glow.SetActive(true);

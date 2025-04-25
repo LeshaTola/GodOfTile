@@ -9,6 +9,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.TilesCrea
     public interface ITilesCreationService
     {
         event Action<Vector2Int, Tile> OnTilePlaced;
+        event Action<Vector2Int, Tile> OnTileDestoyed;
 
         void MoveActiveTile(Vector2Int gridPosition);
         UniTask RotateActiveTile();

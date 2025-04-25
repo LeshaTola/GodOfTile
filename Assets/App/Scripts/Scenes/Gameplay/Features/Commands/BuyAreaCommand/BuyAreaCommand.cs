@@ -4,6 +4,7 @@ using App.Scripts.Scenes.Gameplay.Features.Inventory.Systems;
 using App.Scripts.Scenes.Gameplay.Features.Map.Items;
 using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Chunk;
 using App.Scripts.Scenes.Gameplay.Features.Map.Providers.Chunk.Cost;
+using App.Scripts.Scenes.Gameplay.Features.Popups.BuyArea;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Configs;
 using App.Scripts.Scenes.Gameplay.Features.Tiles.Creation.Services.ChunkFilling;
 using Cysharp.Threading.Tasks;
@@ -50,7 +51,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Commands.BuyAreaCommand
                 inventorySystem.ChangeRecourseAmount(resourceCount.Resource.ResourceName, -resourceCount.Count);
             }
 
-            popupController.HideLastPopup();
+            popupController.HidePopup<BuyAreaPopup>().Forget();
         }
     }
 }

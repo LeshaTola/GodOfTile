@@ -15,7 +15,8 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 1828386460674850464, guid: 99f5d496c7a34c0418fb77dd878afe18, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -27,7 +28,54 @@ MonoBehaviour:
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 1|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effector,
+        Assembly-CSharp
+    - Name: data
+      Entry: 7
+      Data: 2|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.EffectorData,
+        Assembly-CSharp
+    - Name: getTilesStrategy
+      Entry: 7
+      Data: 3|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.GetTilesStrategies.Radius.RadiusGetTileStrategy,
+        Assembly-CSharp
+    - Name: radius
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: effect
+      Entry: 7
+      Data: 4|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Defence.DefenceEffect,
+        Assembly-CSharp
+    - Name: systemUIProvider
+      Entry: 7
+      Data: 5|App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Specific.Defence.DefenceEffectUIProvider,
+        Assembly-CSharp
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: shieldArea
+      Entry: 10
       Data: 0
+    - Name: <Radius>k__BackingField
+      Entry: 3
+      Data: 1
+    - Name: <Description>k__BackingField
+      Entry: 1
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 13
       Data: 

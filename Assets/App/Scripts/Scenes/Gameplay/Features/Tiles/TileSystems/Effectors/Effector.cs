@@ -46,6 +46,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors
             base.Start();
             tilesCreationService.OnTilePlaced += OnTilePlaced;
             tilesUpdateService.OnTileUpdated += OnTilePlaced;
+            tilesCreationService.OnTileDestoyed += OnTileDestroyed;
             BoostTiles();
         }
 
@@ -53,6 +54,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors
         {
             tilesCreationService.OnTilePlaced -= OnTilePlaced;
             tilesUpdateService.OnTileUpdated -= OnTilePlaced;
+            tilesCreationService.OnTileDestoyed -= OnTileDestroyed;
             UnBoostTiles();
         }
 
@@ -60,7 +62,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors
         {
             return data.GetTilesStrategy.GetPositions(ParentTile.Position);
         }
-        
+
         public List<Tile> GetValidTiles()
         {
             return data
@@ -103,6 +105,20 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors
             }
 
             boostedSystems.Clear();
+        }
+
+        private void OnTileDestroyed(Vector2Int position, Tile tile)
+        {
+            if (!data.GetTilesStrategy.IsValid(ParentTile.Position, position))
+            {
+                return;
+            }
+
+            var systems = boostedSystems.Intersect(tile.Config.ActiveSystems).ToList();
+            foreach (var system in systems)
+            {
+                boostedSystems.Remove(system);
+            }
         }
     }
 }

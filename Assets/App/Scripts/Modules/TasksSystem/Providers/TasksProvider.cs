@@ -83,12 +83,6 @@ namespace App.Scripts.Modules.TasksSystem.Providers
             OnTasksUpdated?.Invoke(ActiveTasks);
         }
 
-        private bool IsCurrentDay(long lastUpdateDateLong)
-        {
-            var lastUpdateDate = DateTimeOffset.FromUnixTimeSeconds(lastUpdateDateLong).UtcDateTime;
-            return lastUpdateDate.Date != DateTime.Now.Date;
-        }
-
         private TasksData GetState()
         {
             return new TasksData()
@@ -140,6 +134,7 @@ namespace App.Scripts.Modules.TasksSystem.Providers
         private int GetConfigId()
         {
             var id = _config.IsRandom ? Random.Range(0, _config.TasksPool.Tasks.Count) : _lastTaskId++;
+            Debug.Log($"lastTaskId: {_lastTaskId}");
             if (id >= _config.TasksPool.Tasks.Count)
             {
                 id = 0;

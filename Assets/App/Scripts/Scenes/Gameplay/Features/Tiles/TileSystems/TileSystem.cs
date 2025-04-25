@@ -38,13 +38,13 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems
         public void AddEffect(IEffect effect)
         {
             effectors.Add(effect);
-            effect.AddEffect(Data);
+            effect.AddEffect(this);
         }
 
         public void RemoveEffect(IEffect effect)
         {
             effectors.Remove(effect);
-            effect.RemoveEffect(Data);
+            effect.RemoveEffect(this);
         }
     }
 }

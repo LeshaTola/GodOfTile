@@ -22,7 +22,8 @@ namespace App.Scripts.Scenes.Gameplay.Features.Сataclysms.Specific
         private ITilesCreationService tilesCreationService;
 
         private bool isComplete = false;
-        
+        private float animScaler;
+
         [Inject]
         public void Construct(ITimeProvider timeProvider,
             ICameraSwitcher cameraSwitcher,
@@ -38,39 +39,58 @@ namespace App.Scripts.Scenes.Gameplay.Features.Сataclysms.Specific
             transform.position = GetSpawnPositionOffscreen();
             target = new Vector3(position.x, 0, position.y);
             transform.forward = target - transform.position;
+            
+            animScaler = timeProvider.TimeMultiplier == 0? float.MinValue : timeProvider.TimeMultiplier; 
+
         }
 
         public override void Update()
+        {
+            if (isComplete)
+            {
+                return;
+            }
+            
+            Move();
+            ProcessKilling();
+        }
+
+        private void ProcessKilling()
+        {
+            if (Vector3.Distance(transform.position, target) <= 0.4f * animScaler)
+            {
+                Kill();
+            }
+        }
+
+        public override void Kill()
+        {
+            isComplete = true;
+            transform
+                .DOScale(0, 1f/animScaler)
+                .SetEase(Ease.InBack)
+                .onComplete += () => Destroy(gameObject);
+        }
+
+        private void Move()
         {
             transform.position
                 = Vector3.MoveTowards(
                     transform.position,
                     target,
                     _speed * timeProvider.DeltaTime);
-                    
-            if (isComplete)
-            {
-                return;
-            }
-
-            var animScaler = timeProvider.TimeMultiplier == 0? float.MinValue : timeProvider.TimeMultiplier; 
-            if (!(Vector3.Distance(transform.position, target) <= 0.4f*animScaler))
-            {
-                return;
-            }
-            
-            isComplete = true;
-            transform
-                .DOScale(0, 1f/animScaler)
-                .SetEase(Ease.InBack)
-                .onComplete += () => Destroy(gameObject);
-            
         }
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.TryGetComponent(out Tile tile))
             {
+                if (tile.IsDefence)
+                {
+                    Kill();
+                    return;
+                }
+                
                 tilesCreationService.DestroyTile(tile.Position);
             }
         }

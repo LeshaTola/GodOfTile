@@ -65,6 +65,20 @@ namespace App.Scripts.Modules.PopupAndViews.General.Controllers
             var popup = currentPopups.Last();
             await popup.Hide();
         }
+        
+        public async UniTask HidePopup<T>() where T : Popup.Popup
+        {
+            if (currentPopups.Count <= 0)
+            {
+                return;
+            }
+
+            var popup = currentPopups.FirstOrDefault(x=>x.GetType() == typeof(T));
+            if (popup != null)
+            {
+                await popup.Hide();
+            }
+        }
 
         private void DeactivatePrevPopup()
         {

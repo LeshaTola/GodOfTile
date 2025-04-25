@@ -10,7 +10,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Tiles.TileSystems.Effectors.Effec
         ISystemUIProvider SystemUIProvider { get; }
 
         void Initialize(Effector effector);
-        void AddEffect(TileSystemData tileSystemData);
-        void RemoveEffect(TileSystemData tileSystemData);
+        void AddEffect(TileSystem tileSystemData);
+        void RemoveEffect(TileSystem tileSystemData);
     }
 }
