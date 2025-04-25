@@ -26,7 +26,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: <Tasks>k__BackingField
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[App.Scripts.Modules.Tasks.Tasks.Task,
+      Data: 0|System.Collections.Generic.List`1[[App.Scripts.Modules.TasksSystem.Tasks.Task,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -58,7 +58,7 @@ MonoBehaviour:
       Data: 
     - Name: <CompleteActions>k__BackingField
       Entry: 7
-      Data: 3|System.Collections.Generic.List`1[[App.Scripts.Modules.Tasks.CompleteActions.CompleteAction,
+      Data: 3|System.Collections.Generic.List`1[[App.Scripts.Modules.TasksSystem.CompleteActions.CompleteAction,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12

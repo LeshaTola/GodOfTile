@@ -44,8 +44,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.Time.Presenters
             view.OnSpeed1ButtonClicked += SetSpeed1;
             view.OnSpeed2ButtonClicked += SetSpeed2;
             view.OnSpeed3ButtonClicked += SetSpeed3;
-
-            SetSpeed1();
         }
 
         public void Cleanup()

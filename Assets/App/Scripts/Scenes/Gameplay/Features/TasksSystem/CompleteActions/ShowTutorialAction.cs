@@ -28,7 +28,6 @@ namespace App.Scripts.Scenes.Gameplay.Features.TasksSystem.CompleteActions
 
         public override void Execute()
         {
-            timeService.SetPause();
             var newTutorialData = new TutorialPopupData()
             {
                 Header = tutorialData.Header,

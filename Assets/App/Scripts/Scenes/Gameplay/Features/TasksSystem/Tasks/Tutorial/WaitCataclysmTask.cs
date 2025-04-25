@@ -39,7 +39,12 @@ namespace App.Scripts.Scenes.Gameplay.Features.TasksSystem.Tasks.Tutorial
 
         private void UpdateProgress(float remainigTime)
         {
-            Progress = 1 - (remainigTime / cataclysmsProvider.Config.Cooldown);
+            var revercedProgress = remainigTime / cataclysmsProvider.Config.Cooldown;
+            Progress = 1 - revercedProgress;
+            if (revercedProgress < 0.05f)
+            {
+                Progress = 1;
+            }
         }
     }
 }

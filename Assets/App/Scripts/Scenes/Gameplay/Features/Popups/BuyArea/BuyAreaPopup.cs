@@ -13,6 +13,7 @@ namespace App.Scripts.Scenes.Gameplay.Features.Popups.BuyArea
         [SerializeField] private ItemInformationWidget informationWidget;
         [SerializeField] private PopupButton buyButton;
         [SerializeField] private PopupButton closeButton;
+        
 
         private IBuyAreaPopupViewModule viewModule;
 

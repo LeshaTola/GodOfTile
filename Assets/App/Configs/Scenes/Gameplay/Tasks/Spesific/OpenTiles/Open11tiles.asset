@@ -15,7 +15,12 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 21300000, guid: 4b15633d6397d774d891304d98f3523e, type: 3}
+    - {fileID: 21300000, guid: 74c69cd24e84b3840b3f62fc25fa0b9c, type: 3}
+    - {fileID: 21300000, guid: a3a940d7b9e0cb048bbf6e4799f1ebe1, type: 3}
+    - {fileID: 21300000, guid: 1760be0554e43fc45aedea583670e82b, type: 3}
+    - {fileID: 21300000, guid: 376624c94b63ed3428241a69b28c5fd9, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -23,7 +28,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: <Tasks>k__BackingField
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[App.Scripts.Modules.Tasks.Tasks.Task,
+      Data: 0|System.Collections.Generic.List`1[[App.Scripts.Modules.TasksSystem.Tasks.Task,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -49,7 +54,7 @@ MonoBehaviour:
       Data: 
     - Name: <CompleteActions>k__BackingField
       Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[App.Scripts.Modules.Tasks.CompleteActions.CompleteAction,
+      Data: 2|System.Collections.Generic.List`1[[App.Scripts.Modules.TasksSystem.CompleteActions.CompleteAction,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -76,8 +81,8 @@ MonoBehaviour:
       Entry: 7
       Data: 6|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData, Assembly-CSharp
     - Name: Image
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 0
     - Name: Gif
       Entry: 6
       Data: 
@@ -91,8 +96,8 @@ MonoBehaviour:
       Entry: 7
       Data: 7|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData, Assembly-CSharp
     - Name: Image
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 0
     - Name: Gif
       Entry: 6
       Data: 
@@ -106,8 +111,8 @@ MonoBehaviour:
       Entry: 7
       Data: 8|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData, Assembly-CSharp
     - Name: Image
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 1
     - Name: Gif
       Entry: 6
       Data: 
@@ -122,8 +127,8 @@ MonoBehaviour:
       Entry: 7
       Data: 9|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData, Assembly-CSharp
     - Name: Image
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 2
     - Name: Gif
       Entry: 6
       Data: 
@@ -137,8 +142,8 @@ MonoBehaviour:
       Entry: 7
       Data: 10|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData, Assembly-CSharp
     - Name: Image
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 3
     - Name: Gif
       Entry: 6
       Data: 
@@ -152,8 +157,8 @@ MonoBehaviour:
       Entry: 7
       Data: 11|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData, Assembly-CSharp
     - Name: Image
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 4
     - Name: Gif
       Entry: 6
       Data: 
@@ -167,8 +172,8 @@ MonoBehaviour:
       Entry: 7
       Data: 12|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData, Assembly-CSharp
     - Name: Image
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 4
     - Name: Gif
       Entry: 6
       Data: 

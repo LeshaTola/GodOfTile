@@ -3,6 +3,7 @@ using App.Scripts.Modules.CameraSwitchers;
 using App.Scripts.Modules.StateMachine.Services.InitializeService;
 using App.Scripts.Modules.TasksSystem.Providers;
 using App.Scripts.Scenes.Gameplay.Features.Saves;
+using App.Scripts.Scenes.Gameplay.Features.Time.Presenters;
 using App.Scripts.Scenes.Gameplay.StateMachines.Ids;
 using Cysharp.Threading.Tasks;
 
@@ -23,6 +24,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             ISceneTransition sceneTransition,
             GameplaySavesController savesController,
             TasksProvider tasksProvider,
+            TimePresenter timePresenter,
             string cameraId)
             : base(id)
         {
@@ -42,6 +44,7 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.State
             tasksProvider.LoadState();
             initializeService.Initialize();
             await StateMachine.ChangeState(StatesIds.GAMEPLAY_STATE);
+            
         }
 
         public override async UniTask Exit()

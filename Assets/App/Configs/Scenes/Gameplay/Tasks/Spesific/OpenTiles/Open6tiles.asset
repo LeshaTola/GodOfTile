@@ -15,9 +15,7 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 21300000, guid: 6723c8aef328ae645b6a45ff7a13794a, type: 3}
-    - {fileID: 11400000, guid: b9d3057a355968740a72a7ef1fd8d269, type: 2}
+    ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -25,7 +23,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: <Tasks>k__BackingField
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[App.Scripts.Modules.Tasks.Tasks.Task,
+      Data: 0|System.Collections.Generic.List`1[[App.Scripts.Modules.TasksSystem.Tasks.Task,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -39,7 +37,7 @@ MonoBehaviour:
       Data: 
     - Name: count
       Entry: 3
-      Data: 6
+      Data: 8
     - Name: 
       Entry: 8
       Data: 
@@ -51,97 +49,11 @@ MonoBehaviour:
       Data: 
     - Name: <CompleteActions>k__BackingField
       Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[App.Scripts.Modules.Tasks.CompleteActions.CompleteAction,
+      Data: 2|System.Collections.Generic.List`1[[App.Scripts.Modules.TasksSystem.CompleteActions.CompleteAction,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
-      Data: 2
-    - Name: 
-      Entry: 7
-      Data: 3|App.Scripts.Scenes.Gameplay.Features.TasksSystem.CompleteActions.ShowTutorialAction,
-        Assembly-CSharp
-    - Name: tutorialData
-      Entry: 7
-      Data: 4|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialPopupData,
-        Assembly-CSharp
-    - Name: Header
-      Entry: 1
-      Data: TileSystems
-    - Name: Tutorials
-      Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData,
-        Assembly-CSharp]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 2
-    - Name: 
-      Entry: 7
-      Data: 6|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData, Assembly-CSharp
-    - Name: Image
-      Entry: 10
       Data: 0
-    - Name: Gif
-      Entry: 6
-      Data: 
-    - Name: Mesage
-      Entry: 1
-      Data: By opening new tiles, you can find them in the store.
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 7|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData, Assembly-CSharp
-    - Name: Image
-      Entry: 6
-      Data: 
-    - Name: Gif
-      Entry: 6
-      Data: 
-    - Name: Mesage
-      Entry: 1
-      Data: But in the store -- they require resources to install.
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: Command
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 8|App.Scripts.Scenes.Gameplay.Features.TasksSystem.CompleteActions.OpenTileAction,
-        Assembly-CSharp
-    - Name: rewardResources
-      Entry: 7
-      Data: 9|System.Collections.Generic.List`1[[App.Scripts.Scenes.Gameplay.Features.Tiles.Configs.TileConfig,
-        Assembly-CSharp]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 10
-      Data: 1
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: 
       Entry: 13
       Data: 
@@ -149,5 +61,5 @@ MonoBehaviour:
       Entry: 8
       Data: 
   <Id>k__BackingField: Open6tiles
-  <Name>k__BackingField: Open 6 tiles
+  <Name>k__BackingField: Open 8 tiles
   <Description>k__BackingField: Use tiles from shop to open new ones

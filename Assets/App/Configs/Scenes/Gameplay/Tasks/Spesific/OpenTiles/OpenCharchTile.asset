@@ -17,7 +17,11 @@ MonoBehaviour:
     SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 11400000, guid: cbb8a897fcdebf248b4dc9dc27ea3f73, type: 2}
-    - {fileID: 21300000, guid: 73b6abcd0792fbe4ba6d395abaa08259, type: 3}
+    - {fileID: 21300000, guid: a1dd47e854878f648b8343b522dd98b1, type: 3}
+    - {fileID: 21300000, guid: dd7c1b5637af3ea438dc6fd59040ffd5, type: 3}
+    - {fileID: 21300000, guid: 537da71170b92ee44b855b8b1b71697a, type: 3}
+    - {fileID: 21300000, guid: c6b919f11b814204bb1b6624fe39f188, type: 3}
+    - {fileID: 21300000, guid: b07a66dd6e2527e4eb5efc9cefd1f8c4, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -25,7 +29,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: <Tasks>k__BackingField
       Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[App.Scripts.Modules.Tasks.Tasks.Task,
+      Data: 0|System.Collections.Generic.List`1[[App.Scripts.Modules.TasksSystem.Tasks.Task,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -51,7 +55,7 @@ MonoBehaviour:
       Data: 
     - Name: <CompleteActions>k__BackingField
       Entry: 7
-      Data: 2|System.Collections.Generic.List`1[[App.Scripts.Modules.Tasks.CompleteActions.CompleteAction,
+      Data: 2|System.Collections.Generic.List`1[[App.Scripts.Modules.TasksSystem.CompleteActions.CompleteAction,
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
@@ -78,8 +82,8 @@ MonoBehaviour:
       Entry: 7
       Data: 6|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData, Assembly-CSharp
     - Name: Image
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 1
     - Name: Gif
       Entry: 6
       Data: 
@@ -96,8 +100,8 @@ MonoBehaviour:
       Entry: 7
       Data: 7|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData, Assembly-CSharp
     - Name: Image
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 2
     - Name: Gif
       Entry: 6
       Data: 
@@ -115,7 +119,7 @@ MonoBehaviour:
       Data: 8|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData, Assembly-CSharp
     - Name: Image
       Entry: 10
-      Data: 1
+      Data: 3
     - Name: Gif
       Entry: 6
       Data: 
@@ -132,8 +136,8 @@ MonoBehaviour:
       Entry: 7
       Data: 9|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData, Assembly-CSharp
     - Name: Image
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 3
     - Name: Gif
       Entry: 6
       Data: 
@@ -150,8 +154,8 @@ MonoBehaviour:
       Entry: 7
       Data: 10|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData, Assembly-CSharp
     - Name: Image
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 4
     - Name: Gif
       Entry: 6
       Data: 
@@ -167,8 +171,8 @@ MonoBehaviour:
       Entry: 7
       Data: 11|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData, Assembly-CSharp
     - Name: Image
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 4
     - Name: Gif
       Entry: 6
       Data: 
@@ -184,8 +188,8 @@ MonoBehaviour:
       Entry: 7
       Data: 12|App.Scripts.Modules.PopupAndViews.Popups.Tutorial.TutorialData, Assembly-CSharp
     - Name: Image
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 5
     - Name: Gif
       Entry: 6
       Data: 
@@ -218,5 +222,5 @@ MonoBehaviour:
       Entry: 8
       Data: 
   <Id>k__BackingField: OpenCharchTile
-  <Name>k__BackingField: Open cactus tile
-  <Description>k__BackingField: Place tiles of sand near each other
+  <Name>k__BackingField: Open Charch tile
+  <Description>k__BackingField: Churches are usually located in villages.
